@@ -26,3 +26,28 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Setup
+
+    npm install primeng --save
+    npm install bootstrap@3
+
+### Bootstrap requires a couple of steps to get it done:
+
+- Open the file .angular-cli.json from the root of your project.
+ 
+- Under the property apps the first item in that array is the default application.
+
+- There is a property styles which allows external global styles to be applied to your application.
+
+- Specify the path to bootstrap.min.css
+
+It should look like the following when you are done:
+
+    "styles": [
+    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+    "styles.css"
+    ],
+
+Note: When you make changes to .angular-cli.json you will need to re-start ng serve to pick up configuration changes.
+
