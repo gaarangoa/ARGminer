@@ -45,8 +45,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 It should look like the following when you are done:
 
     "styles": [
-    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "styles.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "styles.css"
     ],
 
 Note: When you make changes to .angular-cli.json you will need to re-start ng serve to pick up configuration changes.

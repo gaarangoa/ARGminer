@@ -19,7 +19,7 @@ class GENE():
     def metadata(self,gene_id):
         # 1. Identify from which database is it coming -  so basically get all the info from the deepARG db
         gene_info = deepARG.getById(gene_id)
-        if not gene_info: return False
+        if not gene_info: return {"status":False}
         if gene_info['database'] == "CARD":
             return card.getById(gene_id)
         if gene_info['database'] == 'UNIPROT':
@@ -34,3 +34,22 @@ class GENE():
     def pathogen(self, gene_id):
         pathg = patric.getById(gene_id)
         return pathg
+
+    def random(self):
+        entry = deepARG.getRandomId()
+        pathg = patric.getById(entry['gene_id'])
+        mtd = self.metadata(entry['gene_id'])
+
+        bhit = self.bestHit(entry['gene_id'])
+
+        for bh in bhit['alignments']:
+            bh['metadata'] = self.metadata(bh['best_hit'])
+            bh['pathogen'] = self.pathogen(bh['best_hit'])
+
+        return {
+            "entry":entry,
+            "pathogen":pathg,
+            "metadata":mtd,
+            "besthit":bhit,
+            "status":True
+        }

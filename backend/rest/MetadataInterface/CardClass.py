@@ -9,7 +9,7 @@ class CARD():
         
     def getById(self, gene_id):
         model = self.database.find(self.card_link, {"protein_id":gene_id})
-        if not model: return False
+        if not model: return {"status":False}
         info = self.database.find(self.card,{"model_id":model['model']})
         aros = info['ARO_category']
         comments = [ self.database.find( self.aro, { "_id": "ARO:"+aros[i]['category_aro_accession']} ) for i in aros]
@@ -17,6 +17,7 @@ class CARD():
             'accession':info['ARO_accession'],
             'subtype':info['ARO_name'],
             'description':info['ARO_description'],
-            'type': comments
+            'type': comments,
+            'status': True
         }
 

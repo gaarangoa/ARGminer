@@ -8,4 +8,6 @@ class UNIPROT():
     def getById(self, gene_id):
         headers = {'Accept': 'application/json', 'user-agent': 'gustavo1@vt.edu'}
         r = requests.get('https://www.ebi.ac.uk/proteins/api/proteins/'+gene_id, headers=headers)
-        return json.loads(r.text)
+        response = json.loads(r.text)
+        response['status'] = True
+        return response

@@ -8,7 +8,7 @@ class alignments():
     
     def getById(self, gene_id):
         model = [i for i in self.table.find({"gene_id":gene_id})][0]
-        if not model: return False
+        if not model: return {"status":False}
         # model = model[0]
         model["_id"] = str(model["_id"])
         return model

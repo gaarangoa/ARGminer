@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 import base64
 from config import add_path
@@ -10,6 +11,7 @@ ARG = GENE()
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -29,3 +31,8 @@ def besthit(gene_id):
 def pathogen(gene_id):
     pathogen = ARG.pathogen(gene_id)
     return jsonify(pathogen)
+
+@app.route('/random/', methods = ['GET','POST'])
+def random():
+    random = ARG.random()
+    return jsonify(random)
