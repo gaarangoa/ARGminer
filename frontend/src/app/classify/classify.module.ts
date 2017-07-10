@@ -5,6 +5,8 @@ import { FormsModule }    from '@angular/forms';
 import { ClassifyComponent } from './classify.component';
 import { ClassifyRoutingModule } from './classify-routing.module';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,7 +14,7 @@ import { ClassifyRoutingModule } from './classify-routing.module';
     ClassifyRoutingModule
   ],
   declarations: [
-    ClassifyComponent
+    ClassifyComponent,
   ],
   providers: [
   ]

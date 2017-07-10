@@ -36,20 +36,51 @@ class GENE():
         return pathg
 
     def random(self):
-        entry = deepARG.getRandomId()
-        pathg = patric.getById(entry['gene_id'])
-        mtd = self.metadata(entry['gene_id'])
+        try:
+            entry = deepARG.getRandomId()
+            pathg = patric.getById(entry['gene_id'])
+            mtd = self.metadata(entry['gene_id'])
+            bhit = self.bestHit(entry['gene_id'])
 
-        bhit = self.bestHit(entry['gene_id'])
+            for bh in bhit['alignments']:
+                bh['metadata'] = self.metadata(bh['best_hit'])
+                bh['pathogen'] = self.pathogen(bh['best_hit'])
 
-        for bh in bhit['alignments']:
-            bh['metadata'] = self.metadata(bh['best_hit'])
-            bh['pathogen'] = self.pathogen(bh['best_hit'])
+            return {
+                "entry":entry,
+                "pathogen":pathg,
+                "metadata":mtd,
+                "besthit":bhit,
+                "status":True
+            }
+        except:
+            print entry
+            return {
+                "status": False
+            }
+    
+    def getARG(self, gene_id):
+        try:
+            # print gene_id
+            entry = deepARG.getById(gene_id)
+            # print entry
+            pathg = patric.getById(entry['gene_id'])
+            mtd = self.metadata(entry['gene_id'])
+            bhit = self.bestHit(entry['gene_id'])
 
-        return {
-            "entry":entry,
-            "pathogen":pathg,
-            "metadata":mtd,
-            "besthit":bhit,
-            "status":True
-        }
+            for bh in bhit['alignments']:
+                bh['metadata'] = self.metadata(bh['best_hit'])
+                bh['pathogen'] = self.pathogen(bh['best_hit'])
+
+            return {
+                "entry":entry,
+                "pathogen":pathg,
+                "metadata":mtd,
+                "besthit":bhit,
+                "status":True
+            }
+        except:
+            # print entry
+            return {
+                "status": False
+            }

@@ -1,0 +1,88 @@
+
+<br><br>
+
+<div *ngIf="!randomARG.metadata.errorMessage" class="col-md-12">
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <i class="fa fa-bug"></i>
+
+      <h3 class="box-title"><strong> Lineage (<a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">{{ randomARG.metadata.organism.taxonomy }} </a>) </strong></h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <dl class="dl-vertical">
+        <div class="badge bg-blue" *ngFor="let item of randomARG.metadata.organism.lineage">
+        {{ item }}
+        </div>
+      </dl>
+
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</div>
+
+<div *ngIf="!randomARG.metadata.errorMessage" class="col-md-3">
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <i class="fa fa-tag"></i>
+
+      <h3 class="box-title"><strong>Keywords</strong></h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <p *ngIf="randomARG.metadata.gene" > <strong>Gene Name: </strong> <span *ngIf="randomARG.metadata.gene[0].name" > {{ randomARG.metadata.gene[0].name.value }} </span></p>
+      <hr>
+      <div *ngIf="randomARG.metadata.protein.recommendedName.fullName" class="badge bg-red" data-original-title=""> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </div>
+      <hr>
+      <div *ngIf="randomARG.metadata.proteinExistence" class="badge bg-orange" data-original-title=""> {{ randomARG.metadata.proteinExistence }} </div>
+      <hr>
+      <div *ngFor="let item of randomARG.metadata.keywords">
+        <span class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
+      </div>
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</div>
+
+
+<div *ngIf="randomARG.metadata.comments" class="col-md-6">
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <i class="fa fa-object-group"></i>
+
+      <h3 class="box-title"><strong>Description</strong></h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <dl class="dl-horizontal">
+        <div *ngFor="let item of randomARG.metadata.comments">
+          <dt *ngIf="item.text" > {{ item.type }}:</dt>
+          <dd *ngIf="item.text" > {{ item.text[0].value }}</dd>
+          <br>
+        </div>
+      </dl>
+
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+</div>
+
+
+
+<div *ngIf="randomARG.metadata.errorMessage" class="col-md-8 col-md-offset-2">
+
+  <div class="alert alert-danger alert-dismissible">
+    <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+    <strong>This Gene is outdated</strong>
+    <p>
+      {{ randomARG.metadata.errorMessage[0] }}
+    </p>
+  </div>
+
+  <div class='col-md-offset-5'>
+    <button (click)="reportARG()" class="btn btn-default" md-button><strong>Report ARG</strong></button>
+  </div>
+</div>

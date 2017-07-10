@@ -1,82 +1,94 @@
 
 <div class="container-fluid">
-  <!--<md-tab-group>-->
-    
-    <!--<md-tab label="Known ARGs">-->
-      
-      
-      <!--DEEPARG ENTRY-->
-      <div *ngIf="randomARG" class="col-md-12">
-        <h2>Knowledge Base</h2>
-        <hr>
-        
-        <div class="col-md-3">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <i class="fa fa-gears"></i>
 
-              <h3 class="box-title"><strong>{{ randomARG.entry.gene_id }}</strong></h3>
+      <md-input-container class='col-sm-12 col-sm-offset-0'>
+          <input #keyword (keyup.enter)="getARG(keyword.value)" mdInput placeholder="Insert gene identifier " value="">
+      </md-input-container>
+
+      <h2>Knowledge ARG Database 
+        <button (click)="nextGene()" class="btn pull-right btn-default" md-button><strong>Next</strong></button>
+      </h2>
+
+      <div *ngIf="render">
+        <!--DEEPARG ENTRY-->
+        <div *ngIf="randomARG.status==true" class="col-md-12">
+
+          <div class="col-md-4">
+            <div class="box box-solid">
+              <div class="box-header with-border">
+                <i class="fa fa-gears"></i>
+
+                <h3 class="box-title"><strong>{{ randomARG.entry.gene_id }}</strong></h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <dl class="dl-horizontal">
+                  <dt>Antibiotic Class:</dt>
+                  <dd>{{ randomARG.entry.type }}</dd>
+                  <dt>Antibiotic Group:</dt>
+                  <dd>{{ randomARG.entry.subtype }}</dd>
+                  <dt>Database:</dt>
+                  <dd>{{ randomARG.entry.database }}</dd>
+                  <dt>Gene identifier:</dt>
+                  <dd>{{ randomARG.entry.gene_id }}</dd>
+                  <dt>Inspected:</dt>
+                  <dd>{{ randomARG.entry.inspected }} </dd>
+                  <dt>Score:</dt>
+                  <dd>{{ randomARG.entry.score }}</dd>
+                </dl>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <dl class="dl-horizontal">
-                <dt>Antibiotic Class:</dt>
-                <dd>{{ randomARG.entry.type }}</dd>
-                <dt>Antibiotic Group:</dt>
-                <dd>{{ randomARG.entry.subtype }}</dd>
-                <dt>Database:</dt>
-                <dd>{{ randomARG.entry.database }}</dd>
-                <dt>Gene identifier:</dt>
-                <dd>{{ randomARG.entry.gene_id }}</dd>
-                <dt>Inspected:</dt>
-                <dd>{{ randomARG.entry.inspected }} times</dd>
-                <dt>Score:</dt>
-                <dd>{{ randomARG.entry.score }}</dd>
-              </dl>
-            </div>
-            <!-- /.box-body -->
+            <!-- /.box -->
           </div>
-          <!-- /.box -->
+
+          <!--PATHOGEN SECTION-->
+          <div *ngIf="randomARG.pathogen.status==true" class="col-md-3">
+            <div class="box box-solid">
+              <div class="box-header with-border">
+                <i class="fa fa-gears"></i>
+                <h3 class="box-title"><strong>AMR phenotype</strong></h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <dl class="dl-horizontal">
+                  <dt>Genomes:</dt>
+                  <dd>{{ randomARG.pathogen.genomes_num }}</dd>
+                  <dt>Resistant:</dt>
+                  <dd *ngIf="randomARG.pathogen.AMR_phenotype.resistant;else zero_r">{{ randomARG.pathogen.AMR_phenotype.resistant.count}}</dd>
+                  <dt>Susceptible:</dt>
+                  <dd *ngIf="randomARG.pathogen.AMR_phenotype.susceptible; else zero_r">{{ randomARG.pathogen.AMR_phenotype.susceptible.count}}</dd>
+                  <dt>Undefined:</dt>
+                  <dd *ngIf="randomARG.pathogen.AMR_phenotype.unknown; else zero_r">{{ randomARG.pathogen.AMR_phenotype.unknown.count}}</dd>
+                </dl>
+                <ng-template #zero_r><dd>0</dd></ng-template>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
         </div>
 
-        <!--PATHOGEN SECTION-->
-        <div *ngIf="randomARG.pathogen.status==true" class="col-md-3">
-          <div class="box box-solid">
-            <div class="box-header with-border">
-              <i class="fa fa-gears"></i>
-              <h3 class="box-title"><strong>AMR phenotype</strong></h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <dl class="dl-horizontal">
-                <dt>Genomes:</dt>
-                <dd>{{ randomARG.pathogen.genomes_num }}</dd>
-                <dt>Resistant:</dt>
-                <dd *ngIf="randomARG.pathogen.AMR_phenotype.resistant;else zero_r">{{ randomARG.pathogen.AMR_phenotype.resistant.count}}</dd>
-                <dt>Susceptible:</dt>
-                <dd *ngIf="randomARG.pathogen.AMR_phenotype.susceptible; else zero_r">{{ randomARG.pathogen.AMR_phenotype.susceptible.count}}</dd>
-                <dt>Undefined:</dt>
-                <dd *ngIf="randomARG.pathogen.AMR_phenotype.unknown; else zero_r">{{ randomARG.pathogen.AMR_phenotype.unknown.count}}</dd>
-              </dl>
-              <ng-template #zero_r><dd>0</dd></ng-template>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+        <div *ngIf="randomARG.status==true" class="col-md-12">
+          <md-tab-group>
+              <md-tab label="METADATA">
+
+                <!--METADATA SECTION-->
+                <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+                <classify-metadata-card *ngIf="randomARG.entry.database=='CARD'"> </classify-metadata-card>
+                <classify-metadata-ardb *ngIf="randomARG.entry.database=='ARDB'"> </classify-metadata-ardb>
+
+              </md-tab>
+
+              <md-tab label="BEST HIT">
+
+              </md-tab>
+
+          </md-tab-group>
         </div>
-
-
-
-        <!--METADATA SECTION-->
-        
-
-
-
-
-
+      
+      
       </div>
-
-
     
     <!--</md-tab>-->
 

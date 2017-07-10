@@ -36,3 +36,8 @@ def pathogen(gene_id):
 def random():
     random = ARG.random()
     return jsonify(random)
+
+@app.route('/getARG/<gene_id>', methods = ['GET','POST'])
+def getarg(gene_id):
+    arg = ARG.getARG(gene_id)
+    return jsonify(arg)

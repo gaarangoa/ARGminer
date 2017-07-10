@@ -22,4 +22,11 @@ export class DataService {
       })
   }
 
+  getKnownARGInfo(gene_id: string){
+    return this.http.get('http://localhost:5000/getARG/'+gene_id)
+      .map(res => {
+        this.ARG = res.json()
+      })
+  }
+
 }
