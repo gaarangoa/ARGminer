@@ -8,40 +8,44 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClassifyComponent } from './classify/classify.component';
 import { HomeComponent } from './home/home.component';
 import { DatabaseComponent } from './database/database.component';
 import { AboutComponent } from './about/about.component';
-import { UniprotComponent } from './classify/metadata/uniprot/uniprot.component';
-import { CardComponent } from './classify/metadata/card/card.component';
-import { ArdbComponent } from './classify/metadata/ardb/ardb.component';
 
+// APP modules
+import { ClassifyModule } from './classify/classify.module'
+
+// Visualization
+import { jqxChartComponent } from 'jqwidgets-framework/jqwidgets-ts/angular_jqxchart';
+
+// Services
 import { DataService } from '../services/data.service';
+import { NcbiService } from '../services/ncbi.service';
+
 
 import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClassifyComponent,
-      UniprotComponent,
-      CardComponent,
-      ArdbComponent,
     HomeComponent,
     DatabaseComponent,
-    AboutComponent
+    AboutComponent,
+    jqxChartComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ClassifyModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MaterialModule
   ],
   providers: [
-    DataService
+    DataService,
+    NcbiService
   ],
   bootstrap: [AppComponent]
 })

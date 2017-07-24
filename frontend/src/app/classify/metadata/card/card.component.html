@@ -1,7 +1,7 @@
 
 <br><br>
 
-<div *ngIf="randomARG" class="col-md-12">
+<div *ngIf="!randomARG.metadata.status==false" class="col-md-12">
   <div class="box box-solid">
     <div class="box-header with-border">
       <i class="fa fa-bug"></i>
@@ -24,7 +24,7 @@
 
 
 
-<div *ngIf="randomARG" class="col-md-3">
+<div *ngIf="!randomARG.metadata.status==false" class="col-md-4">
   <div class="box box-solid">
     <div class="box-header with-border">
       <i class="fa fa-tag"></i>
@@ -40,6 +40,13 @@
         <div *ngIf="item.is_a">
            <span class="badge bg-blue" data-original-title=""> {{ item['is_a'][0].term }} </span>
         </div>
+
+        <div *ngIf="item.relationship">
+          <div *ngFor="let rel of item.relationship">
+           <span class="badge bg-blue" data-original-title=""> {{ rel.accession }} {{ rel.term }} </span>
+          </div>
+        </div>
+
       </div>
     </div>
     <!-- /.box-body -->
@@ -50,16 +57,14 @@
 
 
 
-<div *ngIf="randomARG" class="col-md-6">
-  <div class="box box-solid">
+<div *ngIf="!randomARG.metadata.status==false" class="col-md-8">
+  <div class="box box-solid box-success">
     <div class="box-header with-border">
       <i class="fa fa-object-group"></i>
 
       <h3 class="box-title"><strong>Description</strong></h3>
     </div>
     <!-- /.box-header -->
-    
-    
 
     <div class="box-body">
       
@@ -77,4 +82,18 @@
     <!-- /.box-body -->
   </div>
   <!-- /.box -->
+</div>
+
+
+<div *ngIf="randomARG.metadata.status==false" class="col-md-8 col-md-offset-2">
+  
+  <div class="alert alert-info alert-dismissible">
+    <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+    <strong>This Gene is outdated</strong>
+    <p>
+      The entry {{ randomARG.entry.gene_id }} is no longer active in the {{ randomARG.entry.database }} database.
+    </p>
+    <p>Please take a look at the best hit metadata to verify the authenticity of the gene.</p>
+  </div>
+
 </div>

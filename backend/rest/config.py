@@ -1,8 +1,11 @@
 import sys
 
 MongoHost = {
-    "hostdb":"localhost",
-    "hostdbport":27017
+    "hostdb": "bench.cs.vt.edu",
+    "hostdbport": 11914,
+    "database": "argpedia",
+    "hostuser": "argpedia",
+    "hostpwd": "AdminArgpedia2018.#"
 }
 
 def add_path():

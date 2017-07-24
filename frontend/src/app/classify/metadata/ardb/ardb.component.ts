@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from '../../../../services/data.service';
+
 @Component({
   selector: 'classify-metadata-ardb',
   templateUrl: './ardb.component.html',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArdbComponent implements OnInit {
 
-  constructor() { }
+  public randomARG: Object;
+
+  constructor(
+    private dataService: DataService,
+  ) {
+    
+   }
+
 
   ngOnInit() {
+    this.randomARG = this.dataService.ARG;
   }
 
 }

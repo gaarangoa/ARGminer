@@ -9,12 +9,14 @@ class CARD():
         
     def getById(self, gene_id):
         try:
-            model = self.database.find(self.card_link, {"protein_id":gene_id})
+            model = self.database.find(self.card_link, {"protein_id":gene_id})[0]
+            # print model
             if not model: return {"status":False}
             # print model, gene_id
-            info = self.database.find(self.card,{"model_id":model['model']})
+            info = self.database.find(self.card,{"model_id":model['model_id']})[0]
+            # print info
             aros = info['ARO_category']
-            comments = [ self.database.find( self.aro, { "_id": "ARO:"+aros[i]['category_aro_accession']} ) for i in aros]
+            comments = [ self.database.find( self.aro, { "_id": "ARO:"+aros[i]['category_aro_accession']} )[0] for i in aros]
             try:
                 mdseq = info['model_sequences']['sequence'].keys();
                 taxo = info['model_sequences']['sequence'][mdseq[0]]['NCBI_taxonomy']

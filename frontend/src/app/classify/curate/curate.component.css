@@ -1,0 +1,36 @@
+.ui-steps .ui-steps-item {
+    width: 25%;
+}
+        
+.ui-steps.steps-custom {
+    margin-bottom: 20px;
+}
+    
+.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+     height: 15px; 
+    /* padding: 0 1em; */
+}
+    
+.ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+     background-color: #0081c2; 
+     color: #FFFFFF; 
+     /* display: inline-block;  */
+     width: 36px; 
+    /* border-radius: 5%; */
+      margin-top: -20px;   
+     margin-bottom: 12px;  
+    font-size: 200%;
+}
+
+.ui-steps.steps-custom .ui-steps-item .ui-steps-title {
+    /* color: #555555;  */
+    color: #FFFFFF;
+    margin-top: -43px; 
+    font-weight: bold;
+}
+
+.box, .panel, .badge, .box-header, .ui-steps-item, .ui-steps-number{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-color: rgba(255,255,255,0) !IMPORTANT;
+}
+

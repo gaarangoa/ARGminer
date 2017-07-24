@@ -1,0 +1,118 @@
+
+<br><br>
+
+<div *ngIf="randomARG.pathogen.status==true"  class="col-md-8 col-md-offset-2">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="col-md-10 col-md-offset-1">
+                
+                    <div class="box-header with-border text-center">
+                        
+                        <!-- <div class="col-md-10 col-md-offset-1">
+                            <svg  width="50px" height="50px"  class="resistant" />  
+                        </div> -->
+
+                        <strong>Pathogen Genomes</strong>
+                        
+                    </div>
+                
+            </div>
+
+            <div class="col-md-12">
+                <div class="box-body">
+                    The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) is found in <strong> {{ randomARG.pathogen.genomes_count }}</strong> genome(s). 
+                    For the gene {{randomARG.entry.gene_id}} to be considered as part of a genome, the gene alignment has to cover at least 90% of the ARG entirle length and a minimum of 90% of identity.            
+                </div>
+
+                <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+                <div *ngIf="disease.ready" class="col-md-12">
+                    <div class="box box-solid box-primary">
+                        <div class="box-body">
+                            <p>This figure shows the distribution of the bacterial that are reported to cause or infer in diseases.</p>
+                            <ngx-charts-pie-grid
+                                [scheme]="disease.colorScheme"
+                                [results]="disease.data"
+                                (select)="onSelect($event)">
+                            </ngx-charts-pie-grid>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+                <div *ngIf="AMR_phenotype.ready" class="col-md-12">
+                    <div class="box box-solid box-primary">
+                        <div class="box-body">
+                            <p>This figure shows the distribution of the antimicrobial phenotype of the genomes.</p>
+                            <ngx-charts-pie-grid
+                                [scheme]="AMR_phenotype.colorScheme"
+                                [results]="AMR_phenotype.data"
+                                (select)="onSelect($event)">
+                            </ngx-charts-pie-grid>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+                <div *ngIf="host.ready" class="col-md-12">
+                    <div class="box box-solid box-primary">
+                        <div class="box-body">
+                            <p>This figure reports the distribution of the host organism.</p>
+                            <ngx-charts-pie-grid
+                                [scheme]="host.colorScheme"
+                                [results]="host.data"
+                                (select)="onSelect($event)">
+                            </ngx-charts-pie-grid>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div  *ngFor="let item of randomARG.mobile" class="col-md-4">
+    <div *ngIf="item.status==true" class="col-md-12">
+        <div class="box box-solid box-default">
+            <!-- <div class="col-md-10 col-md-offset-1"> -->
+                
+                    <div class="box-header with-border text-center">
+
+                        <strong *ngIf="item.type=='proph'" >Prophages</strong>
+                        <strong *ngIf="item.type=='plasmid'" >Plasmids</strong>
+                        <strong *ngIf="item.type=='vir'" >Viruses</strong>
+                        
+                    </div>
+                
+            <!-- </div> -->
+
+            <!-- <div class="col-md-12"> -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Count:</dt>
+                        <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
+                        <dt>BitScore:</dt>
+                        <dd> <span class="badge bg-{{ item.bitscore.color }}"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>
+                        <dt>Evalue (log):</dt>
+                        <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean }} {{ '&plusmn;' }} {{item.evalue.std}} </span></dd>
+                        <dt>Coverage:</dt>
+                        <dd> <span class="badge bg-{{ item.coverage.color }}"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>
+                        <dt>Identity:</dt>
+                        <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
+                        <dt>Description:</dt>
+                        <dd>{{ item.mge_description }}</dd>
+                        <dt>Gene Aclame ID:</dt>
+                        <dd>{{ item.mge_id }}</dd>
+                    </dl>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+

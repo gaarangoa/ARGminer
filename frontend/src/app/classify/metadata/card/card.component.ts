@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ClassifyComponent } from '../../classify.component';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'classify-metadata-card',
@@ -12,15 +12,14 @@ export class CardComponent implements OnInit {
   public randomARG: Object;
 
   constructor(
-    private classifyComponent: ClassifyComponent
+    private dataService: DataService,
   ) {
     
    }
 
 
   ngOnInit() {
-    this.randomARG = this.classifyComponent.randomARG;
-    
+    this.randomARG = this.dataService.ARG;
   }
 
 }

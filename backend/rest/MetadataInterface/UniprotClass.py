@@ -10,4 +10,5 @@ class UNIPROT():
         r = requests.get('https://www.ebi.ac.uk/proteins/api/proteins/'+gene_id, headers=headers)
         response = json.loads(r.text)
         response['status'] = True
+        if "errorMessage" in response.keys(): response['status'] = False
         return response

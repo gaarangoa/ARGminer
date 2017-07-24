@@ -1,0 +1,119 @@
+
+<div class="col-md-8">
+    <div class="box box-solid box-primary">
+        <div class="box-body">
+            <p-steps styleClass="steps-custom" [(activeIndex)]="activeIndex" [readonly]="true" [model]="items"></p-steps>
+
+            <div *ngIf="step1" class="col-md-12">
+                <h4><strong> Identify if the Gene is an ARG </strong> </h4>
+
+                <p>Please select the option that better describes the information given under <span class="badge bg-red">METADATA</span> and <span class="badge bg-red">BEST HIT</span></p>
+
+                <md-radio-group>
+                    <md-radio-button value="1">It is <strong>definitely</strong> an ARG</md-radio-button> <br>
+                    <md-radio-button value="2">It is a <strong>potential</strong> ARG</md-radio-button><br>
+                    <md-radio-button value="3">It is <strong>NOT</strong> an ARG</md-radio-button>
+                </md-radio-group>
+                
+                <div class="col-md-12 text-center">
+                    <button (click)="validate(1)" color="primary"  md-raised-button>Next</button>
+                </div>
+            </div>
+
+
+
+             <div *ngIf="step2" class="col-md-12">
+                <h4><strong>ARG Annotation</strong></h4>
+                <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
+                
+                <md-input-container class="col-md-4">
+                <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="AClass" placeholder="Antibiotic Class" >
+                </md-input-container>
+
+                <md-autocomplete #AClass="mdAutocomplete">
+                <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{ option }}
+                </md-option>
+                </md-autocomplete> 
+
+                <md-input-container class="col-md-4">
+                <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput placeholder="Antibiotic Group" >
+                </md-input-container>
+
+                <md-autocomplete #AGroup="mdAutocomplete">
+                <md-option *ngFor="let option of groupFilteredOptions | async" [value]="option">
+                    {{ option }}
+                </md-option>
+                </md-autocomplete>
+
+                <md-input-container class="col-md-4">
+                <input type="text" mdInput   placeholder="Antibiotic Mechanism (if any)" >
+                </md-input-container>
+
+                <br><br>
+                <div class="col-md-12 text-center">
+                    <button (click)="validate(2)" color="primary"  md-raised-button>Next</button>
+                </div>
+
+             </div>
+
+
+
+             <div *ngIf="step3" class="col-md-12">
+                <h4><strong>Horizontal Gene Transfer</strong></h4>
+                <div class="col-md-12">
+                    <p>Is there any evidence that suggests the to be horizontally transfered? </p>
+                    
+
+                    <md-input-container class="col-md-4">
+                    <input type="text" mdInput [formControl]="mgeControl" [mdAutocomplete]="AMGE"  placeholder="Select the Horizontal Transfer Mechanism" >
+                    </md-input-container>
+
+                    <md-autocomplete #AMGE="mdAutocomplete">
+                    <md-option *ngFor="let option of mgeFilteredOptions | async" [value]="option">
+                        {{ option }}
+                    </md-option>
+                    </md-autocomplete>
+
+                    <md-input-container class="col-md-4">
+                    <input type="text" mdInput mdInput [formControl]="eviControl" [mdAutocomplete]="AEvi"  placeholder="How Strong is the Evidence?" >
+                    </md-input-container>
+
+                    <md-autocomplete #AEvi="mdAutocomplete">
+                    <md-option *ngFor="let option of eviFilteredOptions | async" [value]="option">
+                        {{ option }}
+                    </md-option>
+                    </md-autocomplete>
+                </div>
+                <br><br>
+                <div class="col-md-12">
+                    <p>Is there evidence that suggests the gene present in pathogenic genomes? </p>
+                    
+                    <md-radio-group>
+                        <md-radio-button value="1">Yes</md-radio-button> <br>
+                        <md-radio-button value="2">Not</md-radio-button><br>
+                    </md-radio-group>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button (click)="validate(3)" color="primary"  md-raised-button>Next</button>
+                </div>
+
+
+
+             </div>
+
+        </div>
+
+
+
+        <div *ngIf="step4" class="col-md-12 text-center">
+            
+                <button (click)="validate(4)" class="" color="red"  md-raised-button>Next</button>
+                <button (click)="nextGene()" class="" color="green"  md-raised-button>Update ARG</button>
+                <button (click)="nextGene()" class="" color="red"  md-raised-button>Report ARG</button>
+
+        </div>
+
+
+    </div>
+</div>

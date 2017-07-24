@@ -19,13 +19,19 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap-main.css",
-        "../node_modules/bootstrap/dist/css/adminLTE.css"
+        "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/primeng/resources/themes/omega/theme.css",
+        "../node_modules/bootstrap/dist/css/adminLTE.css",
+        "styles.css",
+        "../node_modules/jqwidgets-framework/jqwidgets/styles/jqx.base.css"
       ],
       "scripts": [
-
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxcore.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdata.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxdraw.js",
+        "../node_modules/jqwidgets-framework/jqwidgets/jqxchart.core.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

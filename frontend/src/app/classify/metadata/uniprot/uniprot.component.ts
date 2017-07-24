@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ClassifyComponent } from '../../classify.component';
 import { DataService } from '../../../../services/data.service';
+import { NcbiService } from '../../../../services/ncbi.service';
 
 
 @Component({
@@ -12,17 +12,53 @@ import { DataService } from '../../../../services/data.service';
 export class UniprotComponent implements OnInit {
 
   public randomARG: Object;
+  public pubmed = [];
 
   constructor(
-    private classifyComponent: ClassifyComponent
+    private dataService: DataService,
+    private ncbiService: NcbiService,
   ) {
     
    }
 
 
   ngOnInit() {
-    this.randomARG = this.classifyComponent.randomARG;
+    this.randomARG = this.dataService.ARG;
     
+    // GET all reference ids from pubmed:
+    if(this.randomARG['metadata'].status==true){ 
+      this.randomARG['metadata'].references.forEach(element => {
+        if(element.citation.dbReferences){
+          element.citation.dbReferences.forEach(citation => {
+            if(citation.type == "PubMed"){
+              this.ncbiService.getPubMed(citation.id)
+                .subscribe( response=>{
+                  
+                  let str = response.text;
+                  let lstr = [];
+                  let inpos = 0;
+                  let denotations = response.denotations.sort((a, b) => b.span.begin - a.span.begin).reverse();
+                  // let denotations = response.denotations
+
+                  for(let pos of denotations){
+                    lstr.push({"text":str.substring(inpos, pos.span.begin), "type":"paragraph" })
+                    lstr.push({"text":str.substring(pos.span.begin, pos.span.end), "type":"keyword"})
+                    inpos = pos.span.end
+                  }
+                  lstr.push( str.substring( inpos, str.length ) )
+                  // console.log(denotations)
+                  citation['abstract'] = lstr
+                    
+                  }
+                )
+            }
+          });
+        }
+
+      });
+    }
+    console.log(this.randomARG)
+
   }
   
 
