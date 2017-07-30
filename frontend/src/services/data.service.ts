@@ -17,7 +17,7 @@ export class DataService {
   }
 
   getRandomKnownARG() {
-    return this.http.get('http://localhost:5000/get/arg/random/')
+    return this.http.get('http://localhost:5001/get/arg/random/')
       .map(res => {
         try {
           this.ARG = res.json()
@@ -29,7 +29,7 @@ export class DataService {
   }
 
   getKnownARGInfo(gene_id: string){
-    return this.http.get('http://localhost:5000/get/arg/'+gene_id)
+    return this.http.get('http://localhost:5001/get/arg/'+gene_id)
       .map(res => {
         this.ARG = res.json()
       })
@@ -37,14 +37,14 @@ export class DataService {
 
 
   getListAntibioticClass(){
-    return this.http.get('http://localhost:5000/get/antibiotic/class')
+    return this.http.get('http://localhost:5001/get/antibiotic/class')
       .map(res => {
         this.ATYPE = res.json()
       })
   }
 
   insertCuration(curation: Object){
-    return this.http.post('http://localhost:5000/post/curation', curation)
+    return this.http.post('http://localhost:5001/post/curation', curation)
       .map(res => {
         return res.json()
       })
