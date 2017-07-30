@@ -66,7 +66,7 @@ class GENE():
             bhit = self.bestHit(entry['gene_id'])
             for bh in bhit['alignments']:
                 bh['metadata'] = self.metadata(bh['best_hit'])
-                bh['pathogen'] = self.pathogen(bh['best_hit'])
+                # bh['pathogen'] = self.pathogen(bh['best_hit'])
         except:
             bhit = {"status":False}
             false_count+=1

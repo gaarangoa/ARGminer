@@ -19,7 +19,12 @@ export class DataService {
   getRandomKnownARG() {
     return this.http.get('http://localhost:5000/get/arg/random/')
       .map(res => {
-        this.ARG = res.json()
+        try {
+          this.ARG = res.json()
+        } catch (error) {
+          this.ARG = {"status":false}
+        }
+        
       })
   }
 
@@ -35,6 +40,13 @@ export class DataService {
     return this.http.get('http://localhost:5000/get/antibiotic/class')
       .map(res => {
         this.ATYPE = res.json()
+      })
+  }
+
+  insertCuration(curation: Object){
+    return this.http.post('http://localhost:5000/post/curation', curation)
+      .map(res => {
+        return res.json()
       })
   }
 

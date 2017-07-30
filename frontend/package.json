@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@swimlane/ngx-charts": "^6.0.0",
+    "angular-star-rating": "^3.0.3",
     "angular2-highcharts": "^0.5.5",
     "clarity-angular": "^0.10.0-alpha.4",
     "clarity-icons": "^0.10.0-alpha.4",

@@ -9,7 +9,7 @@ from rest.AntibioticClass import Antibiotic
 
 # Antibiotic resistance init
 ARG = GENE()
-ANTIBIOTIC_LABELS = Antibiotic()
+ANTIBIOTIC = Antibiotic()
 
 app = Flask(__name__)
 CORS(app)
@@ -45,6 +45,14 @@ def getarg(gene_id):
 
 @app.route('/get/antibiotic/class', methods = ['GET','POST'])
 def GetAntibioticClass():
-    arg = ANTIBIOTIC_LABELS.ListARGType()
+    arg = ANTIBIOTIC.ListARGType()
+    return jsonify(arg)
+
+@app.route('/post/curation', methods = ['POST'])
+def PostCuration():
+    data = request.get_json()
+    # data = {"info":1000}
+    # print data
+    arg = ANTIBIOTIC.insertCuration(data)
     return jsonify(arg)
 

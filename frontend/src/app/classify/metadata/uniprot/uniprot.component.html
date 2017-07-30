@@ -1,7 +1,5 @@
-
-<br><br>
-<div *ngIf="randomARG.metadata.status==true" class="col-md-12">
-  <div class="panel panel-success">
+<div *ngIf="randomARG.metadata.status==true" class="">
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title"> <i class="fa fa-bug"></i> <strong> Lineage (<a class="panel-title" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">NCBI Taxonomy </a>) </strong></h3>
     </div>
@@ -21,7 +19,7 @@
 
 
 
-<div *ngIf="randomARG.metadata.status==true" class="col-md-4">
+<div *ngIf="randomARG.metadata.status==true" class="">
   <div class="box box-solid box-primary">
     <div class="box-header with-border">
       <i class="fa fa-tag"></i>
@@ -35,9 +33,7 @@
       <div *ngIf="randomARG.metadata.proteinExistence"  data-original-title=""> <strong>Protein Existence: </strong> <span class="badge bg-orange">  {{ randomARG.metadata.proteinExistence }} </span> </div>
       <hr>
 
-      <div class="dl-vertical" *ngFor="let item of randomARG.metadata.keywords">
-        <span class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
-      </div>
+      <span *ngFor="let item of randomARG.metadata.keywords" class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
     
     </div>
     <!-- /.box-body -->
@@ -46,7 +42,7 @@
 </div>
 
 
-<div *ngIf="randomARG.metadata.comments" class="col-md-4">
+<div *ngIf="randomARG.metadata.comments" class="">
   <div class="box box-solid box-success">
     <div class="box-header with-border">
       <i class="fa fa-object-group"></i>
@@ -70,7 +66,7 @@
 </div>
 
 
-<div *ngIf="randomARG.metadata.dbReferences" class="col-md-4">
+<div *ngIf="randomARG.metadata.dbReferences" class="">
   <div class="box box-solid box-primary">
     <div class="box-header with-border">
       <i class="fa fa-object-group"></i>
@@ -94,7 +90,7 @@
 </div>
 
 
-<div *ngIf="randomARG.metadata.references" class="col-md-12">
+<div *ngIf="randomARG.metadata.references" class="">
   <div class="box box-solid box-primary">
     <div class="box-header with-border">
       <i class="fa fa-object-group"></i>
@@ -130,18 +126,14 @@
 </div>
 
 
-<div *ngIf="randomARG.metadata.errorMessage" class="col-md-8 col-md-offset-2">
+<div *ngIf="randomARG.metadata.errorMessage" class="">
 
   <div class="alert alert-danger alert-dismissible">
     <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
-    <strong>This Gene is outdated</strong>
+    <strong>There is a problem with this request!</strong>
     <p>
       {{ randomARG.metadata.errorMessage[0] }}
     </p>
-  </div>
-
-  <div class='col-md-offset-5'>
-    <button (click)="reportARG()" color="warm" md-raised-button><strong>Report ARG</strong></button>
   </div>
 </div>
 

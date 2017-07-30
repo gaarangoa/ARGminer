@@ -1,6 +1,3 @@
-
-<br><br>
-
  <!-- <div *ngIf="!randomARG.metadata.taxonomy_id==false" class="col-md-12">
   <div class="box box-solid">
     <div class="box-header with-border">
@@ -21,7 +18,7 @@
 
 
 
-<div *ngIf="randomARG.metadata.status==true" class="col-md-4">
+<div *ngIf="randomARG.metadata.status==true" class="">
   <div class="box box-solid box-primary">
     <div class="box-header with-border">
       <i class="fa fa-tag"></i>
@@ -53,7 +50,7 @@
 
 
 
-<div *ngIf="randomARG.metadata.status==true" class="col-md-8">
+<div *ngIf="randomARG.metadata.status==true" class="">
   <div class="box box-solid">
     <div class="box-header with-border">
       <i class="fa fa-object-group"></i>
@@ -79,7 +76,7 @@
   <!-- /.box -->
 </div>
 
-<div *ngIf="randomARG.metadata.status==false" class="col-md-8 col-md-offset-2">
+<div *ngIf="randomARG.metadata.status==false" class="">
   
   <div class="alert alert-danger alert-dismissible">
     <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
@@ -89,7 +86,4 @@
     </p>
   </div>
 
-  <div class='col-md-offset-5'>
-    <button (click)="reportARG()" class="btn btn-default" md-button><strong>Report ARG</strong></button>
-  </div>
 </div>

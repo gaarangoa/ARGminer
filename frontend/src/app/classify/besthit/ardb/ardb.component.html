@@ -1,5 +1,5 @@
 <div *ngFor="let bh of randomARG.besthit.alignments">
-        <div *ngIf="bh.best_hit_database=='ARDB'" class="col-md-6">
+        <div *ngIf="bh.best_hit_database=='ARDB'" class="">
             <div class="box box-solid box-info">
               <div class="box-header with-border">
                 <i class="fa fa-gears"></i>
@@ -56,7 +56,7 @@
                   <dd>
                     <p> {{bh.metadata.description}} </p>
                     <div *ngFor="let type of bh.metadata.resistance_profile" >
-                      <strong> {{ type.type }} </strong>
+                      <strong> <span class="badge bg-green">{{ type.type }} </span> </strong>
                       <p *ngIf="type.description"> {{ type.description }} </p>
                     </div>
                   <dd>

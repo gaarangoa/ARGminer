@@ -9,6 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 // Visualization
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { StarRatingModule } from 'angular-star-rating';
 
 // primeng
 import { PanelModule } from 'primeng/primeng';
@@ -34,6 +35,10 @@ import { GenomeComponent } from './genomes/genome.component';
 // Curate
 import { CurateComponent } from './curate/curate.component';
 
+import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
+import {DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +54,12 @@ import { CurateComponent } from './curate/curate.component';
     NgxChartsModule,
     PanelModule,
     AutoCompleteModule,
-    StepsModule
+    StepsModule,
+    StarRatingModule.forRoot(),
+    ConfirmDialogModule,
+    DialogModule,
+    ButtonModule,
+    TabViewModule,CodeHighlighterModule
     // GenomeModule
   ],
   schemas: [
@@ -69,6 +79,7 @@ import { CurateComponent } from './curate/curate.component';
       CurateComponent
   ],
   providers: [
+    ConfirmationService
   ],
   bootstrap: [
     ClassifyComponent

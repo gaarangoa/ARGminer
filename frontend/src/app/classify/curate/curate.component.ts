@@ -9,6 +9,11 @@ import { DataService } from '../../../services/data.service';
 
 import {MenuItem} from 'primeng/primeng';
 
+import {IStarRatingOnClickEvent, IStarRatingOnRatingChangeEven, IStarRatingIOnHoverRatingChangeEvent} from "angular-star-rating";
+
+import { ClassifyComponent } from '../classify.component'
+
+import {ConfirmationService} from 'primeng/primeng';
 
 @Component({
   selector: 'app-curate',
@@ -23,49 +28,64 @@ export class CurateComponent implements OnInit {
   private step2: boolean;
   private step3: boolean;
   private step4: boolean;
+  display: boolean = false;
+  overlay: Object;
 
   private activeIndex: number = 0;
 
+  onRatingChangeResult:IStarRatingOnRatingChangeEven;
+
   options_type = [];
-  group_options = [];
-  mge_options = ["Plasmid","Virus","Prophage", "No data"];
-  evi_options = ["No evidence","Weak","Strong","Very Strong"];
-  isarg_options = ["is an ARG", "it is a potential ARG", "it is NOT an ARG"]
+  group_options = ["Bla1", "MacB", "BacA"];
+  mge_options = ["Plasmid","Virus","Prophage", "None"];
 
   items: MenuItem[];
 
   private randomARG: Object;
+  private antibiotic: Object;
 
   myControl = new FormControl();
   groupControl = new FormControl();
   mgeControl = new FormControl();
-  eviControl = new FormControl();
-  isargControl = new FormControl();
 
   filteredOptions: Observable<string[]>;
   groupFilteredOptions: Observable<string[]>;
   mgeFilteredOptions: Observable<string[]>;
-  eviFilteredOptions: Observable<string[]>;
-  isargFilteredOptions: Observable<string[]>;
   
   constructor(
     private dataService: DataService,
-  ) { }
+    private classifyComponent: ClassifyComponent,
+    private confirmationService: ConfirmationService
+  ) {
+    
+  }
 
   ngOnInit() {
 
+    this.overlay = {
+      title:"none",
+      content:"none"
+    }
     this.step1 = true;
 
     // menu
     this.items = [
-            {label: 'Identify'},
-            {label: 'Validate'},
-            {label: 'Inspect MGEs'},
-            {label: 'Submit'}
+            {label: ''},
+            {label: ''},
+            {label: ''}
         ];
 
     // Get ARG data
     this.randomARG = this.dataService.ARG;
+    this.antibiotic = {
+      class:"",
+      group:"",
+      mechanism:"",
+      MGE:{},
+      comments:"",
+      rating:{},
+
+    }
 
     // Get the list of antibiotic types in the database
     this.dataService.getListAntibioticClass()
@@ -88,58 +108,141 @@ export class CurateComponent implements OnInit {
       .subscribe( 
         response =>{
           for (let type of this.dataService.ATYPE){
-            this.group_options.push(type['type'])
+            // this.group_options.push(type['type'])
           }
 
           // console.log(this.options)
           this.groupFilteredOptions = this.groupControl.valueChanges
             .startWith(null)
-            .map(val => val ? this.filter(val, this.mge_options) : this.mge_options.slice());
+            .map(val => val ? this.filter(val, this.group_options) : this.group_options.slice());
 
         }
       )
 
-    // Here is the code for the MGE
-    this.mgeFilteredOptions = this.mgeControl.valueChanges
-      .startWith(null)
-      .map(val => val ? this.filter(val, this.mge_options) : this.mge_options.slice());
-    
-      // Here is the code for the evidence
-    this.eviFilteredOptions = this.eviControl.valueChanges
-      .startWith(null)
-      .map(val => val ? this.filter(val, this.evi_options) : this.evi_options.slice());
-
-    // Here is the code for the evidence
-    this.isargFilteredOptions = this.isargControl.valueChanges
-      .startWith(null)
-      .map(val => val ? this.filter(val, this.isarg_options) : this.isarg_options.slice());
-
     }
 
+  // Filter once typing the type of antibiotic
   filter(val: string, Marray: any): string[] {
     return Marray.filter(option => new RegExp(`${val}`, 'gi').test(option)); 
   }
 
+  // setup the options under mobile genetic elements
+  mgeOptions(label: any, event: any){
+      this.antibiotic['MGE'][label] = 
+        {
+          name:label,
+          value:event.checked
+        }   
+  };
+
+  // keep track of the ratings bars
+  onRatingChange = (label:any, $event:IStarRatingOnRatingChangeEven) => {
+        // console.log(label, $event);
+        this.antibiotic['rating'][label] =
+          {
+            name:label,
+            value:$event['rating']
+          };
+  };
+
+  
+
+  showDialog() {
+      this.display = true;
+  }
+
+
+  // to keep track of the changes between the steps
   validate(value: any){
 
     if(value == 1){
-      this.step1=false;
-      this.step2=true;
-      this.activeIndex = 1;
+      
+      if(this.antibiotic['class']=="" || this.antibiotic['group']=="" ){
+        
+        this.overlay['title']="Emtpy group and/or class not allowed"
+        this.overlay['content']="Please make sure to insert the antibiotic class and group in the form (mechanism is optional)"
+        this.showDialog()
+
+      }else{
+        this.activeIndex = 1;
+        this.step1=false;
+        this.step2=true;
+      }
+
+
     }else if(value ==2){
+
       this.step2 = false;
       this.step3 = true;
       this.activeIndex = 2;
+      
     }else if(value == 3){
       this.step3 = false;
-      this.step4 = true;
-      this.activeIndex = 3;
-    }else if(value == 4){
-      this.step4=false;
       this.step1 = true;
       this.activeIndex = 0;
+
     }
 
   }
+
+  submitReview(){
+    console.log(this.antibiotic)
+
+    this.overlay['title']="Your results"
+    this.overlay['content']="Your manual inspection has been registered in the system and its ready for validation."
+    this.overlay['score'] = 10;
+    this.overlay['average_score'] = 15;
+
+    // show the overlay with the score
+    this.showDialog()
+
+    this.dataService.insertCuration(this.antibiotic)
+      .subscribe(
+        response =>{
+          console.log(response)
+        }
+      )
+
+    // restart the form values to empty
+    this.antibiotic = {
+      class:"",
+      group:"",
+      mechanism:"",
+      MGE:[],
+      comments:"",
+      rating:[],
+    }
+
+  }
+
+continueReview(){
+  // Restart and get a new gene
+  this.activeIndex = 0;
+  this.step1 = true;
+  this.step3 = false;
+
+  this.classifyComponent.randomARG['entry']['database'] = '-------------';
+  this.classifyComponent.randomARG['entry']['gene_id'] = '-----------';
+  this.classifyComponent.randomARG['entry']['subtype'] = '-----------';
+  this.classifyComponent.randomARG['entry']['type'] = '--------------';
+  this.classifyComponent.randomARG['entry']['inspected'] = '-----';
+  this.classifyComponent.randomARG['entry']['score'] = '----';
+
+  this.classifyComponent.loading = true;
+  // this.classifyComponent.render=false;
+  this.dataService.getRandomKnownARG()
+    .subscribe(response =>{
+      this.classifyComponent.randomARG = this.dataService.ARG
+      console.log(this.randomARG)
+      this.classifyComponent.loading = false;
+      // this.classifyComponent.render=true;
+  });
+  
+  this.display = false;
+
+}
+
+
+
 
 }

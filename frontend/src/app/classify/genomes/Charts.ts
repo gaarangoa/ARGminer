@@ -26,7 +26,7 @@ export class PieChart {
 
         try{
             if (edata.length>=1){
-                this.data = edata.sort((a, b) => b.value - a.value).slice(0, 5);
+                this.data = edata.sort((a, b) => b.value - a.value).slice(0, 3);
                 this.ready = true;
             }else{
                 this.ready = false;

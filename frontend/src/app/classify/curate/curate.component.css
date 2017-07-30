@@ -1,5 +1,5 @@
 .ui-steps .ui-steps-item {
-    width: 25%;
+    width: 33%;
 }
         
 .ui-steps.steps-custom {
@@ -29,8 +29,16 @@
     font-weight: bold;
 }
 
-.box, .panel, .badge, .box-header, .ui-steps-item, .ui-steps-number{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.badge, .ui-steps-item, .ui-steps-number, p-dialog{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !IMPORTANT;
     border-color: rgba(255,255,255,0) !IMPORTANT;
 }
 
+.box, .panel  {
+    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19) !IMPORTANT; */
+    border-color: rgba(0,0,0,0.3) !IMPORTANT;
+}
+
+md-input-container textarea {
+    background-color: rgba(0,0,0,0.05) !important;
+}
