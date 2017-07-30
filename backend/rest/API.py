@@ -2,8 +2,11 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
 import base64
-from config import add_path
-add_path
+# from rest.config import add_path
+# add_path
+import sys
+sys.path.insert(0, '')
+
 from rest.ARGsClass import GENE
 from rest.AntibioticClass import Antibiotic
 
@@ -56,3 +59,8 @@ def PostCuration():
     arg = ANTIBIOTIC.insertCuration(data)
     return jsonify(arg)
 
+
+
+
+if __name__ == "__main__":
+    app.run(debug = True, host = '0.0.0.0')

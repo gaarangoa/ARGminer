@@ -9,4 +9,5 @@ MongoHost = {
 }
 
 def add_path():
-    sys.path.insert(0, '/Users/gustavoarango/Dropbox/Data/ARG/BPatterns/external/')
+    # sys.path.insert(0, '/Users/gustavoarango/Dropbox/Data/ARG/BPatterns/external/')
+    sys.path.insert(0, '/src/')

@@ -51,7 +51,7 @@ class GENE():
         except Exception as inst:
             entry = {"status":False}
             false_count+=1
-            print inst
+            # print inst
         try:
             pathg = patric.getById(entry['gene_id'])[0]
         except:

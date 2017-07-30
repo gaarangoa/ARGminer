@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+# The front end is copied to the nginx
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    volumes:
+      - ../frontend/dist/:/usr/share/nginx/html
+    ports:
+      - "5080:80"
+      - "5443:443"
+    networks:
+      - app-network
+
+# python rest API with the analysis algorithms
+  restAPI:
+    container_name: restAPI
+    image: python
+    build:
+      context: .
+      dockerfile: restAPI.dockerfile
+    volumes:
+      - ../backend/rest/:/rest/
+    tty: true
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
