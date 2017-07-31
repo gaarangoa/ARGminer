@@ -11,9 +11,10 @@ services:
       dockerfile: nginx.dockerfile
     volumes:
       - ../frontend/dist/:/usr/share/nginx/html
+    tty: true
     ports:
-      - "5080:80"
-      - "5443:443"
+      - "8080:80"
+      - "443:443"
     # networks:
       # - traefik
       # - app-network
