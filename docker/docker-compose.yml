@@ -14,8 +14,8 @@ services:
     ports:
       - "5080:80"
       - "5443:443"
-    networks:
-      - app-network
+    # networks:
+      # - app-network
 
 # python rest API with the analysis algorithms
   restAPI:
@@ -29,8 +29,8 @@ services:
     tty: true
     ports:
       - "5001:5000"
-    networks:
-      - app-network
+    # networks:
+      # - app-network
 
 networks:
   app-network:
