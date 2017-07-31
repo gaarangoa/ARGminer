@@ -14,7 +14,8 @@ services:
     ports:
       - "5080:80"
       - "5443:443"
-    # networks:
+    networks:
+      - traefik
       # - app-network
 
 # python rest API with the analysis algorithms
@@ -32,6 +33,9 @@ services:
     # networks:
       # - app-network
 
-# networks:
+networks:
+  traefik:
+    external:
+      name: traefik_webgateway
   # app-network:
     # driver: bridge
