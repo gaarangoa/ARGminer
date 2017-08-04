@@ -3,7 +3,7 @@ version: '2'
 services:
 
 # The front end is copied to the nginx
-  nginx:
+  nginx_frontend:
     container_name: frontend
     image: nginx
     build:
@@ -16,26 +16,12 @@ services:
       - "8081:80"
       - "4431:443"
     # networks:
-      # - traefik
-      # - app-network
+    #   - app-network
 
-# python rest API with the analysis algorithms
-  restAPI:
-    container_name: restAPI
-    image: python
-    build:
-      context: ../backend/
-      dockerfile: Dockerfile
-    volumes:
-      - ../backend/rest/:/rest/
-    tty: true
-    ports:
-      - "5001:5000"
-    # networks:
-      # -
-  
-  mongoDB:
-    container_name: mongoDB
+
+# database with everything!
+  mongo-server:
+    container_name: mongo-server
     image: mongo
     environment:
       - MONGO_DATA_DIR=../database/mongo
@@ -45,10 +31,25 @@ services:
     ports:
       - 27897:27017
     tty: true
+    command: mongod --dbpath /data/db --directoryperdb --port 27017 --auth
+    # networks:
+    #   - app-network
+
+# python rest API with the analysis algorithms
+  restAPI:
+    container_name: restAPI
+    image: python
+    environment:
+      - DB_HOST=mongo-server
+    build:
+      context: ../backend/
+      dockerfile: Dockerfile
+    volumes:
+      - ../backend/rest/:/rest/
+    tty: true
+    ports:
+      - "5001:5000"
 
 # networks:
-  # traefik:
-    # external:
-      # name: traefik_webgateway
-  # app-network:
-    # driver: bridge
+#   app-network:
+#     driver: bridge

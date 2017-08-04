@@ -1,8 +1,11 @@
 import sys
+import os
+
+# print(os.environ)
 
 MongoHost = {
-    "hostdb": "bench.cs.vt.edu",
-    "hostdbport": 11914,
+    "hostdb": "mongodb://"+os.environ['DB_HOST'],
+    "hostdbport": 27017,
     "database": "argpedia",
     "hostuser": "argpedia",
     "hostpwd": "AdminArgpedia2018.#"
