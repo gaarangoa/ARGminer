@@ -16,4 +16,6 @@ Then, you will get a copy of the full project in your system. To enable the syst
     ProxyPass /argpedia http://localhost:8081
     ProxyPass /argpedia http://localhost:4431
 
+To compile the angular project just type:
 
+    ng build --base-href /argpedia/
