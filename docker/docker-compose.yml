@@ -15,6 +15,9 @@ services:
     ports:
       - "8081:80"
       - "4431:443"
+    depends_on:
+      - mongo-server
+      - restAPI
     # networks:
     #   - app-network
 
