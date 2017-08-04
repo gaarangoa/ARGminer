@@ -1,89 +1,11 @@
- <!-- <div *ngIf="!randomARG.metadata.taxonomy_id==false" class="col-md-12">
-  <div class="box box-solid">
-    <div class="box-header with-border">
-      <i class="fa fa-bug"></i>
-
-      <h3 class="box-title"><strong> Lineage (<a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.taxonomy_id }}"> {{ randomARG.metadata.taxonomy_id }} </a>) </strong></h3>
-    </div>
-    <div class="box-body">
-      <dl class="dl-vertical">
-        <div class="badge bg-blue" >
-        {{ randomARG.metadata.taxonomy_id }}
-        </div>
-      </dl>
-
-    </div>
-  </div>
-</div>  -->
-
-
-
-<div *ngIf="randomARG.metadata.status==true" class="">
-  <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-      <i class="fa fa-tag"></i>
-
-      <h3 class="box-title"><strong>Keywords</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <p *ngIf="randomARG" > <strong>Gene Name: </strong> 
-        <span class="badge bg-red" *ngIf="randomARG.metadata.subtype" > {{ randomARG.metadata.subtype_class }} </span>
-        <span class="badge bg-yellow" *ngIf="randomARG.metadata.subtype" > {{ randomARG.metadata.subtype }} </span>
-      </p>
-      
-      <hr>
-      
-      <div *ngFor="let item of randomARG.metadata.resistance_profile">
-        <span *ngIf="item.type" class="badge bg-blue" data-original-title=""> {{ item.type }} </span>
-      </div>
-    
-    </div>
-
-
-
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
-</div>
-
-
-
-
-<div *ngIf="randomARG.metadata.status==true" class="">
-  <div class="box box-solid">
-    <div class="box-header with-border">
-      <i class="fa fa-object-group"></i>
-
-      <h3 class="box-title"><strong>Description</strong></h3>
-    </div>
-    <!-- /.box-header -->
-
-    <div class="box-body">
-      
-      <p *ngIf="randomARG.metadata.description" class="" data-original-title=""> {{ randomARG.metadata.description }} </p>
-
-      <div *ngFor="let item of randomARG.metadata.resistance_profile" > 
-        <dl *ngIf="item.description"> 
-          <dt> {{ item.type }} </dt>
-          <dd> {{ item.description }} </dd>
-        </dl>
-      </div>
-
-    </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
-</div>
-
 <div *ngIf="randomARG.metadata.status==false" class="">
-  
-  <div class="alert alert-danger alert-dismissible">
-    <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
-    <strong>This Gene is outdated</strong>
-    <p>
-      The entry {{ randomARG.entry.gene_id }} is no longer active in the {{ randomARG.entry.database }} database.
-    </p>
-  </div>
+
+    <div class="alert alert-danger alert-dismissible">
+        <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+        <strong>This Gene is outdated</strong>
+        <p>
+            The entry {{ randomARG.entry.gene_id }} is no longer active in the {{ randomARG.entry.database }} database.
+        </p>
+    </div>
 
 </div>

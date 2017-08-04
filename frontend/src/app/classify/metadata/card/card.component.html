@@ -1,96 +1,11 @@
-
-<div *ngIf="!randomARG.metadata.status==false" class="">
-  <div class="box box-solid">
-    <div class="box-header with-border">
-      <i class="fa fa-bug"></i>
-
-      <h3 class="box-title"><strong> Lineage (<a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.taxonomy.NCBI_taxonomy_id }}"> {{ randomARG.metadata.taxonomy.NCBI_taxonomy_id }} </a>) </strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <dl class="dl-vertical">
-        <div class="badge bg-blue" >
-        {{ randomARG.metadata.taxonomy.NCBI_taxonomy_name }}
-        </div>
-      </dl>
-
-    </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
-</div>
-
-
-
-<div *ngIf="!randomARG.metadata.status==false" class="">
-  <div class="box box-solid">
-    <div class="box-header with-border">
-      <i class="fa fa-tag"></i>
-
-      <h3 class="box-title"><strong>Keywords</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <p *ngIf="randomARG" > <strong>Gene Name: </strong> <span *ngIf="randomARG.metadata.subtype" > {{ randomARG.metadata.subtype }} </span></p>
-      <hr>
-      <div *ngFor="let item of randomARG.metadata.type">
-        <span class="badge bg-blue" data-original-title=""> {{ item.name }} </span>
-        
-        <div *ngIf="item.is_a">
-           <span class="badge bg-blue" data-original-title=""> {{ item['is_a'][0].term }} </span>
-        </div>
-
-        <div *ngIf="item.relationship">
-           <span *ngFor="let rel of item.relationship" class="badge bg-blue" data-original-title=""> {{ rel.accession }} {{ rel.term }} </span>
-        </div>
-
-      </div>
-    </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
-</div>
-
-
-
-
-<div *ngIf="!randomARG.metadata.status==false" class="">
-  <div class="box box-solid box-success">
-    <div class="box-header with-border">
-      <i class="fa fa-object-group"></i>
-
-      <h3 class="box-title"><strong>Description</strong></h3>
-    </div>
-    <!-- /.box-header -->
-
-    <div class="box-body">
-      
-      <p *ngIf="randomARG.metadata.description" class="" data-original-title=""> {{ randomARG.metadata.description }} </p>
-      <hr>
-      <dl class="dl-horizontal">
-        <div *ngFor="let item of randomARG.metadata.type">
-          <dt *ngIf="item.name" > {{ item._id }}:</dt>
-          <dd *ngIf="item.def" > (<strong> {{ item.name }} </strong>) {{ item.def }} </dd>
-          <br>
-        </div>
-      </dl>
-
-    </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
-</div>
-
-
 <div *ngIf="randomARG.metadata.status==false" class="">
-  
-  <div class="alert alert-info alert-dismissible">
-    <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
-    <strong>This Gene is not in the database</strong>
-    <p>
-      The entry {{ randomARG.entry.gene_id }} is no longer active in the {{ randomARG.entry.database }} database. Please take a look at the other information to curate/reject the gene. 
-    </p>
-    <p>Take a look at the best hit metadata to verify the authenticity of the gene.</p>
-  </div>
+
+    <div class="alert alert-info alert-dismissible">
+        <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+        <strong>This Gene could not be found in the {{ randomARG.entry.database }} database</strong>
+        <p>
+            The entry {{ randomARG.entry.gene_id }} is no longer active in the {{ randomARG.entry.database }} database. Please take a look at the other information to curate/reject the gene.
+        </p>
+    </div>
 
 </div>

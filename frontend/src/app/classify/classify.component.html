@@ -1,183 +1,180 @@
-
 <div class="container-fluid">
 
-      <div *ngIf="!render" class="col-md-4 col-md-offset-4">
+    <div *ngIf="!render" class="col-md-4 col-md-offset-4">
         <div class="col-sm-4 col-sm-offset-4">
-          <object>
+            <object>
             <embed src="/assets/images/loading_1.svg" />
           </object>
         </div>
-      </div>
+    </div>
 
-      <div *ngIf="render">
+    <div *ngIf="render">
         <!--Left panel-->
         <div class="col-md-3">
-          <div *ngIf="randomARG.status==true" class="">
-            <!-- <div class="col-md-12"> -->
-              <div class="box box-solid box-primary">
-                <div class="box-header with-border">
+            <div *ngIf="randomARG.status==true" class="">
+                <!-- <div class="col-md-12"> -->
+                <div class="box box-solid box-primary">
+                    <div class="box-header with-border">
 
-                   <i class="fa fa-gears"></i>
-                  <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
-                  <h3 class="box-title"><strong>Current Annotation {{ randomARG.entry.gene_id }}</strong> </h3>
-                
+                        <i class="fa fa-gears"></i>
+                        <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
+                        <h3 class="box-title"><strong>Current Annotation {{ randomARG.entry.gene_id }}</strong> </h3>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body text-center">
+
+                        <dl class="dl">
+                            <p>
+                                <strong>Query gene id:</strong>
+                                <span class="badge bg-black">{{ randomARG.entry.gene_id }}</span>
+                            </p>
+                            <p>
+                                <strong>ARG Class:</strong>
+                                <span class="badge bg-blue">{{ randomARG.entry.type }}</span>
+                            </p>
+                            <p>
+                                <strong>ARG Group:</strong>
+                                <span class="badge bg-green">{{ randomARG.entry.subtype }}</span>
+                            </p>
+                            <p>
+                                <strong>ARG Database:</strong>
+                                <span class="badge bg-blue">{{ randomARG.entry.database }}</span>
+                            </p>
+                            <p>
+                                <strong>Inspected:</strong>
+                                <span class="badge bg-blue">{{ randomARG.entry.inspected }}</span>
+                            </p>
+                            <!-- <dt>Score:</dt> -->
+                            <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
+                        </dl>
+
+                        <div class="col-md-12 text-center">
+                            <button (click)="nextGene()" class="" color="red" md-raised-button>Skip Gene</button>
+                        </div>
+
+
+                    </div>
+
+                    <!-- /.box-body -->
+                    <!-- </div> -->
+                    <!-- /.box -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body text-center">
-
-                  <dl class="dl">
-                    <p>
-                      <strong>Query gene id:</strong>
-                      <span class="badge bg-black">{{ randomARG.entry.gene_id }}</span>
-                    </p>
-                    <p>
-                      <strong>ARG Class:</strong>
-                      <span class="badge bg-blue">{{ randomARG.entry.type }}</span>
-                    </p>
-                    <p>
-                      <strong>ARG Group:</strong>
-                      <span class="badge bg-green">{{ randomARG.entry.subtype }}</span>
-                    </p>
-                    <p>
-                      <strong>ARG Database:</strong>
-                      <span class="badge bg-blue">{{ randomARG.entry.database }}</span>
-                    </p>
-                    <p>
-                      <strong>Inspected:</strong>
-                      <span class="badge bg-blue">{{ randomARG.entry.inspected }}</span>
-                    </p>
-                      <!-- <dt>Score:</dt> -->
-                    <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
-                  </dl>
-
-                  <div class="col-md-12 text-center">
-                      <button (click)="nextGene()" class="" color="red"  md-raised-button>Skip Gene</button> 
-                  </div>
-
-                  
-                </div>
-                
-                <!-- /.box-body -->
-              <!-- </div> -->
-              <!-- /.box -->
             </div>
-          </div>
-    
-          <div class="col-md-12 box">
-              <h4><strong>Instructions</strong></h4>
-              <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
-              <p><strong>Metadata</strong></p>
-              <p>Check the information under the <strong>metadata</strong> tab. The primary goal of this section is to identify the antibiotic class. if you see keywords such as 
-                  <span class="badge">Beta-lactamase</span> <span class="badge">Aminoglycoside</span> <span class="badge">Macrolide</span> it is likely that those are associated to any antibiotic resistance class.
-                  Descriptions and ontology sections can help to identify antibiotic resistance mechanism of the gene. In some cases, you can also get information about the 
-                  gene group for example gene names such as <span class="badge">BacA</span> <span class="badge">Bla</span> <span class="badge">MacB</span>. 
-              </p>
-              
-              <p><strong>BestHit</strong></p>
-              <p>The BestHit section associates the queried gene to its closest antibiotic resistance genes from curated databases. From this section you 
-                  need to look at the alignment scores (Bitscore, evalue, identity and coverage). High identity and coverage represent close related sequences. However, 
-                  statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than 50 is considered 
-                  significant if it spans at least 90% coverage. 
-              </p>
 
-              <p><strong>BestHit</strong>: The gene under analysis is definitely not an ARG.</p>
+            <div class="col-md-12 box">
+                <h4><strong>Instructions</strong></h4>
+                <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
+                <p><strong>Metadata</strong></p>
+                <p>Check the information under the <strong>metadata</strong> tab. The primary goal of this section is to identify the antibiotic class. if you see keywords such as
+                    <span class="badge">Beta-lactamase</span> <span class="badge">Aminoglycoside</span> <span class="badge">Macrolide</span> it is likely that those are associated to any antibiotic resistance class. Descriptions and ontology sections
+                    can help to identify antibiotic resistance mechanism of the gene. In some cases, you can also get information about the gene group for example gene names such as <span class="badge">BacA</span> <span class="badge">Bla</span>
+                    <span class="badge">MacB</span>.
+                </p>
+
+                <p><strong>BestHit</strong></p>
+                <p>The BestHit section associates the queried gene to its closest antibiotic resistance genes from curated databases. From this section you need to look at the alignment scores (Bitscore, evalue, identity and coverage). High identity and
+                    coverage represent close related sequences. However, statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater
+                    than 50 is considered significant if it spans at least 90% coverage.
+                </p>
+
+                <p><strong>BestHit</strong>: The gene under analysis is definitely not an ARG.</p>
 
 
-          
-              <h4><strong>Instructions</strong></h4>
-              <p>Please provide your observations about the gene transfer mechanism (if any) of the queried gene.</p>
-              <p><strong>Horizontal Gene Transfer</strong></p>
-              <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>
-              <p>To complete this task please check the Horizontal Gene Transfer Tab. If there is not any box with plasmid, prophage or virus tags it means
-                  to date there is not evidence that the gene is transfered by any of those mechanisms. On the other hand, the boxes under plasmid, prophage or virus
-                  will show the number of times the gene was found in plasmids, viruses or prophages. It shows the quality of the hits (bitscore, evalue, identity and coverage). please
-                  pay attention to those metrics to make your judgement. Remember that low identity hits can be statistically significant.
-              </p>
-              <p><strong>Full Genomes</strong></p>
-              <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. This panel will show you the association of the queried gene against 
-                  a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens as well as their antimicrobial phenotype (resistant, susceptible, intermediate)
-                  
-              </p>
-          
-              <h4><strong>Instructions</strong></h4>
-              <p>This panel your observations of the queried gene.</p> 
-              <p><strong>Verify your observations</strong></p>
-              <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p> 
-              <p><strong>Rate your expertise</strong></p>
-              <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1  depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes. <p>
-              <p><strong>Rate your annotation confidence</strong></p>
-              <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence
-                  about the gene and 5 the data correlates with your observations.</p>
-          </div>
+
+                <h4><strong>Instructions</strong></h4>
+                <p>Please provide your observations about the gene transfer mechanism (if any) of the queried gene.</p>
+                <p><strong>Horizontal Gene Transfer</strong></p>
+                <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>
+                <p>To complete this task please check the Horizontal Gene Transfer Tab. If there is not any box with plasmid, prophage or virus tags it means to date there is not evidence that the gene is transfered by any of those mechanisms. On the other
+                    hand, the boxes under plasmid, prophage or virus will show the number of times the gene was found in plasmids, viruses or prophages. It shows the quality of the hits (bitscore, evalue, identity and coverage). please pay attention to
+                    those metrics to make your judgement. Remember that low identity hits can be statistically significant.
+                </p>
+                <p><strong>Full Genomes</strong></p>
+                <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association
+                    of the gene to pathogens as well as their antimicrobial phenotype (resistant, susceptible, intermediate)
+
+                </p>
+
+                <h4><strong>Instructions</strong></h4>
+                <p>This panel your observations of the queried gene.</p>
+                <p><strong>Verify your observations</strong></p>
+                <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>
+                <p><strong>Rate your expertise</strong></p>
+                <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.
+                    <p>
+                        <p><strong>Rate your annotation confidence</strong></p>
+                        <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>
+            </div>
 
         </div>
 
-        
-        <div class="col-md-6">
-          
-          <div class="">
-            <div class="box box-solid box-primary">
-              <div class="box-body">
-                <md-input-container class='col-sm-12 col-sm-offset-0'>
-                  <input #keyword (keyup.enter)="getARG(keyword.value)" mdInput placeholder="Search term " value=""/>
-                </md-input-container>
-              </div>
-            </div>
-          </div>
-          
-          <hr>
 
-          <div *ngIf="loading==true" class="col-md-4 col-md-offset-4">
-            <div class="col-sm-8 col-sm-offset-2">
-              <object>
+        <div class="col-md-6">
+
+            <div class="">
+                <div class="box box-solid box-primary">
+                    <div class="box-body">
+                        <md-input-container class='col-sm-12 col-sm-offset-0'>
+                            <input #keyword (keyup.enter)="getARG(keyword.value)" mdInput placeholder="Search term " value="" />
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div *ngIf="loading==true" class="col-md-4 col-md-offset-4">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <object>
                 <embed src="/assets/images/loading_1.svg" />
               </object>
+                </div>
             </div>
-          </div>
 
-          <div *ngIf="randomARG.status==true && loading==false" >
-            <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
+            <div *ngIf="randomARG.status==true && loading==false">
+                <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
 
-                  <!--METADATA SECTION-->
-                  <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
-                  <classify-metadata-card *ngIf="randomARG.entry.database=='CARD'"> </classify-metadata-card>
-                  <classify-metadata-ardb *ngIf="randomARG.entry.database=='ARDB'"> </classify-metadata-ardb>
+                <!--METADATA SECTION-->
+                <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+                <classify-metadata-card> </classify-metadata-card>
+
 
                 <!-- </md-tab> -->
 
                 <!-- <md-tab  label="BEST HIT"> -->
-                  <hr>
-                  <div *ngFor="let bh of randomARG.besthit.alignments">
+                <hr>
+                <div *ngFor="let bh of randomARG.besthit.alignments">
                     <!-- <p> {{ bh.best_hit_database }} </p>  -->
                     <besthit-metadata-ardb *ngIf="bh.best_hit_database=='ARDB'"> </besthit-metadata-ardb>
-                    <besthit-metadata-card *ngIf="bh.best_hit_database=='CARD'"> </besthit-metadata-card>   
-                  </div>
+                    <besthit-metadata-card *ngIf="bh.best_hit_database=='CARD'"> </besthit-metadata-card>
+                </div>
                 <!-- </md-tab> -->
-                  <hr>
+                <hr>
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
-                  <!-- <div *ngIf="drawGenomes"> -->
-                    <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'" ></genome-metadata>
-                    <genome-metadata *ngIf="randomARG.entry.database=='CARD'" ></genome-metadata>
-                    <genome-metadata *ngIf="randomARG.entry.database=='ARDB'" ></genome-metadata>
-                  <!-- </div> -->
+                <!-- <div *ngIf="drawGenomes"> -->
+                <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
+                <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
+                <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+                <!-- </div> -->
                 <!-- </md-tab> -->
 
-            <!-- </md-tab-group> -->
-          </div>
+                <!-- </md-tab-group> -->
+            </div>
         </div>
-      
-      <div class="col-md-3">
-        <app-curate></app-curate>
-      </div>
-      
-      </div>
-    
+
+        <div class="col-md-3">
+            <app-curate></app-curate>
+        </div>
+
+    </div>
+
     <!--</md-tab>-->
 
     <!--<md-tab label="Novel ARGs">Content 2</md-tab>-->
-    
+
     <!--<md-tab label="Potential ARGs">Content 2</md-tab>-->
 
-  <!--</md-tab-group>-->
+    <!--</md-tab-group>-->
 </div>

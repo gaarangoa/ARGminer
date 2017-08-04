@@ -1,44 +1,48 @@
 .ui-steps .ui-steps-item {
     width: 33%;
 }
-        
+
 .ui-steps.steps-custom {
     margin-bottom: 20px;
 }
-    
+
 .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
-     height: 15px; 
+    height: 15px;
     /* padding: 0 1em; */
 }
-    
+
 .ui-steps.steps-custom .ui-steps-item .ui-steps-number {
-     background-color: #0081c2; 
-     color: #FFFFFF; 
-     /* display: inline-block;  */
-     width: 36px; 
+    background-color: #0081c2;
+    color: #FFFFFF;
+    /* display: inline-block;  */
+    width: 36px;
     /* border-radius: 5%; */
-      margin-top: -20px;   
-     margin-bottom: 12px;  
+    margin-top: -20px;
+    margin-bottom: 12px;
     font-size: 200%;
 }
 
 .ui-steps.steps-custom .ui-steps-item .ui-steps-title {
     /* color: #555555;  */
     color: #FFFFFF;
-    margin-top: -43px; 
+    margin-top: -43px;
     font-weight: bold;
 }
 
-.badge, .ui-steps-item, .ui-steps-number, p-dialog{
+.badge,
+.ui-steps-item,
+.ui-steps-number,
+p-dialog {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !IMPORTANT;
-    border-color: rgba(255,255,255,0) !IMPORTANT;
+    border-color: rgba(255, 255, 255, 0) !IMPORTANT;
 }
 
-.box, .panel  {
-    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19) !IMPORTANT; */
-    border-color: rgba(0,0,0,0.3) !IMPORTANT;
+.box,
+.panel {
+    /* box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.19) !IMPORTANT; */
+    border-color: rgba(0, 0, 0, 0.3) !IMPORTANT
 }
 
 md-input-container textarea {
-    background-color: rgba(0,0,0,0.05) !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
 }

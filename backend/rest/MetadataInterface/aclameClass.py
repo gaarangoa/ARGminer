@@ -75,9 +75,14 @@ class ACLAME():
                 DT = []
                 for genex in data:
                     genex = data[genex]
+                    
+                    # mevalue = np.log10( genex['evalue'])
+                    # if genex['evalue']==0: mevalue = np.log10( genex['evalue']
+                    
+
                     genex['evalue'] = {
-                        "mean": round(np.mean(np.log10( genex['evalue']) ), 2),
-                        "std": round(np.std(np.log10( genex['evalue']) ), 2),
+                        "mean": np.mean( genex['evalue'] ),
+                        "std": np.std( genex['evalue'] ),
                         "color": color_interval( np.mean(genex['evalue']), 'evalue'),
                         # "evalue": np.mean(genex['evalue'])
                         }
