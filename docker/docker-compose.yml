@@ -8,13 +8,13 @@ services:
     image: nginx
     build:
       context: ../frontend/
-      dockerfile: ../frontend/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ../frontend/dist/:/usr/share/nginx/html
     tty: true
     ports:
-      - "8080:80"
-      - "443:443"
+      - "8081:80"
+      - "4431:443"
     # networks:
       # - traefik
       # - app-network
@@ -25,14 +25,26 @@ services:
     image: python
     build:
       context: ../backend/
-      dockerfile: ../backend/Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ../backend/rest/:/rest/
     tty: true
     ports:
       - "5001:5000"
     # networks:
-      # - app-network
+      # -
+  
+  mongoDB:
+    container_name: mongoDB
+    image: mongo
+    environment:
+      - MONGO_DATA_DIR=../database/mongo
+      - MONGO_LOG_DIR=../database/mongo
+    volumes:
+      - ../database/mongo:/data/db
+    ports:
+      - 27897:27017
+    tty: true
 
 # networks:
   # traefik:
