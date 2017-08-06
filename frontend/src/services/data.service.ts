@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Location }   from '@angular/common';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
@@ -11,13 +12,27 @@ export class DataService {
   
   ARG: Object;
   ATYPE: any;
+  host: string; 
+  baseUrl: string;
   
-  constructor (private http:Http){
+  constructor ( private http:Http,
+                private location: Location
+              ){
+    
+    if(location['_platformStrategy']._platformLocation._location.hostname == "localhost"){
+      this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname+":5001"
+    }else{
+      this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname+"/argpedia_api"
+    }
+    
+    
     this.ARG = [];
+    
   }
 
   getRandomKnownARG() {
-    return this.http.get('http://localhost:5001/get/arg/random/')
+    console.log(this.baseUrl)
+    return this.http.get(this.baseUrl+'/get/arg/random/')
       .map(res => {
         try {
           this.ARG = res.json()
@@ -29,7 +44,7 @@ export class DataService {
   }
 
   getKnownARGInfo(gene_id: string){
-    return this.http.get('http://localhost:5001/get/arg/'+gene_id)
+    return this.http.get(this.baseUrl+'/get/arg/'+gene_id)
       .map(res => {
         this.ARG = res.json()
       })
@@ -37,14 +52,14 @@ export class DataService {
 
 
   getListAntibioticClass(){
-    return this.http.get('http://localhost:5001/get/antibiotic/class')
+    return this.http.get(this.baseUrl+'/get/antibiotic/class')
       .map(res => {
         this.ATYPE = res.json()
       })
   }
 
   insertCuration(curation: Object){
-    return this.http.post('http://localhost:5001/post/curation', curation)
+    return this.http.post(this.baseUrl+'/post/curation', curation)
       .map(res => {
         return res.json()
       })
