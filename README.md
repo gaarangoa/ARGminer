@@ -19,3 +19,7 @@ Then, you will get a copy of the full project in your system. To enable the syst
 To compile the angular project just type:
 
     ng build --base-href /argpedia/
+
+To run the docker-compose project just type:
+
+    docker-compose -p ARGpedia up -d 
