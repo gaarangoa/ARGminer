@@ -19,7 +19,6 @@ services:
       - mongo-server
       - restAPI
 
-
 # database with everything!
   mongo-server:
     container_name: mongo-server

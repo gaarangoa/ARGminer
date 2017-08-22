@@ -1,140 +1,137 @@
 <div *ngIf="randomARG.metadata.status==true" class="">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title"> <i class="fa fa-bug"></i> <strong> Lineage (<a class="panel-title" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">NCBI Taxonomy </a>) </strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="panel-body">
-      <div class="dl-vertical">
-        <span *ngFor="let item of randomARG.metadata.organism.lineage" >
+    <div class="box box-solid">
+        <div class="box-header">
+            <h3 class="panel-title"> <i class="fa fa-bug"></i> <strong> Lineage (<a class="panel-title" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">NCBI Taxonomy </a>) </strong></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="dl-vertical">
+                <span *ngFor="let item of randomARG.metadata.organism.lineage">
           {{ item }} <strong>&rsaquo;</strong>	
         </span>
-      </div>
-      <p *ngIf="randomARG.metadata.organism.names"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>
+            </div>
+            <p *ngIf="randomARG.metadata.organism.names"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>
+        </div>
+        <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    <!-- /.box -->
 </div>
 
 
 
 <div *ngIf="randomARG.metadata.status==true" class="">
-  <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-      <i class="fa fa-tag"></i>
+    <div class="box box-solid ">
+        <div class="box-header with-border">
+            <i class="fa fa-tag"></i>
 
-      <h3 class="box-title"><strong>Keywords</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <p *ngIf="randomARG.metadata.gene" > <strong *ngIf="randomARG.metadata.gene[0].name">Gene Name: </strong> <span class="badge bg-red" *ngIf="randomARG.metadata.gene[0].name" > {{ randomARG.metadata.gene[0].name.value }} </span></p>
-      <p *ngIf="randomARG.metadata.protein.recommendedName" class="" data-original-title=""> <strong>Protein: </strong> <span class="badge bg-green"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>
-      <div *ngIf="randomARG.metadata.proteinExistence"  data-original-title=""> <strong>Protein Existence: </strong> <span class="badge bg-orange">  {{ randomARG.metadata.proteinExistence }} </span> </div>
-      <hr>
+            <h3 class="box-title"><strong>Keywords</strong></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <p *ngIf="randomARG.metadata.gene"> <strong *ngIf="randomARG.metadata.gene[0].name">Gene Name: </strong> <span class="badge bg-red" *ngIf="randomARG.metadata.gene[0].name"> {{ randomARG.metadata.gene[0].name.value }} </span></p>
+            <p *ngIf="randomARG.metadata.protein.recommendedName" class="" data-original-title=""> <strong>Protein: </strong> <span class="badge bg-green"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>
+            <div *ngIf="randomARG.metadata.proteinExistence" data-original-title=""> <strong>Protein Existence: </strong> <span class="badge bg-orange">  {{ randomARG.metadata.proteinExistence }} </span> </div>
+            <hr>
 
-      <span *ngFor="let item of randomARG.metadata.keywords" class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
-    
+            <span *ngFor="let item of randomARG.metadata.keywords" class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
+
+        </div>
+        <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    <!-- /.box -->
 </div>
 
 
 <div *ngIf="randomARG.metadata.comments" class="">
-  <div class="box box-solid box-success">
-    <div class="box-header with-border">
-      <i class="fa fa-object-group"></i>
+    <div class="box box-solid ">
+        <div class="box-header with-border">
+            <i class="fa fa-object-group"></i>
 
-      <h3 class="box-title"><strong>Description</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <dl class="dl-horizontal">
-        <div *ngFor="let item of randomARG.metadata.comments">
-          <dt *ngIf="item.text" > {{ item.type }}:</dt>
-          <dd *ngIf="item.text" > {{ item.text[0].value }}</dd>
-          <br>
+            <h3 class="box-title"><strong>Description</strong></h3>
         </div>
-      </dl>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <dl class="dl-horizontal">
+                <div *ngFor="let item of randomARG.metadata.comments">
+                    <dt *ngIf="item.text"> {{ item.type }}:</dt>
+                    <dd *ngIf="item.text"> {{ item.text[0].value }}</dd>
+                    <br>
+                </div>
+            </dl>
 
+        </div>
+        <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    <!-- /.box -->
 </div>
 
 
 <div *ngIf="randomARG.metadata.dbReferences" class="">
-  <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-      <i class="fa fa-object-group"></i>
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <i class="fa fa-object-group"></i>
 
-      <h3 class="box-title"><strong>Gene Ontology</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <dl class="dl-horizontal">
-        <div *ngFor="let item of randomARG.metadata.dbReferences">
-          <dt *ngIf="item.type=='GO'" > {{ item.id }}:</dt>
-          <dd *ngIf="item.type=='GO'" > {{ item.properties.term }} <span class="badge bg-lightblue">{{ item.properties.source }} </span></dd>
-          <br *ngIf="item.type=='GO'">
+            <h3 class="box-title"><strong>Gene Ontology</strong></h3>
         </div>
-      </dl>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <dl class="dl-horizontal">
+                <div *ngFor="let item of randomARG.metadata.dbReferences">
+                    <dt *ngIf="item.type=='GO'"> {{ item.id }}:</dt>
+                    <dd *ngIf="item.type=='GO'"> {{ item.properties.term }} <span class="badge bg-lightblue">{{ item.properties.source }} </span></dd>
+                    <br *ngIf="item.type=='GO'">
+                </div>
+            </dl>
 
+        </div>
+        <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    <!-- /.box -->
 </div>
 
 
 <div *ngIf="randomARG.metadata.references" class="">
-  <div class="box box-solid box-primary">
-    <div class="box-header with-border">
-      <i class="fa fa-object-group"></i>
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <i class="fa fa-object-group"></i>
 
-      <h3 class="box-title"><strong>References</strong></h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <dl class="dl-horizontal">
-        <div *ngFor="let item of randomARG.metadata.references">
-          <strong > {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong>
-           {{ item.citation.title }}  {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})
+            <h3 class="box-title"><strong>References</strong></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <dl class="dl-horizontal">
+                <div *ngFor="let item of randomARG.metadata.references">
+                    <strong> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})
 
-           <div *ngFor="let ref of item.citation.dbReferences">
-           <strong>{{ ref.type }}</strong>: {{ ref.id }}
-            <div *ngIf="ref.abstract" > 
-              
-              <span *ngFor="let kw of ref.abstract">
-                <span *ngIf="kw.type=='paragraph'">{{ kw.text }}</span> <span class="badge bg-blue" *ngIf="kw.type=='keyword'">{{ kw.text }}</span>   
-              </span>
-            
-            </div>
+                    <div *ngFor="let ref of item.citation.dbReferences">
+                        <strong>{{ ref.type }}</strong>: {{ ref.id }}
+                        <div *ngIf="ref.abstract">
 
-           </div>
+                            <span *ngFor="let kw of ref.abstract">
+                <span *ngIf="kw.type=='paragraph'">{{ kw.text }}</span> <strong class="" *ngIf="kw.type=='keyword'">{{ kw.text }}</strong>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </dl>
 
         </div>
-      </dl>
-
+        <!-- /.box-body -->
     </div>
-    <!-- /.box-body -->
-  </div>
-  <!-- /.box -->
+    <!-- /.box -->
 </div>
 
 
 <div *ngIf="randomARG.metadata.errorMessage" class="">
 
-  <div class="alert alert-danger alert-dismissible">
-    <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
-    <strong>There is a problem with this request!</strong>
-    <p>
-      {{ randomARG.metadata.errorMessage[0] }}
-    </p>
-  </div>
+    <div class="alert alert-danger alert-dismissible">
+        <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+        <strong>There is a problem with this request!</strong>
+        <p>
+            {{ randomARG.metadata.errorMessage[0] }}
+        </p>
+    </div>
 </div>
-
-

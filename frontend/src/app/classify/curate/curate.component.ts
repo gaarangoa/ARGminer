@@ -194,7 +194,9 @@ export class CurateComponent implements OnInit {
     this.overlay['average_score'] = 15;
 
     // show the overlay with the score
-    this.showDialog()
+    // this.showDialog()
+
+    this.continueReview();
 
     this.dataService.insertCuration(this.antibiotic)
       .subscribe(

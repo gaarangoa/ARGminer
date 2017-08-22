@@ -1,164 +1,159 @@
-
 <div class="">
     <div class="box box-solid box-primary">
         <div class="box-body">
             <p-steps styleClass="steps-custom" [(activeIndex)]="activeIndex" [readonly]="true" [model]="items"></p-steps>
-            
+
             <p-dialog header="{{overlay.title}}" icon="fa-external-link-square" modal="modal" [(visible)]="display">
-                
+
                 <div class="">
                     <div class="box-body text-center">
                         <p>{{ overlay.content }}</p>
-                        <p *ngIf="overlay.score" ><strong>Your annotation score is: {{ overlay.score }}</strong> which is 
-                        <span class="badge bg-blue" *ngIf="overlay.score<overlay.average_score">lower</span> 
-                        <span class="badge bg-red" *ngIf="overlay.score>overlay.average_score">higher</span> than the average score ( {{ overlay.average_score }} ) for 
-                        this gene. </p>
-                        
+                        <p *ngIf="overlay.score"><strong>Your annotation score is: {{ overlay.score }}</strong> which is
+                            <span class="badge bg-blue" *ngIf="overlay.score<overlay.average_score">lower</span>
+                            <span class="badge bg-red" *ngIf="overlay.score>overlay.average_score">higher</span> than the average score ( {{ overlay.average_score }} ) for this gene. </p>
+
                     </div>
                 </div>
 
-                
+
                 <p-footer class="text-center">
                     <button *ngIf="overlay.score" type="button" pButton icon="fa-check" (click)="continueReview()" label="Continue"></button>
-                     <button *ngIf="!overlay.score" type="button" pButton icon="fa-check" (click)="display=false" label="Continue"></button>
+                    <button *ngIf="!overlay.score" type="button" pButton icon="fa-check" (click)="display=false" label="Continue"></button>
                 </p-footer>
-                
-
-                
 
             </p-dialog>
 
-             <div *ngIf="step1 text-center">
+            <div *ngIf="step1 text-center">
 
                 <!-- <div class="col-md-12"> -->
-                    <h4 class="text-center"><strong>ARG Annotation</strong></h4>
-                    <p>Please based on your observations add the corresponding data to the form below:</p>
+                <h4 class="text-center"><strong>ARG Annotation</strong></h4>
+                <p>Please based on your observations add the corresponding data to the form below:</p>
 
-                    <md-input-container class="col-md-12">
-                    <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="AClass" [(ngModel)]="antibiotic.class" placeholder="Antibiotic Class" >
-                    </md-input-container>
+                <md-input-container class="col-md-12">
+                    <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="AClass" [(ngModel)]="antibiotic.class" placeholder="Antibiotic Class">
+                </md-input-container>
 
-                    <md-autocomplete #AClass="mdAutocomplete">
+                <md-autocomplete #AClass="mdAutocomplete">
                     <md-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{ option }}
                     </md-option>
-                    </md-autocomplete> 
+                </md-autocomplete>
 
-                    <md-input-container class="col-md-12">
-                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Antibiotic Group" >
-                    </md-input-container> 
+                <md-input-container class="col-md-12">
+                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Antibiotic Group">
+                </md-input-container>
 
-                    <md-autocomplete #AGroup="mdAutocomplete">
+                <md-autocomplete #AGroup="mdAutocomplete">
                     <md-option *ngFor="let option of groupFilteredOptions | async" [value]="option">
                         {{ option }}
                     </md-option>
-                    </md-autocomplete> 
+                </md-autocomplete>
 
-                    <md-input-container class="col-md-12">
-                    <input type="text" mdInput [(ngModel)]="antibiotic.mechanism"  placeholder="Antibiotic Mechanism (if any)" >
-                    </md-input-container>
+                <md-input-container class="col-md-12">
+                    <input type="text" mdInput [(ngModel)]="antibiotic.mechanism" placeholder="Antibiotic Mechanism (if any)">
+                </md-input-container>
 
-                    <br><br>
+                <br><br>
 
-                    <div class="col-md-12 text-center">
-                        <button (click)="validate(1)" color="primary"  md-raised-button>Next</button>
-                        <button (click)="reportARG()" class="" color="red"  md-raised-button>Report ARG</button>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <button (click)="validate(1)" color="primary" md-raised-button>Next</button>
+                    <button (click)="reportARG()" class="" color="red" md-raised-button>Report ARG</button>
+                </div>
                 <!-- </div> -->
 
-             </div>
+            </div>
 
 
 
-             <div *ngIf="step2" >
-            
+            <div *ngIf="step2">
+
 
                 <!-- <div class="col-md-12"> -->
-                    <h4 class="text-center"><strong>Horizontal Gene Transfer</strong></h4>
-                    <div class="col-md-12">
-                        <p>Is there any evidence that suggests the queried gene to be horizontally transfered? </p>
-                        
-                        <div *ngFor="let ht of mge_options">
-                            <md-checkbox value = "{{ht}}" (change)="mgeOptions(ht, $event)" >{{ ht }}</md-checkbox>
-                        </div>
-                        <p>From a scale from 1 to 5 how would you rate this evidence? </p>
-                        <star-rating-comp (onRatingChange)="onRatingChange('mge',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'" ></star-rating-comp>
-                        <hr>
+                <h4 class="text-center"><strong>Horizontal Gene Transfer</strong></h4>
+                <div class="col-md-12">
+                    <p>Is there any evidence that suggests the queried gene to be horizontally transfered? </p>
+
+                    <div *ngFor="let ht of mge_options">
+                        <md-checkbox value="{{ht}}" (change)="mgeOptions(ht, $event)">{{ ht }}</md-checkbox>
                     </div>
+                    <p>From a scale from 1 to 5 how would you rate this evidence? </p>
+                    <star-rating-comp (onRatingChange)="onRatingChange('mge',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <hr>
+                </div>
 
 
-                    
-                    
-                    <div class="col-md-12">
-                        <h4 class="text-center"><strong>Full Genomes</strong></h4>
 
-                        <p>Is there evidence that suggests the queried gene is present any pathogenic genomes? </p>
-                        
-                        <md-radio-group [(ngModel)]="antibiotic.pathGenome">
-                            <md-radio-button value="1">Yes</md-radio-button> <br>
-                            <md-radio-button value="2">Not</md-radio-button><br>
-                        </md-radio-group>
 
-                        <p>From a scale from 1 to 5 how would you rate this evidence? </p>
-                        <star-rating-comp (onRatingChange)="onRatingChange('genome',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'" ></star-rating-comp>
-                        <hr>
+                <div class="col-md-12">
+                    <h4 class="text-center"><strong>Full Genomes</strong></h4>
 
-                    </div>
+                    <p>Is there evidence that suggests the queried gene is present any pathogenic genomes? </p>
 
-                    
+                    <md-radio-group [(ngModel)]="antibiotic.pathGenome">
+                        <md-radio-button value="1">Yes</md-radio-button> <br>
+                        <md-radio-button value="2">Not</md-radio-button><br>
+                    </md-radio-group>
 
-                    <div class="col-md-12 text-center">
-                        <button (click)="validate(2)" color="primary"  md-raised-button>Next</button>
-                    </div>
+                    <p>From a scale from 1 to 5 how would you rate this evidence? </p>
+                    <star-rating-comp (onRatingChange)="onRatingChange('genome',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <hr>
+
+                </div>
+
+
+
+                <div class="col-md-12 text-center">
+                    <button (click)="validate(2)" color="primary" md-raised-button>Next</button>
+                </div>
                 <!-- </div> -->
 
 
 
-             </div>
+            </div>
 
-            <div *ngIf="step3" >
+            <div *ngIf="step3">
 
                 <!-- <div class="col-md-12"> -->
-                    <div class="col-md-12 text-center">
-                        <h4 class="text-center"><strong>ARG annotation</strong></h4>
-                        <dl class="dl-horizontal">
-                        
-                            <dt>ARG Class:</dt>
-                            <dd><span class="badge bg-blue"> {{ antibiotic.class }} </span></dd>
-                            
-                            <dt>ARG Group:</dt>
-                            <dd><span class="badge bg-green"> {{ antibiotic.group }} </span></dd>
-                            
-                            <dt *ngIf="!antibiotic.mechanism==''">ARG Mechanism:</dt>
-                            <dd *ngIf="!antibiotic.mechanism==''"><span class="badge bg-red"> {{ antibiotic.mechanism }} </span></dd>                
-                            
-                        </dl>
-                        <hr>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <!-- <h4 class="text-center"><strong>ARG annotation</strong></h4> -->
+                    <dl class="dl">
 
-                    <div class="col-md-12 col-md-offset-0 text-center">
-                        <p>Please rate your level of expertise</p>
-                        <star-rating-comp (onRatingChange)="onRatingChange('expertise',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'" ></star-rating-comp>
-                        <hr>
-                    </div>
-                    
-                    <div class="col-md-12 col-md-offset-0 text-center">
-                        <p>Please rate your confidence in your observations</p>
-                        <star-rating-comp (onRatingChange)="onRatingChange('confidence',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'" ></star-rating-comp>
-                        <hr>
-                    </div>
-                    
-                    <md-input-container class="col-md-12">
-                        <p>Please add any relevant comments</p>
-                        <textarea mdInput [(ngModel)]="antibiotic.comments" rows="5"></textarea>
-                    </md-input-container>
+                        <dt>ARG Class:</dt>
+                        <dd><span class=""> {{ antibiotic.class }} </span></dd>
+
+                        <dt>ARG Group:</dt>
+                        <dd><span class=""> {{ antibiotic.group }} </span></dd>
+
+                        <dt *ngIf="!antibiotic.mechanism==''">ARG Mechanism:</dt>
+                        <dd *ngIf="!antibiotic.mechanism==''"><span class=""> {{ antibiotic.mechanism }} </span></dd>
+
+                    </dl>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-md-offset-0 text-center">
+                    <p>Please rate your level of expertise</p>
+                    <star-rating-comp (onRatingChange)="onRatingChange('expertise',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-md-offset-0 text-center">
+                    <p>Please rate your confidence in your observations</p>
+                    <star-rating-comp (onRatingChange)="onRatingChange('confidence',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <hr>
+                </div>
+
+                <md-input-container class="col-md-12">
+                    <p>Please add any relevant comments</p>
+                    <textarea mdInput [(ngModel)]="antibiotic.comments" rows="5"></textarea>
+                </md-input-container>
 
 
-                    <div class="col-md-12 text-center">
-                        <button (click)="submitReview()" class="" color="green"  md-raised-button>Submit</button>                        
-                        <button (click)="validate(3)" class="" color="red"  md-raised-button>Cancel</button>
-                    </div>
-                
+                <div class="col-md-12 text-center">
+                    <button (click)="submitReview()" class="" color="green" md-raised-button>Submit</button>
+                    <button (click)="validate(3)" class="" color="red" md-raised-button>Cancel</button>
+                </div>
+
 
                 <!-- </div> -->
             </div>

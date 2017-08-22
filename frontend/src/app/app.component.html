@@ -1,39 +1,40 @@
 <div class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a routerLink="" class="navbar-brand">ARGpedia</a>
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+    <div class="container-par">
+        <!-- <div class="col-md-12"> -->
+        <div class="navbar-header">
+            <a routerLink="" class="navbar-brand">ARGpedia</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="database">Database</a>
-        </li>
-        <li>
-          <a routerLink="classify">Classify</a>
-        </li>
-        <li>
-          <a routerLink="about">About</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="home" >Home</a></li>
-      </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a routerLink="database">Database</a>
+                </li>
+                <li>
+                    <a routerLink="classify">Classify</a>
+                </li>
+                <li>
+                    <a routerLink="about">About</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="home">Home</a></li>
+            </ul>
 
+        </div>
+        <!-- </div> -->
     </div>
-  </div>
 </div>
 
 <hr>
 <br>
 <br>
-<div class="container-fluid">
-  <div class="wrapper">
+<div class="container-par">
+    <!-- <div class="wrapper"> -->
     <router-outlet></router-outlet>
-  </div>
+    <!-- </div> -->
 </div>
-

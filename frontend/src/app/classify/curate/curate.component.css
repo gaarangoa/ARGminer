@@ -3,11 +3,11 @@
 }
 
 .ui-steps.steps-custom {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
-    height: 15px;
+    height: 4px;
     /* padding: 0 1em; */
 }
 
@@ -15,7 +15,7 @@
     background-color: #0081c2;
     color: #FFFFFF;
     /* display: inline-block;  */
-    width: 36px;
+    width: 26px;
     /* border-radius: 5%; */
     margin-top: -20px;
     margin-bottom: 12px;
@@ -33,14 +33,15 @@
 .ui-steps-item,
 .ui-steps-number,
 p-dialog {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !IMPORTANT;
-    border-color: rgba(255, 255, 255, 0) !IMPORTANT;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    border-color: rgba(255, 255, 255, 0) !important;
 }
 
 .box,
+.box-primary,
 .panel {
-    /* box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.19) !IMPORTANT; */
-    border-color: rgba(0, 0, 0, 0.3) !IMPORTANT
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
 }
 
 md-input-container textarea {
