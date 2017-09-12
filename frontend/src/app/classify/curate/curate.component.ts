@@ -108,7 +108,7 @@ export class CurateComponent implements OnInit {
       .subscribe( 
         response =>{
           for (let type of this.dataService.ATYPE){
-            // this.group_options.push(type['type'])
+            // this.group_options.push(type['subtype'])
           }
 
           // console.log(this.options)

@@ -43,16 +43,29 @@ export class DataService {
       })
   }
 
+  searchAPI(keyword: string, index: string){
+    return this.http.get(this.baseUrl+'/get/search/?keyword='+keyword+'&index='+index)
+      .map(res => {
+        return res.json()
+      })
+  }
+
   getKnownARGInfo(gene_id: string){
-    return this.http.get(this.baseUrl+'/get/arg/'+gene_id)
+    return this.http.get(this.baseUrl+'/get/arg/info/'+gene_id)
       .map(res => {
         this.ARG = res.json()
       })
   }
 
-
   getListAntibioticClass(){
     return this.http.get(this.baseUrl+'/get/antibiotic/class')
+      .map(res => {
+        this.ATYPE = res.json()
+      })
+  }
+
+  getListAntibioticGroup(){
+    return this.http.get(this.baseUrl+'/get/antibiotic/group')
       .map(res => {
         this.ATYPE = res.json()
       })

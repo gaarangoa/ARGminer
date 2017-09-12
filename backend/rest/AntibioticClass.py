@@ -1,7 +1,9 @@
 from rest.MetadataInterface.antibioticTypeClass import Type
+from rest.MetadataInterface.antibioticSubtypeClass import Subtype
 from rest.MetadataInterface.antibioticCuration import Curate
 
 type = Type();
+subtype = Subtype();
 curate = Curate();
 
 class Antibiotic():
@@ -12,7 +14,7 @@ class Antibiotic():
         return type.ListARGTypes()
 
     def ListARGSubtype(self):
-        return 0
+        return subtype.ListARGSubtypes()
 
     def insertCuration(self, data):
         try:

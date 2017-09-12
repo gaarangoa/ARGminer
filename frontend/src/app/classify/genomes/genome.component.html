@@ -21,7 +21,7 @@
                     <dt>BitScore:</dt>
                     <dd> <span class="badge bg-{{ item.bitscore.color }}"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>
                     <dt>Evalue (log):</dt>
-                    <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean }} {{ '&plusmn;' }} {{item.evalue.std}} </span></dd>
+                    <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd>
                     <dt>Coverage:</dt>
                     <dd> <span class="badge bg-{{ item.coverage.color }}"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>
                     <dt>Identity:</dt>
@@ -40,63 +40,77 @@
 <div *ngIf="randomARG.pathogen.status==true" class="">
     <!-- <div class="col-md-12"> -->
     <div class="box box-solid">
-        <div class="text-center">
 
-            <!-- <div class="box-header with-border text-center"> -->
+
+        <div class="box-header with-border">
 
             <!-- <div class="col-md-10 col-md-offset-1">
                             <svg  width="50px" height="50px"  class="resistant" />  
                         </div> -->
-
-            <strong>Pathogen Genomes</strong>
-
-            <!-- </div> -->
+            <i class="fa fa-bug"></i>
+            <h3 class="box-title">Full Genomes</h3>
 
         </div>
+
 
         <div class="">
             <div class="box-body">
-                The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) is found in <strong> {{ randomARG.pathogen.genomes_count }}</strong> genome(s). For the gene {{randomARG.entry.gene_id}} to be considered as part
-                of a genome, the gene alignment has to cover at least 90% of the ARG entirle length and a minimum of 90% of identity.
+                The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>90%
+                identity, >90% coverage).
+                <br><br>A total of <strong> {{ randomARG.pathogen.genomes_count }}</strong> genome(s) contain this particular gene.
             </div>
-
-            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-            <div *ngIf="disease.ready" class="fig-panel">
-                <div class="box box-solid">
-                    <div class="box-body">
-                        <p>This figure shows the distribution of the bacterial that are reported to cause or infer in diseases.</p>
-                        <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
-                        </ngx-charts-pie-grid>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-            <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
-                <div class="box box-solid">
-                    <div class="box-body">
-                        <p>This figure shows the distribution of the antimicrobial phenotype of the genomes.</p>
-                        <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
-                        </ngx-charts-pie-grid>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-            <div *ngIf="host.ready" class="fig-panel">
-                <div class="box box-solid">
-                    <div class="box-body">
-                        <p>This figure reports the distribution of the host organism.</p>
-                        <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
-                        </ngx-charts-pie-grid>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
-
-
     </div>
+
+    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+    <div *ngIf="disease.ready" class="fig-panel">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <!-- <i class="fa fa-bug"></i> -->
+                <h3 class="box-title">Genomes causing diseases</h3>
+            </div>
+            <div class="box-body">
+                <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases.</p>
+                <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
+                </ngx-charts-pie-grid>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+    <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <!-- <i class="fa fa-bug"></i> -->
+                <h3 class="box-title">Genomes with Antimicrobial Resistance phenotype</h3>
+            </div>
+            <div class="box-body">
+                <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>
+                <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
+                </ngx-charts-pie-grid>
+            </div>
+        </div>
+    </div>
+
+    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+    <div *ngIf="host.ready" class="fig-panel">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <!-- <i class="fa fa-bug"></i> -->
+                <h3 class="box-title">Bacterial hosts</h3>
+            </div>
+            <div class="box-body">
+                <p>This figure reports the distribution of the host organism.</p>
+                <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
+                </ngx-charts-pie-grid>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     <!-- </div> -->
 </div>

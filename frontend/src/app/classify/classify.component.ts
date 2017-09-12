@@ -18,6 +18,7 @@ export class ClassifyComponent implements OnInit {
   public render: Boolean;
   public loading: Boolean = false;
   public drawGenomes: Boolean = false;
+  public searchIndex: number = 0;
 
 
   constructor(
@@ -57,7 +58,7 @@ export class ClassifyComponent implements OnInit {
     });
   }
 
-  getARG(argID: string){
+  search(argID: string){
     this.randomARG['entry']['database'] = '-------------';
     this.randomARG['entry']['gene_id'] = '-----------';
     this.randomARG['entry']['subtype'] = '-----------';
@@ -65,13 +66,21 @@ export class ClassifyComponent implements OnInit {
     this.randomARG['entry']['inspected'] = '-----';
     this.randomARG['entry']['score'] = '----';
     this.loading = true;
-    this.dataService.getKnownARGInfo(argID)
+
+    this.dataService.searchAPI(argID, this.searchIndex.toString())
       .subscribe(response =>{
-        this.randomARG = this.dataService.ARG
-        console.log(this.randomARG);
-        this.loading = false;
+        // this.loading = false;
+        this.dataService.getKnownARGInfo(response['entry']['gene_id'])
+          .subscribe(res2=>{
+            this.randomARG = this.dataService.ARG
+            console.log(this.randomARG)
+            this.loading = false;
+          })
 
     });
+
+    
+
   }
 
   tabsEvent($event: any){

@@ -52,6 +52,7 @@
                             <!-- </p> -->
                             <!-- <dt>Score:</dt> -->
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
+
                         </dl>
 
                         <div class="col-md-12 text-center">
@@ -102,6 +103,8 @@
                         <p><strong>Rate your annotation confidence</strong></p>
                         <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>
             </div>
+
+
             <!-- </div> -->
         </div>
 
@@ -112,7 +115,7 @@
                 <div class="box box-solid ">
                     <div class="box-body">
                         <md-input-container class='col-sm-12 col-sm-offset-0'>
-                            <input #keyword (keyup.enter)="getARG(keyword.value)" mdInput placeholder="Search term " value="" />
+                            <input #keyword (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
                         </md-input-container>
                     </div>
                 </div>
@@ -147,7 +150,12 @@
                     <besthit-metadata-card *ngIf="bh.best_hit_database=='CARD'"> </besthit-metadata-card>
                 </div>
                 <!-- </md-tab> -->
-                <hr>
+
+                <!-- OTHER DATABASES  -->
+
+                <app-generic></app-generic>
+
+
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
                 <!-- <div *ngIf="drawGenomes"> -->
                 <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>

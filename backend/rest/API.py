@@ -36,11 +36,7 @@ def pathogen(gene_id):
     pathogen = ARG.pathogen(gene_id)
     return jsonify(pathogen)
 
-@app.route('/get/arg/random/', methods = ['GET','POST'])
-def random():
-    random = ARG.random()
-    return jsonify(random)
-
+# For updating
 @app.route('/get/arg/<gene_id>', methods = ['GET','POST'])
 def getarg(gene_id):
     arg = ARG.getARG(gene_id)
@@ -50,6 +46,38 @@ def getarg(gene_id):
 def GetAntibioticClass():
     arg = ANTIBIOTIC.ListARGType()
     return jsonify(arg)
+
+@app.route('/get/antibiotic/group', methods = ['GET','POST'])
+def GetAntibioticGroup():
+    arg = ANTIBIOTIC.ListARGSubtype()
+    return jsonify(arg)
+
+
+# For fast search
+@app.route('/get/arg/random/', methods = ['GET','POST'])
+def random():
+    random = ARG.random()
+    return jsonify(random)
+
+@app.route('/get/search/', methods = ['GET','POST'])
+def search():
+    keyword = request.args.get('keyword')
+    index = int(request.args.get('index'))
+
+    params = {
+        "keyword":keyword,
+        "index":index
+    }
+
+    arg = ARG.search(params)
+    return jsonify(arg)
+
+@app.route('/get/arg/info/<gene_id>', methods = ['GET','POST'])
+def getargi(gene_id):
+    arg = ARG.getMasterARG(gene_id)
+    return jsonify(arg)
+
+
 
 @app.route('/post/curation', methods = ['POST'])
 def PostCuration():

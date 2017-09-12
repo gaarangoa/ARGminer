@@ -1,0 +1,72 @@
+<div *ngFor="let bh of randomARG.besthit.alignments">
+    <div *ngIf="bh.best_hit_database!=='CARD' && bh.best_hit_database!=='ARDB'" class="">
+        <div class="box box-solid ">
+            <div class="box-header with-border">
+                <i class="fa fa-gears"></i>
+
+                <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> BLAST alignment <span class="badge">{{ bh.subtype }}</span></h3>
+            </div>
+            <div class="box-body">
+                <dl class="dl-horizontal">
+
+                    <dt>Best Hit ID</dt>
+                    <dd> {{ bh.best_hit }}
+                        <dd>
+
+                            <dt>Coverage:</dt>
+                            <dd>
+
+                                <span *ngIf="(100*bh.algn_len/randomARG.entry['length']).toFixed(2)<=30" class="badge bg-red"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
+                                <span *ngIf="(100*bh.algn_len/randomARG.entry['length']).toFixed(2)>30 && (100*bh.algn_len/randomARG.entry['length']).toFixed(2)<=50" class="badge bg-yellow"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>
+                                <span *ngIf="(100*bh.algn_len/randomARG.entry['length']).toFixed(2)>50 && (100*bh.algn_len/randomARG.entry['length']).toFixed(2)<=80" class="badge bg-green"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
+                                <span *ngIf="(100*bh.algn_len/randomARG.entry['length']).toFixed(2)>80" class="badge bg-blue"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
+
+                            </dd>
+                            <dt>Bitscore:</dt>
+                            <dd>
+                                <span *ngIf="bh.bitscore<=50" class="badge bg-red"> {{ bh.bitscore }} </span>
+                                <span *ngIf="bh.bitscore>50 && bh.bitscore<=100" class="badge bg-yellow"> {{ bh.bitscore }} </span>
+                                <span *ngIf="bh.bitscore>100 && bh.bitscore<=500" class="badge bg-green"> {{ bh.bitscore }} </span>
+                                <span *ngIf="bh.bitscore>500" class="badge bg-blue"> {{ bh.bitscore }} </span>
+
+                            </dd>
+                            <dt>evalue:</dt>
+                            <dd>
+
+                                <span *ngIf="bh.evalue>=1e-5" class="badge bg-red"> {{ bh.evalue }} </span>
+                                <span *ngIf="bh.evalue<1e-5 && bh.evalue>=1e-10" class="badge bg-yellow"> {{ bh.evalue }} </span>
+                                <span *ngIf="bh.evalue<1e-10 && bh.evalue>=1e-50" class="badge bg-green"> {{ bh.evalue }} </span>
+                                <span *ngIf="bh.evalue<1e-50" class="badge bg-blue"> {{ bh.evalue }} </span>
+
+                            </dd>
+                            <dt>Similarity:</dt>
+                            <dd>
+
+                                <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>80" class="badge bg-blue"> {{ bh.identity }}% </span>
+
+                            </dd>
+
+                            <hr>
+                            <strong> AMR profile: </strong><br><br>
+
+                            <!-- <dd> -->
+
+
+                            <strong> Antibiotic Resistance Class: </strong> {{ bh.type }}<br>
+                            <strong> Antibiotic Resistance Group: </strong> {{ bh.subtype }}<br>
+                            <strong> Antibiotic Resistance Mechanism: </strong> {{ bh.mechanism }}<br>
+
+
+                            <!-- </dd> -->
+
+
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>

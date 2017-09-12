@@ -5,6 +5,8 @@ from rest.MetadataInterface import ArdbClass as ARDB
 from rest.BestHitInterface import AlignmentsClass as ALGN
 from rest.GenomesInterface import PatricClass as PATRIC
 from rest.MetadataInterface import aclameClass as ACLAME
+from rest.SearchInterface import SearchClass as Search
+from rest.MetadataInterface import masterClass as Master
 
 card = CARD.CARD()
 deepARG = DEEPARG.DEEPARG()
@@ -13,6 +15,8 @@ ardb = ARDB.ARDB()
 patric = PATRIC.PATRIC()
 alignments = ALGN.alignments()
 aclame = ACLAME.ACLAME()
+search = Search.Search()
+master = Master.MASTER();
 
 class GENE():
     def __init__(self):
@@ -41,6 +45,15 @@ class GENE():
         pathg = patric.getById(gene_id)
         return pathg[0]
     
+    def search(self, params):
+        data = search.retrieve(params['keyword']);
+        return data[params['index']]
+    # {
+    #         "count": len(data),
+    #         "ids": [i['gene_id'] for i in data if i['inspected']==0],
+    #     }
+        
+
     def getARG(self, gene_id):
         status=True
         false_count = 0;
@@ -88,5 +101,8 @@ class GENE():
         }
 
     def random(self):
-        entry = deepARG.getRandomId()
-        return self.getARG(entry['gene_id'])
+        entry = master.getRandomId()
+        return entry
+
+    def getMasterARG(self, gene_id):
+        return master.getById(gene_id)[0]

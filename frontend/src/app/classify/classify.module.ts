@@ -37,6 +37,7 @@ import { CurateComponent } from './curate/curate.component';
 
 import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
 import {DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
+import { GenericComponent } from './besthit/generic/generic.component';
 
 
 @NgModule({
@@ -76,7 +77,9 @@ import {DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 
 
       GenomeComponent,
 
-      CurateComponent
+      CurateComponent,
+
+      GenericComponent
   ],
   providers: [
     ConfirmationService
