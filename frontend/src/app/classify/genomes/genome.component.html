@@ -1,5 +1,5 @@
 <div *ngFor="let item of randomARG.mobile" class="">
-    <div *ngIf="item.status==true" class="">
+    <div *ngIf="item.status==true && item.identity.mean>50" class="">
         <div class="box box-solid">
             <!-- <div class="col-md-10 col-md-offset-1"> -->
 
@@ -57,7 +57,8 @@
             <div class="box-body">
                 The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>90%
                 identity, >90% coverage).
-                <br><br>A total of <strong> {{ randomARG.pathogen.genomes_count }}</strong> genome(s) contain this particular gene.
+                <br><br><strong>{{ randomARG.pathogen.genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
+                <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> ( {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% ) genomes are labeled as <u>pathogens</u>.
             </div>
         </div>
     </div>
@@ -70,7 +71,7 @@
                 <h3 class="box-title">Genomes causing diseases</h3>
             </div>
             <div class="box-body">
-                <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases.</p>
+                <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>
                 <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
                 </ngx-charts-pie-grid>
             </div>
@@ -100,7 +101,7 @@
                 <h3 class="box-title">Bacterial hosts</h3>
             </div>
             <div class="box-body">
-                <p>This figure reports the distribution of the host organism.</p>
+                <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>
                 <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
                 </ngx-charts-pie-grid>
             </div>

@@ -22,6 +22,14 @@ class Mongo():
         self.client.close()
         return rdata
 
+    def update(self, table, query, update, opt1):
+        status = self.db[table].update(
+            query,
+            update,
+            opt1
+        );
+        return status
+
     def getByGeneId(self, table, gene_id):
         models = [i for i in self.db[table].find({"gene_id":gene_id})]
         # print model

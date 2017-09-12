@@ -31,7 +31,7 @@ export class ClassifyComponent implements OnInit {
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG;
         this.render=true;
-        console.log(this.randomARG)
+        // console.log(this.randomARG)
     });
 
   }
@@ -53,7 +53,7 @@ export class ClassifyComponent implements OnInit {
     this.dataService.getRandomKnownARG()
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG
-        console.log(this.randomARG)
+        // console.log(this.randomARG)
         this.loading = false;
     });
   }
@@ -73,7 +73,7 @@ export class ClassifyComponent implements OnInit {
         this.dataService.getKnownARGInfo(response['entry']['gene_id'])
           .subscribe(res2=>{
             this.randomARG = this.dataService.ARG
-            console.log(this.randomARG)
+            // console.log(this.randomARG)
             this.loading = false;
           })
 

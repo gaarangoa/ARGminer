@@ -84,7 +84,7 @@ export class CurateComponent implements OnInit {
       MGE:{},
       comments:"",
       rating:{},
-
+      gene_id: ""
     }
 
     // Get the list of antibiotic types in the database
@@ -186,7 +186,7 @@ export class CurateComponent implements OnInit {
   }
 
   submitReview(){
-    console.log(this.antibiotic)
+    // console.log(this.antibiotic)
 
     this.overlay['title']="Your results"
     this.overlay['content']="Your manual inspection has been registered in the system and its ready for validation."
@@ -196,25 +196,15 @@ export class CurateComponent implements OnInit {
     // show the overlay with the score
     // this.showDialog()
 
-    this.continueReview();
-
     this.dataService.insertCuration(this.antibiotic)
       .subscribe(
         response =>{
-          console.log(response)
+          // console.log(response)
+          // restart the form values to empty.
+          this.continueReview();
         }
       )
-
-    // restart the form values to empty
-    this.antibiotic = {
-      class:"",
-      group:"",
-      mechanism:"",
-      MGE:[],
-      comments:"",
-      rating:[],
-    }
-
+      
   }
 
 continueReview(){
@@ -235,9 +225,19 @@ continueReview(){
   this.dataService.getRandomKnownARG()
     .subscribe(response =>{
       this.classifyComponent.randomARG = this.dataService.ARG
-      console.log(this.randomARG)
+      // console.log(this.randomARG)
       this.classifyComponent.loading = false;
-      // this.classifyComponent.render=true;
+
+      this.antibiotic = {
+        class:"",
+        group:"",
+        mechanism:"",
+        MGE:{},
+        comments:"",
+        rating:{},
+        gene_id: ""
+      }
+      
   });
   
   this.display = false;

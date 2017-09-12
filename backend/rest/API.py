@@ -83,7 +83,7 @@ def getargi(gene_id):
 def PostCuration():
     data = request.get_json()
     # data = {"info":1000}
-    # print data
+    print(data)
     arg = ANTIBIOTIC.insertCuration(data)
     return jsonify(arg)
 

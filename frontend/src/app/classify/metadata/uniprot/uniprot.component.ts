@@ -57,7 +57,7 @@ export class UniprotComponent implements OnInit {
 
       });
     }
-    console.log(this.randomARG)
+    // console.log(this.randomARG)
 
   }
   

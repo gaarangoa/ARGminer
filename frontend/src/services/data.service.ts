@@ -72,6 +72,8 @@ export class DataService {
   }
 
   insertCuration(curation: Object){
+    curation['gene_id'] = this.ARG['entry']['gene_id'];
+    console.log(curation)
     return this.http.post(this.baseUrl+'/post/curation', curation)
       .map(res => {
         return res.json()

@@ -18,7 +18,10 @@ class Antibiotic():
 
     def insertCuration(self, data):
         try:
+            # print(data)
             insert = curate.insert(data)
+            print(insert)
             return {"status":True}
-        except:
+        except Exception as inst:
+            print(str(inst))
             return {"status":False}

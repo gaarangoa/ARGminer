@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-body{
-    background: rgba(0,0,0,0.04) !important; 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body {
+    background: rgba(0, 0, 0, 0.04) !important;
+    font-family: 'Lato', sans-serif !important;
 }

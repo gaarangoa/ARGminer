@@ -4,9 +4,18 @@ import random
 class Curate():
     def __init__(self):
         self.database = DataBase()
-        self.type = 'curation'
+        self.type = 'master'
 
     def insert(self, data):
-        types = self.database.insert(self.type, data)    
-        # print gene
-        return types
+        # try:
+            status = self.database.update(
+                self.type,
+                {"entry.gene_id": data['gene_id']}, 
+                {"$push": {"inspected": data}},
+                True
+            )   
+            # print(data)
+            return status
+        # except Exception as inst:
+            # print(str(inst) )
+        
