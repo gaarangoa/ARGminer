@@ -5,7 +5,8 @@ import os
 
 MongoHost = {
     "hostdb": "mongodb://"+os.environ['DB_HOST'],
-    "hostdbport": 27017,
+    # "hostdb": "mongo://mongo-server-arg-miner",
+    "hostdbport": 17863,
     "database": "argpedia",
     "hostuser": "argpedia",
     "hostpwd": "AdminArgpedia2018.#"
