@@ -30,6 +30,7 @@ export class CurateComponent implements OnInit {
   private step4: boolean;
   display: boolean = false;
   overlay: Object;
+  private inspectedGenes: Array<String>;
 
   private activeIndex: number = 0;
 
@@ -62,6 +63,7 @@ export class CurateComponent implements OnInit {
 
   ngOnInit() {
 
+    this.inspectedGenes = [];
     this.overlay = {
       title:"none",
       content:"none"
@@ -201,6 +203,7 @@ export class CurateComponent implements OnInit {
         response =>{
           // console.log(response)
           // restart the form values to empty.
+          this.inspectedGenes.push(this.classifyComponent.randomARG['entry']['gene_id']);
           this.continueReview();
         }
       )
@@ -221,24 +224,25 @@ continueReview(){
   this.classifyComponent.randomARG['entry']['score'] = '----';
 
   this.classifyComponent.loading = true;
+  this.classifyComponent.nextGeneConflictList();
   // this.classifyComponent.render=false;
-  this.dataService.getRandomKnownARG()
-    .subscribe(response =>{
-      this.classifyComponent.randomARG = this.dataService.ARG
-      // console.log(this.randomARG)
-      this.classifyComponent.loading = false;
+  // this.dataService.getRandomKnownARG()
+  //   .subscribe(response =>{
+  //     this.classifyComponent.randomARG = this.dataService.ARG
+  //     // console.log(this.randomARG)
+  //     this.classifyComponent.loading = false;
 
-      this.antibiotic = {
-        class:"",
-        group:"",
-        mechanism:"",
-        MGE:{},
-        comments:"",
-        rating:{},
-        gene_id: ""
-      }
+      // this.antibiotic = {
+      //   class:"",
+      //   group:"",
+      //   mechanism:"",
+      //   MGE:{},
+      //   comments:"",
+      //   rating:{},
+      //   gene_id: ""
+      // }
       
-  });
+  // });
   
   this.display = false;
 

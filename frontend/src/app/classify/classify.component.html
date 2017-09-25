@@ -8,14 +8,18 @@
         </div>
     </div>
 
+
     <div *ngIf="render">
         <!--Left panel-->
         <div class="col-sm-3 ">
             <!-- <div class=""> -->
             <div *ngIf="randomARG.status==true" class="">
                 <!-- <div class="col-md-12"> -->
+                <p-growl class="user_growl" [(value)]="notification"></p-growl>
                 <div class="box box-solid box-primary">
                     <div class="box-header with-border">
+
+
 
                         <i class="fa fa-gears"></i>
                         <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
@@ -37,7 +41,7 @@
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
-                            <strong>ARG Group:</strong>
+                            <strong>ARG:</strong>
                             <span class="">{{ randomARG.entry.subtype }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
@@ -55,9 +59,46 @@
 
                         </dl>
 
-                        <div class="col-md-12 text-center">
-                            <button (click)="nextGene()" class="" color="red" md-raised-button>Skip Gene</button>
+                        <hr>
+
+                        <h4>Filter options</h4>
+
+                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Conflicting ARGs</strong></md-slide-toggle>
+                        <p class="small">This option only takes the ARGs that have two or more annotations. In many cases, these genes have conflicting annotations from the reference database and require special attention. By turning off this filter you will get a random
+                            gene from the database.</p>
+
+                        <hr>
+
+                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Train a New User</strong></md-slide-toggle>
+                        <p class="small">This option enables a specific set of ARGs that have been manualy validated to score your performance. </p>
+                        <hr>
+                        <div *ngIf="loading==false && conflictedArgSubtypeFlag">
+
+                            <h4> Conflicted ARGs </h4>
+                            <p class="small">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>
+                            <!-- <div class="box-body"> -->
+                            <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p>
+                            <div *ngFor="let item of conflictingARGSubtype.conflict">
+                                <strong>{{ item.class }}</strong> {{ item.genes.length }}
+                            </div>
+                            <hr>
+                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
+                            <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next ARG</button>
+                            <!-- </div> -->
                         </div>
+
+                        <div *ngIf="conflictedArgSubtypeFlag==false && trainingARGFlag==false" class="col-md-12 text-center">
+                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
+                        </div>
+
+                        <div *ngIf="trainingARGFlag && conflictedArgSubtypeFlag==false" class="col-md-12 text-center">
+                            <button (click)="trainingARGNextGene()" class="" color="primary" md-raised-button>Next ARG</button>
+                        </div>
+
+
+                        <!-- <div class="col-md-12 text-right">
+                            <button (click)="nextGene()" class="" color="red" md-raised-button>Random</button>
+                        </div> -->
 
 
                     </div>
@@ -69,6 +110,16 @@
             </div>
 
             <div class="col-md-12 box box-solid ">
+
+                <h4>Note about BitScores</h4>
+                <p class="small">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>
+                <p class="small">Bit-score does not depend on database size. The bit-score gives the same value for hits in databases of different sizes and hence can be used for searching in an constantly increasing database.</p>
+                <p class="small"> The higher the bitscore, the better the quality of the sequence alignment</p>
+
+            </div>
+
+            <div class="col-md-12 box box-solid ">
+
                 <h4><strong>1: ARG identification</strong></h4>
                 <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
 
@@ -165,6 +216,18 @@
                 <!-- </md-tab> -->
 
                 <!-- </md-tab-group> -->
+
+                <div>
+                    <div class="box box-solid ">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
+                        </div>
+                        <div class="box-body">
+                            <p class="sequence"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br>
             </div>
         </div>
 

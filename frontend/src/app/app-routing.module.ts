@@ -6,6 +6,7 @@ import { ClassifyComponent } from './classify/classify.component';
 import { HomeComponent } from './home/home.component';
 import { DatabaseComponent } from './database/database.component';
 import { AboutComponent } from './about/about.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const router: Routes = [
     { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ export const router: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'database', component: DatabaseComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'admin', component: AdminComponent },
 ];
 
 export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(router);

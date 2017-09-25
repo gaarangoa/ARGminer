@@ -104,5 +104,12 @@ class GENE():
         entry = master.getRandomId()
         return entry
 
+    def random2(self):
+        entry = master.getRandomConfSub()
+        return entry
+
     def getMasterARG(self, gene_id):
         return master.getById(gene_id)[0]
+
+    def getInspectedARGs(self, index, limit):
+        return master.getInspectedARGs(index, limit)

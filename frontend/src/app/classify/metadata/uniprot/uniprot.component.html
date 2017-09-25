@@ -28,9 +28,12 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <p *ngIf="randomARG.metadata.gene"> <strong *ngIf="randomARG.metadata.gene[0].name">Gene Name: </strong> <span class="badge bg-red" *ngIf="randomARG.metadata.gene[0].name"> {{ randomARG.metadata.gene[0].name.value }} </span></p>
-            <p *ngIf="randomARG.metadata.protein.recommendedName" class="" data-original-title=""> <strong>Protein: </strong> <span class="badge bg-green"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>
-            <div *ngIf="randomARG.metadata.proteinExistence" data-original-title=""> <strong>Protein Existence: </strong> <span class="badge bg-orange">  {{ randomARG.metadata.proteinExistence }} </span> </div>
+            <p *ngIf="randomARG.metadata.gene"> <strong *ngIf="randomARG.metadata.gene[0].name">Gene Name: </strong> <span class="" *ngIf="randomARG.metadata.gene[0].name"> {{ randomARG.metadata.gene[0].name.value }} </span></p>
+            <p *ngIf="randomARG.metadata.protein.recommendedName" class="" data-original-title=""> <strong>Protein: </strong> <span class=""> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>
+            <p *ngIf="randomARG.metadata.proteinExistence" data-original-title=""> <strong>Protein Existence: </strong> <span class="">  {{ randomARG.metadata.proteinExistence }} </span> </p>
+
+            <p><strong>Sequence length (AA)</strong>: <span> {{ randomARG.entry['length'] }}</span></p>
+
             <hr>
 
             <span *ngFor="let item of randomARG.metadata.keywords" class="badge bg-blue" data-original-title=""> {{ item.value }} </span>
@@ -90,6 +93,44 @@
 </div>
 
 
+<div *ngIf="randomARG.metadata.features" class="">
+    <div class="box box-solid">
+        <div class="box-header with-border">
+            <i class="fa fa-object-group"></i>
+
+            <h3 class="box-title"><strong>Domains</strong></h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+            <table class="table table-bordered text-center">
+                <tbody>
+                    <tr>
+                        <th><span class="badge bg-blue">Type</span></th>
+                        <th><span class="badge bg-blue">Position(s)</span></th>
+                        <th><span class="badge bg-blue">Description</span></th>
+                        <th><span class="badge bg-blue">Evidence</span></th>
+                    </tr>
+                    <tr *ngFor="let item of randomARG.metadata.features">
+                        <th> <span class="badge bg-aqua" *ngIf="item.type!=undefined"> {{ item.type }}</span></th>
+                        <th> <span class="badge bg-olive" *ngIf="item.begin!=undefined">{{ item.begin }}-{{ item.end }}</span></th>
+                        <th><span class="badge bg-teal" *ngIf="item.description!=undefined">{{ item.description }}</span></th>
+                        <th *ngIf="item.evidences">
+                            <span *ngIf="item.evidences[0].source" class="badge bg-lime">{{ item.evidences[0].source.name }}</span>
+                            <a *ngIf="item.evidences[0].source" class="small badge bg-olive" href="{{ item.evidences[0].source.url }}">({{ item.evidences[0].source.id}})</a>
+                        </th>
+                    </tr>
+                    <!-- <svg class="featureImage"><rect baca="item.begin" width="20%" height="100%" class="featureRect"></rect></svg> -->
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</div>
+
+
 <div *ngIf="randomARG.metadata.references" class="">
     <div class="box box-solid">
         <div class="box-header with-border">
@@ -125,7 +166,7 @@
 </div>
 
 
-<div *ngIf="randomARG.metadata.errorMessage" class="">
+<!-- <div *ngIf="randomARG.metadata.errorMessage" class="">
 
     <div class="alert alert-danger alert-dismissible">
         <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
@@ -134,4 +175,4 @@
             {{ randomARG.metadata.errorMessage[0] }}
         </p>
     </div>
-</div>
+</div> -->

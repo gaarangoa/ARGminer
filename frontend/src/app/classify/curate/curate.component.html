@@ -11,7 +11,6 @@
                         <p *ngIf="overlay.score"><strong>Your annotation score is: {{ overlay.score }}</strong> which is
                             <span class="badge bg-blue" *ngIf="overlay.score<overlay.average_score">lower</span>
                             <span class="badge bg-red" *ngIf="overlay.score>overlay.average_score">higher</span> than the average score ( {{ overlay.average_score }} ) for this gene. </p>
-
                     </div>
                 </div>
 
@@ -40,7 +39,7 @@
                 </md-autocomplete>
 
                 <md-input-container class="col-md-12">
-                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Antibiotic Group">
+                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Antibiotic Resistance Gene">
                 </md-input-container>
 
                 <md-autocomplete #AGroup="mdAutocomplete">
@@ -162,5 +161,17 @@
 
         </div>
 
+    </div>
+
+    <div *ngIf="inspectedGenes.length>0" class="box box-solid">
+        <div class="box-header">
+            <h3 class="box-title">Inspected genes: {{ inspectedGenes.length }}</h3>
+        </div>
+        <div class="box-body">
+
+            <span *ngFor="let item of inspectedGenes" class="badge">
+                {{ item }}
+            </span>
+        </div>
     </div>
 </div>

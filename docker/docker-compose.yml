@@ -28,8 +28,8 @@ services:
       - MONGO_LOG_DIR=../database/mongo
     volumes:
       - ../database/mongo:/data/db
-    # ports:
-      # - 27897:17863
+    ports:
+      - 27897:17863
     tty: true
     command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth
 

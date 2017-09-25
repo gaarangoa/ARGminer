@@ -8,8 +8,11 @@ class Mongo():
         self.client.argpedia.authenticate(config['hostuser'], config['hostpwd'])
         self.db = self.client[config['database']]
     
-    def find(self, table, query):
-        responses = [i for i in self.db[table].find(query)]
+    def find(self, table="", query={}, projection={}):
+        if projection: 
+            responses = [i for i in self.db[table].find(query, projection)]
+        else:
+            responses = [i for i in self.db[table].find(query)]
         if not responses: return [{"status":False}]
         for response in responses:
             response["_id"] = str(response["_id"])

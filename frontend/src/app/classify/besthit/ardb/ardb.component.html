@@ -13,7 +13,15 @@
                     <dt>Best Hit ID</dt>
                     <dd> {{ bh.best_hit }}
                         <dd>
+                            <dt>Similarity:</dt>
+                            <dd>
 
+                                <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
+                                <span *ngIf="bh.identity>80" class="badge bg-blue"> {{ bh.identity }}% </span>
+
+                            </dd>
                             <dt>Coverage:</dt>
                             <dd>
 
@@ -40,15 +48,7 @@
                                 <span *ngIf="bh.evalue<1e-50" class="badge bg-blue"> {{ bh.evalue }} </span>
 
                             </dd>
-                            <dt>Similarity:</dt>
-                            <dd>
 
-                                <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
-                                <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
-                                <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
-                                <span *ngIf="bh.identity>80" class="badge bg-blue"> {{ bh.identity }}% </span>
-
-                            </dd>
 
                             <hr>
                             <strong> AMR profile: </strong>

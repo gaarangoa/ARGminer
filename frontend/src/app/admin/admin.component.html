@@ -1,0 +1,179 @@
+<div class="col-sm-3">
+    <div class="box box-solid">
+        <div class="box-header with-border text-center">
+            <h3 class="box-title">
+                <strong>Main Actions</strong>
+            </h3>
+        </div>
+        <div class="box-body">
+
+            <h4>Upgrade new database version</h4>
+            <p class="small">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated.</p>
+            <div class="text-center"> <button (click)="trainingARGNextGene()" class="badge" color="default" md-raised-button>Update ARG-miner database</button></div>
+            <hr>
+
+            <h4>Recompute conflicting genes</h4>
+            <p class="small">Update the conflicted genes list after upgrading the database.</p>
+            <div class="text-center"> <button (click)="trainingARGNextGene()" class="badge" color="default" md-raised-button>Update Conflicting ARGs</button></div>
+            <hr>
+
+            <h4>Upgrade ARG-miner database</h4>
+            <p class="small">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated.</p>
+            <div class="text-center"> <button (click)="trainingARGNextGene()" class="badge" color="default" md-raised-button>Upgrade ARG-miner</button></div>
+
+            <hr>
+            <h4>with great power comes great responsability!</h4>
+            <p>Now that you are one of the administrator of this website, you need to make sure your actions don't affect the purpose and quality of ARG-miner. Most of the actions are irreversibles, so, please make sure before taking any decision.</p>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+
+
+    <div *ngFor="let item of curatedARGs" class="box box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{item.entry.gene_id}}</h3>
+        </div>
+        <div class="box-body">
+            <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->
+
+            <h3 class="text-center"> Current Annotation</h3>
+            <br>
+            <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>
+            <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>
+            <p><strong>ARG:</strong> {{ item.entry.subtype }} </p>
+            <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>
+            <hr>
+
+            <h3 class="text-center">Crowsourced Annotation</h3>
+            <div class="col-md-12">
+                <div class="box box-solid with-border box-primary">
+                    <div class="box-body">
+                        <div class="col-md-8 box-vis text-center" *ngIf="argClassChart.ready">
+                            <ngx-charts-advanced-pie-chart [scheme]="argClassChart.colorScheme" [results]="argClassChart.data" [gradient]="argClassChart.gradient" (select)="onSelect($event)">
+                            </ngx-charts-advanced-pie-chart>
+                        </div>
+
+                        <div class="col-md-4">
+                            <strong><h4><span class="badge bg-red"> Antbiotic Class </span></h4></strong>
+                            <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>
+                        </div>
+
+
+                        <div class="col-md-12 text-center">
+                            <!-- <hr> -->
+                            <table class="table table-responsive table-bordered text-center">
+                                <tbody>
+                                    <tr class="table-success">
+                                        <th>ARG Class</th>
+                                        <th>Confidence Score</th>
+                                        <th>Expertise Score</th>
+                                    </tr>
+
+                                    <tr *ngFor="let itemx of argClassChart.data">
+                                        <td>{{itemx.name}}</td>
+                                        <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
+                                        <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <hr> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-12">
+                <div class="box box-solid with-border box-primary">
+                    <div class="box-body">
+                        <div class="col-md-8 box-vis text-center" *ngIf="argGroupChart.ready">
+                            <ngx-charts-advanced-pie-chart [scheme]="argGroupChart.colorScheme" [results]="argGroupChart.data" [gradient]="argGroupChart.gradient" (select)="onSelect($event)">
+                            </ngx-charts-advanced-pie-chart>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <strong><h4><span class="badge bg-blue"> Antbiotic Resistance Gene </span></h4></strong>
+                            <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                            <!-- <hr> -->
+                            <table class="table table-responsive table-bordered text-center">
+                                <tbody>
+                                    <tr class="table-success">
+                                        <th>ARG</th>
+                                        <th>Confidence Score</th>
+                                        <th>Expertise Score</th>
+                                    </tr>
+                                    <tr *ngFor="let itemx of argGroupChart.data">
+                                        <td>{{itemx.name}}</td>
+                                        <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
+                                        <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <hr> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="box box-solid box-primary">
+                    <div class="box-body">
+                        <div class="col-md-8 box-vis text-center" *ngIf="argMechanismChart.ready">
+                            <ngx-charts-advanced-pie-chart [scheme]="argMechanismChart.colorScheme" [results]="argMechanismChart.data" [gradient]="argMechanismChart.gradient" (select)="onSelect($event)">
+                            </ngx-charts-advanced-pie-chart>
+                        </div>
+
+                        <div class="col-md-4">
+                            <strong><h4><span class="badge bg-success"> ARG Mechanism </span></h4></strong>
+                            <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                            <!-- <hr> -->
+                            <table class="table table-responsive table-bordered text-center">
+                                <tbody>
+                                    <tr class="table-success">
+                                        <th>ARG Mechanism</th>
+                                        <th>Confidence Score</th>
+                                        <th>Expertise Score</th>
+                                    </tr>
+                                    <tr *ngFor="let itemx of argMechanismChart.data">
+                                        <td>{{itemx.name}}</td>
+                                        <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
+                                        <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <hr> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="col-sm-3">
+    <div class="box box-solid">
+        <div class="box-header">
+
+        </div>
+        <div class="box-body">
+
+        </div>
+    </div>
+</div>

@@ -59,6 +59,11 @@ def random():
     random = ARG.random()
     return jsonify(random)
 
+@app.route('/get/subtype/random/', methods = ['GET','POST'])
+def subtypeRandom():
+    random = ARG.random2()
+    return jsonify(random)
+
 @app.route('/get/search/', methods = ['GET','POST'])
 def search():
     keyword = request.args.get('keyword')
@@ -85,6 +90,13 @@ def PostCuration():
     # data = {"info":1000}
     print(data)
     arg = ANTIBIOTIC.insertCuration(data)
+    return jsonify(arg)
+
+# ADMIN SECTION
+ 
+@app.route('/admin/inspect/arg/<index>', methods = ['GET','POST'])
+def inspectedARG(index):
+    arg = ARG.getInspectedARGs(index,1)
     return jsonify(arg)
 
 if __name__ == "__main__":

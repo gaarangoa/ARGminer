@@ -15,6 +15,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { PanelModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/primeng';
 import { StepsModule } from 'primeng/primeng';
+import { GrowlModule } from 'primeng/primeng';
 
 import { ClassifyComponent } from './classify.component';
 import { ClassifyRoutingModule } from './classify-routing.module';
@@ -60,7 +61,9 @@ import { GenericComponent } from './besthit/generic/generic.component';
     ConfirmDialogModule,
     DialogModule,
     ButtonModule,
-    TabViewModule,CodeHighlighterModule
+    TabViewModule,CodeHighlighterModule,
+
+    GrowlModule
     // GenomeModule
   ],
   schemas: [

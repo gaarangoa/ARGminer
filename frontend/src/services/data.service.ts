@@ -14,6 +14,7 @@ export class DataService {
   ATYPE: any;
   host: string; 
   baseUrl: string;
+  randomConflictingArgSubtype: Object;
   
   constructor ( private http:Http,
                 private location: Location
@@ -27,11 +28,19 @@ export class DataService {
     
     
     this.ARG = [];
+    this.randomConflictingArgSubtype = [];
     
   }
 
+  getRandomConflictingArgSubtype(){
+    return this.http.get(this.baseUrl+'/get/subtype/random/')
+      .map( res=> {
+        this.randomConflictingArgSubtype = res.json();
+      })
+  }
+
   getRandomKnownARG() {
-    console.log(this.baseUrl)
+    // console.log(this.baseUrl)
     return this.http.get(this.baseUrl+'/get/arg/random/')
       .map(res => {
         try {
@@ -79,5 +88,8 @@ export class DataService {
         return res.json()
       })
   }
+
+
+
 
 }
