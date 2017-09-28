@@ -68,7 +68,8 @@ export class AdminComponent implements OnInit {
   login(email: string, password: string){
     this.adminService.login({email: email, password: password})
       .subscribe( res => {
-        this.online = res;
+        // console.log(res);
+        this.online = res['token'];
       });
   }
 

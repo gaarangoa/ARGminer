@@ -1,13 +1,22 @@
 from rest.DataBaseInterface.DataBaseClass import DataBase
 
+import hashlib
+
 class Admin():
     def __init__(self):
         self.info = ""
-        self.database = "admin"
+        self.table = "admin"
+        self.database = DataBase()
+
     def login(self, data):
         try:
             tk = self.database.find(self.table, {"email":data['email']})[0]
+            data['password'] = hashlib.sha512(data['password'].encode('utf-8')).hexdigest()
+            
             if tk['password'] == data['password']:
-                return {"login":tk['token']}
-        except:
-            return {"login":False}
+                return {"token":tk['token']}
+            else:
+                return {"token": False}
+        except Exception as inst:
+            print(inst)
+            return {"token":False}

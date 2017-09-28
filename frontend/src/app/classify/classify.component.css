@@ -1,6 +1,8 @@
 .curate-nav {
     right: 5%;
     width: 21.5%;
+    overflow: scroll;
+    max-height: 80%;
 }
 
 .sequence {

@@ -33,15 +33,15 @@
 .ui-steps-item,
 .ui-steps-number,
 p-dialog {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 6px 0 rgba(0, 0, 0, 0.19) !important;
     border-color: rgba(255, 255, 255, 0) !important;
 }
 
 .box,
 .box-primary,
 .panel {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19) !important;
-    border-color: rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 md-input-container textarea {

@@ -56,7 +56,7 @@
 
                 <div class="col-md-12 text-center">
                     <button (click)="validate(1)" color="primary" md-raised-button>Next</button>
-                    <button (click)="reportARG()" class="" color="red" md-raised-button>Report ARG</button>
+                    <!-- <button (click)="reportARG()" class="" color="red" md-raised-button>Report ARG</button> -->
                 </div>
                 <!-- </div> -->
 
@@ -115,18 +115,20 @@
             <div *ngIf="step3">
 
                 <!-- <div class="col-md-12"> -->
-                <div class="col-md-12 text-center">
+                <div class="col-md-12">
                     <!-- <h4 class="text-center"><strong>ARG annotation</strong></h4> -->
                     <dl class="dl">
+                        <h4></h4>
+                        <strong>ARG Class:</strong>
+                        <span class=""> {{ antibiotic.class }} </span>
+                        <br>
 
-                        <dt>ARG Class:</dt>
-                        <dd><span class=""> {{ antibiotic.class }} </span></dd>
+                        <strong>ARG Group:</strong>
+                        <span class=""> {{ antibiotic.group }} </span>
+                        <br>
 
-                        <dt>ARG Group:</dt>
-                        <dd><span class=""> {{ antibiotic.group }} </span></dd>
-
-                        <dt *ngIf="!antibiotic.mechanism==''">ARG Mechanism:</dt>
-                        <dd *ngIf="!antibiotic.mechanism==''"><span class=""> {{ antibiotic.mechanism }} </span></dd>
+                        <strong *ngIf="!antibiotic.mechanism==''">ARG Mechanism:</strong>
+                        <span *ngIf="!antibiotic.mechanism==''">{{ antibiotic.mechanism }} </span>
 
                     </dl>
                     <hr>

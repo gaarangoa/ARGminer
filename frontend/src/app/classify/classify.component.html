@@ -50,6 +50,8 @@
                             <span class="">{{ randomARG.entry.database }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
+                            <br><br>
+                            <p class="small">*ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u></p>
                             <hr>
                             <strong>Inspected:</strong>
                             <span class="">{{ randomARG.inspected.length }}</span>
@@ -58,20 +60,21 @@
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
 
                         </dl>
-
                         <hr>
 
                         <h4>Filter options</h4>
 
-                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Conflicting ARGs</strong></md-slide-toggle>
+                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>I am a New User</strong></md-slide-toggle>
+                        <p class="small">Enable this option if is the first time you enter the platform. You will be prompted with a specific set of ARGs that have been manualy validated to score your performance. </p>
+                        <hr>
+
+                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Problematic ARGs</strong></md-slide-toggle>
                         <p class="small">This option only takes the ARGs that have two or more annotations. In many cases, these genes have conflicting annotations from the reference database and require special attention. By turning off this filter you will get a random
                             gene from the database.</p>
-
                         <hr>
 
-                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Train a New User</strong></md-slide-toggle>
-                        <p class="small">This option enables a specific set of ARGs that have been manualy validated to score your performance. </p>
-                        <hr>
+
+
                         <div *ngIf="loading==false && conflictedArgSubtypeFlag">
 
                             <h4> Conflicted ARGs </h4>
@@ -109,21 +112,21 @@
                 </div>
             </div>
 
-            <div class="col-md-12 box box-solid ">
+            <!-- <div class="col-md-12 box box-solid ">
 
                 <h4>Note about BitScores</h4>
                 <p class="small">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>
                 <p class="small">Bit-score does not depend on database size. The bit-score gives the same value for hits in databases of different sizes and hence can be used for searching in an constantly increasing database.</p>
                 <p class="small"> The higher the bitscore, the better the quality of the sequence alignment</p>
 
-            </div>
+            </div> -->
 
             <div class="col-md-12 box box-solid ">
-
-                <h4><strong>1: ARG identification</strong></h4>
+                <h3>Instructions</h3>
+                <h4>ARG identification</h4>
                 <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
 
-                <p>The Blast alignment sections associate the queried gene to its closest antibiotic resistance genes from curated databases. From this section you need to look at the alignment scores (Bitscore, evalue, identity and coverage). High identity
+                <p class="small">The Blast alignment sections associate the queried gene to its closest antibiotic resistance genes from curated databases. From this section you need to look at the alignment scores (Bitscore, evalue, identity and coverage). High identity
                     and coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than
                     50 is considered significant if it spans at least 90% coverage.
                 </p>
@@ -131,20 +134,21 @@
 
                 <hr>
 
-                <h4><strong>2: Mobile Genetic Elements</strong></h4>
+                <h4> Mobile Genetic Elements</h4>
 
                 <p><strong>Horizontal Gene Transfer</strong></p>
                 <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>
-                <p>To complete this task please check the Horizontal Gene Transfer sections. If there is not any box with plasmid, prophage or virus tags it means to date there is not evidence that the gene is transfered by any of those mechanisms.
+                <p class="small">To complete this task please check the Horizontal Gene Transfer sections. If there is not any box with plasmid, prophage or virus tags it means to date there is not evidence that the gene is transfered by any of those mechanisms.
                 </p>
                 <p><strong>Pathogen Genomes</strong></p>
-                <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association
-                    of the gene to pathogens as well as their antimicrobial phenotype (resistant, susceptible, intermediate). Rate your findigns according to the provided evidence.
+                <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>
+                <p class="small">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens as well as their antimicrobial phenotype (resistant, susceptible,
+                    intermediate). Rate your findigns according to the provided evidence.
 
                 </p>
 
                 <hr>
-                <h4><strong>3: Review and submit</strong></h4>
+                <h4>Review and submit</h4>
                 <p>This panel contains your observations for the queried gene.</p>
                 <p><strong>Verify your observations</strong></p>
                 <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>
@@ -223,7 +227,7 @@
                             <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
                         </div>
                         <div class="box-body">
-                            <p class="sequence"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
+                            <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
                         </div>
                     </div>
                 </div>
@@ -233,8 +237,10 @@
 
 
         <!-- <div class="col-sm-3"> -->
-        <div class="curate-nav affix">
+        <div class="curate-nav affix clarify">
+            <!-- <aside class="control-sidebar control-sidebar-open"> -->
             <app-curate></app-curate>
+            <!-- </aside> -->
         </div>
         <!-- </div> -->
     </div>
