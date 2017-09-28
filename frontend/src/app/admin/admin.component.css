@@ -9,3 +9,54 @@
     min-height: 50px !important;
     max-height: 80px !important;
 }
+
+.box-plot {
+    cursor: pointer;
+    float: right;
+    height: 30px;
+    margin-left: 20px;
+    width: 50%;
+    position: relative;
+    margin-right: 30px;
+}
+
+.box-plot-component {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #030303
+}
+
+.box-left {
+    left: 0%;
+    width: 50%;
+    height: 20px;
+    border-width: 1px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-right-width: 0;
+    background: #fff;
+}
+
+.box-right {
+    left: 50%;
+    width: 50%;
+    height: 20px;
+    border-width: 1px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #fff;
+}
+
+.box-mean {
+    top: 3px;
+    height: 14px;
+    width: 15px;
+    left: 50%;
+    border: 1px solid #248;
+    background: #abd;
+    border-radius: 3px;
+}

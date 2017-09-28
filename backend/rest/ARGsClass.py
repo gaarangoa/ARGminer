@@ -7,6 +7,7 @@ from rest.GenomesInterface import PatricClass as PATRIC
 from rest.MetadataInterface import aclameClass as ACLAME
 from rest.SearchInterface import SearchClass as Search
 from rest.MetadataInterface import masterClass as Master
+from rest.MetadataInterface import conflictedARGsClass as ConflictedARGs
 
 card = CARD.CARD()
 deepARG = DEEPARG.DEEPARG()
@@ -16,7 +17,8 @@ patric = PATRIC.PATRIC()
 alignments = ALGN.alignments()
 aclame = ACLAME.ACLAME()
 search = Search.Search()
-master = Master.MASTER();
+master = Master.MASTER()
+conflictedARGs = ConflictedARGs.ConflictedARGs()
 
 class GENE():
     def __init__(self):
@@ -113,3 +115,9 @@ class GENE():
 
     def getInspectedARGs(self, index, limit):
         return master.getInspectedARGs(index, limit)
+
+    def updateARG(self, data):
+        return master.updateARG(data)
+
+    def updateConflictedARG(self):
+        return conflictedARGs.runBackground()

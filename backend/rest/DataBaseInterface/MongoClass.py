@@ -33,6 +33,11 @@ class Mongo():
         );
         return status
 
+    def delete(self, table, query):
+        status = self.db[table].remove(
+            query
+        )
+    
     def getByGeneId(self, table, gene_id):
         models = [i for i in self.db[table].find({"gene_id":gene_id})]
         # print model

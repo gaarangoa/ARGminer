@@ -28,13 +28,32 @@ export class AdminService {
 
   // ADMIN SECTION
 
-  getCuratedARGs(){
-    return this.http.get(this.baseUrl+"/admin/inspect/arg/0")
+  getCuratedARGs(ixg: any){
+    return this.http.get(this.baseUrl+"/admin/inspect/arg/"+ixg)
       .map( res => {
-        return res.json()
-      })
+        return res.json();
+      });
   }
 
+  updateGene(fields: object){
+    return this.http.post(this.baseUrl+"/admin/update/arg/", fields)
+      .map( res=>{
+        return res.json();
+      });
+  }
 
+  updateConfilctingARGs(){
+    return this.http.get(this.baseUrl+"/admin/update/conflict/arg/")
+      .map( res => {
+        return res.json();
+      });
+  }
+
+  login(cred: any){
+    return this.http.post(this.baseUrl+"/admin/login/", cred)
+      .map( res => {
+          return res.json();
+      });
+  }
 
 }

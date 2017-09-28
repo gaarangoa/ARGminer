@@ -9,13 +9,16 @@ sys.path.insert(0, '')
 
 from rest.ARGsClass import GENE
 from rest.AntibioticClass import Antibiotic
-
+from rest.AdminClass import Admin
 # Antibiotic resistance init
 ARG = GENE()
 ANTIBIOTIC = Antibiotic()
+ADMIN = Admin()
 
 app = Flask(__name__)
 CORS(app)
+
+
 
 @app.route('/')
 def index():
@@ -88,7 +91,7 @@ def getargi(gene_id):
 def PostCuration():
     data = request.get_json()
     # data = {"info":1000}
-    print(data)
+    # print(data)
     arg = ANTIBIOTIC.insertCuration(data)
     return jsonify(arg)
 
@@ -96,7 +99,27 @@ def PostCuration():
  
 @app.route('/admin/inspect/arg/<index>', methods = ['GET','POST'])
 def inspectedARG(index):
-    arg = ARG.getInspectedARGs(index,1)
+    arg = ARG.getInspectedARGs(index,int(index)+1)
+    return jsonify(arg)
+
+@app.route('/admin/update/arg/', methods = ['GET','POST'])
+def updateARGAdmin():
+    data = request.get_json()
+    # print(data)
+    arg = ARG.updateARG(data)
+    return jsonify(arg)
+
+@app.route('/admin/update/conflict/arg/', methods = ['GET','POST'])
+def updateConflictingARGAdmin():
+    # data = request.get_json()
+    # print(data)
+    arg = ARG.updateConflictedARG()
+    return jsonify(arg)
+
+@app.route('/admin/login/', methods = ['GET','POST'])
+def loginAdmin():
+    data = request.get_json()
+    arg = ADMIN.login(data)
     return jsonify(arg)
 
 if __name__ == "__main__":

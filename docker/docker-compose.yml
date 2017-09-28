@@ -40,7 +40,7 @@ services:
     environment:
       - DB_HOST=mongo-server-arg-miner
     build:
-      context: ../backend/
+      context: ../backend/rest/
       dockerfile: Dockerfile
     volumes:
       - ../backend/rest/:/rest/

@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { ReactiveFormsModule }    from '@angular/forms';
+import { MdInputModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,7 +53,9 @@ import { AdminComponent } from './admin/admin.component';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MaterialModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ReactiveFormsModule,
+    MdInputModule
     // NgCytoscapeModule
   ],
   providers: [

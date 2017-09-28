@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
+import { MdInputModule } from '@angular/material';
 
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -46,6 +47,7 @@ import { GenericComponent } from './besthit/generic/generic.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MdInputModule,
     BrowserModule,
 
     ClassifyRoutingModule,

@@ -38,7 +38,7 @@ export class CurateComponent implements OnInit {
 
   options_type = [];
   group_options = ["Bla1", "MacB", "BacA"];
-  mge_options = ["Plasmid","Virus","Prophage", "None"];
+  mge_options = ["Plasmid","Virus","Prophage"];
 
   items: MenuItem[];
 

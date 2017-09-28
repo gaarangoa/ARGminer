@@ -24,4 +24,25 @@ class MASTER():
         return gene
 
     def getInspectedARGs(self, index, limit):
-        return self.database.find(self.table, {"inspected": { "$gt": [] }}, projection={"inspected": 1, "entry": 1})[int(index):limit]
+        return self.database.find(self.table, {"$and": [{"inspected": {"$gt": []}}, {"entry.inspected":0 }] }, projection={"inspected": 1, "entry": 1})[int(index):limit]
+
+    def updateARG(self, data):
+        # update master table with the new data from the manual inspection
+        update = self.database.update(
+            self.table,
+            {"entry.gene_id": data['gene_id']}, 
+            {
+                "$set": {
+                    "entry.type": data['type'],
+                    "entry.subtype": data['subtype'],
+                    "entry.mechanism": data['mechanism'],
+                    "entry.score": float(data["score"]),
+                    "entry.inspected": True,
+                    "entry.mgeScore": float(data['MGEScore']),
+                    "entry.pathogenScore": float(data['pathogen_score'])
+                }
+            },
+            True
+        )
+        
+        return update
