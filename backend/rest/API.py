@@ -116,6 +116,12 @@ def updateConflictingARGAdmin():
     arg = ARG.updateConflictedARG()
     return jsonify(arg)
 
+@app.route('/admin/upgrade/database/', methods = ['GET','POST'])
+def adminUpgradeDatabase():
+    data = request.get_json()
+    arg = ADMIN.upgradeDatabase(data)
+    return jsonify(arg)
+
 @app.route('/admin/login/', methods = ['GET','POST'])
 def loginAdmin():
     data = request.get_json()

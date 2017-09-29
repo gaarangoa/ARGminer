@@ -28,6 +28,8 @@ export class AdminComponent implements OnInit {
   private online: boolean;
   private emailFormControl: any;
   private passwordFormControl: any;
+  private databaseVersion: string;
+  private databaseComments: string;
 
 
   constructor(
@@ -45,6 +47,8 @@ export class AdminComponent implements OnInit {
     );
 
     this.online = false;
+    this.databaseVersion = '';
+    this.databaseComments = '';
     this.ARGindex=0;
     this.getARG(this.ARGindex);
     
@@ -70,6 +74,15 @@ export class AdminComponent implements OnInit {
       .subscribe( res => {
         // console.log(res);
         this.online = res['token'];
+      });
+  }
+
+  upgradeDataBase(version: string, comments:string){
+    this.adminService.upgradeDatabase({version:version, comments: comments})
+      .subscribe( res => {
+        // console.log(res,'123456')
+        this.databaseVersion = null;
+        this.databaseComments = null;
       });
   }
 

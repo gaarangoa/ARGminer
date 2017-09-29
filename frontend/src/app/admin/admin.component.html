@@ -13,15 +13,25 @@
                 <p class="small">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads
                     tab.
                 </p>
-                <div class="text-center"> <button (click)="trainingARGNextGene()" class="badge bg-black" color="default" md-raised-button>Update ARG-miner database</button></div>
-                <hr>
 
-                <!-- <h4>Upgrade ARG-miner database</h4>
-            <p class="small">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated.</p>
-            <div class="text-center"> <button (click)="trainingARGNextGene()" class="badge" color="default" md-raised-button>Upgrade ARG-miner</button></div> -->
 
-                <!-- <hr> -->
+                <!-- UPGRADE DATABASE FORM -->
+                <md-input-container class="col-md-12">
+                    <input mdInput placeholder="Database version" [value]="databaseVersion" #dversion>
+                </md-input-container>
 
+                <md-input-container class="col-md-12">
+                    <input type="text" mdInput #dmessage maxlength="256" placeholder="Comments" [value]="databaseComments">
+                    <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint>
+                    <md-hint align="end">{{dmessage.value.length}} / 256</md-hint>
+                </md-input-container>
+
+            </div>
+            <div class="box-footer">
+                <br>
+                <div class="col-md-12 text-center"> <button (click)="upgradeDataBase(dversion.value, dmessage.value)" class="bg-black" color="default" md-raised-button>Upgrade ARG-miner database</button><br><br></div>
+
+                <p class="small">*The upgrading is run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>
             </div>
         </div>
     </div>

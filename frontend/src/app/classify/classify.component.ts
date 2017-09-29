@@ -53,7 +53,8 @@ export class ClassifyComponent implements OnInit {
       "YP_001346278",
       "A0A0U9H4P4",
       "Q1RPS3",
-      "J2LT98"
+      "J2LT98",
+      "P52067"
     ]
     
     this.dataService.getRandomKnownARG()

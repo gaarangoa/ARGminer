@@ -1,4 +1,5 @@
 from rest.DataBaseInterface.DataBaseClass import DataBase
+from rest.MetadataInterface.upgradeARGDatabaseClass import UpgradeDatabase
 
 import hashlib
 
@@ -7,6 +8,7 @@ class Admin():
         self.info = ""
         self.table = "admin"
         self.database = DataBase()
+        self.upgradeDB = UpgradeDatabase()
 
     def login(self, data):
         try:
@@ -20,3 +22,6 @@ class Admin():
         except Exception as inst:
             print(inst)
             return {"token":False}
+    
+    def upgradeDatabase(self,data):
+        return self.upgradeDB.upgrade(data)

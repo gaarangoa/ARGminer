@@ -56,4 +56,11 @@ export class AdminService {
       });
   }
 
+  upgradeDatabase(cred: any){
+    return this.http.post(this.baseUrl+"/admin/upgrade/database/", cred)
+      .map( res => {
+          return res.json();
+      });
+  }
+
 }

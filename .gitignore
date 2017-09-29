@@ -2,3 +2,5 @@ backend/preprocess/
 *.pyc
 front_end/node_modules
 database/mongo
+preprocess/
+database/release/*
