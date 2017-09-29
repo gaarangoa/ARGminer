@@ -114,7 +114,7 @@ module.exports = function(key){
 /***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(17)
+var global = __webpack_require__(18)
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
@@ -388,22 +388,12 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(14)
-  , document = __webpack_require__(17).document
+  , document = __webpack_require__(18).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
 
@@ -526,6 +516,16 @@ var ceil  = Math.ceil
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
 
@@ -669,7 +669,7 @@ module.exports = {
 
 var store      = __webpack_require__(107)('wks')
   , uid        = __webpack_require__(78)
-  , Symbol     = __webpack_require__(17).Symbol
+  , Symbol     = __webpack_require__(18).Symbol
   , USE_SYMBOL = typeof Symbol == 'function';
 
 var $exports = module.exports = function(name){
@@ -958,7 +958,7 @@ module.exports = {
 /***/ 317:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(17).document && document.documentElement;
+module.exports = __webpack_require__(18).document && document.documentElement;
 
 /***/ }),
 
@@ -1275,7 +1275,7 @@ exports.f = __webpack_require__(38) ? Object.defineProperty : function definePro
 var gOPN     = __webpack_require__(329)
   , gOPS     = __webpack_require__(172)
   , anObject = __webpack_require__(3)
-  , Reflect  = __webpack_require__(17).Reflect;
+  , Reflect  = __webpack_require__(18).Reflect;
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
   var keys       = gOPN.f(anObject(it))
     , getSymbols = gOPS.f;
@@ -1289,7 +1289,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
 
 "use strict";
 
-var global      = __webpack_require__(17)
+var global      = __webpack_require__(18)
   , dP          = __webpack_require__(33)
   , DESCRIPTORS = __webpack_require__(38)
   , SPECIES     = __webpack_require__(28)('species');
@@ -1362,7 +1362,7 @@ module.exports = __webpack_require__(98)('Map', function(get){
 var $export   = __webpack_require__(9)
   , aFunction = __webpack_require__(53)
   , anObject  = __webpack_require__(3)
-  , rApply    = (__webpack_require__(17).Reflect || {}).apply
+  , rApply    = (__webpack_require__(18).Reflect || {}).apply
   , fApply    = Function.apply;
 // MS Edge argumentsList argument is optional
 $export($export.S + $export.F * !__webpack_require__(32)(function(){
@@ -1388,7 +1388,7 @@ var $export    = __webpack_require__(9)
   , isObject   = __webpack_require__(14)
   , fails      = __webpack_require__(32)
   , bind       = __webpack_require__(314)
-  , rConstruct = (__webpack_require__(17).Reflect || {}).construct;
+  , rConstruct = (__webpack_require__(18).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
@@ -2038,7 +2038,7 @@ exports.f = __webpack_require__(38) ? gOPD : function getOwnPropertyDescriptor(O
 /***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(17)
+var global    = __webpack_require__(18)
   , hide      = __webpack_require__(75)
   , has       = __webpack_require__(21)
   , SRC       = __webpack_require__(78)('src')
@@ -4600,7 +4600,7 @@ module.exports = __webpack_require__(268);
 /***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(17)
+var global    = __webpack_require__(18)
   , core      = __webpack_require__(54)
   , hide      = __webpack_require__(75)
   , redefine  = __webpack_require__(57)
@@ -4673,7 +4673,7 @@ module.exports = function(it){
 
 "use strict";
 
-var global            = __webpack_require__(17)
+var global            = __webpack_require__(18)
   , $export           = __webpack_require__(9)
   , redefine          = __webpack_require__(57)
   , redefineAll       = __webpack_require__(104)

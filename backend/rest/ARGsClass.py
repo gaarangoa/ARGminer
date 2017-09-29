@@ -8,6 +8,7 @@ from rest.MetadataInterface import aclameClass as ACLAME
 from rest.SearchInterface import SearchClass as Search
 from rest.MetadataInterface import masterClass as Master
 from rest.MetadataInterface import conflictedARGsClass as ConflictedARGs
+from rest.MetadataInterface import ArgDatabaseClass
 
 card = CARD.CARD()
 deepARG = DEEPARG.DEEPARG()
@@ -19,6 +20,7 @@ aclame = ACLAME.ACLAME()
 search = Search.Search()
 master = Master.MASTER()
 conflictedARGs = ConflictedARGs.ConflictedARGs()
+argDatabase = ArgDatabaseClass.ArgDataBase()
 
 class GENE():
     def __init__(self):
@@ -121,3 +123,6 @@ class GENE():
 
     def updateConflictedARG(self):
         return conflictedARGs.runBackground()
+
+    def databaseList(self):
+        return argDatabase.list()

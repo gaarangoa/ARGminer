@@ -128,5 +128,13 @@ def loginAdmin():
     arg = ADMIN.login(data)
     return jsonify(arg)
 
+
+# DOWNLOAD SECTION
+@app.route('/get/database/list', methods = ['GET','POST'])
+def getDatabaseList():
+    arg =  ARG.databaseList()
+    return jsonify(arg)
+
+
 if __name__ == "__main__":
     app.run(debug = True, host = '0.0.0.0')

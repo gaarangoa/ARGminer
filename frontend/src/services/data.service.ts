@@ -89,6 +89,12 @@ export class DataService {
       })
   }
 
+getDatabaseList(){
+  return this.http.get(this.baseUrl+'/get/database/list')
+    .map( res => {
+      return res.json();
+    })
+}
 
 
 
