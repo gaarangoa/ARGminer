@@ -161,9 +161,10 @@ export class CurateComponent implements OnInit {
       
       if(this.antibiotic['class']=="" || this.antibiotic['group']=="" ){
         
-        this.overlay['title']="Emtpy group and/or class not allowed"
-        this.overlay['content']="Please make sure to insert the antibiotic class and group in the form (mechanism is optional)"
-        this.showDialog()
+        // this.overlay['title']="Emtpy group and/or class not allowed"
+        // this.overlay['content']="Please make sure to insert the antibiotic class and group in the form (mechanism is optional)"
+        // this.showDialog()
+        alert('Error: Empty fields are not allowed!')
 
       }else{
         this.activeIndex = 1;

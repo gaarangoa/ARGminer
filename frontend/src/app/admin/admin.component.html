@@ -31,7 +31,7 @@
                 <br>
                 <div class="col-md-12 text-center"> <button (click)="upgradeDataBase(dversion.value, dmessage.value)" class="bg-black" color="default" md-raised-button>Upgrade ARG-miner database</button><br><br></div>
 
-                <p class="small">*The upgrading is run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>
+                <p class="small">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>
             </div>
         </div>
     </div>
@@ -213,12 +213,12 @@
     <div class="col-sm-3">
         <div class="box box-solid">
             <div class="box-header with-border text-center">
-                <h4>Recompute conflicting genes</h4>
+                <h4>Recompute Problematic Annotations</h4>
             </div>
             <div class="box-body">
 
                 <p class="small">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>
-                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute Conflicting ARGs</button></div>
+                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute Problematic ARGs</button></div>
                 <hr>
             </div>
         </div>

@@ -10,6 +10,7 @@ import { AdminComponent } from './admin/admin.component';
 
 export const router: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'classify/', component: ClassifyComponent },
     { path: 'classify', component: ClassifyComponent },
     { path: 'home', component: HomeComponent },
     { path: 'database', component: DatabaseComponent },
