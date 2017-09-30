@@ -86,7 +86,8 @@ export class CurateComponent implements OnInit {
       MGE:{},
       comments:"",
       rating:{},
-      gene_id: ""
+      gene_id: "",
+      token: "------------"
     }
 
     // Get the list of antibiotic types in the database
@@ -198,7 +199,7 @@ export class CurateComponent implements OnInit {
 
     // show the overlay with the score
     // this.showDialog()
-
+    this.antibiotic['token'] = Date.now();
     this.dataService.insertCuration(this.antibiotic)
       .subscribe(
         response =>{
@@ -206,6 +207,7 @@ export class CurateComponent implements OnInit {
           // restart the form values to empty.
           this.inspectedGenes.push(this.classifyComponent.randomARG['entry']['gene_id']);
           this.continueReview();
+          // alert("token: "+this.antibiotic['token']);
         }
       )
       

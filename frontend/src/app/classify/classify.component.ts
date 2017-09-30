@@ -247,17 +247,17 @@ export class ClassifyComponent implements OnInit {
           },
           {
             element: '#step7',
-            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> <p>In the example, the closest gene from CARD has an identity of 70% wich over a 98% coverage which makes the alignment statistically significant (evalue=2.9e-161). This score guarantee a correct classification at the antibiotic resitance class level (Beta-Lactamase) </p></div>",
+            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> <p>In the example, the closest gene from CARD has an identity of 70% wich over a 98% coverage which makes the alignment statistically significant (evalue=2.9e-161). This score guarantee a correct classification at the <strong>antibiotic resitance class</strong> level (Beta-Lactamase) </p></div>",
             position: 'right'
           },
           {
             element: '#step8',
-            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage). Therefore, it is clear that the gene is a Beta-Lactamase and its very likely that the gene is a <strong>BL1-EC</strong>. The Antimicrobial Resistance (AMR) profile from the ARDB database suggests its mechanism is a Beta-lactamse class C. </p></div>",
+            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage). Therefore, it is clear that the gene is a Beta-Lactamase and its very likely that the <strong>Antibiotic Resistance Gene</strong> is a <strong>BL1-EC</strong>. The Antimicrobial Resistance (AMR) profile from the ARDB database suggests its <strong>Antibiotic Resistance Mechanism</strong> as a Beta-lactamse class C. </p></div>",
             position: 'right'
           },
           {
             element: '#step9',
-            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. From the previous results, we know the gene is a beta-lactamase and corresponds to the gene BL1-EC. The MegaRes database give us also hints about the mechanism: Class C beta-lactamase, which is the same as shown by the ARDB database.</p></div>",
+            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. From the previous results, we know the gene is a beta-lactamase and corresponds to the gene BL1-EC. The MegaRes database give us also hints about the <strong>Antibiotic Resistance Mechanism</strong>: Class C beta-lactamase, which is the same as shown by the ARDB database.</p></div>",
             position: 'left'
           },
           {
@@ -267,7 +267,7 @@ export class ClassifyComponent implements OnInit {
           },
           {
             element: '#step11',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p></div>", 
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The bottom panel will prompt the token number you need to insert into the Amazon Mturk form.</p></div>", 
             position: 'left'
           },
           {
