@@ -34,6 +34,7 @@ import { AdminService } from '../services/admin.service';
 import 'hammerjs';
 import { AdminComponent } from './admin/admin.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { AdminComponent } from './admin/admin.component';
     MaterialModule,
     NgxChartsModule,
     ReactiveFormsModule,
-    MdInputModule
+    MdInputModule,
+    
     // NgCytoscapeModule
   ],
   providers: [

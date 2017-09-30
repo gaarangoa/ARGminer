@@ -5,10 +5,17 @@ import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
 import {Message} from 'primeng/components/common/api';
+// import { HintService } from 'angular-custom-tour'
+
+import introJs  from "intro.js/intro.js";
+// const IntroJs = require("intro.js/intro.js");
 
 @Component({
   templateUrl: './classify.component.html',
-  styleUrls: ['./classify.component.css']
+  styleUrls: ['./classify.component.css'],
+  providers: [
+    // HintService
+  ]
 })
 
 
@@ -33,6 +40,7 @@ export class ClassifyComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
+    // public hintService: HintService
 
   ){
     
@@ -57,7 +65,7 @@ export class ClassifyComponent implements OnInit {
       "P52067"
     ]
     
-    this.dataService.getRandomKnownARG()
+    this.dataService.getKnownARGInfo('A0A127SI91')
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG;
         this.render=true;
@@ -67,6 +75,7 @@ export class ClassifyComponent implements OnInit {
 
 
   ngOnInit() {
+    
   }
 
   selectConflictedArgEvent($event){
@@ -198,6 +207,76 @@ export class ClassifyComponent implements OnInit {
     if($event.index == 2){
       this.drawGenomes = true;
     }
+  }
+
+  startTour(){
+    // this.intro.start();
+    // this.hintService.initialize({defaultPosition: 'bottom'});
+
+    introJs.introJs().setOptions({
+      steps: [
+          {
+            element: '#step1',
+            intro: "<div class='text-center'><p class='small'>This panel contains the current annotation of the antibiotic resistance gene. This is the data you will have to validate or modify.</p> <p class='small'>*ARG stands for Antibiotic Resistance Gene.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step2',
+            intro: "<div class='text-center'><p class='small'>This panel contains the current crowdsourcing score and the number of times the gene has been validated (if available).</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step3',
+            intro: "<div class='text-center'><p class='small'>If you are a new user, it is recomended to do first a small training where you will have to annotate a set of genes. This data will score your performance.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step4',
+            intro: "<div class='text-center'><p class='small'>Some genes have been identified to be annotated to multiple categories. These genes have priority for the annotation process. These are the most relevant subset of genes that has to be resolved first.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step5',
+            intro: "<div class='text-center'><p class='small'>This search tool allow you to query for keywords and retrieve the associated genes.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step6',
+            intro: "<div class='text-center'><p class='small'>This panel contains the information from the UniProt database, including taxonomy, domains, functions and gene ontology annotation.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step7',
+            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> <p>In the example, the closest gene from CARD has an identity of 70% wich over a 98% coverage which makes the alignment statistically significant (evalue=2.9e-161). This score guarantee a correct classification at the antibiotic resitance class level (Beta-Lactamase) </p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step8',
+            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage). Therefore, it is clear that the gene is a Beta-Lactamase and its very likely that the gene is a <strong>BL1-EC</strong>. The Antimicrobial Resistance (AMR) profile from the ARDB database suggests its mechanism is a Beta-lactamse class C. </p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step9',
+            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. From the previous results, we know the gene is a beta-lactamase and corresponds to the gene BL1-EC. The MegaRes database give us also hints about the mechanism: Class C beta-lactamase, which is the same as shown by the ARDB database.</p></div>",
+            position: 'left'
+          },
+          {
+            element: '#step10',
+            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> <p>In the example, the queried gene has been found in 5 plasmids. The alignments show an identity of 66% with a standard deviation of 14, making the alignments statistical significative. We can conclude that there is enough evidence that the gene has been transferred by MGEs.</p> <p>On the other hand, the evidence also suggest that this gene is found in complete genomes, where 86% of the genomes are from pathogen bacteria. This clearly suggest that the gene has evidence to be found in harmful pathogenic microbes. There is also information about the diseases related to those pathogens as well as the antimicrobial phenotype and hosts.</p></div>",
+            position: 'right'
+          },
+          {
+            element: '#step11',
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p></div>", 
+            position: 'left'
+          },
+          {
+            element: '#step12',
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>Instructions for the microtasks completition.</p></div>", 
+            position: 'right'
+          },
+        ]
+    }).start();
   }
 
 }

@@ -15,3 +15,21 @@
     top: 20px !important;
     z-index: 9999 !important;
 }
+
+
+/*  */
+
+.intro-tour-hint-wrapper {
+    position: absolute !important;
+    background-color: rgba(255, 255, 255, .7) !important;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    width: 100% !important;
+}
+
+.box-step {
+    border: solid 1px rgba(0, 0, 0, 1) !important;
+    width: 100%;
+    height: 100%;
+}

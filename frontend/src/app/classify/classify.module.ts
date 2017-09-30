@@ -42,6 +42,10 @@ import {DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 
 import { GenericComponent } from './besthit/generic/generic.component';
 
 
+// tour walkthroug
+// import { HintModule } from 'angular-custom-tour';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +69,9 @@ import { GenericComponent } from './besthit/generic/generic.component';
     ButtonModule,
     TabViewModule,CodeHighlighterModule,
 
-    GrowlModule
+    GrowlModule,
+
+    // HintModule,
     // GenomeModule
   ],
   schemas: [

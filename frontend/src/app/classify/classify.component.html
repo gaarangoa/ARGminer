@@ -9,6 +9,7 @@
     </div>
 
 
+
     <div *ngIf="render">
         <!--Left panel-->
         <div class="col-sm-3 ">
@@ -26,22 +27,38 @@
                         <h3 class="box-title"><strong>Current Annotation </strong> </h3>
 
                     </div>
+
                     <!-- /.box-header -->
+
+                    <!-- <tour-step class="intro-tour-hint-wrapper" selector="step1" order="1" position="right">
+                        <div class="box box-step">
+                            <div class="box-header">
+                                <h3 class="box-title">
+                                    ARG you have to curate
+                                </h3>
+                            </div>
+                            <div class="box-body">
+                                This panel shows you the basic information about the antibiotic reistance gene you need to inspect. Note this information may contain errors. Therefore, by comparing this information with the known ARGs databases you will be able to correct or accept
+                                the current annotation.
+                            </div>
+                        </div>
+                    </tour-step> -->
+
                     <div class="box-body">
 
-                        <dl class="dl">
+                        <dl id="step1" class="dl">
                             <!-- <p> -->
                             <strong>Query gene id:</strong>
                             <span class="">{{ randomARG.entry.gene_id }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
-                            <strong>ARG Class:</strong>
+                            <strong>ARG Antibiotic Class:</strong>
                             <span class="">{{ randomARG.entry.type }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
-                            <strong>ARG:</strong>
+                            <strong>ARG Name:</strong>
                             <span class="">{{ randomARG.entry.subtype }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
@@ -50,27 +67,56 @@
                             <span class="">{{ randomARG.entry.database }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
-                            <br><br>
-                            <p class="small">*ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u></p>
-                            <hr>
-                            <strong>Inspected:</strong>
-                            <span class="">{{ randomARG.inspected.length }}</span>
+                            <br>
                             <!-- </p> -->
                             <!-- <dt>Score:</dt> -->
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
-
                         </dl>
+                        <p class="small">*ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u></p>
+
+                        <hr>
+                        <div id="step2">
+                            <strong data-intro="step1">Inspected:</strong>
+                            <span class="">{{ randomARG.inspected.length }}</span>
+                        </div>
+                        <hr>
+                        <h4>Tutorial</h4>
+                        <p class="small">Take a tutorial on how to use this site.</p>
+                        <button (click)="startTour()" class="xsmall bg-green" md-raised-button>Tutorial</button>
+
                         <hr>
 
                         <h4>Filter options</h4>
 
-                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>I am a New User</strong></md-slide-toggle>
-                        <p class="small">Enable this option if is the first time you enter the platform. You will be prompted with a specific set of ARGs that have been manualy validated to score your performance. </p>
-                        <hr>
+                        <!-- <tour-step class="intro-tour-hint-wrapper" selector="step2" order="2">
+                            <div class="col-md-12">
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">
+                                            <strong>I am a New user</strong>
+                                        </h3>
+                                    </div>
+                                    <div class="box-body">
+                                        If you are a new user, activate the new user button. You will have to complete 20 entries that will help you to get familiar with the system. I will also score your results based on the real annotation.
+                                    </div>
+                                    <div class="box-footer">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </tour-step> -->
 
-                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Problematic ARGs</strong></md-slide-toggle>
-                        <p class="small">This option only takes the ARGs that have two or more annotations. In many cases, these genes have conflicting annotations from the reference database and require special attention. By turning off this filter you will get a random
-                            gene from the database.</p>
+                        <div id="step3">
+                            <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>I am a New User</strong></md-slide-toggle>
+                            <p class="small">Enable this option if is the first time you enter the platform. You will be prompted with a specific set of ARGs that have been manualy validated to score your performance. </p>
+                        </div>
+                        <hr>
+                        <div id="step4">
+                            <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Problematic ARGs</strong></md-slide-toggle>
+                            <p class="small">This option only takes the ARGs that have two or more annotations. In many cases, these genes have conflicting annotations from the reference database and require special attention. By turning off this filter you will get a
+                                random gene from the database.</p>
+                        </div>
                         <hr>
 
 
@@ -121,7 +167,7 @@
 
             </div> -->
 
-            <div class="col-md-12 box box-solid ">
+            <div id="step12" class="col-md-12 box box-solid ">
                 <h3>Instructions</h3>
                 <h4>ARG identification</h4>
                 <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
@@ -166,7 +212,7 @@
 
         <div class="col-sm-6 col-sm-offset-0">
 
-            <div class="">
+            <div id="step5" class="">
                 <div class="box box-solid ">
                     <div class="box-body">
                         <md-input-container class='col-sm-12 col-sm-offset-0'>
@@ -191,7 +237,11 @@
                 <!-- <md-tab  label="METADATA"> -->
 
                 <!--METADATA SECTION-->
-                <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+                <div id="step6">
+                    <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+                </div>
+
+
                 <classify-metadata-card> </classify-metadata-card>
 
 
@@ -201,21 +251,28 @@
                 <hr>
                 <div *ngFor="let bh of randomARG.besthit.alignments">
                     <!-- <p> {{ bh.best_hit_database }} </p>  -->
-                    <besthit-metadata-ardb *ngIf="bh.best_hit_database=='ARDB'"> </besthit-metadata-ardb>
-                    <besthit-metadata-card *ngIf="bh.best_hit_database=='CARD'"> </besthit-metadata-card>
+
+                    <div id="step8" *ngIf="bh.best_hit_database=='ARDB'">
+                        <besthit-metadata-ardb> </besthit-metadata-ardb>
+                    </div>
+                    <div id="step7" *ngIf="bh.best_hit_database=='CARD'">
+                        <besthit-metadata-card> </besthit-metadata-card>
+                    </div>
                 </div>
                 <!-- </md-tab> -->
 
                 <!-- OTHER DATABASES  -->
-
-                <app-generic></app-generic>
-
+                <div id="step9">
+                    <app-generic></app-generic>
+                </div>
 
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
                 <!-- <div *ngIf="drawGenomes"> -->
-                <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
-                <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
-                <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+                <div id="step10">
+                    <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
+                    <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
+                    <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+                </div>
                 <!-- </div> -->
                 <!-- </md-tab> -->
 
@@ -237,7 +294,7 @@
 
 
         <!-- <div class="col-sm-3"> -->
-        <div class="curate-nav affix clarify">
+        <div id="step11" class="curate-nav affix clarify">
             <!-- <aside class="control-sidebar control-sidebar-open"> -->
             <app-curate></app-curate>
             <!-- </aside> -->
