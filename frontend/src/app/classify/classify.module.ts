@@ -40,6 +40,7 @@ import { CurateComponent } from './curate/curate.component';
 import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
 import {DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
 import { GenericComponent } from './besthit/generic/generic.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 
 // tour walkthroug
@@ -90,13 +91,18 @@ import { GenericComponent } from './besthit/generic/generic.component';
 
       CurateComponent,
 
-      GenericComponent
+      GenericComponent,
+
+      InstructionsComponent
   ],
   providers: [
     ConfirmationService
   ],
   bootstrap: [
     ClassifyComponent
+  ],
+  entryComponents: [
+    InstructionsComponent
   ]
 })
 export class ClassifyModule { }

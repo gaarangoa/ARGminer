@@ -167,16 +167,7 @@
 
     </div>
 
-    <div *ngIf="classifyComponent.trainingARGFlag==false">
-        <div class="box">
-            <div class="box-body">
-                <p class="small">Please copy and paste this token to the Mturk website once you submit your classification (<u>the token is a long number</u>).</p>
-                <strong>Token:</strong> <code>{{antibiotic.token}}</code>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div *ngIf="inspectedGenes.length>0" class="box box-solid">
+    <div *ngIf="inspectedGenes.length>0" class="box box-solid">
         <div class="box-header">
             <h3 class="box-title">Inspected genes: {{ inspectedGenes.length }}</h3>
         </div>
@@ -186,5 +177,14 @@
                 {{ item }}
             </span>
         </div>
-    </div> -->
+    </div>
+</div>
+
+<div *ngIf="inspectedGenes.length >= classifyComponent.trainingARGTotal+1">
+    <div class="box">
+        <div class="box-body">
+            <p class="small">Please copy and paste this token to the Mturk website.</p>
+            <strong>Token:</strong> <code>{{antibiotic.token}}</code>
+        </div>
+    </div>
 </div>

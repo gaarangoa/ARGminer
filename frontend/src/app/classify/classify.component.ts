@@ -10,12 +10,18 @@ import {Message} from 'primeng/components/common/api';
 import introJs  from "intro.js/intro.js";
 // const IntroJs = require("intro.js/intro.js");
 
+import { Inject } from '@angular/core';
+import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+
+// import instructions component for modal window
+import { InstructionsComponent } from './instructions/instructions.component'
+
 @Component({
   templateUrl: './classify.component.html',
   styleUrls: ['./classify.component.css'],
   providers: [
     // HintService
-  ]
+  ],
 })
 
 
@@ -34,12 +40,14 @@ export class ClassifyComponent implements OnInit {
   public trainingGenes: Array<string>;
   public trainingARGFlag: Boolean = false;
   public trainingARGCount: number = 0;
+  public trainingARGTotal: number = 5;
 
   public notification: Message[] = [];
 
   constructor(
     private dataService: DataService,
     private router: Router,
+    public dialog: MdDialog
     // public hintService: HintService
 
   ){
@@ -70,6 +78,7 @@ export class ClassifyComponent implements OnInit {
         this.randomARG = this.dataService.ARG;
         this.render=true;
     });
+
 
   }
 
@@ -103,13 +112,17 @@ export class ClassifyComponent implements OnInit {
   }
 
   trainingARGNextGene(){
-    if(this.trainingARGCount < this.trainingGenes.length){
-      this.search(this.trainingGenes[this.trainingARGCount]);
+    if(this.trainingARGCount < this.trainingARGTotal){
+      this.search( this.trainingGenes[Math.floor(Math.random() * this.trainingGenes.length)] );
       this.trainingARGCount+=1;
+      // console.log(this.trainingARGCount, this.trainingARGTotal)
     }else{
       this.notification = [];
-      this.notification.push({severity:'success', summary:'Message', detail:'End of Training'});
+      this.notification.push({severity:'success', summary:'End of Training', detail:'Training is done!'});
+      this.notification.push({severity:'info', summary:'Get Reward', detail:'Click on <strong>Priority ARGs</strong> to start'});
+      // this.notification.push({severity:'success', summary:'End of Training', detail:'You are ready to perform tasks with reward'});
       this.trainingARGFlag = false;
+      this.nextGeneConflictList()
     }
   }
 
@@ -220,24 +233,34 @@ export class ClassifyComponent implements OnInit {
             intro: "<div class='text-center'><p class='small'>This panel contains the current annotation of the antibiotic resistance gene. This is the data you will have to validate or modify.</p> <p class='small'>*ARG stands for Antibiotic Resistance Gene.</p></div>",
             position: 'right'
           },
-          {
-            element: '#step2',
-            intro: "<div class='text-center'><p class='small'>This panel contains the current crowdsourcing score and the number of times the gene has been validated (if available).</p></div>",
-            position: 'right'
-          },
+          // {
+          //   element: '#step2',
+          //   intro: "<div class='text-center'><p class='small'>This panel contains the current crowdsourcing score and the number of times the gene has been validated (if available).</p></div>",
+          //   position: 'right'
+          // },
           {
             element: '#step3',
-            intro: "<div class='text-center'><p class='small'>If you are a new user, it is recomended to do first a small training where you will have to annotate a set of genes. This data will score your performance.</p></div>",
+            intro: "<div class='text-center'><p class=''>If this is the first time you visit this page, you need to perform at least two annotations (training). Once you done, you will be able start a real task.</p> </div>",
             position: 'right'
           },
           {
             element: '#step4',
-            intro: "<div class='text-center'><p class='small'>Some genes have been identified to be annotated to multiple categories. These genes have priority for the annotation process. These are the most relevant subset of genes that has to be resolved first.</p></div>",
+            intro: "<div class='text-center'><p class=''> Select ARGs that are priority to curate in the system. Those ARGs contain conflicting annotations, e.g., the have two or more associated classes. </div>",
             position: 'right'
           },
+          // {
+          //   element: '#step5',
+          //   intro: "<div class='text-center'><p class='small'>This search tool allow you to query for keywords and retrieve the associated genes.</p></div>",
+          //   position: 'right'
+          // },
           {
-            element: '#step5',
-            intro: "<div class='text-center'><p class='small'>This search tool allow you to query for keywords and retrieve the associated genes.</p></div>",
+            element: '#step11',
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The bottom panel will prompt the token number you need to insert into the Amazon Mturk form.</p></div>", 
+            position: 'left'
+          },
+          {
+            element: '#step12',
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>Read the instructions for curating an ARG.</p></div>", 
             position: 'right'
           },
           {
@@ -262,21 +285,28 @@ export class ClassifyComponent implements OnInit {
           },
           {
             element: '#step10',
-            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> <p>In the example, the queried gene has been found in 5 plasmids. The alignments show an identity of 66% with a standard deviation of 14, making the alignments statistical significative. We can conclude that there is enough evidence that the gene has been transferred by MGEs.</p> <p>On the other hand, the evidence also suggest that this gene is found in complete genomes, where 86% of the genomes are from pathogen bacteria. This clearly suggest that the gene has evidence to be found in harmful pathogenic microbes. There is also information about the diseases related to those pathogens as well as the antimicrobial phenotype and hosts.</p></div>",
+            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> <p>In the example, the queried gene has been found in 5 plasmids. The alignments show an identity of 66% with a standard deviation of 14, making the alignments <strong>statistical significant</strong>. We can conclude that there is enough evidence that the gene has been transferred by MGEs.</p> <p>On the other hand, the evidence also suggest that this gene is found in complete genomes, where <strong> 86% of the genomes are from pathogen bacteria </strong>. This clearly suggest that the gene has evidence to be found in harmful pathogenic microbes. There is also information about the diseases related to those pathogens as well as the antimicrobial phenotype and hosts.</p></div>",
             position: 'right'
           },
-          {
-            element: '#step11',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The bottom panel will prompt the token number you need to insert into the Amazon Mturk form.</p></div>", 
-            position: 'left'
-          },
-          {
-            element: '#step12',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>Instructions for the microtasks completition.</p></div>", 
-            position: 'right'
-          },
+          
         ]
-    }).start();
+    }).start()
+    .oncomplete(
+        // this.nextGene()
+    );
+  }
+
+  openInstructions(): void {
+    let dialogRef = this.dialog.open(InstructionsComponent, {
+      width: '80%',
+      data: { train: 'three', animal: 'faa' }
+    }); 
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+      // this.animal = result;
+    });
+
   }
 
 }

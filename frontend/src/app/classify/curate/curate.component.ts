@@ -15,6 +15,8 @@ import { ClassifyComponent } from '../classify.component'
 
 import {ConfirmationService} from 'primeng/primeng';
 
+import { Message } from 'primeng/components/common/api';
+
 @Component({
   selector: 'app-curate',
   templateUrl: './curate.component.html',
@@ -28,22 +30,24 @@ export class CurateComponent implements OnInit {
   private step2: boolean;
   private step3: boolean;
   private step4: boolean;
-  display: boolean = false;
-  overlay: Object;
+  public display: boolean = false;
+  public overlay: Object;
   private inspectedGenes: Array<String>;
 
   private activeIndex: number = 0;
 
   onRatingChangeResult:IStarRatingOnRatingChangeEven;
 
-  options_type = [];
-  group_options = [];
-  mge_options = ["Plasmid","Virus","Prophage"];
+  public options_type = [];
+  public group_options = [];
+  public mge_options = ["Plasmid","Virus","Prophage"];
 
-  items: MenuItem[];
+  public items: MenuItem[];
 
   private randomARG: Object;
   private antibiotic: Object;
+
+  public notification: Message[] = [];
 
   myControl = new FormControl();
   groupControl = new FormControl();
@@ -80,8 +84,8 @@ export class CurateComponent implements OnInit {
     // Get ARG data
     this.randomARG = this.dataService.ARG;
     this.antibiotic = {
-      class:"",
-      group:"",
+      class:null,
+      group:null,
       mechanism:"",
       MGE:{},
       comments:"",
@@ -160,7 +164,7 @@ export class CurateComponent implements OnInit {
 
     if(value == 1){
       
-      if(this.antibiotic['class']=="" || this.antibiotic['group']=="" ){
+      if(this.antibiotic['class']==null || this.antibiotic['group']==null){
         
         // this.overlay['title']="Emtpy group and/or class not allowed"
         // this.overlay['content']="Please make sure to insert the antibiotic class and group in the form (mechanism is optional)"
@@ -191,11 +195,6 @@ export class CurateComponent implements OnInit {
 
   submitReview(){
     // console.log(this.antibiotic)
-
-    this.overlay['title']="Your results"
-    this.overlay['content']="Your manual inspection has been registered in the system and its ready for validation."
-    this.overlay['score'] = 10;
-    this.overlay['average_score'] = 15;
 
     // show the overlay with the score
     // this.showDialog()
@@ -232,25 +231,14 @@ continueReview(){
   this.antibiotic['group'] = null;
   this.antibiotic['mechanism'] = null;
 
-  this.classifyComponent.nextGeneConflictList();
-  // this.classifyComponent.render=false;
-  // this.dataService.getRandomKnownARG()
-  //   .subscribe(response =>{
-  //     this.classifyComponent.randomARG = this.dataService.ARG
-  //     // console.log(this.randomARG)
-  //     this.classifyComponent.loading = false;
-
-      // this.antibiotic = {
-      //   class:"",
-      //   group:"",
-      //   mechanism:"",
-      //   MGE:{},
-      //   comments:"",
-      //   rating:{},
-      //   gene_id: ""
-      // }
-      
-  // });
+  if(this.classifyComponent.conflictedArgSubtypeFlag){
+    this.classifyComponent.nextGeneConflictList();
+  }else if(this.classifyComponent.trainingARGFlag){
+    this.classifyComponent.trainingARGNextGene()
+  }else{
+   this.classifyComponent.nextGene(); 
+  }
+  
   
   this.display = false;
 

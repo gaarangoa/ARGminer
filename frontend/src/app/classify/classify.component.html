@@ -68,25 +68,28 @@
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
+                            <strong data-intro="step1">Inspected:</strong>
+                            <span class="">{{ randomARG.inspected.length }}</span>
+                            <br>
                             <!-- </p> -->
                             <!-- <dt>Score:</dt> -->
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                         </dl>
+
                         <p class="small">*ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u></p>
 
+
                         <hr>
-                        <div id="step2">
-                            <strong data-intro="step1">Inspected:</strong>
-                            <span class="">{{ randomARG.inspected.length }}</span>
+                        <!-- <h4>Tutorial</h4> -->
+
+                        <div class="text-center">
+                            <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <u>Tour </u></strong> </span></a>
+                            <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a>
                         </div>
-                        <hr>
-                        <h4>Tutorial</h4>
-                        <p class="small">Take a tutorial on how to use this site.</p>
-                        <button (click)="startTour()" class="xsmall bg-green" md-raised-button>Tutorial</button>
+                        <br>
+                        <!-- <hr> -->
 
-                        <hr>
-
-                        <h4>Filter options</h4>
+                        <!-- <h4>Filter options</h4> -->
 
                         <!-- <tour-step class="intro-tour-hint-wrapper" selector="step2" order="2">
                             <div class="col-md-12">
@@ -108,14 +111,13 @@
                         </tour-step> -->
 
                         <div id="step3">
-                            <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>I am a New User</strong></md-slide-toggle>
-                            <p class="small">Enable this option if is the first time you enter the platform. You will be prompted with a specific set of ARGs that have been manualy validated to score your performance. </p>
+                            <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>New User</strong></md-slide-toggle>
+                            <p class="small">Enable this option if this is the first time you enter the website.</p>
                         </div>
-                        <hr>
+                        <!-- <hr> -->
                         <div id="step4">
-                            <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Select Problematic ARGs</strong></md-slide-toggle>
-                            <p class="small">This option only takes the ARGs that have two or more annotations. In many cases, these genes have conflicting annotations from the reference database and require special attention. By turning off this filter you will get a
-                                random gene from the database.</p>
+                            <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority ARGs</strong></md-slide-toggle>
+                            <p class="small">This option selects ARGs with high priority of curation.</p>
                         </div>
                         <hr>
 
