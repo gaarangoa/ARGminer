@@ -1067,7 +1067,7 @@ var CurateComponent = (function () {
         this.display = false;
         this.activeIndex = 0;
         this.options_type = [];
-        this.group_options = ["Bla1", "MacB", "BacA"];
+        this.group_options = [];
         this.mge_options = ["Plasmid", "Virus", "Prophage"];
         this.myControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
         this.groupControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
@@ -1206,6 +1206,9 @@ var CurateComponent = (function () {
         this.classifyComponent.randomARG['entry']['inspected'] = '-----';
         this.classifyComponent.randomARG['entry']['score'] = '----';
         this.classifyComponent.loading = true;
+        this.antibiotic['class'] = null;
+        this.antibiotic['group'] = null;
+        this.antibiotic['mechanism'] = null;
         this.classifyComponent.nextGeneConflictList();
         // this.classifyComponent.render=false;
         // this.dataService.getRandomKnownARG()

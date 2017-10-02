@@ -37,7 +37,7 @@ export class CurateComponent implements OnInit {
   onRatingChangeResult:IStarRatingOnRatingChangeEven;
 
   options_type = [];
-  group_options = ["Bla1", "MacB", "BacA"];
+  group_options = [];
   mge_options = ["Plasmid","Virus","Prophage"];
 
   items: MenuItem[];
@@ -227,6 +227,11 @@ continueReview(){
   this.classifyComponent.randomARG['entry']['score'] = '----';
 
   this.classifyComponent.loading = true;
+  
+  this.antibiotic['class'] = null;
+  this.antibiotic['group'] = null;
+  this.antibiotic['mechanism'] = null;
+
   this.classifyComponent.nextGeneConflictList();
   // this.classifyComponent.render=false;
   // this.dataService.getRandomKnownARG()
