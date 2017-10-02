@@ -119,6 +119,9 @@ export class AdminComponent implements OnInit {
         "pathogen_score": this.argClassChart.pathogen/(5*this.argClassChart.totalCategoryCounts)
       }
       this.ARGindex += 1;
+
+      // console.log(this.curatedARGs[0])
+
     });
   }
 

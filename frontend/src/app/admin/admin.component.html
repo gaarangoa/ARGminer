@@ -77,6 +77,7 @@
                                 <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }}</p>
                                 <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)-1}} </p>
                                 <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)-1}} </p>
+
                                 <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->
                                 <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->
                                 <hr>
@@ -202,6 +203,28 @@
                 </div>
 
 
+                <div class="col-sm-12">
+                    <table class="table table-responsive table-bordered text-center">
+                        <tbody>
+                            <tr class="table-success">
+                                <th>Token</th>
+                                <th>Expertise</th>
+                                <th>Confidence</th>
+                                <th>Gene Name</th>
+                                <th>ARG Class</th>
+                                <th>ARG Mechanism</th>
+                            </tr>
+                            <tr *ngFor="let itemx of curatedARGs[0]['inspected']">
+                                <td>{{ itemx.token }}</td>
+                                <td>{{ (itemx.rating.expertise.value).toFixed(2) }}</td>
+                                <td>{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
+                                <td>{{ itemx.group }}</td>
+                                <td>{{ itemx.class }}</td>
+                                <td>{{ itemx.mechanism }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
 
             </div>
@@ -223,6 +246,9 @@
             </div>
         </div>
     </div>
+
+
+
 </div>
 
 
