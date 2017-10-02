@@ -31,7 +31,7 @@ services:
     ports:
       - 27897:17863
     tty: true
-    command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth
+    command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth --maxConns 5000
 
 # python rest API with the analysis algorithms
   ARG-miner-restAPI:
