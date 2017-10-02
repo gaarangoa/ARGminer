@@ -1,9 +1,9 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 
 class PATRIC():
-    def __init__(self):
+    def __init__(self, DataBase):
         self.info=""
-        self.database = DataBase()
+        self.database = DataBase
         self.table = 'patric_ARG'
     
     def getById(self, gene_id):

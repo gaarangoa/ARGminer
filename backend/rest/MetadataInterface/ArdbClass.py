@@ -1,8 +1,8 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 
 class ARDB():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.genes = 'ardb'
     
     def getById(self, gene_id):

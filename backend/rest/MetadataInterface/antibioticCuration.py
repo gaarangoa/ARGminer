@@ -1,9 +1,9 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 import random
 
 class Curate():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.type = 'master'
 
     def insert(self, data):

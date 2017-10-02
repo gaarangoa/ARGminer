@@ -1,9 +1,9 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 import random
 
 class MASTER():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.table = 'master'
         self.secondaryTable = 'conflicted_genes'
 

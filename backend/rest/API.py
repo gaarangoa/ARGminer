@@ -10,10 +10,14 @@ sys.path.insert(0, '')
 from rest.ARGsClass import GENE
 from rest.AntibioticClass import Antibiotic
 from rest.AdminClass import Admin
+
+from rest.DataBaseInterface import DataBaseClass as DB
+db = DB.DataBase()
+
 # Antibiotic resistance init
-ARG = GENE()
-ANTIBIOTIC = Antibiotic()
-ADMIN = Admin()
+ARG = GENE(db)
+ANTIBIOTIC = Antibiotic(db)
+ADMIN = Admin(db)
 
 app = Flask(__name__)
 CORS(app)

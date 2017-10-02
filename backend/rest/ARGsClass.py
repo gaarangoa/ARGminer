@@ -5,52 +5,53 @@ from rest.MetadataInterface import ArdbClass as ARDB
 from rest.BestHitInterface import AlignmentsClass as ALGN
 from rest.GenomesInterface import PatricClass as PATRIC
 from rest.MetadataInterface import aclameClass as ACLAME
-from rest.SearchInterface import SearchClass as Search
+from rest.SearchInterface import SearchClass as SEARCH
 from rest.MetadataInterface import masterClass as Master
 from rest.MetadataInterface import conflictedARGsClass as ConflictedARGs
 from rest.MetadataInterface import ArgDatabaseClass
 
-card = CARD.CARD()
-deepARG = DEEPARG.DEEPARG()
-uniprot = UNIPROT.UNIPROT()
-ardb = ARDB.ARDB()
-patric = PATRIC.PATRIC()
-alignments = ALGN.alignments()
-aclame = ACLAME.ACLAME()
-search = Search.Search()
-master = Master.MASTER()
-conflictedARGs = ConflictedARGs.ConflictedARGs()
-argDatabase = ArgDatabaseClass.ArgDataBase()
+
 
 class GENE():
-    def __init__(self):
+    def __init__(self, db):
+        self.card = CARD.CARD(db)
+        self.deepARG = DEEPARG.DEEPARG(db)
+        self.uniprot = UNIPROT.UNIPROT()
+        self.ardb = ARDB.ARDB(db)
+        self.patric = PATRIC.PATRIC(db)
+        self.alignments = ALGN.alignments(db)
+        self.aclame = ACLAME.ACLAME(db)
+        self.Search = SEARCH.Search(db)
+        self.master = Master.MASTER(db)
+        self.conflictedARGs = ConflictedARGs.ConflictedARGs(db)
+        self.argDatabase = ArgDatabaseClass.ArgDataBase(db)
         self.info = ""
     
     def metadata(self,gene_id):
         # 1. Identify from which database is it coming -  so basically get all the info from the deepARG db
         try:
-            gene_info = deepARG.getById(gene_id)[0]
+            gene_info = self.deepARG.getById(gene_id)[0]
 
             if not gene_info: return {"status":False}
             if gene_info['database'] == "CARD":
-                return card.getById(gene_id)
+                return self.card.getById(gene_id)
             if gene_info['database'] == 'UNIPROT':
-                return uniprot.getById(gene_id)
+                return self.uniprot.getById(gene_id)
             if gene_info['database'] == 'ARDB':
-                return ardb.getById(gene_id)
+                return self.ardb.getById(gene_id)
         except Exception as inst:
             return {"status":False, "error":str(inst)}
 
     def bestHit(self, gene_id):
-        best_hit = alignments.getById(gene_id)
+        best_hit = self.alignments.getById(gene_id)
         return best_hit
 
     def pathogen(self, gene_id):
-        pathg = patric.getById(gene_id)
+        pathg = self.patric.getById(gene_id)
         return pathg[0]
     
     def search(self, params):
-        data = search.retrieve(params['keyword']);
+        data = self.Search.retrieve(params['keyword']);
         return data[params['index']]
     # {
     #         "count": len(data),
@@ -63,14 +64,14 @@ class GENE():
         false_count = 0;
         try:
             # print gene_id
-            entry = deepARG.getById(gene_id)[0]
+            entry = self.deepARG.getById(gene_id)[0]
             # print entry
         except Exception as inst:
             entry = {"status":False}
             false_count+=1
             # print inst
         try:
-            pathg = patric.getById(entry['gene_id'])[0]
+            pathg = self.patric.getById(entry['gene_id'])[0]
         except:
             pathg = {"status":False}
             false_count+=1
@@ -89,7 +90,7 @@ class GENE():
             false_count+=1
         
         try:
-            MGEs = aclame.getById(gene_id)
+            MGEs = self.aclame.getById(gene_id)
         except:
             MGEs = []
 
@@ -105,24 +106,24 @@ class GENE():
         }
 
     def random(self):
-        entry = master.getRandomId()
+        entry = self.master.getRandomId()
         return entry
 
     def random2(self):
-        entry = master.getRandomConfSub()
+        entry = self.master.getRandomConfSub()
         return entry
 
     def getMasterARG(self, gene_id):
-        return master.getById(gene_id)[0]
+        return self.master.getById(gene_id)[0]
 
     def getInspectedARGs(self, index, limit):
-        return master.getInspectedARGs(index, limit)
+        return self.master.getInspectedARGs(index, limit)
 
     def updateARG(self, data):
-        return master.updateARG(data)
+        return self.master.updateARG(data)
 
     def updateConflictedARG(self):
-        return conflictedARGs.runBackground()
+        return self.conflictedARGs.runBackground()
 
     def databaseList(self):
-        return argDatabase.list()
+        return self.argDatabase.list()

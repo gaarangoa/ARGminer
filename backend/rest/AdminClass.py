@@ -1,14 +1,14 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 from rest.MetadataInterface.upgradeARGDatabaseClass import UpgradeDatabase
 
 import hashlib
 
 class Admin():
-    def __init__(self):
+    def __init__(self, DataBase):
         self.info = ""
         self.table = "admin"
-        self.database = DataBase()
-        self.upgradeDB = UpgradeDatabase()
+        self.database = DataBase
+        self.upgradeDB = UpgradeDatabase(DataBase)
 
     def login(self, data):
         try:

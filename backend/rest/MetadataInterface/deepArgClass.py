@@ -1,9 +1,9 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 import random
 
 class DEEPARG():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.table = 'deeparg'
 
     def getById(self, gene_id):

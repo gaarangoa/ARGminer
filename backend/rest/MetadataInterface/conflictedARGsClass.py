@@ -4,13 +4,13 @@ import sys
 import requests
 import json
 import networkx as nx
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 import threading
 
 
 class ConflictedARGs():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.table = 'master'
         self.secondaryTable = 'conflicted_genes'
 

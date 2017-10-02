@@ -1,4 +1,4 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 import numpy as np
 
 def color_interval(value, type):
@@ -37,8 +37,8 @@ def color_interval(value, type):
             return "black"
 
 class ACLAME():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.aclame = 'aclame'
         self.aclame_align = "aclame_arg_alignment"
     

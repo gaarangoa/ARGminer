@@ -1,8 +1,8 @@
-from rest.DataBaseInterface.DataBaseClass import DataBase
+# from rest.DataBaseInterface.DataBaseClass import DataBase
 
 class CARD():
-    def __init__(self):
-        self.database = DataBase()
+    def __init__(self, DataBase):
+        self.database = DataBase
         self.card = 'card'
         self.card_link = 'card_link'
         self.aro = 'ARO_OBO'
