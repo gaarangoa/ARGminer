@@ -9,16 +9,17 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const router: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'classify', component: ClassifyComponent },
-    { path: 'argminer/classify', redirectTo: 'classify'},
-    { path: 'home', component: HomeComponent },
-    { path: 'database', component: DatabaseComponent },
-    { path: 'argminer/database', component: DatabaseComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'argminer/about', component: DatabaseComponent },
-    { path: 'admin', component: AdminComponent },
-    { path: 'argminer/admin', component: DatabaseComponent },
+    { 
+        path: '', 
+        children: [
+            { path: '', component: HomeComponent },
+            { path: 'classify', component: ClassifyComponent },
+            { path: 'home', component: HomeComponent },
+            { path: 'database', component: DatabaseComponent },
+            { path: 'about', component: AboutComponent },
+            { path: 'admin', component: AdminComponent },
+        ]
+    },
 ];
 
 export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(router);
