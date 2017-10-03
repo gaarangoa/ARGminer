@@ -286,7 +286,7 @@
                 <hr>
 
 
-                <md-expansion-panel class="box box-solid">
+                <md-expansion-panel class="box box-solid" [expanded]="true">
 
                     <md-expansion-panel-header>
                         <md-panel-title>
@@ -301,21 +301,25 @@
                         <ul>
                             <li>
                                 <strong>Gene Name:</strong> To validate the gene name take a look at the panels with <span class="label bg-blue"> strong </span> and <span class="label bg-black">very strong</span> evidence. If several panels have strong
-                                evidence, select the gene name in the panel with the highest bitscore. If none of the panels have strong evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong>.
+                                evidence, select the gene name in the panel with the highest bitscore. If none of the panels have strong evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong> and verify the Metadata section
+                                (if available) for consensus.
                             </li>
                             <li>
                                 <strong>Antibiotic Class:</strong> To validate the antibiotic class take a look at the descriptions from the databases. There is not restrction about evidence. But it is expected to see a consensus between the different
-                                databases.
+                                databases also check the Metadata section (if available).
                             </li>
                             <li>
                                 <strong>Antibiotic Mechanism:</strong> Check the AMR profile and Metadata (if available) to find the antibiotic mechanism. If the evidence from the <strong>MEGARes</strong> database is <span class="label bg-green"> middle </span>,
-                                <span class="label bg-blue"> strong </span> or <span class="label bg-black"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels.
+                                <span class="label bg-blue"> strong </span> or <span class="label bg-black"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels and the Metadata section (if available).
+                            </li>
+                            <li>
+                                If the evidence score from the reference databases is <span class="label bg-yellow"> weak </span> or <span class="label bg-red"> very weak </span>, check the Metadata section (if available).
                             </li>
                         </ul>
                     </div>
                 </md-expansion-panel>
 
-                <br>
+                <!-- <br> -->
                 <h4>Similarity to known ARGs</h4>
                 <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
