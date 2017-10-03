@@ -264,7 +264,7 @@
                 <div class="box box-solid ">
                     <div class="box-body">
                         <md-input-container class='col-sm-12 col-sm-offset-0'>
-                            <input #keyword (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
+                            <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
                         </md-input-container>
                     </div>
                 </div>
@@ -280,11 +280,46 @@
                 </div>
             </div>
 
+
             <div *ngIf="randomARG.status==true && loading==false">
+
+                <hr>
+
+
+                <md-expansion-panel class="box box-solid">
+
+                    <md-expansion-panel-header>
+                        <md-panel-title>
+                            Tips and Tricks
+                        </md-panel-title>
+                        <md-panel-description>
+                            To get a successful annotation take into account the next tips:
+                        </md-panel-description>
+                    </md-expansion-panel-header>
+
+                    <div class="box-body">
+                        <ul>
+                            <li>
+                                <strong>Gene Name:</strong> To validate the gene name take a look at the panels with <span class="label bg-blue"> strong </span> and <span class="label bg-black">very strong</span> evidence. If none of the panels have strong
+                                evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong>.
+                            </li>
+                            <li>
+                                <strong>Antibiotic Class:</strong> To validate the antibiotic class take a look at the descriptions from the databases. There is not restrction about evidence. But it is expected to see a consensus between the different
+                                databases.
+                            </li>
+                            <li>
+                                <strong>Antibiotic Mechanism:</strong> Check the AMR profile and Metadata (if available) to find the antibiotic mechanism. If the evidence from the <strong>MEGARes</strong> database is <span class="label bg-green"> middle </span>,
+                                <span class="label bg-blue"> strong </span> or <span class="label bg-black"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels.
+                            </li>
+                        </ul>
+                    </div>
+                </md-expansion-panel>
+
+                <br>
+                <h4>Similarity to known ARGs</h4>
                 <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
-                <hr>
-                <h4>Similarity to known ARGs</h4>
+
 
                 <div *ngFor="let bh of randomARG.besthit.alignments">
                     <!-- <p> {{ bh.best_hit_database }} </p>  -->
