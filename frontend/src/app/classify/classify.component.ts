@@ -256,7 +256,7 @@ export class ClassifyComponent implements OnInit {
           // },
           {
             element: '#step11',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The bottom panel will prompt the token number you need to insert into the Amazon Mturk form.</p></div>", 
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The top panel will prompt the token number once you done the training. You need to insert this token into the Amazon Mturk form.</p></div>", 
             position: 'left'
           },
           {

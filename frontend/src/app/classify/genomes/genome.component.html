@@ -55,18 +55,46 @@
 
         <div class="">
             <div class="box-body">
-                The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>90%
+
+                <p>
+                    <strong>Pathogen Score:</strong>
+                    <span class="badge bg-red" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)<10"> 
+                                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                                </span>
+                    <span class="badge bg-yellow" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <20 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>10"> 
+                                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                                </span>
+                    <span class="badge bg-green" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <30 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>20"> 
+                                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                                </span>
+                    <span class="badge bg-blue" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <60 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>30"> 
+                                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                                </span>
+                    <span class="badge bg-black" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <90 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>60"> 
+                                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                                </span>
+                </p>
+                <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>90%
                 identity, >90% coverage).
                 <br><br><strong>{{ randomARG.pathogen.genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
                 <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (
                 <span class="badge bg-red" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)<10"> 
-                        {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>
-                <span class="badge bg-yellow" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <20 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>10"> {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% </span>
-                <span class="badge bg-green" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <30 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>20"> {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% </span>
-                <span class="badge bg-blue" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <60 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>30"> {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% </span>
-                <span class="badge bg-black" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <90 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>50"> {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
-                            </span>) genomes are labeled as <u>pathogens</u>.
+                <span class="badge bg-yellow" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <20 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>10"> 
+                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                </span>
+                <span class="badge bg-green" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <30 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>20"> 
+                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                </span>
+                <span class="badge bg-blue" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <60 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>30"> 
+                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                </span>
+                <span class="badge bg-black" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <90 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>60"> 
+                    {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
+                </span>) genomes are labeled as <u>pathogens</u>.
+
+
             </div>
         </div>
     </div>
