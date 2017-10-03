@@ -238,6 +238,8 @@
                 <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
 
+                <h3 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h3>
+
                 <!--METADATA SECTION-->
                 <div id="step6">
                     <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
@@ -251,6 +253,26 @@
 
                 <!-- <md-tab  label="BEST HIT"> -->
                 <hr>
+                <h3>BestHit Alignments to known databases</h3>
+                <p>
+                    In this section, the gene {{ randomARG.entry.gene_id }} was aligned against a set of ARG databases and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.
+                </p>
+
+                <p>
+                    <strong> Scoring </strong>:
+                    <span class="label bg-red">Very Weak</span>
+                    <span class="label bg-yellow">Weak</span>
+                    <span class="label bg-green">Middle</span>
+                    <span class="label bg-blue">High</span>
+                    <span class="label bg-black">Very High</span>
+                </p>
+                <p class="small">*Each color represents a different scoring scale</p>
+
+                <p> <span class="label bg-blue">Tip</span> To identify the
+                    <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance groups </strong>, we would recomend to look at the panels where
+                    the sequence similarity is <u>high</u> over a <u>very high</u> coverage.
+                </p>
+
                 <div *ngFor="let bh of randomARG.besthit.alignments">
                     <!-- <p> {{ bh.best_hit_database }} </p>  -->
 
@@ -267,6 +289,25 @@
                 <div id="step9">
                     <app-generic></app-generic>
                 </div>
+
+                <h3>Horizontal Gene Transfer and pathogens</h3>
+                <p>
+                    In this section, the gene {{ randomARG.entry.gene_id }} was aligned to the <a href="">ACLAME</a> database to find if there is evidence of the {{ randomARG.entry.gene_id }} gene being carried by mobile elements (MGEs) such as plasmids,
+                    virus or prophages.
+                </p>
+                <p>
+                    The gene {{ randomARG.entry.gene_id }} was also aligned to the <a href="">PATRIC</a> genomes database to identify the number of pathogen genomes that carry the {{ randomARG.entry.gene_id }} gene.
+                </p>
+
+                <p>
+                    <strong> Scoring </strong>:
+                    <span class="label bg-red">Very Weak</span>
+                    <span class="label bg-yellow">Weak</span>
+                    <span class="label bg-green">Middle</span>
+                    <span class="label bg-blue">High</span>
+                    <span class="label bg-black">Very High</span>
+                </p>
+                <p class="small">Each color represents a different scoring scale</p>
 
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
                 <!-- <div *ngIf="drawGenomes"> -->
