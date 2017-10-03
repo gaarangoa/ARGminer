@@ -224,7 +224,7 @@
 
                 <p> <span class="label bg-blue">Tip</span> To identify the
                     <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance groups </strong>, we would recomend to look at the panels where
-                    the sequence similarity is <u>high</u> over a <u>very high</u> coverage.
+                    the sequence similarity is <u>high</u> over a <u>very strong</u> coverage.
                 </p>
                 <p class="">*Each color represents a different scoring scale</p>
 
@@ -275,32 +275,8 @@
             <div *ngIf="randomARG.status==true && loading==false">
                 <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
-
-                <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4>
-
-                <!--METADATA SECTION-->
-                <div id="step6">
-                    <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
-                </div>
-
-
-                <classify-metadata-card> </classify-metadata-card>
-
-
-                <!-- </md-tab> -->
-
-                <!-- <md-tab  label="BEST HIT"> -->
                 <hr>
-                <h4>BestHit from known databases</h4>
-                <p>
-                    <strong> Scoring </strong>:
-                    <span class="label bg-red">Very Weak</span>
-                    <span class="label bg-yellow">Weak</span>
-                    <span class="label bg-green">Middle</span>
-                    <span class="label bg-blue">High</span>
-                    <span class="label bg-black">Very High</span>
-                </p>
-
+                <h4>Similarity to known ARGs</h4>
 
                 <div *ngFor="let bh of randomARG.besthit.alignments">
                     <!-- <p> {{ bh.best_hit_database }} </p>  -->
@@ -319,16 +295,26 @@
                     <app-generic></app-generic>
                 </div>
 
+                <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4>
 
-                <h4>MGEs and Pathogens</h4>
-                <p>
-                    <strong> Scoring </strong>:
-                    <span class="label bg-red">Very Weak</span>
-                    <span class="label bg-yellow">Weak</span>
-                    <span class="label bg-green">Middle</span>
-                    <span class="label bg-blue">High</span>
-                    <span class="label bg-black">Very High</span>
-                </p>
+                <!--METADATA SECTION-->
+                <div id="step6">
+                    <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+                </div>
+
+
+                <classify-metadata-card> </classify-metadata-card>
+
+
+                <!-- </md-tab> -->
+
+                <!-- <md-tab  label="BEST HIT"> -->
+                <hr>
+
+
+
+                <h4>Mobile Genetic Elements (MGEs)</h4>
+
 
 
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->

@@ -1,5 +1,13 @@
 <div *ngFor="let item of randomARG.mobile" class="">
     <div *ngIf="item.status==true && item.identity.mean>50" class="">
+        <p>
+            <strong> Scoring </strong>:
+            <span class="label bg-red">Very Weak</span>
+            <span class="label bg-yellow">Weak</span>
+            <span class="label bg-green">Middle</span>
+            <span class="label bg-blue">Strong</span>
+            <span class="label bg-black">Very Strong</span>
+        </p>
         <div class="box box-solid">
             <!-- <div class="col-md-10 col-md-offset-1"> -->
 
@@ -39,6 +47,15 @@
 
 <div *ngIf="randomARG.pathogen.status==true" class="">
     <!-- <div class="col-md-12"> -->
+    <h4>Pathogens Genomes</h4>
+    <p>
+        <strong> Scoring </strong>:
+        <span class="label bg-red">Very Weak</span>
+        <span class="label bg-yellow">Weak</span>
+        <span class="label bg-green">Middle</span>
+        <span class="label bg-blue">Strong</span>
+        <span class="label bg-black">Very Strong</span>
+    </p>
     <div class="box box-solid">
 
 
@@ -54,6 +71,7 @@
 
 
         <div class="">
+
             <div class="box-body">
 
                 <p>

@@ -35,6 +35,13 @@ export class AdminService {
       });
   }
 
+  getByToken(ixg: any){
+    return this.http.get(this.baseUrl+"/admin/inspect/token/"+ixg)
+      .map( res => {
+        return res.json();
+      });
+  }
+
   updateGene(fields: object){
     return this.http.post(this.baseUrl+"/admin/update/arg/", fields)
       .map( res=>{

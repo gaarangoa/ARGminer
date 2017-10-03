@@ -1,9 +1,9 @@
-<div *ngIf="randomARG.metadata.status==true" class="">
+<!-- <div *ngIf="randomARG.metadata.status==true" class="">
     <div class="box box-solid">
         <div class="box-header">
             <h3 class="panel-title"> <i class="fa fa-bug"></i> <strong> Lineage (<a class="panel-title" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">NCBI Taxonomy </a>) </strong></h3>
         </div>
-        <!-- /.box-header -->
+       
         <div class="box-body">
             <div class="dl-vertical">
                 <span *ngFor="let item of randomARG.metadata.organism.lineage">
@@ -12,10 +12,10 @@
             </div>
             <p *ngIf="randomARG.metadata.organism.names"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>
         </div>
-        <!-- /.box-body -->
+        
     </div>
-    <!-- /.box -->
-</div>
+    
+</div> -->
 
 
 
@@ -132,12 +132,12 @@
 
 
 <div *ngIf="randomARG.metadata.references" class="">
-    <div class="box box-solid">
-        <div class="box-header with-border">
-            <i class="fa fa-object-group"></i>
+    <md-expansion-panel class="box box-solid">
+        <!-- <div class="box box-solid"> -->
+        <md-expansion-panel-header>
+            <h4> References</h4>
+        </md-expansion-panel-header>
 
-            <h3 class="box-title"><strong>References</strong></h3>
-        </div>
         <!-- /.box-header -->
         <div class="box-body">
             <dl class="dl-horizontal">
@@ -161,7 +161,8 @@
 
         </div>
         <!-- /.box-body -->
-    </div>
+        <!-- </div> -->
+    </md-expansion-panel>
     <!-- /.box -->
 </div>
 

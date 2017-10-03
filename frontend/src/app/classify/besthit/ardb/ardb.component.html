@@ -1,5 +1,13 @@
 <div *ngFor="let bh of randomARG.besthit.alignments">
     <div *ngIf="bh.best_hit_database=='ARDB'" class="">
+        <p>
+            <strong> Scoring </strong>:
+            <span class="label bg-red">Very Weak</span>
+            <span class="label bg-yellow">Weak</span>
+            <span class="label bg-green">Middle</span>
+            <span class="label bg-blue">Strong</span>
+            <span class="label bg-black">Very Strong</span>
+        </p>
         <div class="box box-solid ">
             <div class="box-header with-border">
                 <i class="fa fa-gears"></i>
