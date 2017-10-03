@@ -70,7 +70,8 @@ export class ClassifyComponent implements OnInit {
       "A0A0U9H4P4",
       "Q1RPS3",
       "J2LT98",
-      "P52067"
+      "P52067",
+      "D3V1W5"
     ]
     
     this.dataService.getKnownARGInfo('A0A127SI91')

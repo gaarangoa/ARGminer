@@ -180,11 +180,11 @@
     </div>
 </div>
 
-<div *ngIf="inspectedGenes.length >= classifyComponent.trainingARGTotal+1">
+<div>
     <div class="box">
         <div class="box-body">
             <p class="small">Please copy and paste this token to the Mturk website.</p>
-            <strong>Token:</strong> <code>{{antibiotic.token}}</code>
+            <strong>Token:</strong> <code *ngIf="inspectedGenes.length >= classifyComponent.trainingARGTotal+1">{{antibiotic.token}}</code>
         </div>
     </div>
 </div>
