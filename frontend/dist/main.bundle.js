@@ -663,7 +663,7 @@ var router = [
         ]
     },
 ];
-var AppRoutingModule = __WEBPACK_IMPORTED_MODULE_0__angular_router__["RouterModule"].forRoot(router);
+var AppRoutingModule = __WEBPACK_IMPORTED_MODULE_0__angular_router__["RouterModule"].forRoot(router, { useHash: true });
 //# sourceMappingURL=app-routing.module.js.map
 
 /***/ }),
