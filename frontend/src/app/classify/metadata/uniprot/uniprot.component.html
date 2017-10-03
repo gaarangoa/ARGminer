@@ -70,12 +70,18 @@
 
 
 <div *ngIf="randomARG.metadata.dbReferences" class="">
-    <div class="box box-solid">
-        <div class="box-header with-border">
-            <i class="fa fa-object-group"></i>
+    <md-expansion-panel class="box box-solid">
+        <!-- <div class="box box-solid"> -->
+        <md-expansion-panel-header>
+            <md-panel-title>
+                <h4>Gene Ontology</h4>
+            </md-panel-title>
+            <md-panel-description>
+                Functions and Biological Process
+            </md-panel-description>
+        </md-expansion-panel-header>
 
-            <h3 class="box-title"><strong>Gene Ontology</strong></h3>
-        </div>
+
         <!-- /.box-header -->
         <div class="box-body">
             <dl class="dl-horizontal">
@@ -88,11 +94,11 @@
 
         </div>
         <!-- /.box-body -->
-    </div>
+    </md-expansion-panel>
     <!-- /.box -->
 </div>
 
-
+<br>
 <!-- <div *ngIf="randomARG.metadata.features" class="">
     <div class="box box-solid">
         <div class="box-header with-border">
@@ -135,7 +141,12 @@
     <md-expansion-panel class="box box-solid">
         <!-- <div class="box box-solid"> -->
         <md-expansion-panel-header>
-            <h4> References</h4>
+            <md-panel-title>
+                <h4>References</h4>
+            </md-panel-title>
+            <md-panel-description>
+                Scientific papers that support the gene {{ randomARG.entry.gene_id }}
+            </md-panel-description>
         </md-expansion-panel-header>
 
         <!-- /.box-header -->

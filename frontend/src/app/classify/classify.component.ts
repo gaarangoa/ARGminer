@@ -40,7 +40,7 @@ export class ClassifyComponent implements OnInit {
   public trainingGenes: Array<string>;
   public trainingARGFlag: Boolean = false;
   public trainingARGCount: number = 0;
-  public trainingARGTotal: number = 5;
+  public trainingARGTotal: number = 2;
 
   public notification: Message[] = [];
 

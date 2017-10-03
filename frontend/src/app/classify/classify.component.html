@@ -215,17 +215,22 @@
             <md-expansion-panel>
                 <md-expansion-panel-header>
                     <md-panel-title>
-                        <h4>BestHit from known databases</h4>
+                        <h4>Similarity to known ARGs</h4>
                     </md-panel-title>
                 </md-expansion-panel-header>
                 <p>
-                    In this section, the gene {{ randomARG.entry.gene_id }} was aligned against a set of ARG databases and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.
+                    To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href="">CARD</a> database. Thus, the entry {{ randomARG.entry.gene_id
+                    }} was compared against the databases to reinforce, reject or modify the <strong>current annotation.</strong>
+                </p>
+                <p>
+                    For this comparison, the gene {{ randomARG.entry.gene_id }} was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.
                 </p>
 
                 <p> <span class="label bg-blue">Tip</span> To identify the
-                    <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance groups </strong>, we would recomend to look at the panels where
-                    the sequence similarity is <u>high</u> over a <u>very strong</u> coverage.
+                    <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where
+                    the sequence similarity is <u>high</u> with a <u>very strong</u> coverage.
                 </p>
+
                 <p class="">*Each color represents a different scoring scale</p>
 
             </md-expansion-panel>
@@ -236,13 +241,16 @@
                         <h4>MGEs and pathogens</h4>
                     </md-panel-title>
                 </md-expansion-panel-header>
-
                 <p>
-                    In this section, the gene {{ randomARG.entry.gene_id }} was aligned to the <a href="">ACLAME</a> database to find if there is evidence of the {{ randomARG.entry.gene_id }} gene being carried by mobile elements (MGEs) such as plasmids,
-                    virus or prophages.
+                    Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also
+                    transfer genetic material by accidentally package segments of DNA to inject into their host.
                 </p>
                 <p>
-                    The gene {{ randomARG.entry.gene_id }} was also aligned to the <a href="">PATRIC</a> genomes database to identify the number of pathogen genomes that carry the {{ randomARG.entry.gene_id }} gene.
+                    To identify if the ARG is carried by plasmids, phages or viruses, the gene {{ randomARG.entry.gene_id }} was aligned to the <a href="">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.
+                </p>
+                <p>
+                    Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene {{ randomARG.entry.gene_id }} is hosted in a pathogen genome, the gene was matched
+                    to the <a href="">PATRIC</a> database. Then, we were able to identify the number of pathogen genomes that carry the {{ randomARG.entry.gene_id }} gene.
                 </p>
                 <p class="small">Each color represents a different scoring scale</p>
             </md-expansion-panel>
@@ -309,7 +317,7 @@
                 <!-- </md-tab> -->
 
                 <!-- <md-tab  label="BEST HIT"> -->
-                <hr>
+                <hr *ngIf="randomARG.entry.database=='UNIPROT'">
 
 
 

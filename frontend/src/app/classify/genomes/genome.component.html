@@ -1,5 +1,5 @@
 <div *ngFor="let item of randomARG.mobile" class="">
-    <div *ngIf="item.status==true && item.identity.mean>50" class="">
+    <div *ngIf="item.status==true && item.identity.mean>20" class="">
         <p>
             <strong> Scoring </strong>:
             <span class="label bg-red">Very Weak</span>
@@ -32,14 +32,14 @@
                     </dd>
                     <dt>Count:</dt>
                     <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
+                    <dt>Similarity:</dt>
+                    <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
                     <dt>BitScore:</dt>
                     <dd> <span class="badge bg-{{ item.bitscore.color }}"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>
-                    <dt>Evalue (log):</dt>
-                    <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd>
+                    <!-- <dt>Evalue (log):</dt> -->
+                    <!-- <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd> -->
                     <dt>Coverage:</dt>
                     <dd> <span class="badge bg-{{ item.coverage.color }}"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>
-                    <dt>Identity:</dt>
-                    <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
                     <dt>Description:</dt>
                     <dd>{{ item.mge_description }}</dd>
                     <dt>Gene Aclame ID:</dt>
@@ -49,6 +49,7 @@
             <!-- </div> -->
         </div>
     </div>
+
 </div>
 
 <div *ngIf="randomARG.pathogen.status==true" class="">
