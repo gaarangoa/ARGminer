@@ -12,11 +12,12 @@
             <div class="box-header with-border">
                 <i class="fa fa-gears"></i>
 
-                <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> BLAST alignment <span class="badge">{{ bh.subtype }}</span></h3>
+                <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> Database </h3>
             </div>
             <div class="box-body">
                 <dl class="dl-horizontal">
-
+                    <dt>Gene Name:</dt>
+                    <dd>{{ bh.subtype }}</dd>
                     <dt>Best Hit ID</dt>
                     <dd> {{ bh.best_hit.substring(0, 30) }}
                         <dd>
@@ -70,9 +71,8 @@
 
 
                             <strong> Antibiotic Resistance Class: </strong> {{ bh.type }}<br>
-                            <strong> Antibiotic Resistance Group: </strong> {{ bh.subtype }}<br>
+                            <strong> Antibiotic Resistance Name: </strong> {{ bh.subtype }}<br>
                             <strong> Antibiotic Resistance Mechanism: </strong> {{ bh.mechanism }}<br>
-
 
                             <!-- </dd> -->
 

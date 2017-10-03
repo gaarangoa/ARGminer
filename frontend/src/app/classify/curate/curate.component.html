@@ -37,6 +37,10 @@
                 <p>Please based on your observations add the corresponding data to the form below:</p>
 
                 <md-input-container class="col-md-12">
+                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Gene Name">
+                </md-input-container>
+
+                <md-input-container class="col-md-12">
                     <input type="text" mdInput [formControl]="myControl" [mdAutocomplete]="AClass" [(ngModel)]="antibiotic.class" placeholder="Antibiotic Class">
                 </md-input-container>
 
@@ -45,10 +49,6 @@
                         {{ option }}
                     </md-option>
                 </md-autocomplete>
-
-                <md-input-container class="col-md-12">
-                    <input type="text" [formControl]="groupControl" [mdAutocomplete]="AGroup" mdInput [(ngModel)]="antibiotic.group" placeholder="Antibiotic Resistance Gene">
-                </md-input-container>
 
                 <md-autocomplete #AGroup="mdAutocomplete">
                     <md-option *ngFor="let option of groupFilteredOptions | async" [value]="option">

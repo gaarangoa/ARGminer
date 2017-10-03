@@ -24,6 +24,12 @@
             <!-- <div class="col-md-12"> -->
             <div class="box-body">
                 <dl class="dl-horizontal">
+                    <dt>Type:</dt>
+                    <dd>
+                        <strong><p *ngIf="item.type=='proph'">Prophages</p></strong>
+                        <strong><p *ngIf="item.type=='plasmid'">Plasmids</p></strong>
+                        <strong><p *ngIf="item.type=='vir'">Viruses</p></strong>
+                    </dd>
                     <dt>Count:</dt>
                     <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
                     <dt>BitScore:</dt>
@@ -118,8 +124,20 @@
     </div>
 
     <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-    <div *ngIf="disease.ready" class="fig-panel">
-        <div class="box box-solid">
+
+    <md-expansion-panel class="box box-solid" style="background:rgba(0,0,0,0)">
+
+        <md-expansion-panel-header>
+            <md-panel-title>
+                Disease and Antimicrobial Resistance profile
+            </md-panel-title>
+            <md-panel-description>
+                More information about Pathogens
+            </md-panel-description>
+        </md-expansion-panel-header>
+
+        <div *ngIf="disease.ready" class="fig-panel">
+            <!-- <div class="box box-solid"> -->
             <div class="box-header with-border">
                 <!-- <i class="fa fa-bug"></i> -->
                 <h3 class="box-title">Genomes causing diseases</h3>
@@ -129,12 +147,12 @@
                 <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
                 </ngx-charts-pie-grid>
             </div>
+            <!-- </div> -->
         </div>
-    </div>
 
-    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-    <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
-        <div class="box box-solid">
+        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+        <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
+            <!-- <div class="box box-solid"> -->
             <div class="box-header with-border">
                 <!-- <i class="fa fa-bug"></i> -->
                 <h3 class="box-title">Genomes with Antimicrobial Resistance phenotype</h3>
@@ -144,12 +162,12 @@
                 <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
                 </ngx-charts-pie-grid>
             </div>
+            <!-- </div> -->
         </div>
-    </div>
 
-    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-    <div *ngIf="host.ready" class="fig-panel">
-        <div class="box box-solid">
+        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+        <div *ngIf="host.ready" class="fig-panel">
+            <!-- <div class="box box-solid"> -->
             <div class="box-header with-border">
                 <!-- <i class="fa fa-bug"></i> -->
                 <h3 class="box-title">Bacterial hosts</h3>
@@ -159,9 +177,9 @@
                 <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
                 </ngx-charts-pie-grid>
             </div>
+            <!-- </div> -->
         </div>
-    </div>
-
+    </md-expansion-panel>
 
 
 

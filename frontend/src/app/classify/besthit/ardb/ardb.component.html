@@ -11,12 +11,14 @@
         <div class="box box-solid ">
             <div class="box-header with-border">
                 <i class="fa fa-gears"></i>
-                <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> BLAST alignment <span class="badge">{{ bh.metadata.subtype }}</span></h3>
+                <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> Database </h3>
             </div>
 
             <!-- /.box-header -->
             <div class="box-body">
                 <dl class="dl-horizontal">
+                    <dt><u>Gene Name:</u></dt>
+                    <dd>{{ bh.metadata.subtype }}</dd>
 
                     <dt>Best Hit ID</dt>
                     <dd> {{ bh.best_hit }}
