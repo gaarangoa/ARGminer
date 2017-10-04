@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
-.home-title {
+.home-logo {
     font-family: 'Encode Sans Expanded', sans-serif !important;
-    text-align: center;
+    /* text-align: center; */
     color: #000;
+    font-size: 1.6em;
+}
+
+.home-font {
+    font-family: 'Encode Sans Expanded', sans-serif !important;
+}
+
+.home-font h4 {
+    font-family: 'Encode Sans Expanded', sans-serif !important;
+}
+
+.logo-text img {
+    vertical-align: middle;
+    height: 80px;
+    width: 80px;
+    /* border-right: solid 1px; */
 }
