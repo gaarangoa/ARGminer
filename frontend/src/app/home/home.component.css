@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Expanded');
+.home-title {
+    font-family: 'Encode Sans Expanded', sans-serif !important;
+    text-align: center;
+    color: #000;
+}

@@ -103,7 +103,7 @@ export class ClassifyComponent implements OnInit {
     this.conflictedArgSubtypeFlag = false;
     this.trainingARGCount = 0;
     this.trainingARGFlag = $event.checked;
-    this.search(this.trainingGenes[this.trainingARGCount]);
+    this.search( this.trainingGenes[Math.floor(Math.random() * this.trainingGenes.length)] );
     this.trainingARGCount+=1;
 
     if(this.trainingARGFlag){

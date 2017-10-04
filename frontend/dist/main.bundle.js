@@ -1969,10 +1969,10 @@ module.exports = module.exports.toString();
 
 exports = module.exports = __webpack_require__(7)();
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Encode+Sans+Expanded);", ""]);
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".home-title {\n    font-family: 'Encode Sans Expanded', sans-serif !important;\n    text-align: center;\n    color: #000;\n}", ""]);
 
 // exports
 
@@ -1999,7 +1999,7 @@ module.exports = "<div *ngIf=\"online\">\n    <div class=\"col-sm-3\">\n        
 /***/ 688:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <a routerLink=\"\" class=\"navbar-brand\">ARG-miner</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n        <div class=\"navbar-collapse collapse\" id=\"navbar-main\">\n            <ul class=\"nav navbar-nav\">\n\n                <li>\n                    <a routerLink=\"home\">Home</a>\n                </li>\n\n                <li>\n                    <a routerLink=\"classify\">Classify</a>\n                </li>\n                <li>\n                    <a routerLink=\"database\">Download</a>\n                </li>\n                <!-- <li>\n                    <a routerLink=\"about\">About</a>\n                </li> -->\n            </ul>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a routerLink=\"admin\">Admin</a></li>\n            </ul>\n\n        </div>\n        <!-- </div> -->\n    </div>\n</div>\n\n<hr>\n<br>\n<br>\n<div class=\"container-par\">\n    <!-- <div class=\"wrapper\"> -->\n    <router-outlet></router-outlet>\n    <!-- </div> -->\n</div>\n\n<!-- <footer class=\"col-lg-12 main-footer\">\n    <div class=\"pull-right\">\n        <b>Version</b> 1.0\n    </div>\n    <strong>Copyright © 2016-2017 <a href=\"\">ZhangLab - Virginia Tech</a>.</strong> All rights reserved.\n</footer> -->"
+module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"\" class=\"navbar-brand\">ARG-miner</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n        <div class=\"navbar-collapse collapse\" id=\"navbar-main\">\n            <ul class=\"nav navbar-nav\">\n\n                <li>\n                    <a routerLink=\"home\">Home</a>\n                </li>\n\n                <li>\n                    <a routerLink=\"classify\">Classify</a>\n                </li>\n                <li>\n                    <a routerLink=\"database\">Download</a>\n                </li>\n                <!-- <li>\n                    <a routerLink=\"about\">About</a>\n                </li> -->\n            </ul>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a routerLink=\"admin\">Admin</a></li>\n            </ul>\n\n        </div>\n        <!-- </div> -->\n    </div>\n</div>\n\n<hr>\n<br>\n<br>\n<div class=\"container-par\">\n    <!-- <div class=\"wrapper\"> -->\n    <router-outlet></router-outlet>\n    <!-- </div> -->\n</div>\n\n<!-- <footer class=\"col-lg-12 main-footer\">\n    <div class=\"pull-right\">\n        <b>Version</b> 1.0\n    </div>\n    <strong>Copyright © 2016-2017 <a href=\"\">ZhangLab - Virginia Tech</a>.</strong> All rights reserved.\n</footer> -->"
 
 /***/ }),
 
@@ -2083,7 +2083,7 @@ module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"bo
 /***/ 700:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  home works!\n</p>\n"
+module.exports = "<div class=\"col-md-12 col-md-offset-0\">\n    <h3 class=\"home-title\">ARG-miner: A crowd sourcing platform for the curation of antibiotic resistance genes</h3>\n    <hr>\n</div>\n\n<div class=\"col-md-10 col-md-offset-1 text-center\">\n\n    <div class=\"col-md-3\">\n        <h4 class=\"home-title\">What is Antibiotic Resistance?</h4>\n        <p>\n            Antibiotics are medicines used to prevent and treat bacterial infections. Antibiotic resistance occurs when bacteria change in response to the use of these medicines. Bacteria, not humans or animals, become antibiotic-resistant. These bacteria may infect\n            humans and animals, and the infections they cause are harder to treat than those caused by non-resistant bacteria. Antibiotic resistance is rising to dangerously high levels in all parts of the world. New resistance mechanisms are emerging\n            and spreading globally, threatening our ability to treat common infectious diseases. A growing list of infections – such as pneumonia, tuberculosis, blood poisoning and gonorrhoea – are becoming harder, and sometimes impossible, to treat as\n            antibiotics become less effective.\n        </p>\n    </div>\n\n    <div class=\"col-md-3\">\n        <h4 class=\"home-title\">What is crowdsourcing?</h4>\n        <p>\n            Antibiotics are medicines used to prevent and treat bacterial infections. Antibiotic resistance occurs when bacteria change in response to the use of these medicines. Bacteria, not humans or animals, become antibiotic-resistant. These bacteria may infect\n            humans and animals, and the infections they cause are harder to treat than those caused by non-resistant bacteria.\n        </p>\n    </div>\n\n    <div class=\"col-md-6\">\n        <h4 class=\"home-title\">Why ARG-miner?</h4>\n        <p>\n            Antibiotics are medicines used to prevent and treat bacterial infections. Antibiotic resistance occurs when bacteria change in response to the use of these medicines. Bacteria, not humans or animals, become antibiotic-resistant. These bacteria may infect\n            humans and animals, and the infections they cause are harder to treat than those caused by non-resistant bacteria.\n        </p>\n    </div>\n\n</div>"
 
 /***/ }),
 
@@ -2177,7 +2177,7 @@ var ClassifyComponent = (function () {
         this.conflictedArgSubtypeFlag = false;
         this.trainingARGCount = 0;
         this.trainingARGFlag = $event.checked;
-        this.search(this.trainingGenes[this.trainingARGCount]);
+        this.search(this.trainingGenes[Math.floor(Math.random() * this.trainingGenes.length)]);
         this.trainingARGCount += 1;
         if (this.trainingARGFlag) {
             this.notification = [];
