@@ -20,3 +20,10 @@
     width: 80px;
     /* border-right: solid 1px; */
 }
+
+.funding img {
+    /* height: 50px !important; */
+    width: 100%;
+    height: 50px;
+    opacity: 0.8 !important;
+}
