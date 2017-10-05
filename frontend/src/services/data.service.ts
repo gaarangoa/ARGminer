@@ -53,7 +53,7 @@ export class DataService {
   }
 
   searchAPI(keyword: string, index: string){
-    return this.http.get(this.baseUrl+'/get/search/?keyword='+keyword+'&index='+index)
+    return this.http.get(this.baseUrl+'/get/search/?keyword='+keyword.replace(/\s/g,'')+'&index='+index)
       .map(res => {
         return res.json()
       })
