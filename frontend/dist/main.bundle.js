@@ -2155,7 +2155,7 @@ var ClassifyComponent = (function () {
             "P52067",
             "D3V1W5"
         ];
-        this.dataService.getKnownARGInfo('A0A127SI91')
+        this.dataService.getRandomKnownARG()
             .subscribe(function (response) {
             _this.randomARG = _this.dataService.ARG;
             _this.render = true;
