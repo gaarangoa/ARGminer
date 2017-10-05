@@ -74,7 +74,7 @@ export class ClassifyComponent implements OnInit {
       "D3V1W5"
     ]
     
-    this.dataService.getKnownARGInfo('A0A127SI91')
+    this.dataService.getRandomKnownARG()
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG;
         this.render=true;
