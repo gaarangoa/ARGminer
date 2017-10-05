@@ -498,7 +498,7 @@ var DataService = (function () {
         });
     };
     DataService.prototype.searchAPI = function (keyword, index) {
-        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword + '&index=' + index)
+        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword.replace(/\s/g, '') + '&index=' + index)
             .map(function (res) {
             return res.json();
         });
