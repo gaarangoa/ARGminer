@@ -38,6 +38,15 @@
 
     <div class="col-sm-6">
 
+        <div class="">
+            <div class="box box-solid ">
+                <div class="box-body">
+                    <md-input-container class='col-sm-12 col-sm-offset-0'>
+                        <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
 
         <div *ngFor="let item of curatedARGs" class="box box-solid">
             <!-- <div class="box-header with-border"> -->

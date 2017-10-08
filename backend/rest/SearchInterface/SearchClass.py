@@ -14,6 +14,7 @@ class Search():
                                                         {"entry.type":{"$regex":keyword, "$options":"x", "$options":"i"}},
                                                         {"entry.subtype":{"$regex":keyword, "$options":"x", "$options":"i"}},
                                                         {"entry.gene_id":{"$regex":keyword, "$options":"x", "$options":"i"}},
+                                                        {"inspected": { "$elemMatch": {"token": keyword} }}
                                                     ]
                                                 }); 
         # print gene

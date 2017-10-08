@@ -106,6 +106,11 @@ def inspectedARG(index):
     arg = ARG.getInspectedARGs(index,int(index)+1)
     return jsonify(arg)
 
+@app.route('/admin/inspect/search/<keyword>', methods = ['GET','POST'])
+def adminSearchKeyword(keyword):
+    arg = ARG.search(keyword)
+    return jsonify(arg)
+
 @app.route('/admin/update/arg/', methods = ['GET','POST'])
 def updateARGAdmin():
     data = request.get_json()

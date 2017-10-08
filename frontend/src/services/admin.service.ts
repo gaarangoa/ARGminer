@@ -35,8 +35,8 @@ export class AdminService {
       });
   }
 
-  getByToken(ixg: any){
-    return this.http.get(this.baseUrl+"/admin/inspect/token/"+ixg)
+  search(keyword: any){
+    return this.http.get(this.baseUrl+"/admin/inspect/token/"+keyword)
       .map( res => {
         return res.json();
       });

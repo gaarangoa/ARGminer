@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AdminService } from '../../services/admin.service';
+import { DataService } from '../../services/data.service';
+
 import { ComplexPieChart } from './visualize.class' 
 
 import {FormControl, Validators} from '@angular/forms';
@@ -34,6 +36,7 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private adminService: AdminService,
+    private dataService: DataService,
   ) { }
 
   ngOnInit() {
@@ -123,6 +126,37 @@ export class AdminComponent implements OnInit {
       // console.log(this.curatedARGs[0])
 
     });
+  }
+
+  search(keyword: string){
+    let indx = '0';
+    this.dataService.searchAPI(keyword, indx)
+      .subscribe(response =>{
+        console.log(response)
+        this.curatedARGs = [response];
+        // console.log(this.curatedARGs[0]['inspected']);
+        this.argClassChart.draw(this.curatedARGs[0]['inspected'], 'class');
+        this.argGroupChart.draw(this.curatedARGs[0]['inspected'], 'group');
+        this.argMechanismChart.draw(this.curatedARGs[0]['inspected'], 'mechanism');
+  
+        this.wScore = ( this.weights[0]*this.argClassChart.bestCategoryCounts/this.argClassChart.totalCategoryCounts +
+                      this.weights[1]*this.argGroupChart.bestCategoryCounts/this.argGroupChart.totalCategoryCounts +
+                      this.weights[2]*this.argMechanismChart.bestCategoryCounts/this.argMechanismChart.totalCategoryCounts +
+                      this.weights[3]*this.argClassChart.mge/(5*this.argClassChart.totalCategoryCounts) +
+                      this.weights[4]*this.argClassChart.pathogen/(5*this.argClassChart.totalCategoryCounts) +
+                      this.weights[5]*this.argClassChart.confidenc[ this.argClassChart.bestCategory ]/(5*this.argClassChart.totalCategoryCounts) + 
+                      this.weights[6]*this.argClassChart.expertc[ this.argClassChart.bestCategory ]/(5*this.argClassChart.totalCategoryCounts) ).toFixed(2);
+        this.ARG = {
+          "gene_id": this.curatedARGs[0]['entry']['gene_id'],
+          "type": this.argClassChart.bestCategory,
+          "subtype": this.argGroupChart.bestCategory,
+          "mechanism": this.argMechanismChart.bestCategory,
+          "score": this.wScore,
+          "MGEScore": this.argClassChart.mge/(5*this.argClassChart.totalCategoryCounts),
+          "pathogen_score": this.argClassChart.pathogen/(5*this.argClassChart.totalCategoryCounts)
+        }
+    });
+
   }
 
 }

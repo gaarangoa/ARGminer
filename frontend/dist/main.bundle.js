@@ -1,5 +1,120 @@
 webpackJsonp([2,5],{
 
+/***/ 15:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var DataService = (function () {
+    function DataService(http, location) {
+        this.http = http;
+        this.location = location;
+        if (location['_platformStrategy']._platformLocation._location.hostname == "localhost") {
+            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + ":5001";
+        }
+        else {
+            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + "/argpedia_api";
+        }
+        this.ARG = [];
+        this.randomConflictingArgSubtype = [];
+    }
+    DataService.prototype.getRandomConflictingArgSubtype = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/subtype/random/')
+            .map(function (res) {
+            _this.randomConflictingArgSubtype = res.json();
+        });
+    };
+    DataService.prototype.getRandomKnownARG = function () {
+        var _this = this;
+        // console.log(this.baseUrl)
+        return this.http.get(this.baseUrl + '/get/arg/random/')
+            .map(function (res) {
+            try {
+                _this.ARG = res.json();
+            }
+            catch (error) {
+                _this.ARG = { "status": false };
+            }
+        });
+    };
+    DataService.prototype.searchAPI = function (keyword, index) {
+        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword.replace(/\s/g, '') + '&index=' + index)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    DataService.prototype.getKnownARGInfo = function (gene_id) {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/arg/info/' + gene_id)
+            .map(function (res) {
+            _this.ARG = res.json();
+        });
+    };
+    DataService.prototype.getListAntibioticClass = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/antibiotic/class')
+            .map(function (res) {
+            _this.ATYPE = res.json();
+        });
+    };
+    DataService.prototype.getListAntibioticGroup = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/antibiotic/group')
+            .map(function (res) {
+            _this.ATYPE = res.json();
+        });
+    };
+    DataService.prototype.insertCuration = function (curation) {
+        curation['gene_id'] = this.ARG['entry']['gene_id'];
+        console.log(curation);
+        return this.http.post(this.baseUrl + '/post/curation', curation)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    DataService.prototype.getDatabaseList = function () {
+        return this.http.get(this.baseUrl + '/get/database/list')
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    return DataService;
+}());
+DataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"]) === "function" && _b || Object])
+], DataService);
+
+var _a, _b;
+//# sourceMappingURL=data.service.js.map
+
+/***/ }),
+
 /***/ 160:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42,8 +157,9 @@ AboutComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_admin_service__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__visualize_class__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__visualize_class__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(4);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58,18 +174,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 var AdminComponent = (function () {
-    function AdminComponent(adminService) {
+    function AdminComponent(adminService, dataService) {
         this.adminService = adminService;
+        this.dataService = dataService;
     }
     AdminComponent.prototype.ngOnInit = function () {
-        this.emailFormControl = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', [
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required,
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].pattern(EMAIL_REGEX)
+        this.emailFormControl = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormControl"]('', [
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required,
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].pattern(EMAIL_REGEX)
         ]);
-        this.passwordFormControl = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', [
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required
+        this.passwordFormControl = new __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormControl"]('', [
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["Validators"].required
         ]);
         this.online = false;
         this.databaseVersion = '';
@@ -109,9 +227,9 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.getARG = function (idx) {
         var _this = this;
-        this.argClassChart = new __WEBPACK_IMPORTED_MODULE_2__visualize_class__["a" /* ComplexPieChart */]();
-        this.argGroupChart = new __WEBPACK_IMPORTED_MODULE_2__visualize_class__["a" /* ComplexPieChart */]();
-        this.argMechanismChart = new __WEBPACK_IMPORTED_MODULE_2__visualize_class__["a" /* ComplexPieChart */]();
+        this.argClassChart = new __WEBPACK_IMPORTED_MODULE_3__visualize_class__["a" /* ComplexPieChart */]();
+        this.argGroupChart = new __WEBPACK_IMPORTED_MODULE_3__visualize_class__["a" /* ComplexPieChart */]();
+        this.argMechanismChart = new __WEBPACK_IMPORTED_MODULE_3__visualize_class__["a" /* ComplexPieChart */]();
         this.wScore = 0;
         this.weights = [1, 1, 1, 0.4, 0.3, 0.6, 0.4]; // [class, group, mechanism, mge, pathogen, expertise, confidence]
         // this.ARGindex += 1;
@@ -142,6 +260,35 @@ var AdminComponent = (function () {
             // console.log(this.curatedARGs[0])
         });
     };
+    AdminComponent.prototype.search = function (keyword) {
+        var _this = this;
+        var indx = '0';
+        this.dataService.searchAPI(keyword, indx)
+            .subscribe(function (response) {
+            console.log(response);
+            _this.curatedARGs = [response];
+            // console.log(this.curatedARGs[0]['inspected']);
+            _this.argClassChart.draw(_this.curatedARGs[0]['inspected'], 'class');
+            _this.argGroupChart.draw(_this.curatedARGs[0]['inspected'], 'group');
+            _this.argMechanismChart.draw(_this.curatedARGs[0]['inspected'], 'mechanism');
+            _this.wScore = (_this.weights[0] * _this.argClassChart.bestCategoryCounts / _this.argClassChart.totalCategoryCounts +
+                _this.weights[1] * _this.argGroupChart.bestCategoryCounts / _this.argGroupChart.totalCategoryCounts +
+                _this.weights[2] * _this.argMechanismChart.bestCategoryCounts / _this.argMechanismChart.totalCategoryCounts +
+                _this.weights[3] * _this.argClassChart.mge / (5 * _this.argClassChart.totalCategoryCounts) +
+                _this.weights[4] * _this.argClassChart.pathogen / (5 * _this.argClassChart.totalCategoryCounts) +
+                _this.weights[5] * _this.argClassChart.confidenc[_this.argClassChart.bestCategory] / (5 * _this.argClassChart.totalCategoryCounts) +
+                _this.weights[6] * _this.argClassChart.expertc[_this.argClassChart.bestCategory] / (5 * _this.argClassChart.totalCategoryCounts)).toFixed(2);
+            _this.ARG = {
+                "gene_id": _this.curatedARGs[0]['entry']['gene_id'],
+                "type": _this.argClassChart.bestCategory,
+                "subtype": _this.argGroupChart.bestCategory,
+                "mechanism": _this.argMechanismChart.bestCategory,
+                "score": _this.wScore,
+                "MGEScore": _this.argClassChart.mge / (5 * _this.argClassChart.totalCategoryCounts),
+                "pathogen_score": _this.argClassChart.pathogen / (5 * _this.argClassChart.totalCategoryCounts)
+            };
+        });
+    };
     return AdminComponent;
 }());
 AdminComponent = __decorate([
@@ -150,13 +297,13 @@ AdminComponent = __decorate([
         template: __webpack_require__(687),
         styles: [__webpack_require__(593)],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_2__visualize_class__["a" /* ComplexPieChart */],
+            __WEBPACK_IMPORTED_MODULE_3__visualize_class__["a" /* ComplexPieChart */],
         ]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_admin_service__["a" /* AdminService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_admin_service__["a" /* AdminService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */]) === "function" && _b || Object])
 ], AdminComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=admin.component.js.map
 
 /***/ }),
@@ -213,7 +360,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabaseComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -336,8 +483,8 @@ var AdminService = (function () {
             return res.json();
         });
     };
-    AdminService.prototype.getByToken = function (ixg) {
-        return this.http.get(this.baseUrl + "/admin/inspect/token/" + ixg)
+    AdminService.prototype.search = function (keyword) {
+        return this.http.get(this.baseUrl + "/admin/inspect/token/" + keyword)
             .map(function (res) {
             return res.json();
         });
@@ -432,121 +579,6 @@ NcbiService = __decorate([
 
 var _a;
 //# sourceMappingURL=ncbi.service.js.map
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var DataService = (function () {
-    function DataService(http, location) {
-        this.http = http;
-        this.location = location;
-        if (location['_platformStrategy']._platformLocation._location.hostname == "localhost") {
-            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + ":5001";
-        }
-        else {
-            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + "/argpedia_api";
-        }
-        this.ARG = [];
-        this.randomConflictingArgSubtype = [];
-    }
-    DataService.prototype.getRandomConflictingArgSubtype = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/subtype/random/')
-            .map(function (res) {
-            _this.randomConflictingArgSubtype = res.json();
-        });
-    };
-    DataService.prototype.getRandomKnownARG = function () {
-        var _this = this;
-        // console.log(this.baseUrl)
-        return this.http.get(this.baseUrl + '/get/arg/random/')
-            .map(function (res) {
-            try {
-                _this.ARG = res.json();
-            }
-            catch (error) {
-                _this.ARG = { "status": false };
-            }
-        });
-    };
-    DataService.prototype.searchAPI = function (keyword, index) {
-        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword.replace(/\s/g, '') + '&index=' + index)
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    DataService.prototype.getKnownARGInfo = function (gene_id) {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/arg/info/' + gene_id)
-            .map(function (res) {
-            _this.ARG = res.json();
-        });
-    };
-    DataService.prototype.getListAntibioticClass = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/antibiotic/class')
-            .map(function (res) {
-            _this.ATYPE = res.json();
-        });
-    };
-    DataService.prototype.getListAntibioticGroup = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/antibiotic/group')
-            .map(function (res) {
-            _this.ATYPE = res.json();
-        });
-    };
-    DataService.prototype.insertCuration = function (curation) {
-        curation['gene_id'] = this.ARG['entry']['gene_id'];
-        console.log(curation);
-        return this.http.post(this.baseUrl + '/post/curation', curation)
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    DataService.prototype.getDatabaseList = function () {
-        return this.http.get(this.baseUrl + '/get/database/list')
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    return DataService;
-}());
-DataService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"]) === "function" && _b || Object])
-], DataService);
-
-var _a, _b;
-//# sourceMappingURL=data.service.js.map
 
 /***/ }),
 
@@ -708,7 +740,7 @@ AppComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(53);
@@ -723,7 +755,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqwidgets_framework_jqwidgets_ts_angular_jqxchart__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_data_service__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_ncbi_service__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_admin_service__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_hammerjs__ = __webpack_require__(612);
@@ -810,7 +842,7 @@ AppModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestHitArdbComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -851,7 +883,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BestHitCardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -893,7 +925,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GenericComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -970,7 +1002,7 @@ ClassifyRoutingModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(46);
@@ -1101,7 +1133,7 @@ ClassifyModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classify_component__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
@@ -1341,7 +1373,7 @@ var PieChart = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Charts__ = __webpack_require__(298);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GenomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1396,7 +1428,7 @@ var _a, _b;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArdbComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1437,7 +1469,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1478,7 +1510,7 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__ = __webpack_require__(166);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UniprotComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1992,7 +2024,7 @@ module.exports = "<p>\n  about works!\n</p>\n"
 /***/ 687:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"online\">\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Upgrade database</h4>\n                <!-- <h3 class=\"box-title\">\n                <strong>Main Actions</strong>\n            </h3> -->\n            </div>\n            <div class=\"box-body\">\n\n\n                <p class=\"small\">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads\n                    tab.\n                </p>\n\n\n                <!-- UPGRADE DATABASE FORM -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Database version\" [value]=\"databaseVersion\" #dversion>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput #dmessage maxlength=\"256\" placeholder=\"Comments\" [value]=\"databaseComments\">\n                    <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint>\n                    <md-hint align=\"end\">{{dmessage.value.length}} / 256</md-hint>\n                </md-input-container>\n\n            </div>\n            <div class=\"box-footer\">\n                <br>\n                <div class=\"col-md-12 text-center\"> <button (click)=\"upgradeDataBase(dversion.value, dmessage.value)\" class=\"bg-black\" color=\"default\" md-raised-button>Upgrade ARG-miner database</button><br><br></div>\n\n                <p class=\"small\">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-sm-6\">\n\n\n        <div *ngFor=\"let item of curatedARGs\" class=\"box box-solid\">\n            <!-- <div class=\"box-header with-border\"> -->\n            <!-- <h3 class=\"box-title\">{{item.entry.gene_id}}</h3> -->\n            <!-- </div> -->\n            <div class=\"box-body\">\n                <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-4\">\n                                <h4 class=\"text-center\"> Current Annotation</h4>\n                                <hr>\n                                <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>\n                                <p><strong>ARG Name:</strong> {{ item.entry.subtype }} </p>\n                                <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>\n                                <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>\n                            </div>\n\n                            <div class=\"col-md-8\">\n                                <h4 class=\"text-center\"> Weighted Annotation</h4>\n                                <hr>\n                                <div class=\"col-md-12\">\n                                    <div class=\"col-md-4\">\n                                        <strong>Score:</strong> {{ wScore }}\n                                    </div>\n                                    <div class=\"box-plot\">\n                                        <div class=\"box-plot-component box-left\"></div>\n                                        <div class=\"box-plot-component box-right\"></div>\n                                        <div class=\"box-plot-component box-mean\" [style.left]=\"20*wScore+'%'\"></div>\n                                    </div>\n                                </div>\n                                <!-- </p> -->\n                                <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->\n                                <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>\n                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }}</p>\n                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }}</p>\n                                <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)-1}} </p>\n                                <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)-1}} </p>\n\n                                <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <hr>\n                                <div class=\"text-center\">\n                                    <button (click)=\"acceptAnnotation()\" class=\"badge bg-blue\" md-raised-button>Update Gene</button>\n                                    <button (click)=\"getARG(ARGindex)\" class=\"badge bg-red\" md-raised-button>Next Gene</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\">Crowsourced Annotation</h4>\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argClassChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argClassChart.colorScheme\" [results]=\"argClassChart.data\" [gradient]=\"argClassChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-red\"> Antbiotic Class </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>\n                            </div>\n\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Class</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n\n                                        <tr *ngFor=\"let itemx of argClassChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argGroupChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argGroupChart.colorScheme\" [results]=\"argGroupChart.data\" [gradient]=\"argGroupChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-blue\"> Antbiotic Resistance Gene </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argGroupChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argMechanismChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argMechanismChart.colorScheme\" [results]=\"argMechanismChart.data\" [gradient]=\"argMechanismChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-success\"> ARG Mechanism </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Mechanism</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argMechanismChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-sm-12\">\n                    <table class=\"table table-responsive table-bordered text-center\">\n                        <tbody>\n                            <tr class=\"table-success\">\n                                <th>Token</th>\n                                <th>Expertise</th>\n                                <th>Confidence</th>\n                                <th>Gene Name</th>\n                                <th>ARG Class</th>\n                                <th>ARG Mechanism</th>\n                            </tr>\n                            <tr *ngFor=\"let itemx of curatedARGs[0]['inspected']\">\n                                <td>{{ itemx.token }}</td>\n                                <td>{{ (itemx.rating.expertise.value).toFixed(2) }}</td>\n                                <td>{{ (itemx.rating.confidence.value).toFixed(2) }} </td>\n                                <td>{{ itemx.group }}</td>\n                                <td>{{ itemx.class }}</td>\n                                <td>{{ itemx.mechanism }}</td>\n                            </tr>\n                        </tbody>\n                    </table>\n                </div>\n\n\n            </div>\n        </div>\n\n\n    </div>\n\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Recompute Problematic Annotations</h4>\n            </div>\n            <div class=\"box-body\">\n\n                <p class=\"small\">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>\n                <div class=\"text-center\"> <button (click)=\"updateConflictingARGs()\" class=\"bg-blue\" md-raised-button>Compute Problematic ARGs</button></div>\n                <hr>\n            </div>\n        </div>\n    </div>\n\n\n\n</div>\n\n\n<div class=\"col-md-3 col-md-offset-4\" *ngIf=\"online==false\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\"> <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button></div>\n    </div>\n</div>"
+module.exports = "<div *ngIf=\"online\">\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Upgrade database</h4>\n                <!-- <h3 class=\"box-title\">\n                <strong>Main Actions</strong>\n            </h3> -->\n            </div>\n            <div class=\"box-body\">\n\n\n                <p class=\"small\">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads\n                    tab.\n                </p>\n\n\n                <!-- UPGRADE DATABASE FORM -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Database version\" [value]=\"databaseVersion\" #dversion>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput #dmessage maxlength=\"256\" placeholder=\"Comments\" [value]=\"databaseComments\">\n                    <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint>\n                    <md-hint align=\"end\">{{dmessage.value.length}} / 256</md-hint>\n                </md-input-container>\n\n            </div>\n            <div class=\"box-footer\">\n                <br>\n                <div class=\"col-md-12 text-center\"> <button (click)=\"upgradeDataBase(dversion.value, dmessage.value)\" class=\"bg-black\" color=\"default\" md-raised-button>Upgrade ARG-miner database</button><br><br></div>\n\n                <p class=\"small\">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-sm-6\">\n\n        <div class=\"\">\n            <div class=\"box box-solid \">\n                <div class=\"box-body\">\n                    <md-input-container class='col-sm-12 col-sm-offset-0'>\n                        <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" value=\"\" />\n                    </md-input-container>\n                </div>\n            </div>\n        </div>\n\n        <div *ngFor=\"let item of curatedARGs\" class=\"box box-solid\">\n            <!-- <div class=\"box-header with-border\"> -->\n            <!-- <h3 class=\"box-title\">{{item.entry.gene_id}}</h3> -->\n            <!-- </div> -->\n            <div class=\"box-body\">\n                <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-4\">\n                                <h4 class=\"text-center\"> Current Annotation</h4>\n                                <hr>\n                                <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>\n                                <p><strong>ARG Name:</strong> {{ item.entry.subtype }} </p>\n                                <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>\n                                <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>\n                            </div>\n\n                            <div class=\"col-md-8\">\n                                <h4 class=\"text-center\"> Weighted Annotation</h4>\n                                <hr>\n                                <div class=\"col-md-12\">\n                                    <div class=\"col-md-4\">\n                                        <strong>Score:</strong> {{ wScore }}\n                                    </div>\n                                    <div class=\"box-plot\">\n                                        <div class=\"box-plot-component box-left\"></div>\n                                        <div class=\"box-plot-component box-right\"></div>\n                                        <div class=\"box-plot-component box-mean\" [style.left]=\"20*wScore+'%'\"></div>\n                                    </div>\n                                </div>\n                                <!-- </p> -->\n                                <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->\n                                <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>\n                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }}</p>\n                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }}</p>\n                                <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)-1}} </p>\n                                <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)-1}} </p>\n\n                                <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <hr>\n                                <div class=\"text-center\">\n                                    <button (click)=\"acceptAnnotation()\" class=\"badge bg-blue\" md-raised-button>Update Gene</button>\n                                    <button (click)=\"getARG(ARGindex)\" class=\"badge bg-red\" md-raised-button>Next Gene</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\">Crowsourced Annotation</h4>\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argClassChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argClassChart.colorScheme\" [results]=\"argClassChart.data\" [gradient]=\"argClassChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-red\"> Antbiotic Class </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>\n                            </div>\n\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Class</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n\n                                        <tr *ngFor=\"let itemx of argClassChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argGroupChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argGroupChart.colorScheme\" [results]=\"argGroupChart.data\" [gradient]=\"argGroupChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-blue\"> Antbiotic Resistance Gene </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argGroupChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argMechanismChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argMechanismChart.colorScheme\" [results]=\"argMechanismChart.data\" [gradient]=\"argMechanismChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-success\"> ARG Mechanism </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Mechanism</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argMechanismChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-sm-12\">\n                    <table class=\"table table-responsive table-bordered text-center\">\n                        <tbody>\n                            <tr class=\"table-success\">\n                                <th>Token</th>\n                                <th>Expertise</th>\n                                <th>Confidence</th>\n                                <th>Gene Name</th>\n                                <th>ARG Class</th>\n                                <th>ARG Mechanism</th>\n                            </tr>\n                            <tr *ngFor=\"let itemx of curatedARGs[0]['inspected']\">\n                                <td>{{ itemx.token }}</td>\n                                <td>{{ (itemx.rating.expertise.value).toFixed(2) }}</td>\n                                <td>{{ (itemx.rating.confidence.value).toFixed(2) }} </td>\n                                <td>{{ itemx.group }}</td>\n                                <td>{{ itemx.class }}</td>\n                                <td>{{ itemx.mechanism }}</td>\n                            </tr>\n                        </tbody>\n                    </table>\n                </div>\n\n\n            </div>\n        </div>\n\n\n    </div>\n\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Recompute Problematic Annotations</h4>\n            </div>\n            <div class=\"box-body\">\n\n                <p class=\"small\">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>\n                <div class=\"text-center\"> <button (click)=\"updateConflictingARGs()\" class=\"bg-blue\" md-raised-button>Compute Problematic ARGs</button></div>\n                <hr>\n            </div>\n        </div>\n    </div>\n\n\n\n</div>\n\n\n<div class=\"col-md-3 col-md-offset-4\" *ngIf=\"online==false\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\"> <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button></div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2093,7 +2125,7 @@ module.exports = "<div class=\"container-fluid home-font\">\n\n    <div class=\"
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js__ = __webpack_require__(614);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(46);
