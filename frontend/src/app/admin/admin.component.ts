@@ -130,6 +130,11 @@ export class AdminComponent implements OnInit {
 
   search(keyword: string){
     let indx = '0';
+    this.argClassChart = new ComplexPieChart();
+    this.argGroupChart = new ComplexPieChart();
+    this.argMechanismChart = new ComplexPieChart();
+    this.wScore = 0;
+    
     this.dataService.searchAPI(keyword, indx)
       .subscribe(response =>{
         console.log(response)

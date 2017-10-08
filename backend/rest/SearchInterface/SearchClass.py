@@ -7,14 +7,20 @@ class Search():
         self.type = 'master'
 
     def retrieve(self, keyword):
-        keyword = keyword.replace('(','.').replace(')','.')
         
+        keyword = keyword.replace('(','.').replace(')','.')
+
+        try:
+            nkey = int(keyword)
+        except:
+            nkey = keyword    
+
         types = self.database.find(self.type,   {
                                                     "$or":[
                                                         {"entry.type":{"$regex":keyword, "$options":"x", "$options":"i"}},
                                                         {"entry.subtype":{"$regex":keyword, "$options":"x", "$options":"i"}},
                                                         {"entry.gene_id":{"$regex":keyword, "$options":"x", "$options":"i"}},
-                                                        {"inspected": { "$elemMatch": {"token": keyword} }}
+                                                        {"inspected": { "$elemMatch": {"token": nkey} }}
                                                     ]
                                                 }); 
         # print gene
