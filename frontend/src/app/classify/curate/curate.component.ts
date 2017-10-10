@@ -17,11 +17,16 @@ import {ConfirmationService} from 'primeng/primeng';
 
 import { Message } from 'primeng/components/common/api';
 
+import { ScoreAnnotation } from './score.class'
+
 @Component({
   selector: 'app-curate',
   templateUrl: './curate.component.html',
   styleUrls: ['./curate.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    ScoreAnnotation
+  ]
 
 })
 export class CurateComponent implements OnInit {
@@ -49,6 +54,9 @@ export class CurateComponent implements OnInit {
 
   public notification: Message[] = [];
 
+  public liveScore: any;
+  public liveScoreAnnotation: any;
+
   myControl = new FormControl();
   groupControl = new FormControl();
   mgeControl = new FormControl();
@@ -60,7 +68,7 @@ export class CurateComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public classifyComponent: ClassifyComponent,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
   ) {
     
   }
@@ -83,6 +91,11 @@ export class CurateComponent implements OnInit {
 
     // Get ARG data
     this.randomARG = this.dataService.ARG;
+    this.liveScore = new ScoreAnnotation();
+    
+    this.liveScoreAnnotation = {class: 0, group: 0, mechanism: 0};
+    
+
     this.antibiotic = {
       class:null,
       group:null,
@@ -93,6 +106,7 @@ export class CurateComponent implements OnInit {
       gene_id: "",
       token: "------------"
     }
+    
 
     // Get the list of antibiotic types in the database
     this.dataService.getListAntibioticClass()
@@ -163,12 +177,13 @@ export class CurateComponent implements OnInit {
   validate(value: any){
 
     if(value == 1){
+
+      this.liveScoreAnnotation = this.liveScore.score(this.classifyComponent.randomARG , this.antibiotic)
       
-      if(this.antibiotic['class']==null || this.antibiotic['group']==null){
-        
-        // this.overlay['title']="Emtpy group and/or class not allowed"
-        // this.overlay['content']="Please make sure to insert the antibiotic class and group in the form (mechanism is optional)"
-        // this.showDialog()
+      console.log(this.liveScoreAnnotation);
+
+      if(this.liveScoreAnnotation.class < 80 || this.liveScoreAnnotation.group < 30 || this.liveScoreAnnotation.mechanism < 50){
+
         alert('Error: Empty fields are not allowed!')
 
       }else{
