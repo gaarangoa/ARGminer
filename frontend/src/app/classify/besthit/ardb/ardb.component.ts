@@ -23,7 +23,7 @@ export class BestHitArdbComponent implements OnInit {
   ngOnInit() {
     this.randomARG = this.dataService.ARG;
     this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len']/this.randomARG['entry']['length'].toFixed(0)
-    if(this.randomARG['besthit'].status == true){
+    if(this.randomARG['besthit']){
       this.render = true;
     }
     

@@ -24,7 +24,7 @@ export class BestHitCardComponent implements OnInit {
     this.randomARG = this.dataService.ARG;
     this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len']/this.randomARG['entry']['length'].toFixed(0)
     // console.log(this.alCoverage)
-    if(this.randomARG['besthit'].status == true){
+    if(this.randomARG['besthit']){
       this.render = true;
     }
   }

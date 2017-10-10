@@ -271,22 +271,22 @@ export class ClassifyComponent implements OnInit {
           },
           {
             element: '#step7',
-            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> <p>In the example, the closest gene from CARD has an identity of 70% wich over a 98% coverage which makes the alignment statistically significant (evalue=2.9e-161). This score guarantee a correct classification at the <strong>antibiotic resitance class</strong> level (Beta-Lactamase) </p></div>",
+            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> </div>",
             position: 'right'
           },
           {
             element: '#step8',
-            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage). Therefore, it is clear that the gene is a Beta-Lactamase and its very likely that the <strong>Antibiotic Resistance Gene</strong> is a <strong>BL1-EC</strong>. The Antimicrobial Resistance (AMR) profile from the ARDB database suggests its <strong>Antibiotic Resistance Mechanism</strong> as a Beta-lactamse class C. </p></div>",
+            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage).</p></div>",
             position: 'right'
           },
           {
             element: '#step9',
-            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. From the previous results, we know the gene is a beta-lactamase and corresponds to the gene BL1-EC. The MegaRes database give us also hints about the <strong>Antibiotic Resistance Mechanism</strong>: Class C beta-lactamase, which is the same as shown by the ARDB database.</p></div>",
+            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. </p></div>",
             position: 'left'
           },
           {
             element: '#step10',
-            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> <p>In the example, the queried gene has been found in 5 plasmids. The alignments show an identity of 66% with a standard deviation of 14, making the alignments <strong>statistical significant</strong>. We can conclude that there is enough evidence that the gene has been transferred by MGEs.</p> <p>On the other hand, the evidence also suggest that this gene is found in complete genomes, where <strong> 86% of the genomes are from pathogen bacteria </strong>. This clearly suggest that the gene has evidence to be found in harmful pathogenic microbes. There is also information about the diseases related to those pathogens as well as the antimicrobial phenotype and hosts.</p></div>",
+            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> </div>",
             position: 'right'
           },
           
