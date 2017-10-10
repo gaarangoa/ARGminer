@@ -76,17 +76,22 @@
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                         </dl>
 
-                        <p class="small">*ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u></p>
+                        <p class="small text-center">
+                            *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>
+                            <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a>
+                        </p>
 
 
                         <hr>
                         <!-- <h4>Tutorial</h4> -->
 
-                        <div class="text-center">
-                            <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <u>Tour </u></strong> </span></a>
-                            <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a>
-                        </div>
-                        <br>
+                        <!-- <div class="text-left"> -->
+
+
+
+                        <!-- <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a> -->
+                        <!-- </div> -->
+                        <!-- <br> -->
                         <!-- <hr> -->
 
                         <!-- <h4>Filter options</h4> -->
@@ -169,92 +174,6 @@
 
             </div> -->
 
-
-            <md-expansion-panel id="step12" class="">
-                <md-expansion-panel-header>
-                    <md-panel-title>
-                        <h4>Micro-Tasks</h4>
-                    </md-panel-title>
-                </md-expansion-panel-header>
-                <h4>ARG identification</h4>
-                <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
-
-                <p class="small">The <strong>Blast alignment</strong> sections associate the queried gene to its closest antibiotic resistance gene from curated databases. From this section you need to look at the scores (Bitscore, evalue, identity and coverage). High
-                    identity and coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore
-                    greater than 50 is considered significant if it spans at least 90% coverage.
-                </p>
-
-
-                <hr>
-
-                <h4> Mobile Genetic Elements</h4>
-
-                <p><strong>Horizontal Gene Transfer</strong></p>
-                <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>
-                <p class="small">To complete this task please check the Plasmid, Virus, or Prophages sections. If there is not any section with plasmid, prophage or virus tags it means that there is not evidence that the gene is transfered by any of those mechanisms.
-                </p>
-                <p><strong>Pathogen Genomes</strong></p>
-                <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>
-                <p class="small">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens (as percentages) as well as their antimicrobial phenotype
-                    (resistant, susceptible, intermediate). Rate your findigns according to the provided evidence.
-
-                </p>
-
-                <hr>
-                <h4>Review and submit</h4>
-                <p>This panel contains your observations for the queried gene.</p>
-                <p><strong>Verify your observations</strong></p>
-                <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>
-                <p><strong>Rate your expertise</strong></p>
-                <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.
-                    <p>
-                        <p><strong>Rate your annotation confidence</strong></p>
-                        <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>
-            </md-expansion-panel>
-            <br>
-            <md-expansion-panel>
-                <md-expansion-panel-header>
-                    <md-panel-title>
-                        <h4>Similarity to known ARGs</h4>
-                    </md-panel-title>
-                </md-expansion-panel-header>
-                <p>
-                    To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href="">CARD</a> database. Thus, the entry {{ randomARG.entry.gene_id
-                    }} was compared against the databases to reinforce, reject or modify the <strong>current annotation.</strong>
-                </p>
-                <p>
-                    For this comparison, the gene {{ randomARG.entry.gene_id }} was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.
-                </p>
-
-                <p> <span class="label bg-blue">Tip</span> To identify the
-                    <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where
-                    the sequence similarity is <u>high</u> with a <u>very strong</u> coverage.
-                </p>
-
-                <p class="">*Each color represents a different scoring scale</p>
-
-            </md-expansion-panel>
-            <br>
-            <md-expansion-panel>
-                <md-expansion-panel-header>
-                    <md-panel-title>
-                        <h4>MGEs and pathogens</h4>
-                    </md-panel-title>
-                </md-expansion-panel-header>
-                <p>
-                    Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also
-                    transfer genetic material by accidentally package segments of DNA to inject into their host.
-                </p>
-                <p>
-                    To identify if the ARG is carried by plasmids, phages or viruses, the gene {{ randomARG.entry.gene_id }} was aligned to the <a href="">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.
-                </p>
-                <p>
-                    Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene {{ randomARG.entry.gene_id }} is hosted in a pathogen genome, the gene was matched
-                    to the <a href="">PATRIC</a> database. Then, we were able to identify the number of pathogen genomes that carry the {{ randomARG.entry.gene_id }} gene.
-                </p>
-                <p class="small">Each color represents a different scoring scale</p>
-            </md-expansion-panel>
-            <!-- </div> -->
         </div>
 
 
@@ -286,7 +205,7 @@
                 <hr>
 
 
-                <md-expansion-panel class="box box-solid" [expanded]="true">
+                <md-expansion-panel id="step12" class="box box-solid" [expanded]="true">
 
                     <md-expansion-panel-header>
                         <md-panel-title>

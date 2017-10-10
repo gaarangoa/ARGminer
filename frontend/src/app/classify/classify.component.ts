@@ -261,29 +261,29 @@ export class ClassifyComponent implements OnInit {
           },
           {
             element: '#step12',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>Read the instructions for curating an ARG.</p></div>", 
+            intro: "<div class='text-center'><h4>Tips for success!</h4><p class='small'>Some tips to get a fast and right annotation.</p></div>", 
             position: 'right'
           },
-          {
-            element: '#step6',
-            intro: "<div class='text-center'><p class='small'>This panel contains the information from the UniProt database, including taxonomy, domains, functions and gene ontology annotation.</p></div>",
-            position: 'right'
-          },
+          // {
+          //   element: '#step6',
+          //   intro: "<div class='text-center'><p class='small'>This panel contains the information from the UniProt database, including taxonomy, domains, functions and gene ontology annotation.</p></div>",
+          //   position: 'right'
+          // },
           {
             element: '#step7',
             intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> </div>",
             position: 'right'
           },
-          {
-            element: '#step8',
-            intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage).</p></div>",
-            position: 'right'
-          },
-          {
-            element: '#step9',
-            intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. </p></div>",
-            position: 'left'
-          },
+          // {
+          //   element: '#step8',
+          //   intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage).</p></div>",
+          //   position: 'right'
+          // },
+          // {
+          //   element: '#step9',
+          //   intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. </p></div>",
+          //   position: 'left'
+          // },
           {
             element: '#step10',
             intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> </div>",

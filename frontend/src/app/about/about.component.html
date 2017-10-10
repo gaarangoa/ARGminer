@@ -1,3 +1,133 @@
-<p>
-  about works!
-</p>
+<div style="overflow: auto" class="col-md-12">
+    <h2>Instructions</h2>
+    <p>
+        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.
+    </p>
+    <br>
+
+    <img class="col-md-8 col-md-offset-2" src="assets/images/demo.png" alt="">
+
+    <div class="col-md-12">
+
+        <h4>1. Get familiar with the environment</h4>
+        <p>
+            In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.
+        </p>
+        <h4>2. New user</h4>
+        <p class="">
+            If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform three ARG annotations.
+        </p>
+
+        <h4>3. How to get a reward </h4>
+        <p>
+            Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token
+            to the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style="color:red">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.
+        </p>
+
+        <h4>4. Perform a new Hit</h4>
+        <p>
+            First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.
+        </p>
+
+        <strong><h4 style="color:red"> Be Aware! </h4></strong>
+        <p>
+            If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.
+        </p>
+        <p>
+            If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.
+        </p>
+    </div>
+    <hr class="col-md-10">
+</div>
+
+<hr>
+
+
+<md-expansion-panel class="" [expanded]="false">
+    <md-expansion-panel-header>
+        <md-panel-title>
+            <h4>Micro-Tasks</h4>
+        </md-panel-title>
+    </md-expansion-panel-header>
+    <h4>ARG identification</h4>
+    <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>
+
+    <p class="small">The <strong>Blast alignment</strong> sections associate the queried gene to its closest antibiotic resistance gene from curated databases. From this section you need to look at the scores (Bitscore, evalue, identity and coverage). High identity and
+        coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than 50 is considered
+        significant if it spans at least 90% coverage.
+    </p>
+
+
+    <hr>
+
+    <h4> Mobile Genetic Elements</h4>
+
+    <p><strong>Horizontal Gene Transfer</strong></p>
+    <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>
+    <p class="small">To complete this task please check the Plasmid, Virus, or Prophages sections. If there is not any section with plasmid, prophage or virus tags it means that there is not evidence that the gene is transfered by any of those mechanisms.
+    </p>
+    <p><strong>Pathogen Genomes</strong></p>
+    <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>
+    <p class="small">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens (as percentages) as well as their antimicrobial phenotype (resistant,
+        susceptible, intermediate). Rate your findigns according to the provided evidence.
+
+    </p>
+
+    <hr>
+    <h4>Review and submit</h4>
+    <p>This panel contains your observations for the queried gene.</p>
+    <p><strong>Verify your observations</strong></p>
+    <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>
+    <p><strong>Rate your expertise</strong></p>
+    <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.
+        <p>
+            <p><strong>Rate your annotation confidence</strong></p>
+            <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>
+</md-expansion-panel>
+<hr>
+
+<md-expansion-panel [expanded]="false">
+    <md-expansion-panel-header>
+        <md-panel-title>
+            <h4>MGEs and pathogens</h4>
+        </md-panel-title>
+    </md-expansion-panel-header>
+    <p>
+        Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also
+        transfer genetic material by accidentally package segments of DNA to inject into their host.
+    </p>
+    <p>
+        To identify if the ARG is carried by plasmids, phages or viruses, the gene was aligned to the <a href="">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.
+    </p>
+    <p>
+        Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene is hosted in a pathogen genome, the gene was matched to the <a href="">PATRIC</a>        database. Then, we were able to identify the number of pathogen genomes that carry the gene.
+    </p>
+    <p class="small">Each color represents a different scoring scale</p>
+</md-expansion-panel>
+
+
+
+<hr>
+
+<md-expansion-panel [expanded]="false">
+    <md-expansion-panel-header>
+        <md-panel-title>
+            <h4>Similarity to known ARGs</h4>
+        </md-panel-title>
+    </md-expansion-panel-header>
+    <p>
+        To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href="">CARD</a> database. Thus, the entry was compared against the databases
+        to reinforce, reject or modify the <strong>current annotation.</strong>
+    </p>
+    <p>
+        For this comparison, the gene was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.
+    </p>
+
+    <p> <span class="label bg-blue">Tip</span> To identify the
+        <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where the sequence
+        similarity is <u>high</u> with a <u>very strong</u> coverage.
+    </p>
+
+</md-expansion-panel>
+
+<hr><br><br><br><br><br>

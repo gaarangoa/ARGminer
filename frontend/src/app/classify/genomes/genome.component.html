@@ -104,7 +104,7 @@
                     </p>
                     <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene
                     (>90% identity, >90% coverage).
-                    <br><br><strong>{{ genomeCount }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
+                    <br><br><strong>{{ randomARG['pathogen'].genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
                     <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (
                     <span class="badge bg-red" *ngIf="genomeCount<10"> 
                     {{(genomeCount).toFixed(1)}}% 
