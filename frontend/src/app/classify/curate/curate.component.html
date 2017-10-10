@@ -26,19 +26,19 @@
                 </md-input-container>
 
                 <md-autocomplete #AClass="mdAutocomplete">
-                    <md-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    <md-option *ngFor="let option of filteredOptions | async" [value]="option" required>
                         {{ option }}
                     </md-option>
                 </md-autocomplete>
 
                 <md-autocomplete #AGroup="mdAutocomplete">
-                    <md-option *ngFor="let option of groupFilteredOptions | async" [value]="option">
+                    <md-option *ngFor="let option of groupFilteredOptions | async" [value]="option" required>
                         {{ option }}
                     </md-option>
                 </md-autocomplete>
 
                 <md-input-container class="col-md-12">
-                    <input type="text" mdInput [(ngModel)]="antibiotic.mechanism" placeholder="Antibiotic Mechanism (if any)">
+                    <input type="text" mdInput [(ngModel)]="antibiotic.mechanism" placeholder="Antibiotic Mechanism (if any)" required>
                 </md-input-container>
 
                 <br><br>

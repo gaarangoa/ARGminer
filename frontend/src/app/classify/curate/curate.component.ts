@@ -178,15 +178,23 @@ export class CurateComponent implements OnInit {
 
     if(value == 1){
 
-      this.liveScoreAnnotation = this.liveScore.score(this.classifyComponent.randomARG , this.antibiotic)
       
+      this.liveScoreAnnotation = this.liveScore.score(this.classifyComponent.randomARG , this.antibiotic)
       console.log(this.liveScoreAnnotation);
 
-      if(this.liveScoreAnnotation.class < 80 || this.liveScoreAnnotation.group < 30 || this.liveScoreAnnotation.mechanism < 50){
+      if(this.antibiotic['class']==null || this.antibiotic['group']==null || this.antibiotic['mechanism']==null){
+        this.classifyComponent.notification.push({severity:'error', summary:'Score', detail:'Your score is: 0 out of 100'});
 
-        alert('Error: Empty fields are not allowed!')
-
+      }else if(this.liveScoreAnnotation.class < 50 || this.liveScoreAnnotation.group < 30 || this.liveScoreAnnotation.mechanism < 50){
+          
+        let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
+        this.classifyComponent.notification.push({severity:'error', summary:'Error', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
+      
       }else{
+        this.classifyComponent.notification = [];
+        let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
+        this.classifyComponent.notification.push({severity:'success', summary:'Success', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
+        
         this.activeIndex = 1;
         this.step1=false;
         this.step2=true;
@@ -194,6 +202,8 @@ export class CurateComponent implements OnInit {
 
 
     }else if(value ==2){
+
+
 
       this.step2 = false;
       this.step3 = true;
