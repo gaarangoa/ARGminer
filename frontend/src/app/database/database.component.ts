@@ -7,7 +7,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./database.component.css']
 })
 export class DatabaseComponent implements OnInit {
-  private databases: Object;
+  public databases: Object;
   
   constructor(
     private dataService: DataService

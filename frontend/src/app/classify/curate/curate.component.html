@@ -11,25 +11,6 @@
         <div class="box-body">
             <p-steps styleClass="steps-custom" [(activeIndex)]="activeIndex" [readonly]="true" [model]="items"></p-steps>
 
-            <p-dialog header="{{overlay.title}}" icon="fa-external-link-square" modal="modal" [(visible)]="display">
-
-                <div class="">
-                    <div class="box-body text-center">
-                        <p>{{ overlay.content }}</p>
-                        <p *ngIf="overlay.score"><strong>Your annotation score is: {{ overlay.score }}</strong> which is
-                            <span class="badge bg-blue" *ngIf="overlay.score<overlay.average_score">lower</span>
-                            <span class="badge bg-red" *ngIf="overlay.score>overlay.average_score">higher</span> than the average score ( {{ overlay.average_score }} ) for this gene. </p>
-                    </div>
-                </div>
-
-
-                <p-footer class="text-center">
-                    <button *ngIf="overlay.score" type="button" pButton icon="fa-check" (click)="continueReview()" label="Continue"></button>
-                    <button *ngIf="!overlay.score" type="button" pButton icon="fa-check" (click)="display=false" label="Continue"></button>
-                </p-footer>
-
-            </p-dialog>
-
             <div *ngIf="step1 text-center">
 
                 <!-- <div class="col-md-12"> -->
@@ -135,8 +116,8 @@
                         <span class=""> {{ antibiotic.group }} </span>
                         <br>
 
-                        <strong *ngIf="!antibiotic.mechanism==''">ARG Mechanism:</strong>
-                        <span *ngIf="!antibiotic.mechanism==''">{{ antibiotic.mechanism }} </span>
+                        <strong *ngIf="!antibiotic.mechanism==null">ARG Mechanism:</strong>
+                        <span *ngIf="!antibiotic.mechanism==null">{{ antibiotic.mechanism }} </span>
 
                     </dl>
                     <hr>

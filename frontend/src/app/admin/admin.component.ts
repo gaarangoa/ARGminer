@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   private weights: Array<number>;
   private ARG: Object;
   private ARGindex: any;
-  private online: boolean;
+  public online: boolean;
   private emailFormControl: any;
   private passwordFormControl: any;
   private databaseVersion: string;

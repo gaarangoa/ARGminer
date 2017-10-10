@@ -26,15 +26,15 @@ import { Message } from 'primeng/components/common/api';
 })
 export class CurateComponent implements OnInit {
 
-  private step1: boolean;
-  private step2: boolean;
-  private step3: boolean;
-  private step4: boolean;
+  public step1: boolean;
+  public step2: boolean;
+  public step3: boolean;
+  public step4: boolean;
   public display: boolean = false;
   public overlay: Object;
-  private inspectedGenes: Array<String>;
+  public inspectedGenes: Array<String>;
 
-  private activeIndex: number = 0;
+  public activeIndex: number = 0;
 
   onRatingChangeResult:IStarRatingOnRatingChangeEven;
 
@@ -59,7 +59,7 @@ export class CurateComponent implements OnInit {
   
   constructor(
     private dataService: DataService,
-    private classifyComponent: ClassifyComponent,
+    public classifyComponent: ClassifyComponent,
     private confirmationService: ConfirmationService
   ) {
     
@@ -86,7 +86,7 @@ export class CurateComponent implements OnInit {
     this.antibiotic = {
       class:null,
       group:null,
-      mechanism:"",
+      mechanism:null,
       MGE:{},
       comments:"",
       rating:{},

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 
-import { GenomeComponent } from './genome.component';
+// import { GenomeComponent } from './genome.component';
 
 
 @NgModule({
@@ -11,13 +11,13 @@ import { GenomeComponent } from './genome.component';
     FormsModule
   ],
   declarations: [
-    GenomeComponent
+    // GenomeComponent
   ],
   providers: [
     
   ],
   bootstrap: [
-      GenomeComponent
+      // GenomeComponent
   ]
 })
 

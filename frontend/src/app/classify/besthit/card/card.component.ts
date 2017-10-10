@@ -10,7 +10,8 @@ import { DataService } from '../../../../services/data.service';
 export class BestHitCardComponent implements OnInit {
 
   public randomARG: Object;
-  public alCoverage: any;
+  public alCoverage: number;
+  public render: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -21,7 +22,11 @@ export class BestHitCardComponent implements OnInit {
 
   ngOnInit() {
     this.randomARG = this.dataService.ARG;
-    // console.log(this.randomARG)
+    this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len']/this.randomARG['entry']['length'].toFixed(0)
+    // console.log(this.alCoverage)
+    if(this.randomARG['besthit'].status == true){
+      this.render = true;
+    }
   }
 
 }

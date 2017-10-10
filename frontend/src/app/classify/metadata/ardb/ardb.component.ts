@@ -10,6 +10,7 @@ import { DataService } from '../../../../services/data.service';
 export class ArdbComponent implements OnInit {
 
   public randomARG: Object;
+  public render: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -20,6 +21,9 @@ export class ArdbComponent implements OnInit {
 
   ngOnInit() {
     this.randomARG = this.dataService.ARG;
+    if(this.randomARG['metadata'].status==true){ 
+      this.render = true;
+    }
   }
 
 }

@@ -19,6 +19,9 @@ export class GenomeComponent implements OnInit {
   private disease: any;
   private AMR_phenotype: any;
   private host: any;
+  public genomeCount: number;
+  public renderMobile: boolean = false;
+  public renderPathogen: boolean = false;
     
 
   constructor(
@@ -40,6 +43,16 @@ export class GenomeComponent implements OnInit {
 
     this.host = new PieChart();
     this.host.draw(this.randomARG['pathogen']['host']);
+
+    this.genomeCount = 100*this.randomARG['pathogen'].genomes_pathogen/this.randomARG['pathogen'].genomes_count.toFixed(0)
+
+    if(this.randomARG['mobile'].status == true){
+      this.renderMobile = true;
+    }
+
+    if(this.randomARG['pathogen'].status == true){
+      this.renderPathogen = true;
+    }
 
   }
   

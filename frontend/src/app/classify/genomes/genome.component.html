@@ -1,5 +1,63 @@
-<div *ngFor="let item of randomARG.mobile" class="">
-    <div *ngIf="item.status==true && item.identity.mean>20" class="">
+<div *ngIf="renderMobile">
+    <div *ngFor="let item of randomARG.mobile" class="">
+        <div *ngIf="item.status==true && item.identity.mean>20" class="">
+            <p>
+                <strong> Scoring </strong>:
+                <span class="label bg-red">Very Weak</span>
+                <span class="label bg-yellow">Weak</span>
+                <span class="label bg-green">Middle</span>
+                <span class="label bg-blue">Strong</span>
+                <span class="label bg-black">Very Strong</span>
+            </p>
+            <div class="box box-solid">
+                <!-- <div class="col-md-10 col-md-offset-1"> -->
+
+                <div class="box-header with-border ">
+                    <i class="fa fa-tag"></i>
+                    <h3 class="box-title" *ngIf="item.type=='proph'">Prophages</h3>
+                    <h3 class="box-title" *ngIf="item.type=='plasmid'">Plasmids</h3>
+                    <h3 class="box-title" *ngIf="item.type=='vir'">Viruses</h3>
+
+                </div>
+
+                <!-- </div> -->
+
+                <!-- <div class="col-md-12"> -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Type:</dt>
+                        <dd>
+                            <strong><p *ngIf="item.type=='proph'">Prophages</p></strong>
+                            <strong><p *ngIf="item.type=='plasmid'">Plasmids</p></strong>
+                            <strong><p *ngIf="item.type=='vir'">Viruses</p></strong>
+                        </dd>
+                        <dt>Count:</dt>
+                        <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
+                        <dt>Similarity:</dt>
+                        <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
+                        <dt>BitScore:</dt>
+                        <dd> <span class="badge bg-{{ item.bitscore.color }}"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>
+                        <!-- <dt>Evalue (log):</dt> -->
+                        <!-- <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd> -->
+                        <dt>Coverage:</dt>
+                        <dd> <span class="badge bg-{{ item.coverage.color }}"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>
+                        <dt>Description:</dt>
+                        <dd>{{ item.mge_description }}</dd>
+                        <dt>Gene Aclame ID:</dt>
+                        <dd>{{ item.mge_id }}</dd>
+                    </dl>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="renderPathogen">
+    <div *ngIf="randomARG.pathogen.status==true" class="">
+        <!-- <div class="col-md-12"> -->
+        <h4>Pathogens Genomes</h4>
         <p>
             <strong> Scoring </strong>:
             <span class="label bg-red">Very Weak</span>
@@ -9,182 +67,128 @@
             <span class="label bg-black">Very Strong</span>
         </p>
         <div class="box box-solid">
-            <!-- <div class="col-md-10 col-md-offset-1"> -->
-
-            <div class="box-header with-border ">
-                <i class="fa fa-tag"></i>
-                <h3 class="box-title" *ngIf="item.type=='proph'">Prophages</h3>
-                <h3 class="box-title" *ngIf="item.type=='plasmid'">Plasmids</h3>
-                <h3 class="box-title" *ngIf="item.type=='vir'">Viruses</h3>
-
-            </div>
-
-            <!-- </div> -->
-
-            <!-- <div class="col-md-12"> -->
-            <div class="box-body">
-                <dl class="dl-horizontal">
-                    <dt>Type:</dt>
-                    <dd>
-                        <strong><p *ngIf="item.type=='proph'">Prophages</p></strong>
-                        <strong><p *ngIf="item.type=='plasmid'">Plasmids</p></strong>
-                        <strong><p *ngIf="item.type=='vir'">Viruses</p></strong>
-                    </dd>
-                    <dt>Count:</dt>
-                    <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
-                    <dt>Similarity:</dt>
-                    <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
-                    <dt>BitScore:</dt>
-                    <dd> <span class="badge bg-{{ item.bitscore.color }}"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>
-                    <!-- <dt>Evalue (log):</dt> -->
-                    <!-- <dd> <span class="badge bg-{{ item.evalue.color }}"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd> -->
-                    <dt>Coverage:</dt>
-                    <dd> <span class="badge bg-{{ item.coverage.color }}"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>
-                    <dt>Description:</dt>
-                    <dd>{{ item.mge_description }}</dd>
-                    <dt>Gene Aclame ID:</dt>
-                    <dd>{{ item.mge_id }}</dd>
-                </dl>
-            </div>
-            <!-- </div> -->
-        </div>
-    </div>
-
-</div>
-
-<div *ngIf="randomARG.pathogen.status==true" class="">
-    <!-- <div class="col-md-12"> -->
-    <h4>Pathogens Genomes</h4>
-    <p>
-        <strong> Scoring </strong>:
-        <span class="label bg-red">Very Weak</span>
-        <span class="label bg-yellow">Weak</span>
-        <span class="label bg-green">Middle</span>
-        <span class="label bg-blue">Strong</span>
-        <span class="label bg-black">Very Strong</span>
-    </p>
-    <div class="box box-solid">
 
 
-        <div class="box-header with-border">
+            <div class="box-header with-border">
 
-            <!-- <div class="col-md-10 col-md-offset-1">
+                <!-- <div class="col-md-10 col-md-offset-1">
                             <svg  width="50px" height="50px"  class="resistant" />  
                         </div> -->
-            <i class="fa fa-bug"></i>
-            <h3 class="box-title">Full Genomes</h3>
+                <i class="fa fa-bug"></i>
+                <h3 class="box-title">Full Genomes</h3>
 
-        </div>
+            </div>
 
 
-        <div class="">
+            <div class="">
 
-            <div class="box-body">
+                <div class="box-body">
 
-                <p>
-                    <strong>Pathogen Score:</strong>
-                    <span class="badge bg-red" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)<10"> 
+                    <p>
+                        <strong>Pathogen Score:</strong>
+                        <span class="badge bg-red" *ngIf="genomeCount<10"> 
                                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                                 </span>
-                    <span class="badge bg-yellow" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <20 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>10"> 
+                        <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10"> 
                                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                                 </span>
-                    <span class="badge bg-green" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <30 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>20"> 
+                        <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20"> 
                                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                                 </span>
-                    <span class="badge bg-blue" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <60 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>30"> 
+                        <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30"> 
                                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                                 </span>
-                    <span class="badge bg-black" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <90 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>60"> 
+                        <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60"> 
                                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                                 </span>
-                </p>
-                <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>90%
-                identity, >90% coverage).
-                <br><br><strong>{{ randomARG.pathogen.genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
-                <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (
-                <span class="badge bg-red" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)<10"> 
+                    </p>
+                    <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene
+                    (>90% identity, >90% coverage).
+                    <br><br><strong>{{ randomARG.pathogen.genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
+                    <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (
+                    <span class="badge bg-red" *ngIf="genomeCount<10"> 
                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>
-                <span class="badge bg-yellow" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <20 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>10"> 
+                    <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10"> 
                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>
-                <span class="badge bg-green" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <30 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>20"> 
+                    <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20"> 
                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>
-                <span class="badge bg-blue" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <60 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>30"> 
+                    <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30"> 
                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>
-                <span class="badge bg-black" *ngIf="(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1) <90 && (100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)>60"> 
+                    <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60"> 
                     {{(100*randomARG.pathogen.genomes_pathogen/randomARG.pathogen.genomes_count).toFixed(1)}}% 
                 </span>) genomes are labeled as <u>pathogens</u>.
 
 
+                </div>
             </div>
         </div>
+
+        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+
+        <md-expansion-panel class="box box-solid" style="background:rgba(0,0,0,0)">
+
+            <md-expansion-panel-header>
+                <md-panel-title>
+                    Disease and Antimicrobial Resistance profile
+                </md-panel-title>
+                <md-panel-description>
+                    More information about Pathogens
+                </md-panel-description>
+            </md-expansion-panel-header>
+
+            <div *ngIf="disease.ready" class="fig-panel">
+                <!-- <div class="box box-solid"> -->
+                <div class="box-header with-border">
+                    <!-- <i class="fa fa-bug"></i> -->
+                    <h3 class="box-title">Genomes causing diseases</h3>
+                </div>
+                <div class="box-body">
+                    <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>
+                    <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
+                    </ngx-charts-pie-grid>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+            <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
+                <!-- <div class="box box-solid"> -->
+                <div class="box-header with-border">
+                    <!-- <i class="fa fa-bug"></i> -->
+                    <h3 class="box-title">Genomes with Antimicrobial Resistance phenotype</h3>
+                </div>
+                <div class="box-body">
+                    <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>
+                    <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
+                    </ngx-charts-pie-grid>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
+            <div *ngIf="host.ready" class="fig-panel">
+                <!-- <div class="box box-solid"> -->
+                <div class="box-header with-border">
+                    <!-- <i class="fa fa-bug"></i> -->
+                    <h3 class="box-title">Bacterial hosts</h3>
+                </div>
+                <div class="box-body">
+                    <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>
+                    <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
+                    </ngx-charts-pie-grid>
+                </div>
+                <!-- </div> -->
+            </div>
+        </md-expansion-panel>
+
+
+
+
+
+        <!-- </div> -->
     </div>
-
-    <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-
-    <md-expansion-panel class="box box-solid" style="background:rgba(0,0,0,0)">
-
-        <md-expansion-panel-header>
-            <md-panel-title>
-                Disease and Antimicrobial Resistance profile
-            </md-panel-title>
-            <md-panel-description>
-                More information about Pathogens
-            </md-panel-description>
-        </md-expansion-panel-header>
-
-        <div *ngIf="disease.ready" class="fig-panel">
-            <!-- <div class="box box-solid"> -->
-            <div class="box-header with-border">
-                <!-- <i class="fa fa-bug"></i> -->
-                <h3 class="box-title">Genomes causing diseases</h3>
-            </div>
-            <div class="box-body">
-                <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>
-                <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
-                </ngx-charts-pie-grid>
-            </div>
-            <!-- </div> -->
-        </div>
-
-        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-        <div *ngIf="AMR_phenotype.ready" class=" fig-panel">
-            <!-- <div class="box box-solid"> -->
-            <div class="box-header with-border">
-                <!-- <i class="fa fa-bug"></i> -->
-                <h3 class="box-title">Genomes with Antimicrobial Resistance phenotype</h3>
-            </div>
-            <div class="box-body">
-                <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>
-                <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
-                </ngx-charts-pie-grid>
-            </div>
-            <!-- </div> -->
-        </div>
-
-        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->
-        <div *ngIf="host.ready" class="fig-panel">
-            <!-- <div class="box box-solid"> -->
-            <div class="box-header with-border">
-                <!-- <i class="fa fa-bug"></i> -->
-                <h3 class="box-title">Bacterial hosts</h3>
-            </div>
-            <div class="box-body">
-                <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>
-                <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
-                </ngx-charts-pie-grid>
-            </div>
-            <!-- </div> -->
-        </div>
-    </md-expansion-panel>
-
-
-
-
-
-    <!-- </div> -->
 </div>

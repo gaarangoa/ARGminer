@@ -11,13 +11,19 @@ import { DataService } from '../../../../services/data.service';
 export class GenericComponent implements OnInit {
 
   public randomARG: Object;
-
+  public alCoverage: number;
+  public render: boolean = false;
+  
   constructor(
     private dataService: DataService,
   ) { }
 
   ngOnInit() {
     this.randomARG = this.dataService.ARG;
+    this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len']/this.randomARG['entry']['length'];
+    if(this.randomARG['besthit'].status == true){
+      this.render = true;
+    }
   }
 
 }
