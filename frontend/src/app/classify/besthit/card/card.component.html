@@ -68,25 +68,37 @@
 
 
                                 <hr>
-                                <strong> AMR profile: </strong>
+                                <h4> AMR profile: </h4>
 
                                 <!-- <dd> -->
                                 <p> {{bh.metadata.description}} </p>
-                                <div *ngFor="let type of bh.metadata.type">
-                                    <strong> {{ type.name }} </strong> ({{ type.namespace }})
-                                    <p> {{ type.def }} </p>
 
-                                    <div *ngIf="type.is_a">
-                                        <div *ngFor="let rel of type.is_a">
-                                            <strong> {{ rel['id'] }} </strong> {{ rel.term }}
-                                        </div>
-                                    </div>
+                                <div *ngFor="let type of bh.metadata.type">
 
                                     <div *ngIf="type.relationship">
                                         <div *ngFor="let rel of type.relationship">
-                                            <strong> {{ rel.accession }} </strong> <u> {{ rel.term }} </u> ( {{ rel.id }} )
+                                            <i class="fa fa-bug" *ngIf="rel.accession=='confers_resistance_to'"></i>
+                                            <i class="fa fa-cogs" *ngIf="rel.accession=='participates_in'"></i>
+                                            <span> {{ rel.term }}</span>
+                                            <strong *ngIf="rel.accession=='confers_resistance_to'">[Class]</strong>
+                                            <strong *ngIf="rel.accession=='participates_in'">[Mechanism]</strong>
                                         </div>
                                     </div>
+                                    <p class="small">{{ type.name }}, {{ type.def }}.</p>
+                                    <div *ngIf="!type.relationship">
+                                        <i class="fa fa-cogs"></i>
+                                        <span> {{ type.name }} </span> <strong>[Mechanism]</strong>
+                                    </div>
+                                    <!-- <p> {{ type.def }} </p> -->
+
+
+                                    <!-- <div *ngIf="type.is_a">
+                                        <div *ngFor="let rel of type.is_a">
+                                            <p> {{ rel.term }} </p>
+                                        </div>
+                                    </div> -->
+
+
 
                                 </div>
                                 <!-- </dd> -->
