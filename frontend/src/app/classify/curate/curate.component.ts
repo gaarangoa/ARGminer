@@ -100,6 +100,7 @@ export class CurateComponent implements OnInit {
       class:null,
       group:null,
       mechanism:null,
+      onlineScore:{class:0, group:0, mechanism:0},
       MGE:{},
       comments:"",
       rating:{},
@@ -194,6 +195,8 @@ export class CurateComponent implements OnInit {
         this.classifyComponent.notification = [];
         let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
         this.classifyComponent.notification.push({severity:'success', summary:'Success', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
+
+        this.antibiotic['onlineScore'] = this.liveScoreAnnotation
         
         this.activeIndex = 1;
         this.step1=false;
@@ -255,6 +258,7 @@ continueReview(){
   this.antibiotic['class'] = null;
   this.antibiotic['group'] = null;
   this.antibiotic['mechanism'] = null;
+  this.antibiotic['onlineScore'] = {class:0, group:0, mechanism:0}
 
   if(this.classifyComponent.conflictedArgSubtypeFlag){
     this.classifyComponent.nextGeneConflictList();
