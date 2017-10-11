@@ -44,6 +44,7 @@ export class ComplexPieChart {
         let counts = {};
         // let mge = 0
         edata.forEach(element => {
+            element[key] = element[key].toLowerCase()
             counts[element[key]] = counts[element[key]] ? counts[element[key]]+1: 1; 
             this.confidenc[element[key]] = this.confidenc[element[key]] ? this.confidenc[element[key]]+element['rating']['confidence']['value']: element['rating']['confidence']['value']; 
             this.expertc[element[key]] = this.expertc[element[key]] ? this.expertc[element[key]]+element['rating']['expertise']['value']: element['rating']['expertise']['value']; 
