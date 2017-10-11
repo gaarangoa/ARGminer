@@ -50,8 +50,12 @@ export class ScoreAnnotation {
         let igroup = intersectBig(unique,ggroup);
         let imech = intersectBig(unique2,gmech);
 
-        console.log(ggroup, gclass, gmech);
-        console.log(iclass, igroup, imech);
+        // console.log(ggroup, gclass, gmech);
+        // console.log(iclass, igroup, imech);
+
+        if(gclass.length==0){gclass=[1]}
+        if(ggroup.length==0){ggroup=[1]}
+        if(gmech.length==0){gmech=[1]}
 
         return {
             class: 100*iclass.length/gclass.length,
