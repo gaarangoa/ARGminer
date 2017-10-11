@@ -1,3 +1,5 @@
+<p-growl class="user_growl" [(value)]="notification"></p-growl>
+
 <div class="">
 
     <div *ngIf="!render" class="col-md-4 col-md-offset-4">
@@ -12,11 +14,11 @@
 
     <div *ngIf="render">
         <!--Left panel-->
-        <div class="col-sm-3 ">
+        <div class="col-sm-3 affix coffix">
             <!-- <div class=""> -->
             <div *ngIf="randomARG.status==true" class="">
                 <!-- <div class="col-md-12"> -->
-                <p-growl class="user_growl" [(value)]="notification"></p-growl>
+
                 <div class="box box-solid box-primary">
                     <div class="box-header with-border">
 
@@ -176,7 +178,7 @@
 
         </div>
 
-
+        <div class="col-sm-3"></div>
         <div class="col-sm-6 col-sm-offset-0">
 
             <div id="step5" class="">
@@ -188,8 +190,6 @@
                     </div>
                 </div>
             </div>
-
-
 
             <div *ngIf="loading==true" class="col-md-4 col-md-offset-4">
                 <div class="col-sm-8 col-sm-offset-2">
@@ -238,8 +238,10 @@
                     </div>
                 </md-expansion-panel>
 
+                <hr>
+
                 <!-- <br> -->
-                <h4>Similarity to known ARGs</h4>
+                <!-- <h4>Similarity to known ARGs</h4> -->
                 <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
                 <!-- <md-tab  label="METADATA"> -->
 
@@ -261,7 +263,7 @@
                     <app-generic></app-generic>
                 </div>
 
-                <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4>
+                <!-- <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4> -->
 
                 <!--METADATA SECTION-->
                 <div id="step6">
@@ -279,7 +281,7 @@
 
 
 
-                <h4>Mobile Genetic Elements (MGEs)</h4>
+                <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->
 
 
 

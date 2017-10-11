@@ -53,7 +53,7 @@ export class GenomeComponent implements OnInit {
     
 
     
-    if(this.randomARG['mobile'].status == true){
+    if(this.randomARG['mobile'][0].status == true){
       this.renderMobile = true;
     }
 

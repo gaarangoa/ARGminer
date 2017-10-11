@@ -57,35 +57,31 @@
 
 
                 <!-- <div class="col-md-12"> -->
-                <h4 class="text-center"><strong>Horizontal Gene Transfer</strong></h4>
+                <h4 class="text-center"><strong>Mobile Genetic Elements</strong></h4>
                 <div class="col-md-12">
-                    <p>Is there any evidence that suggests the ARG to be carried by any of the following: </p>
+                    <p class="small">Is there any evidence that suggests the ARG to be carried by any of the following: </p>
 
                     <div *ngFor="let ht of mge_options">
                         <md-checkbox value="{{ht}}" (change)="mgeOptions(ht, $event)">{{ ht }}</md-checkbox>
                     </div>
-                    <p>From a scale from 1 to 5 how would you rate this evidence? </p>
+                    <p>How do you rate this evidence? </p>
                     <star-rating-comp (onRatingChange)="onRatingChange('mge',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
-                    <p class="small"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p>
-                    <hr>
+                    <!-- <p class="small"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p> -->
                 </div>
-
-
-
 
                 <div class="col-md-12">
                     <h4 class="text-center"><strong>Pathogenic Genomes</strong></h4>
 
-                    <p>Is there evidence that suggests the queried gene is present any pathogenic genomes? </p>
+                    <p>Is there evidence of any pathogenic genomes containing the gene? </p>
 
                     <!-- <md-radio-group [(ngModel)]="antibiotic.pathGenome">
                         <md-radio-button value="1">Yes</md-radio-button> <br>
                         <md-radio-button value="2">Not</md-radio-button> <br>
                     </md-radio-group> -->
 
-                    <p>From a scale from 1 to 5 how would you rate this evidence? </p>
+                    <!-- <p>How do you rate this evidence? </p> -->
                     <star-rating-comp (onRatingChange)="onRatingChange('genome',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
-                    <p class="small">Scores: 1 means there is not evidence whereas 5 means there is strong evidence the gene is carried in a pathogen genome.</p>
+                    <p class="small">Scores: 1 means there is not evidence whereas 5 means there is strong evidence.</p>
                     <hr>
 
                 </div>

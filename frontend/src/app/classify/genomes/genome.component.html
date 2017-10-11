@@ -1,6 +1,7 @@
 <div *ngIf="renderMobile">
     <div *ngFor="let item of randomARG.mobile" class="">
-        <div *ngIf="item.status==true && item.identity.mean>20" class="">
+        <div *ngIf="item.status==true && item.identity.mean>50" class="">
+            <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->
             <p>
                 <strong> Scoring </strong>:
                 <span class="label bg-red">Very Weak</span>
@@ -32,7 +33,7 @@
                             <strong><p *ngIf="item.type=='vir'">Viruses</p></strong>
                         </dd>
                         <dt>Count:</dt>
-                        <dd> <span class="badge bg-blue"> {{ item.count }} </span></dd>
+                        <dd> <span> {{ item.count }} </span></dd>
                         <dt>Similarity:</dt>
                         <dd> <span class="badge bg-{{ item.identity.color }}"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>
                         <dt>BitScore:</dt>
@@ -57,7 +58,7 @@
 <div *ngIf="renderPathogen">
     <div *ngIf="randomARG.pathogen.status==true" class="">
         <!-- <div class="col-md-12"> -->
-        <h4>Pathogens Genomes</h4>
+        <!-- <h4>Bacterial Genomes</h4> -->
         <p>
             <strong> Scoring </strong>:
             <span class="label bg-red">Very Weak</span>
@@ -75,7 +76,7 @@
                             <svg  width="50px" height="50px"  class="resistant" />  
                         </div> -->
                 <i class="fa fa-bug"></i>
-                <h3 class="box-title">Full Genomes</h3>
+                <h3 class="box-title">Pathogenic Genomes</h3>
 
             </div>
 
