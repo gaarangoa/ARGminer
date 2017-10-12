@@ -133,7 +133,7 @@
                             <h4> Conflicted ARGs </h4>
                             <p class="small">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>
                             <!-- <div class="box-body"> -->
-                            <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p>
+                            <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->
                             <div *ngFor="let item of conflictingARGSubtype.conflict">
                                 <strong>{{ item.class }}</strong> {{ item.genes.length }}
                             </div>
