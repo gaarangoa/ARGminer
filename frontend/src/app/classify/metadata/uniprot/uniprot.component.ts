@@ -14,6 +14,7 @@ export class UniprotComponent implements OnInit {
   public randomARG: Object;
   public pubmed = [];
   public render: boolean = false;
+  public renderError: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -27,6 +28,9 @@ export class UniprotComponent implements OnInit {
     this.randomARG = this.dataService.ARG;
     
     // GET all reference ids from pubmed:
+    if(this.randomARG['metadata'].status==false){
+      this.renderError = true;
+    }
     if(this.randomARG['metadata'].status==true){ 
       this.render = true;
       this.randomARG['metadata'].references.forEach(element => {

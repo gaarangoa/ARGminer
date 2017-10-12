@@ -177,18 +177,15 @@
     <!-- /.box -->
 </div>
 
-<div *ngIf="render">
-    <div *ngIf="randomARG.metadata.status==false" class="">
-
-        <div class="alert alert-danger alert-dismissible">
-            <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
-            <strong>There is a problem with this request!</strong>
-            <p>
-                {{ randomARG.metadata.errorMessage[0] }}
-            </p>
-            <p>
-                Please take a look at the provided information to make the annotation.
-            </p>
-        </div>
+<div *ngIf="renderError">
+    <div class="alert alert-danger alert-dismissible">
+        <h4><i class="icon fa fa-ban"></i> {{ randomARG.entry.database }} Alert!</h4>
+        <strong>There is a problem with this request!</strong>
+        <p>
+            {{ randomARG.metadata.errorMessage[0] }}
+        </p>
+        <p>
+            Please take a look at the provided information to make the annotation.
+        </p>
     </div>
 </div>
