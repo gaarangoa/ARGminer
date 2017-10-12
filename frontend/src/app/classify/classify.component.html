@@ -50,8 +50,11 @@
 
                         <dl id="step1" class="dl">
                             <!-- <p> -->
-                            <strong>Query gene id:</strong>
-                            <span class="">{{ randomARG.entry.gene_id }}</span>
+                            <!-- </p> -->
+                            <!-- <p> -->
+
+                            <strong>Gene Name:</strong>
+                            <span class="">{{ randomARG.entry.subtype }}</span>
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
@@ -60,13 +63,8 @@
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
-                            <strong>Gene Name:</strong>
-                            <span class="">{{ randomARG.entry.subtype }}</span>
-                            <!-- </p> -->
-                            <!-- <p> -->
-                            <br>
                             <strong>Database:</strong>
-                            <span class="">{{ randomARG.entry.database }}</span>
+                            <span class="">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>
                             <!-- </p> -->
                             <!-- <p> -->
                             <br>
@@ -140,7 +138,7 @@
                                 <strong>{{ item.class }}</strong> {{ item.genes.length }}
                             </div>
                             <hr>
-                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Other ARG Group</button>
+                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
                             <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next ARG</button>
                             <!-- </div> -->
                         </div>
