@@ -65,7 +65,7 @@
                         <md-checkbox value="{{ht}}" (change)="mgeOptions(ht, $event)">{{ ht }}</md-checkbox>
                     </div>
                     <p>How do you rate this evidence? </p>
-                    <star-rating-comp (onRatingChange)="onRatingChange('mge',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <star-rating-comp (onRatingChange)="onRatingChange('mge',$event)" [starType]="'svg'" [rating]="0" [labelPosition]="'top'"></star-rating-comp>
                     <!-- <p class="small"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p> -->
                 </div>
 
@@ -80,7 +80,7 @@
                     </md-radio-group> -->
 
                     <!-- <p>How do you rate this evidence? </p> -->
-                    <star-rating-comp (onRatingChange)="onRatingChange('genome',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <star-rating-comp (onRatingChange)="onRatingChange('genome',$event)" [starType]="'svg'" [rating]="0" [labelPosition]="'top'"></star-rating-comp>
                     <p class="small">Scores: 1 means there is not evidence whereas 5 means there is strong evidence.</p>
                     <hr>
 
@@ -98,12 +98,14 @@
             </div>
 
             <div *ngIf="step3">
-
+                <div class="col-md-12 text-center">
+                    <h4>Overall Rating</h4>
+                </div>
                 <!-- <div class="col-md-12"> -->
-                <div class="col-md-12">
-                    <!-- <h4 class="text-center"><strong>ARG annotation</strong></h4> -->
-                    <dl class="dl">
-                        <h4></h4>
+                <!-- <div class="col-md-12"> -->
+                <!-- <h4 class="text-center"><strong>ARG annotation</strong></h4> -->
+                <!-- <dl class="dl"> -->
+                <!-- <h4></h4>
                         <strong>ARG Class:</strong>
                         <span class=""> {{ antibiotic.class }} </span>
                         <br>
@@ -113,28 +115,30 @@
                         <br>
 
                         <strong *ngIf="!antibiotic.mechanism==null">ARG Mechanism:</strong>
-                        <span *ngIf="!antibiotic.mechanism==null">{{ antibiotic.mechanism }} </span>
+                        <span *ngIf="!antibiotic.mechanism==null">{{ antibiotic.mechanism }} </span> -->
 
-                    </dl>
+                <!-- </dl> -->
+                <!-- <hr> -->
+                <!-- </div> -->
+
+                <div class="col-md-12 col-md-offset-0 text-center">
+                    <p>Please rate the confidence in your observations</p>
+                    <star-rating-comp (onRatingChange)="onRatingChange('confidence',$event)" [starType]="'svg'" [rating]="0" [labelPosition]="'top'"></star-rating-comp>
                     <hr>
                 </div>
 
                 <div class="col-md-12 col-md-offset-0 text-center">
                     <p>Please rate your level of expertise</p>
-                    <star-rating-comp (onRatingChange)="onRatingChange('expertise',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
+                    <star-rating-comp (onRatingChange)="onRatingChange('expertise',$event)" [starType]="'svg'" [rating]="0" [labelPosition]="'top'"></star-rating-comp>
                     <hr>
                 </div>
 
-                <div class="col-md-12 col-md-offset-0 text-center">
-                    <p>Please rate your confidence in your observations</p>
-                    <star-rating-comp (onRatingChange)="onRatingChange('confidence',$event)" [starType]="'svg'" [rating]="1" [labelPosition]="'top'"></star-rating-comp>
-                    <hr>
-                </div>
 
-                <md-input-container class="col-md-12">
+
+                <!-- <md-input-container class="col-md-12">
                     <p>Please add any relevant comments</p>
                     <textarea mdInput [(ngModel)]="antibiotic.comments" rows="5"></textarea>
-                </md-input-container>
+                </md-input-container> -->
 
 
                 <div class="col-md-12 text-center">
