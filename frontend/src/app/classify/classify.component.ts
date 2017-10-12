@@ -16,6 +16,7 @@ import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 // import instructions component for modal window
 import { InstructionsComponent } from './instructions/instructions.component'
 
+
 @Component({
   templateUrl: './classify.component.html',
   styleUrls: ['./classify.component.css'],
@@ -308,6 +309,10 @@ export class ClassifyComponent implements OnInit {
       // this.animal = result;
     });
 
+  }
+
+  scrollToMGEs(){
+    // this.content.scrollTo(0, this.target.nativeElement.offsetTop, 500);
   }
 
 }

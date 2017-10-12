@@ -176,6 +176,7 @@ export class CurateComponent implements OnInit {
 
   // to keep track of the changes between the steps
   validate(value: any){
+    this.classifyComponent.scrollToMGEs();
 
     if(value == 1){
 
