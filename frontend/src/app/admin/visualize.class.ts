@@ -51,10 +51,30 @@ export class ComplexPieChart {
             }
             
             counts[element[key]] = counts[element[key]] ? counts[element[key]]+1: 1; 
-            this.confidenc[element[key]] = this.confidenc[element[key]] ? this.confidenc[element[key]]+element['rating']['confidence']['value']: element['rating']['confidence']['value']; 
-            this.expertc[element[key]] = this.expertc[element[key]] ? this.expertc[element[key]]+element['rating']['expertise']['value']: element['rating']['expertise']['value']; 
-            this.mge += element['rating']['mge']['value']
-            this.pathogen += element['rating']['genome']['value']
+            try {
+                this.confidenc[element[key]] = this.confidenc[element[key]] ? this.confidenc[element[key]]+element['rating']['confidence']['value']: element['rating']['confidence']['value']; 
+            } catch (error) {
+                
+            }
+            
+            try {
+                
+            } catch (error) {
+                this.expertc[element[key]] = this.expertc[element[key]] ? this.expertc[element[key]]+element['rating']['expertise']['value']: element['rating']['expertise']['value']; 
+            }
+            
+            try {
+                this.mge += element['rating']['mge']['value']
+            } catch (error) {
+                
+            }
+            
+            try {
+                this.pathogen += element['rating']['genome']['value']
+            } catch (error) {
+                
+            }
+            
         });
 
         // let data = [];
