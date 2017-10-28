@@ -32,6 +32,7 @@ export class AdminComponent implements OnInit {
   private passwordFormControl: any;
   private databaseVersion: string;
   private databaseComments: string;
+  private datetime = new Date(0);
 
 
   constructor(
@@ -40,6 +41,9 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
+
     this.emailFormControl = new FormControl('', [
       Validators.required,
       Validators.pattern(EMAIL_REGEX)]
@@ -94,7 +98,7 @@ export class AdminComponent implements OnInit {
     this.argGroupChart = new ComplexPieChart();
     this.argMechanismChart = new ComplexPieChart();
     this.wScore = 0;
-    this.weights = [1, 1, 1, 0.4, 0.3, 0.6, 0.4]; // [class, group, mechanism, mge, pathogen, expertise, confidence]
+    this.weights = [1, 1, 1, 1, 1, 1, 1]; // [class, group, mechanism, mge, pathogen, expertise, confidence]
     // this.ARGindex += 1;
 
     this.adminService.getCuratedARGs(idx)

@@ -34,9 +34,20 @@
                 <p class="small">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>
             </div>
         </div>
+        <div class="box box-solid">
+            <div class="box-header with-border text-center">
+                <h4>Recompute Problematic Annotations</h4>
+            </div>
+            <div class="box-body">
+
+                <p class="small">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>
+                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute Problematic ARGs</button></div>
+                <hr>
+            </div>
+        </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-9">
 
         <div class="">
             <div class="box box-solid ">
@@ -71,7 +82,7 @@
                                 <hr>
                                 <div class="col-md-12">
                                     <div class="col-md-4">
-                                        <strong>Score:</strong> {{ wScore }}
+                                        <!-- <strong>Score:</strong> {{ wScore }} -->
                                     </div>
                                     <div class="box-plot">
                                         <div class="box-plot-component box-left"></div>
@@ -82,8 +93,8 @@
                                 <!-- </p> -->
                                 <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->
                                 <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>
-                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }}</p>
-                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }}</p>
+                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }} </p>
+                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }} </p>
                                 <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)}} </p>
                                 <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)}} </p>
 
@@ -122,12 +133,14 @@
                                             <th>ARG Class</th>
                                             <th>Confidence Score</th>
                                             <th>Expertise Score</th>
+                                            <th>Score (Cs+1.2*Es)</th>
                                         </tr>
 
                                         <tr *ngFor="let itemx of argClassChart.data">
                                             <td>{{itemx.name}}</td>
-                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
-                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                            <td>{{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
+                                            <td>{{ ((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
+                                            <td> {{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts) + 1.2*((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts))).toFixed(2) }} </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -161,11 +174,13 @@
                                             <th>ARG</th>
                                             <th>Confidence Score</th>
                                             <th>Expertise Score</th>
+                                            <th>Score (Cs+1.2*Es)</th>
                                         </tr>
                                         <tr *ngFor="let itemx of argGroupChart.data">
                                             <td>{{itemx.name}}</td>
-                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
-                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
+                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
+                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -197,11 +212,13 @@
                                             <th>ARG Mechanism</th>
                                             <th>Confidence Score</th>
                                             <th>Expertise Score</th>
+                                            <th>Score (Cs+1.2*Es)</th>
                                         </tr>
                                         <tr *ngFor="let itemx of argMechanismChart.data">
                                             <td>{{itemx.name}}</td>
-                                            <td>{{ (itemx.confidence/itemx.value).toFixed(2) }}</td>
-                                            <td>{{ (itemx.expertice/itemx.value).toFixed(2) }}</td>
+                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
+                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
+                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -225,8 +242,14 @@
                             </tr>
                             <tr *ngFor="let itemx of curatedARGs[0]['inspected']">
                                 <td>{{ itemx.token }}</td>
-                                <td>{{ (itemx.rating.expertise.value).toFixed(2) }}</td>
-                                <td>{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
+                                <td *ngIf="itemx.rating.expertise; else expertiseBlockA">{{ (itemx.rating.expertise.value).toFixed(2) }}</td>
+                                <ng-template #expertiseBlockA>
+                                    <td>0.00</td>
+                                </ng-template>
+                                <td *ngIf="itemx.rating.confidence; else confidenceBlockA">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
+                                <ng-template #confidenceBlockA>
+                                    <td>0.00</td>
+                                </ng-template>
                                 <td>{{ itemx.group }}</td>
                                 <td>{{ itemx.class }}</td>
                                 <td>{{ itemx.mechanism }}</td>
@@ -240,20 +263,6 @@
         </div>
 
 
-    </div>
-
-    <div class="col-sm-3">
-        <div class="box box-solid">
-            <div class="box-header with-border text-center">
-                <h4>Recompute Problematic Annotations</h4>
-            </div>
-            <div class="box-body">
-
-                <p class="small">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>
-                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute Problematic ARGs</button></div>
-                <hr>
-            </div>
-        </div>
     </div>
 
 

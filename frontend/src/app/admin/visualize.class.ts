@@ -54,35 +54,37 @@ export class ComplexPieChart {
             try {
                 this.confidenc[element[key]] = this.confidenc[element[key]] ? this.confidenc[element[key]]+element['rating']['confidence']['value']: element['rating']['confidence']['value']; 
             } catch (error) {
-                
+                // element['rating']['confidence']['value'] = 0;
             }
             
             try {
-                
-            } catch (error) {
                 this.expertc[element[key]] = this.expertc[element[key]] ? this.expertc[element[key]]+element['rating']['expertise']['value']: element['rating']['expertise']['value']; 
+            } catch (error) {
+                // element['rating']['expertise']['value'] = 0;
             }
             
             try {
                 this.mge += element['rating']['mge']['value']
             } catch (error) {
-                
+                // element['rating']['mge']['value'] = 0;
             }
             
             try {
                 this.pathogen += element['rating']['genome']['value']
             } catch (error) {
-                
+                // element['rating']['genome']['value'] = 0;
             }
             
         });
 
         // let data = [];
+        let CNTs = {};
         for(var k in counts){ 
             this.data.push({name: k, value: counts[k], confidence:this.confidenc[k], expertice:this.expertc[k]});
+            CNTs[k] = this.confidenc[k]/edata.length + 1.2*this.expertc[k]/edata.length;
         }
 
-        this.bestCategory = Object.keys(counts).reduce(function(a, b){ return counts[a] > counts[b] ? a : b });
+        this.bestCategory = Object.keys(CNTs).reduce(function(a, b){ return CNTs[a] > CNTs[b] ? a : b });
         this.bestCategoryCounts = counts[this.bestCategory];
         this.totalCategoryCounts = edata.length;
         this.ready = true;
