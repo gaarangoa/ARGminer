@@ -15,9 +15,9 @@ services:
     ports:
       - "8081:80"
       - "4431:443"
-    depends_on:
-      - mongo-server-arg-miner
-      - ARG-miner-restAPI
+    # depends_on:
+    #   - mongo-server-arg-miner
+    #   - ARG-miner-restAPI
 
 # # database with everything!
 #   mongo-server-arg-miner:
