@@ -1,0 +1,105 @@
+A	ABB43029.1	aminoglycoside	AAC(3)-IV
+C	ABB43029.1	aminoglycoside	AAC(3)-IV
+B	ABB43029.1	glycopeptide	AAC(3)-IV
+B	AAK51920	aminoglycoside	aac(6')-Ib
+C	AAK51920	aminoglycoside	aac(6')-Ib
+C	ABC54722	aminoglycoside	aac(6')-Ib10
+B	ABC54722	glycopeptide	aac(6')-Ib10
+A	AAK51920	aminoglycoside	aac(6')-Ib
+A	ABC54722	aminoglycoside	aac(6')-Ib10
+B	Q1RPS3	aminoglycoside	aadA
+C	Q1RPS3	aminoglycoside	aadA
+B	YP_490697.1	aminoglycoside	acrD
+C	YP_490697.1	aminoglycoside	acrD
+A	YP_490697.1	multidrug	acrD
+C	F0JWD5	polymyxin	anrA
+A	Q1RPS3	aminoglycoside	ant
+A	F0JWD5	cationic	arnA
+A	A0A0D0NPG2	polymyxin	arnA
+A	A0A109KXU6	polymyxin	arnA
+B	A0A0D0NPG2	polymyxin	arnA
+B	A0A109KXU6	polymyxin	arnA
+B	F0JWD5	polymyxin	arnA
+C	A0A0D0NPG2	polymyxin	arnA
+C	A0A109KXU6	polymyxin	arnA
+C	A0A127SI91	beta lactam	bl1_ec
+B	A0A127SI91	beta lactam	bl1_ec
+C	B5ULZ6	beta lactam	bl2a_iii2
+B	B5ULZ6	beta lactam	bl2a_iii2
+A	B5ULZ6	beta lactam	bla1
+A	A0A127SI91	beta lactam	BLAEC
+B	YP_042788	multidrug	bmr
+C	YP_042788	multidrug	bmr
+A	ZP_02377226	multidrug	ceoA
+B	ZP_02377226	multidrug	ceoA
+C	ZP_02377226	multidrug	ceoA
+A	BAC11911.1	multidrug	emeA
+B	BAC11911.1	multidrug	emeA
+C	BAC11911.1	multidrug	emeA
+A	AAN80811	multidrug	emrE
+A	NP_253677.1	multidrug	emrE
+A	ZP_04003442	multidrug	emrE
+B	AAN80811	multidrug	emrE
+B	NP_253677.1	multidrug	emrE
+B	ZP_04003442	multidrug	emrE
+C	AAN80811	multidrug	emrE
+C	NP_253677.1	multidrug	emrE
+C	ZP_04003442	multidrug	emrE
+A	AFU35065.1	MLS	lsa
+B	AFU35065.1	MLS	lsaA
+C	AFU35065.1	multidrug	lsaE
+A	ZP_02685589	multidrug	mdfA
+B	ZP_02685589	multidrug	mdfA
+C	ZP_02685589	multidrug	mdfA
+A	NP_251217.1	multidrug	mdtB
+A	AAC76733.1	multidrug	mdtL
+B	AAC76733.1	multidrug	mdtL
+C	AAC76733.1	multidrug	mdtL
+A	A0A0Q9QYU5	beta lactam	mecB
+C	A0A0Q9QYU5	beta lactam	mecB
+B	A0A0Q9QYU5	beta lactam	mecB
+A	YP_002635521	multidrug	mepA
+A	ZP_04679156	multidrug	mepA
+B	YP_002635521	multidrug	mepA
+B	ZP_04679156	multidrug	mepA
+C	YP_002635521	multidrug	mepA
+C	ZP_04679156	multidrug	mepA
+A	NP_415434.1	multidrug	msbA
+B	NP_415434.1	multidrug	msbA
+C	NP_415434.1	multidrug	msbA
+B	NP_251217.1	multidrug	muxB
+C	NP_251217.1	multidrug	muxB
+A	YP_042788	multidrug	norA
+A	AAC43969.1	chloramphenicol	opcM
+B	AAC43969.1	multidrug	opcM
+C	AAC43969.1	multidrug	opcM
+A	YP_001693238	multidrug	oqxB
+B	YP_001693238	Quinolone	oqxB
+C	YP_001693238	Quinolone	oqxB
+B	NP_358469.1	Acriflavin	pmrA
+A	NP_358469.1	multidrug	pmrA
+C	NP_358469.1	multidrug	pmrA
+A	D3V1W5	polymyxin	pmrF
+B	D3V1W5	polymyxin	pmrF
+C	D3V1W5	polymyxin	pmrF
+A	AAM15533.1	aminoglycoside	PvrR
+B	AAM15533.1	aminoglycoside	pvrR
+C	AAM15533.1	multidrug	pvrR
+A	AAC60781.1	cationic	rosA
+B	AAC60781.1	polymyxin	rosA
+C	AAC60781.1	polymyxin	rosA
+A	AAB53445.1	streptothricin	SAT-4
+B	AAB53445.1	streptothricin	SAT-4
+C	AAB53445.1	streptothricin	SAT-4
+A	J2LT98	beta lactam	SHV
+C	J2LT98	beta lactam	shv-1
+B	J2LT98	beta lactam	shv-1
+A	ABQ96629	sulfonamide	sul1
+B	ABQ96629	sulfonamide	sul1
+C	ABQ96629	sulfonamide	sul1
+A	AAR84672.1	glycopeptide	vanRC
+B	AAR84672.1	glycopeptide	vanRF
+C	AAR84672.1	glycopeptide	vanRF
+A	ABA71733.1	glycopeptide	vanTG
+B	ABA71733.1	glycopeptide	vanTG
+C	ABA71733.1	glycopeptide	vanTG
