@@ -4,7 +4,7 @@ services:
 
 # The front end is copied to the nginx
   nginx_frontend:
-    container_name: frontend
+    container_name: argminer_frontend
     image: nginx
     build:
       context: ../frontend/
