@@ -19,37 +19,37 @@ services:
       - mongo-server-arg-miner
       - ARG-miner-restAPI
 
-# database with everything!
-  mongo-server-arg-miner:
-    container_name: mongo-server-arg-miner
-    image: mongo
-    environment:
-      - MONGO_DATA_DIR=../database/mongo
-      - MONGO_LOG_DIR=../database/mongo
-    volumes:
-      - ../database/mongo:/data/db
-    ports:
-      - 27897:17863
-    tty: true
-    command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth --maxConns 5000
+# # database with everything!
+#   mongo-server-arg-miner:
+#     container_name: mongo-server-arg-miner
+#     image: mongo
+#     environment:
+#       - MONGO_DATA_DIR=../database/mongo
+#       - MONGO_LOG_DIR=../database/mongo
+#     volumes:
+#       - ../database/mongo:/data/db
+#     ports:
+#       - 27897:17863
+#     tty: true
+#     command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth --maxConns 5000
 
-# python rest API with the analysis algorithms
-  ARG-miner-restAPI:
-    container_name: ARG-miner-restAPI
-    image: python
-    environment:
-      - DB_HOST=mongo-server-arg-miner
-    build:
-      context: ../backend/rest/
-      dockerfile: Dockerfile
-    volumes:
-      - ../backend/rest/:/rest/
-      - ../database/release/:/release/
-    tty: true
-    ports:
-      - "5001:5000"
-    depends_on:
-      - mongo-server-arg-miner
-    links:
-      - mongo-server-arg-miner
+# # python rest API with the analysis algorithms
+#   ARG-miner-restAPI:
+#     container_name: ARG-miner-restAPI
+#     image: python
+#     environment:
+#       - DB_HOST=mongo-server-arg-miner
+#     build:
+#       context: ../backend/rest/
+#       dockerfile: Dockerfile
+#     volumes:
+#       - ../backend/rest/:/rest/
+#       - ../database/release/:/release/
+#     tty: true
+#     ports:
+#       - "5001:5000"
+#     depends_on:
+#       - mongo-server-arg-miner
+#     links:
+#       - mongo-server-arg-miner
 
