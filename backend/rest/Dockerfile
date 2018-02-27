@@ -8,4 +8,4 @@ RUN pip install networkx
 
 EXPOSE 5000
 
-ENTRYPOINT ["python", "/rest/API.py"]
+ENTRYPOINT ["python", "/src/API.py"]
