@@ -43,7 +43,7 @@ services:
       context: ../backend/rest/
       dockerfile: Dockerfile
     volumes:
-      - ../backend/rest/:/rest/
+      - ../backend/:/src/
       - ../database/release/:/release/
     tty: true
     ports:
