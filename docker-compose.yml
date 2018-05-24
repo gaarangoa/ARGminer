@@ -29,7 +29,7 @@ services:
     ports:
       - 27897:17863
     tty: true
-    command: mongod --dbpath /data/db --directoryperdb --port 17863 --maxConns 5000
+    command: mongod --dbpath /data/db --directoryperdb --port 17863 --auth --maxConns 5000
 
 # python rest API with the analysis algorithms
   backend:
