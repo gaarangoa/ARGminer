@@ -6,8 +6,8 @@ import random
 class Mongo():
     def __init__(self):
         self.client = MongoClient(config['hostdb'], config['hostdbport'])
-        self.client.argpedia.authenticate(
-            config['hostuser'], config['hostpwd'])
+        # self.client.argpedia.authenticate(
+        #     config['hostuser'], config['hostpwd'])
         self.db = self.client[config['database']]
 
     def find(self, table="", query={}, projection={}):
