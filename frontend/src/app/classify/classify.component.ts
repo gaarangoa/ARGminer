@@ -42,6 +42,8 @@ export class ClassifyComponent implements OnInit {
   public trainingARGFlag: Boolean = false;
   public trainingARGCount: number = 0;
   public trainingARGTotal: number = 2;
+  public MGE_display: boolean;
+  public ARG_display: boolean;
 
   public notification: Message[] = [];
 
@@ -52,7 +54,7 @@ export class ClassifyComponent implements OnInit {
     // public hintService: HintService
 
   ){
-    
+
     this.trainingGenes = [
       "YP_490697.1",
       "AAM15533.1",
@@ -74,11 +76,11 @@ export class ClassifyComponent implements OnInit {
       "P52067",
       "D3V1W5"
     ]
-    
+
     this.dataService.getRandomKnownARG()
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG;
-        this.render=true;
+        this.render = true;
     });
 
 
@@ -86,7 +88,8 @@ export class ClassifyComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.MGE_display = false;
+    this.ARG_display = true;
   }
 
   selectConflictedArgEvent($event){
@@ -136,7 +139,7 @@ export class ClassifyComponent implements OnInit {
     this.randomARG['entry']['inspected'] = '------';
     this.randomARG['entry']['score'] = '------';
     this.loading = true;
-    
+
     if(this.conflictedArgSubtypeFlag){
 
       if (this.conflictedArgSubtypeGeneListCounter >= this.conflictingARGSubtype['conflict'][this.conflictedArgSubtypeClassListCounter]['genes'].length ){
@@ -155,7 +158,7 @@ export class ClassifyComponent implements OnInit {
           this.randomARG = this.dataService.ARG
           this.loading = false;
         });
-        
+
         this.conflictedArgSubtypeGeneListCounter += 1;
       }
     }else{
@@ -171,7 +174,7 @@ export class ClassifyComponent implements OnInit {
     this.randomARG['entry']['inspected'] = '------';
     this.randomARG['entry']['score'] = '------';
     this.loading = true;
-    
+
     if(this.conflictedArgSubtypeFlag){
       this.dataService.getRandomConflictingArgSubtype()
         .subscribe(response => {
@@ -257,12 +260,12 @@ export class ClassifyComponent implements OnInit {
           // },
           {
             element: '#step11',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The top panel will prompt the token number once you done the training. You need to insert this token into the Amazon Mturk form.</p></div>", 
+            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The top panel will prompt the token number once you done the training. You need to insert this token into the Amazon Mturk form.</p></div>",
             position: 'left'
           },
           {
             element: '#step12',
-            intro: "<div class='text-center'><h4>Tips for success!</h4><p class='small'>Some tips to get a fast and right annotation.</p></div>", 
+            intro: "<div class='text-center'><h4>Tips for success!</h4><p class='small'>Some tips to get a fast and right annotation.</p></div>",
             position: 'right'
           },
           // {
@@ -290,7 +293,7 @@ export class ClassifyComponent implements OnInit {
             intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> </div>",
             position: 'right'
           },
-          
+
         ]
     }).start()
     .oncomplete(
@@ -302,7 +305,7 @@ export class ClassifyComponent implements OnInit {
     let dialogRef = this.dialog.open(InstructionsComponent, {
       width: '80%',
       data: { train: 'three', animal: 'faa' }
-    }); 
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed');

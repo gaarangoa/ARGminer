@@ -1,121 +1,6 @@
-webpackJsonp([2,5],{
+webpackJsonp([1,4],{
 
-/***/ 15:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var DataService = (function () {
-    function DataService(http, location) {
-        this.http = http;
-        this.location = location;
-        if (location['_platformStrategy']._platformLocation._location.hostname == "localhost") {
-            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + ":5001";
-        }
-        else {
-            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + "/argpedia_api";
-        }
-        this.ARG = [];
-        this.randomConflictingArgSubtype = [];
-    }
-    DataService.prototype.getRandomConflictingArgSubtype = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/subtype/random/')
-            .map(function (res) {
-            _this.randomConflictingArgSubtype = res.json();
-        });
-    };
-    DataService.prototype.getRandomKnownARG = function () {
-        var _this = this;
-        // console.log(this.baseUrl)
-        return this.http.get(this.baseUrl + '/get/arg/random/')
-            .map(function (res) {
-            try {
-                _this.ARG = res.json();
-            }
-            catch (error) {
-                _this.ARG = { "status": false };
-            }
-        });
-    };
-    DataService.prototype.searchAPI = function (keyword, index) {
-        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword.replace(/\s/g, '') + '&index=' + index)
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    DataService.prototype.getKnownARGInfo = function (gene_id) {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/arg/info/' + gene_id)
-            .map(function (res) {
-            _this.ARG = res.json();
-        });
-    };
-    DataService.prototype.getListAntibioticClass = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/antibiotic/class')
-            .map(function (res) {
-            _this.ATYPE = res.json();
-        });
-    };
-    DataService.prototype.getListAntibioticGroup = function () {
-        var _this = this;
-        return this.http.get(this.baseUrl + '/get/antibiotic/group')
-            .map(function (res) {
-            _this.ATYPE = res.json();
-        });
-    };
-    DataService.prototype.insertCuration = function (curation) {
-        curation['gene_id'] = this.ARG['entry']['gene_id'];
-        console.log(curation);
-        return this.http.post(this.baseUrl + '/post/curation', curation)
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    DataService.prototype.getDatabaseList = function () {
-        return this.http.get(this.baseUrl + '/get/database/list')
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    return DataService;
-}());
-DataService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"]) === "function" && _b || Object])
-], DataService);
-
-var _a, _b;
-//# sourceMappingURL=data.service.js.map
-
-/***/ }),
-
-/***/ 160:
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -141,8 +26,8 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-about',
-        template: __webpack_require__(688),
-        styles: [__webpack_require__(593)]
+        template: __webpack_require__(653),
+        styles: [__webpack_require__(565)]
     }),
     __metadata("design:paramtypes", [])
 ], AboutComponent);
@@ -151,14 +36,14 @@ AboutComponent = __decorate([
 
 /***/ }),
 
-/***/ 161:
+/***/ 149:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_admin_service__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_admin_service__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__visualize_class__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__visualize_class__ = __webpack_require__(260);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(4);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -299,8 +184,8 @@ var AdminComponent = (function () {
 AdminComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-admin',
-        template: __webpack_require__(689),
-        styles: [__webpack_require__(594)],
+        template: __webpack_require__(654),
+        styles: [__webpack_require__(566)],
         providers: [
             __WEBPACK_IMPORTED_MODULE_3__visualize_class__["a" /* ComplexPieChart */],
         ]
@@ -313,12 +198,127 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 162:
+/***/ 15:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var DataService = (function () {
+    function DataService(http, location) {
+        this.http = http;
+        this.location = location;
+        if (location['_platformStrategy']._platformLocation._location.hostname == "localhost") {
+            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + ":5001";
+        }
+        else {
+            this.baseUrl = location['_platformStrategy']._platformLocation._location.protocol + '//' + location['_platformStrategy']._platformLocation._location.hostname + "/argpedia_api";
+        }
+        this.ARG = [];
+        this.randomConflictingArgSubtype = [];
+    }
+    DataService.prototype.getRandomConflictingArgSubtype = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/subtype/random/')
+            .map(function (res) {
+            _this.randomConflictingArgSubtype = res.json();
+        });
+    };
+    DataService.prototype.getRandomKnownARG = function () {
+        var _this = this;
+        // console.log(this.baseUrl)
+        return this.http.get(this.baseUrl + '/get/arg/random/')
+            .map(function (res) {
+            try {
+                _this.ARG = res.json();
+            }
+            catch (error) {
+                _this.ARG = { "status": false };
+            }
+        });
+    };
+    DataService.prototype.searchAPI = function (keyword, index) {
+        return this.http.get(this.baseUrl + '/get/search/?keyword=' + keyword.replace(/\s/g, '') + '&index=' + index)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    DataService.prototype.getKnownARGInfo = function (gene_id) {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/arg/info/' + gene_id)
+            .map(function (res) {
+            _this.ARG = res.json();
+        });
+    };
+    DataService.prototype.getListAntibioticClass = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/antibiotic/class')
+            .map(function (res) {
+            _this.ATYPE = res.json();
+        });
+    };
+    DataService.prototype.getListAntibioticGroup = function () {
+        var _this = this;
+        return this.http.get(this.baseUrl + '/get/antibiotic/group')
+            .map(function (res) {
+            _this.ATYPE = res.json();
+        });
+    };
+    DataService.prototype.insertCuration = function (curation) {
+        curation['gene_id'] = this.ARG['entry']['gene_id'];
+        console.log(curation);
+        return this.http.post(this.baseUrl + '/post/curation', curation)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    DataService.prototype.getDatabaseList = function () {
+        return this.http.get(this.baseUrl + '/get/database/list')
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    return DataService;
+}());
+DataService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common__["Location"]) === "function" && _b || Object])
+], DataService);
+
+var _a, _b;
+//# sourceMappingURL=data.service.js.map
+
+/***/ }),
+
+/***/ 150:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InstructionsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -348,8 +348,8 @@ var InstructionsComponent = (function () {
 InstructionsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-instructions',
-        template: __webpack_require__(697),
-        styles: [__webpack_require__(602)]
+        template: __webpack_require__(662),
+        styles: [__webpack_require__(574)]
     }),
     __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MD_DIALOG_DATA */])),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MdDialogRef */]) === "function" && _a || Object, Object])
@@ -360,7 +360,7 @@ var _a;
 
 /***/ }),
 
-/***/ 163:
+/***/ 151:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -394,8 +394,8 @@ var DatabaseComponent = (function () {
 DatabaseComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-database',
-        template: __webpack_require__(701),
-        styles: [__webpack_require__(606)]
+        template: __webpack_require__(666),
+        styles: [__webpack_require__(578)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], DatabaseComponent);
@@ -405,7 +405,7 @@ var _a;
 
 /***/ }),
 
-/***/ 164:
+/***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -431,8 +431,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
-        template: __webpack_require__(702),
-        styles: [__webpack_require__(607)]
+        template: __webpack_require__(667),
+        styles: [__webpack_require__(579)]
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -441,18 +441,18 @@ HomeComponent = __decorate([
 
 /***/ }),
 
-/***/ 165:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -530,17 +530,17 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 166:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NcbiService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -587,7 +587,7 @@ var _a;
 
 /***/ }),
 
-/***/ 267:
+/***/ 252:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -596,20 +596,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 267;
+webpackEmptyContext.id = 252;
 
 
 /***/ }),
 
-/***/ 268:
+/***/ 253:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(280);
 
 
 
@@ -622,7 +622,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 288:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -702,16 +702,16 @@ var ComplexPieChart = (function () {
 
 /***/ }),
 
-/***/ 289:
+/***/ 261:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classify_classify_component__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_database_component__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__about_about_component__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_admin_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classify_classify_component__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_database_component__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__about_about_component__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_admin_component__ = __webpack_require__(149);
 /* unused harmony export router */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 
@@ -738,7 +738,7 @@ var AppRoutingModule = __WEBPACK_IMPORTED_MODULE_0__angular_router__["RouterModu
 
 /***/ }),
 
-/***/ 290:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -759,8 +759,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
-        template: __webpack_require__(690),
-        styles: [__webpack_require__(595)]
+        template: __webpack_require__(655),
+        styles: [__webpack_require__(567)]
     })
 ], AppComponent);
 
@@ -768,31 +768,30 @@ AppComponent = __decorate([
 
 /***/ }),
 
-/***/ 291:
+/***/ 263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_component__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__classify_classify_module__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_module__ = __webpack_require__(307);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__database_database_module__ = __webpack_require__(305);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_jqwidgets_framework_jqwidgets_ts_angular_jqxchart__ = __webpack_require__(287);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_ncbi_service__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_admin_service__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_hammerjs__ = __webpack_require__(613);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_hammerjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__admin_admin_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing_module__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_component__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__classify_classify_module__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__home_home_module__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__database_database_module__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_charts__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_data_service__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_ncbi_service__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_admin_service__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_hammerjs__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_hammerjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__admin_admin_component__ = __webpack_require__(149);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -821,7 +820,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // import {NgCytoscapeModule} from "ng2-cytoscape/dist";
 // Visualization
 
-
 // Services
 
 
@@ -838,8 +836,8 @@ AppModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_8__about_about_component__["a" /* AboutComponent */],
-            __WEBPACK_IMPORTED_MODULE_12_jqwidgets_framework_jqwidgets_ts_angular_jqxchart__["a" /* jqxChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__admin_admin_component__["a" /* AdminComponent */],
+            // jqxChartComponent,
+            __WEBPACK_IMPORTED_MODULE_17__admin_admin_component__["a" /* AdminComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -852,14 +850,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["b" /* NoopAnimationsModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MaterialModule */],
-            __WEBPACK_IMPORTED_MODULE_13__swimlane_ngx_charts__["NgxChartsModule"],
+            __WEBPACK_IMPORTED_MODULE_12__swimlane_ngx_charts__["NgxChartsModule"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MdInputModule */],
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_14__services_data_service__["a" /* DataService */],
-            __WEBPACK_IMPORTED_MODULE_15__services_ncbi_service__["a" /* NcbiService */],
-            __WEBPACK_IMPORTED_MODULE_16__services_admin_service__["a" /* AdminService */]
+            __WEBPACK_IMPORTED_MODULE_13__services_data_service__["a" /* DataService */],
+            __WEBPACK_IMPORTED_MODULE_14__services_ncbi_service__["a" /* NcbiService */],
+            __WEBPACK_IMPORTED_MODULE_15__services_admin_service__["a" /* AdminService */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
     })
@@ -869,7 +867,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 292:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -890,11 +888,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BestHitArdbComponent = (function () {
     function BestHitArdbComponent(dataService) {
         this.dataService = dataService;
-        this.render = false;
     }
     BestHitArdbComponent.prototype.ngOnInit = function () {
+        this.render = false;
         this.randomARG = this.dataService.ARG;
-        this.alCoverage = 100 * this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0);
+        this.alCoverage = 100 * this.randomARG['besthit']['alignments'][0]['algn_length'] / this.randomARG['entry']['length'].toFixed(0);
         if (this.randomARG['besthit']) {
             this.render = true;
         }
@@ -904,8 +902,8 @@ var BestHitArdbComponent = (function () {
 BestHitArdbComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'besthit-metadata-ardb',
-        template: __webpack_require__(691),
-        styles: [__webpack_require__(596)]
+        template: __webpack_require__(656),
+        styles: [__webpack_require__(568)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], BestHitArdbComponent);
@@ -915,7 +913,7 @@ var _a;
 
 /***/ }),
 
-/***/ 293:
+/***/ 265:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -936,13 +934,60 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BestHitCardComponent = (function () {
     function BestHitCardComponent(dataService) {
         this.dataService = dataService;
-        this.render = false;
     }
+    BestHitCardComponent.prototype.get_subtype = function (element) {
+        if (element.best_hit_database === 'ARDB') {
+            return element.metadata.subtype;
+        }
+        else {
+            return element.subtype;
+        }
+    };
+    BestHitCardComponent.prototype.get_best_hit_id = function (element) {
+        if (element.best_hit_database === 'megares') {
+            return element.best_hit.split('|')[1];
+        }
+        else {
+            return element.best_hit;
+        }
+    };
+    BestHitCardComponent.prototype.get_coverage = function (element) {
+        if (element.best_hit_database === 'CARD') {
+            return element.coverage;
+        }
+        else {
+            return (100 * element.algn_len / this.randomARG['entry'].length).toFixed(0);
+        }
+    };
+    BestHitCardComponent.prototype.get_bitscore_rate = function (element) {
+        if (element.best_hit_database === 'CARD') {
+            return (100 * element.bitscore / element.optimum_bit_score).toFixed(0);
+        }
+        else {
+            // return (100*element.bitscore/1000).toFixed(0);
+            return null;
+        }
+    };
     BestHitCardComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.randomARG = this.dataService.ARG;
+        this.render = false;
+        this.cars = [];
         this.alCoverage = 100 * this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0);
         // console.log(this.alCoverage)
         if (this.randomARG['besthit']) {
+            // traverse the alignments and create the table
+            this.randomARG['besthit']['alignments'].forEach(function (element) {
+                _this.cars.push({
+                    database: element.best_hit_database,
+                    gene_name: _this.get_subtype(element),
+                    best_hit_id: _this.get_best_hit_id(element),
+                    similarity: element.identity,
+                    coverage: _this.get_coverage(element),
+                    bitscore_rate: _this.get_bitscore_rate(element),
+                    bitscore: element.bitscore
+                });
+            });
             this.render = true;
         }
     };
@@ -951,8 +996,8 @@ var BestHitCardComponent = (function () {
 BestHitCardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'besthit-metadata-card',
-        template: __webpack_require__(692),
-        styles: [__webpack_require__(597)]
+        template: __webpack_require__(657),
+        styles: [__webpack_require__(569)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], BestHitCardComponent);
@@ -962,7 +1007,7 @@ var _a;
 
 /***/ }),
 
-/***/ 294:
+/***/ 266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -983,11 +1028,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var GenericComponent = (function () {
     function GenericComponent(dataService) {
         this.dataService = dataService;
-        this.render = false;
     }
     GenericComponent.prototype.ngOnInit = function () {
+        this.render = false;
         this.randomARG = this.dataService.ARG;
-        this.alCoverage = 100 * this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'];
+        this.alCoverage = 100 * this.randomARG['besthit']['alignments'][0]['algn_length'] / this.randomARG['entry']['length'];
         if (this.randomARG['besthit']) {
             this.render = true;
         }
@@ -997,8 +1042,8 @@ var GenericComponent = (function () {
 GenericComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-generic',
-        template: __webpack_require__(693),
-        styles: [__webpack_require__(598)]
+        template: __webpack_require__(658),
+        styles: [__webpack_require__(570)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], GenericComponent);
@@ -1008,13 +1053,13 @@ var _a;
 
 /***/ }),
 
-/***/ 295:
+/***/ 267:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(64);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassifyRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1044,7 +1089,7 @@ ClassifyRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 296:
+/***/ 268:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1052,24 +1097,26 @@ ClassifyRoutingModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__swimlane_ngx_charts__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__swimlane_ngx_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angular_star_rating__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__classify_component__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__classify_routing_module__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__metadata_uniprot_uniprot_component__ = __webpack_require__(303);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__metadata_card_card_component__ = __webpack_require__(302);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__metadata_ardb_ardb_component__ = __webpack_require__(301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__besthit_card_card_component__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__besthit_ardb_ardb_component__ = __webpack_require__(292);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__genomes_genome_component__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__curate_curate_component__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__besthit_generic_generic_component__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__instructions_instructions_component__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_star_rating__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__classify_component__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__classify_routing_module__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__metadata_uniprot_uniprot_component__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__metadata_card_card_component__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__metadata_ardb_ardb_component__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__besthit_card_card_component__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__besthit_ardb_ardb_component__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__genomes_genome_component__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__curate_curate_component__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__besthit_generic_generic_component__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__instructions_instructions_component__ = __webpack_require__(150);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassifyModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1085,10 +1132,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 // Visualization
-
+// import { NgxChartsModule} from '@swimlane/ngx-charts';
 
 // primeng
+
+
 
 
 
@@ -1126,42 +1176,48 @@ ClassifyModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["ReactiveFormsModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MdInputModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["BrowserModule"],
-            __WEBPACK_IMPORTED_MODULE_10__classify_routing_module__["a" /* ClassifyRoutingModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_material__["f" /* CompatibilityModule */],
+            __WEBPACK_IMPORTED_MODULE_11__classify_routing_module__["a" /* ClassifyRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MaterialModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__["b" /* NoopAnimationsModule */],
-            __WEBPACK_IMPORTED_MODULE_6__swimlane_ngx_charts__["NgxChartsModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["PanelModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["AutoCompleteModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["StepsModule"],
-            __WEBPACK_IMPORTED_MODULE_7_angular_star_rating__["a" /* StarRatingModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["ConfirmDialogModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["DialogModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["ButtonModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["TabViewModule"], __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["CodeHighlighterModule"],
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["GrowlModule"],
+            // NoopAnimationsModule,
+            // NgxChartsModule,
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["PanelModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["AutoCompleteModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["StepsModule"],
+            __WEBPACK_IMPORTED_MODULE_6_angular_star_rating__["a" /* StarRatingModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmDialogModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["DialogModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ButtonModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["TabViewModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["CodeHighlighterModule"],
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["GrowlModule"],
+            __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__["ProgressBarModule"],
+            __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__["DataTableModule"]
+            // HintModule,
+            // GenomeModule
         ],
         schemas: [],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_9__classify_component__["a" /* ClassifyComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__metadata_uniprot_uniprot_component__["a" /* UniprotComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__metadata_card_card_component__["a" /* CardComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__metadata_ardb_ardb_component__["a" /* ArdbComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__besthit_ardb_ardb_component__["a" /* BestHitArdbComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__besthit_card_card_component__["a" /* BestHitCardComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__genomes_genome_component__["a" /* GenomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__curate_curate_component__["a" /* CurateComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__besthit_generic_generic_component__["a" /* GenericComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__instructions_instructions_component__["a" /* InstructionsComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__classify_component__["a" /* ClassifyComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__metadata_uniprot_uniprot_component__["a" /* UniprotComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__metadata_card_card_component__["a" /* CardComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__metadata_ardb_ardb_component__["a" /* ArdbComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__besthit_ardb_ardb_component__["a" /* BestHitArdbComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__besthit_card_card_component__["a" /* BestHitCardComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__genomes_genome_component__["a" /* GenomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__curate_curate_component__["a" /* CurateComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__besthit_generic_generic_component__["a" /* GenericComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__instructions_instructions_component__["a" /* InstructionsComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_8_primeng_primeng__["ConfirmationService"]
+            __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]
         ],
         bootstrap: [
-            __WEBPACK_IMPORTED_MODULE_9__classify_component__["a" /* ClassifyComponent */]
+            __WEBPACK_IMPORTED_MODULE_10__classify_component__["a" /* ClassifyComponent */]
         ],
         entryComponents: [
-            __WEBPACK_IMPORTED_MODULE_19__instructions_instructions_component__["a" /* InstructionsComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__instructions_instructions_component__["a" /* InstructionsComponent */]
         ]
     })
 ], ClassifyModule);
@@ -1170,21 +1226,21 @@ ClassifyModule = __decorate([
 
 /***/ }),
 
-/***/ 297:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__ = __webpack_require__(674);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classify_component__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__classify_component__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__score_class__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__score_class__ = __webpack_require__(270);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CurateComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1316,25 +1372,33 @@ var CurateComponent = (function () {
                 var points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism) / 3;
                 this.classifyComponent.notification.push({ severity: 'success', summary: 'Success', detail: 'Your score is: ' + points.toFixed(0) + ' out of 100 <hr>Class Score: ' + this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
                 this.antibiotic['onlineScore'] = this.liveScoreAnnotation;
+                this.classifyComponent.ARG_display = false;
+                this.classifyComponent.MGE_display = true;
+                console.log(this.classifyComponent.ARG_display, this.classifyComponent.MGE_display);
                 this.activeIndex = 1;
                 this.step1 = false;
                 this.step2 = true;
             }
         }
         else if (value == 2) {
+            console.log(this.classifyComponent.ARG_display, this.classifyComponent.MGE_display);
             this.step2 = false;
             this.step3 = true;
             this.activeIndex = 2;
         }
         else if (value == 3) {
+            this.classifyComponent.ARG_display = true;
+            this.classifyComponent.MGE_display = false;
             this.step3 = false;
             this.step1 = true;
             this.activeIndex = 0;
         }
     };
     CurateComponent.prototype.submitReview = function () {
-        // console.log(this.antibiotic)
         var _this = this;
+        // console.log(this.antibiotic)
+        this.classifyComponent.ARG_display = true;
+        this.classifyComponent.MGE_display = false;
         // show the overlay with the score
         // this.showDialog()
         this.antibiotic['token'] = Date.now();
@@ -1379,8 +1443,8 @@ var CurateComponent = (function () {
 CurateComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-curate',
-        template: __webpack_require__(695),
-        styles: [__webpack_require__(600)],
+        template: __webpack_require__(660),
+        styles: [__webpack_require__(572)],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         providers: [
             __WEBPACK_IMPORTED_MODULE_7__score_class__["a" /* ScoreAnnotation */]
@@ -1394,11 +1458,11 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 298:
+/***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js__ = __webpack_require__(586);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_intersect_index_js__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScoreAnnotation; });
 
@@ -1456,7 +1520,7 @@ var ScoreAnnotation = (function () {
 
 /***/ }),
 
-/***/ 299:
+/***/ 271:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1494,13 +1558,13 @@ var PieChart = (function () {
 
 /***/ }),
 
-/***/ 300:
+/***/ 272:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Charts__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Charts__ = __webpack_require__(271);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GenomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1552,8 +1616,8 @@ var GenomeComponent = (function () {
 GenomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'genome-metadata',
-        template: __webpack_require__(696),
-        styles: [__webpack_require__(601)],
+        template: __webpack_require__(661),
+        styles: [__webpack_require__(573)],
         providers: [__WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */]) === "function" && _b || Object])
@@ -1564,7 +1628,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 301:
+/***/ 273:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1598,8 +1662,8 @@ var ArdbComponent = (function () {
 ArdbComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-ardb',
-        template: __webpack_require__(698),
-        styles: [__webpack_require__(603)]
+        template: __webpack_require__(663),
+        styles: [__webpack_require__(575)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], ArdbComponent);
@@ -1609,7 +1673,7 @@ var _a;
 
 /***/ }),
 
-/***/ 302:
+/***/ 274:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1643,8 +1707,8 @@ var CardComponent = (function () {
 CardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-card',
-        template: __webpack_require__(699),
-        styles: [__webpack_require__(604)]
+        template: __webpack_require__(664),
+        styles: [__webpack_require__(576)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], CardComponent);
@@ -1654,13 +1718,13 @@ var _a;
 
 /***/ }),
 
-/***/ 303:
+/***/ 275:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__ = __webpack_require__(154);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UniprotComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1724,8 +1788,8 @@ var UniprotComponent = (function () {
 UniprotComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-uniprot',
-        template: __webpack_require__(700),
-        styles: [__webpack_require__(605)]
+        template: __webpack_require__(665),
+        styles: [__webpack_require__(577)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__["a" /* NcbiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__["a" /* NcbiService */]) === "function" && _b || Object])
 ], UniprotComponent);
@@ -1735,7 +1799,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 304:
+/***/ 276:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1767,14 +1831,14 @@ DatabaseRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 305:
+/***/ 277:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__database_routing_module__ = __webpack_require__(304);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_component__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__database_routing_module__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_component__ = __webpack_require__(151);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabaseModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1810,7 +1874,7 @@ DatabaseModule = __decorate([
 
 /***/ }),
 
-/***/ 306:
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1842,14 +1906,14 @@ HomeRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 307:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_routing_module__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_component__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_routing_module__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_component__ = __webpack_require__(152);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1882,7 +1946,7 @@ HomeModule = __decorate([
 
 /***/ }),
 
-/***/ 308:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1899,7 +1963,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 593:
+/***/ 565:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -1917,7 +1981,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 594:
+/***/ 566:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -1935,7 +1999,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 595:
+/***/ 567:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -1953,7 +2017,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 596:
+/***/ 568:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -1971,7 +2035,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 597:
+/***/ 569:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -1989,7 +2053,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 598:
+/***/ 570:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2007,7 +2071,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 599:
+/***/ 571:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2025,7 +2089,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 600:
+/***/ 572:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2043,7 +2107,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 601:
+/***/ 573:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2061,7 +2125,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 602:
+/***/ 574:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2079,7 +2143,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 603:
+/***/ 575:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2097,7 +2161,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 604:
+/***/ 576:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2115,7 +2179,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 605:
+/***/ 577:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2133,7 +2197,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 606:
+/***/ 578:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2151,7 +2215,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 607:
+/***/ 579:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)();
@@ -2169,122 +2233,17 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 688:
-/***/ (function(module, exports) {
-
-module.exports = "<div style=\"overflow: auto\" class=\"col-md-12\">\n    <h2>Instructions</h2>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <br>\n\n    <img class=\"col-md-8 col-md-offset-2\" src=\"assets/images/demo.png\" alt=\"\">\n\n    <div class=\"col-md-12\">\n\n        <h4>1. Get familiar with the environment</h4>\n        <p>\n            In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n        </p>\n        <h4>2. New user</h4>\n        <p class=\"\">\n            If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform two ARG annotations. An score with your performance will be prompted. <strong>All fields are required</strong>,\n            values unrelated to the gene are not accepted.\n        </p>\n\n        <h4>3. How to get a reward </h4>\n        <p>\n            Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token\n            to the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n        </p>\n\n        <h4>4. Perform a new Hit</h4>\n        <p>\n            First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n        </p>\n\n        <strong><h4 style=\"color:red\"> Please Be Aware! </h4></strong>\n        <p>\n            If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n        </p>\n        <p>\n            If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n        </p>\n        <p>\n            Only tokens are accepted, if you submit other values such as gene_id, the HIT will be rejected. Several workers are working in the same gene_id, if the token is not provided, we cannot check your performance.\n        </p>\n\n    </div>\n    <hr class=\"col-md-10\">\n</div>\n\n<hr>\n\n\n<md-expansion-panel class=\"\" [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Micro-Tasks</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <h4>ARG identification</h4>\n    <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>\n\n    <p class=\"small\">The <strong>Blast alignment</strong> sections associate the queried gene to its closest antibiotic resistance gene from curated databases. From this section you need to look at the scores (Bitscore, evalue, identity and coverage). High identity and\n        coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than 50 is considered\n        significant if it spans at least 90% coverage.\n    </p>\n\n\n    <hr>\n\n    <h4> Mobile Genetic Elements</h4>\n\n    <p><strong>Horizontal Gene Transfer</strong></p>\n    <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>\n    <p class=\"small\">To complete this task please check the Plasmid, Virus, or Prophages sections. If there is not any section with plasmid, prophage or virus tags it means that there is not evidence that the gene is transfered by any of those mechanisms.\n    </p>\n    <p><strong>Pathogen Genomes</strong></p>\n    <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>\n    <p class=\"small\">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens (as percentages) as well as their antimicrobial phenotype (resistant,\n        susceptible, intermediate). Rate your findigns according to the provided evidence.\n\n    </p>\n\n    <hr>\n    <h4>Review and submit</h4>\n    <p>This panel contains your observations for the queried gene.</p>\n    <p><strong>Verify your observations</strong></p>\n    <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>\n    <p><strong>Rate your expertise</strong></p>\n    <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.\n        <p>\n            <p><strong>Rate your annotation confidence</strong></p>\n            <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>\n</md-expansion-panel>\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>MGEs and pathogens</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also\n        transfer genetic material by accidentally package segments of DNA to inject into their host.\n    </p>\n    <p>\n        To identify if the ARG is carried by plasmids, phages or viruses, the gene was aligned to the <a href=\"\">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.\n    </p>\n    <p>\n        Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene is hosted in a pathogen genome, the gene was matched to the <a href=\"\">PATRIC</a>        database. Then, we were able to identify the number of pathogen genomes that carry the gene.\n    </p>\n    <p class=\"small\">Each color represents a different scoring scale</p>\n</md-expansion-panel>\n\n\n\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Similarity to known ARGs</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href=\"\">CARD</a> database. Thus, the entry was compared against the databases\n        to reinforce, reject or modify the <strong>current annotation.</strong>\n    </p>\n    <p>\n        For this comparison, the gene was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.\n    </p>\n\n    <p> <span class=\"label bg-blue\">Tip</span> To identify the\n        <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where the sequence\n        similarity is <u>high</u> with a <u>very strong</u> coverage.\n    </p>\n\n</md-expansion-panel>\n\n<hr><br><br><br><br><br>"
-
-/***/ }),
-
-/***/ 689:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"online\">\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Upgrade database</h4>\n                <!-- <h3 class=\"box-title\">\n                <strong>Main Actions</strong>\n            </h3> -->\n            </div>\n            <div class=\"box-body\">\n\n\n                <p class=\"small\">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads\n                    tab.\n                </p>\n\n\n                <!-- UPGRADE DATABASE FORM -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Database version\" [value]=\"databaseVersion\" #dversion>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput #dmessage maxlength=\"256\" placeholder=\"Comments\" [value]=\"databaseComments\">\n                    <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint>\n                    <md-hint align=\"end\">{{dmessage.value.length}} / 256</md-hint>\n                </md-input-container>\n\n            </div>\n            <div class=\"box-footer\">\n                <br>\n                <div class=\"col-md-12 text-center\"> <button (click)=\"upgradeDataBase(dversion.value, dmessage.value)\" class=\"bg-black\" color=\"default\" md-raised-button>Upgrade ARG-miner database</button><br><br></div>\n\n                <p class=\"small\">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>\n            </div>\n        </div>\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Recompute Problematic Annotations</h4>\n            </div>\n            <div class=\"box-body\">\n\n                <p class=\"small\">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>\n                <div class=\"text-center\"> <button (click)=\"updateConflictingARGs()\" class=\"bg-blue\" md-raised-button>Compute Problematic ARGs</button></div>\n                <hr>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-sm-9\">\n\n        <div class=\"\">\n            <div class=\"box box-solid \">\n                <div class=\"box-body\">\n                    <md-input-container class='col-sm-12 col-sm-offset-0'>\n                        <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" value=\"\" />\n                    </md-input-container>\n                </div>\n            </div>\n        </div>\n\n        <div *ngFor=\"let item of curatedARGs\" class=\"box box-solid\">\n            <!-- <div class=\"box-header with-border\"> -->\n            <!-- <h3 class=\"box-title\">{{item.entry.gene_id}}</h3> -->\n            <!-- </div> -->\n            <div class=\"box-body\">\n                <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-4\">\n                                <h4 class=\"text-center\"> Current Annotation</h4>\n                                <hr>\n                                <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>\n                                <p><strong>ARG Name:</strong> {{ item.entry.subtype }} </p>\n                                <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>\n                                <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>\n                            </div>\n\n                            <div class=\"col-md-8\">\n                                <h4 class=\"text-center\"> Weighted Annotation</h4>\n                                <hr>\n                                <div class=\"col-md-12\">\n                                    <div class=\"col-md-4\">\n                                        <!-- <strong>Score:</strong> {{ wScore }} -->\n                                    </div>\n                                    <div class=\"box-plot\">\n                                        <div class=\"box-plot-component box-left\"></div>\n                                        <div class=\"box-plot-component box-right\"></div>\n                                        <div class=\"box-plot-component box-mean\" [style.left]=\"20*wScore+'%'\"></div>\n                                    </div>\n                                </div>\n                                <!-- </p> -->\n                                <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->\n                                <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>\n                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }} </p>\n                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }} </p>\n                                <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)}} </p>\n                                <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)}} </p>\n\n                                <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <hr>\n                                <div class=\"text-center\">\n                                    <button (click)=\"acceptAnnotation()\" class=\"badge bg-blue\" md-raised-button>Update Gene</button>\n                                    <button (click)=\"getARG(ARGindex)\" class=\"badge bg-red\" md-raised-button>Next Gene</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\">Crowsourced Annotation</h4>\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argClassChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argClassChart.colorScheme\" [results]=\"argClassChart.data\" [gradient]=\"argClassChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-red\"> Antbiotic Class </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>\n                            </div>\n\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Class</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n\n                                        <tr *ngFor=\"let itemx of argClassChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                            <td> {{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts) + 1.2*((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts))).toFixed(2) }} </td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argGroupChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argGroupChart.colorScheme\" [results]=\"argGroupChart.data\" [gradient]=\"argGroupChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-blue\"> Antbiotic Resistance Gene </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argGroupChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argMechanismChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argMechanismChart.colorScheme\" [results]=\"argMechanismChart.data\" [gradient]=\"argMechanismChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-success\"> ARG Mechanism </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Mechanism</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argMechanismChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-sm-12\">\n                    <table class=\"table table-responsive table-bordered text-center\">\n                        <tbody>\n                            <tr class=\"table-success\">\n                                <th>Token</th>\n                                <th>Expertise</th>\n                                <th>Confidence</th>\n                                <th>Gene Name</th>\n                                <th>ARG Class</th>\n                                <th>ARG Mechanism</th>\n                            </tr>\n                            <tr *ngFor=\"let itemx of curatedARGs[0]['inspected']\">\n                                <td>{{ itemx.token }}</td>\n                                <td *ngIf=\"itemx.rating.expertise; else expertiseBlockA\">{{ (itemx.rating.expertise.value).toFixed(2) }}</td>\n                                <ng-template #expertiseBlockA>\n                                    <td>0.00</td>\n                                </ng-template>\n                                <td *ngIf=\"itemx.rating.confidence; else confidenceBlockA\">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>\n                                <ng-template #confidenceBlockA>\n                                    <td>0.00</td>\n                                </ng-template>\n                                <td>{{ itemx.group }}</td>\n                                <td>{{ itemx.class }}</td>\n                                <td>{{ itemx.mechanism }}</td>\n                            </tr>\n                        </tbody>\n                    </table>\n                </div>\n\n\n            </div>\n        </div>\n\n\n    </div>\n\n\n\n</div>\n\n\n<div class=\"col-md-3 col-md-offset-4\" *ngIf=\"online==false\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\"> <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button></div>\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 690:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"home\" class=\"navbar-brand\">ARG-miner</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n        <div class=\"navbar-collapse collapse\" id=\"navbar-main\">\n            <ul class=\"nav navbar-nav\">\n\n                <li>\n                    <a routerLink=\"home\">Home</a>\n                </li>\n\n                <li>\n                    <a routerLink=\"classify\">Classify</a>\n                </li>\n                <li>\n                    <a routerLink=\"database\">Download</a>\n                </li>\n                <li>\n                    <a routerLink=\"about\" target=\"_blank\">Instructions</a>\n                </li>\n            </ul>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a routerLink=\"admin\">Admin</a></li>\n            </ul>\n\n        </div>\n        <!-- </div> -->\n    </div>\n</div>\n\n<hr>\n<br>\n<div class=\"container-par\">\n    <!-- <div class=\"wrapper\"> -->\n    <router-outlet></router-outlet>\n    <!-- </div> -->\n</div>\n\n<!-- <footer class=\"col-lg-12 main-footer\">\n    <div class=\"pull-right\">\n        <b>Version</b> 1.0\n    </div>\n    <strong>Copyright © 2016-2017 <a href=\"\">ZhangLab - Virginia Tech</a>.</strong> All rights reserved.\n</footer> -->"
-
-/***/ }),
-
-/***/ 691:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database=='ARDB'\" class=\"\">\n            <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p>\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n                    <dl class=\"dl-horizontal\">\n                        <dt><u>Gene Name:</u></dt>\n                        <dd>{{ bh.metadata.subtype }}</dd>\n\n                        <dt>Best Hit ID</dt>\n                        <dd> {{ bh.best_hit }}\n                            <dd>\n                                <dt>Similarity:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.identity<=30\" class=\"badge bg-red\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>30 && bh.identity<=50\" class=\"badge bg-yellow\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>50 && bh.identity<=80\" class=\"badge bg-green\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>80 && bh.identity<=90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n\n                                </dd>\n                                <dt>Coverage:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"alCoverage<=30\" class=\"badge bg-red\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>30 && alCoverage<=50\" class=\"badge bg-yellow\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>\n                                    <span *ngIf=\"alCoverage>50 && alCoverage<=80\" class=\"badge bg-green\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>80 && alCoverage<=90\" class=\"badge bg-blue\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>90\" class=\"badge bg-black\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n\n\n                                </dd>\n                                <dt>Bitscore:</dt>\n                                <dd>\n                                    <span *ngIf=\"bh.bitscore<=50\" class=\"badge bg-red\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>50 && bh.bitscore<=100\" class=\"badge bg-yellow\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>100 && bh.bitscore<=500\" class=\"badge bg-green\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>500 && bh.bitscore<=800\" class=\"badge bg-blue\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>800\" class=\"badge bg-black\"> {{ bh.bitscore }} </span>\n\n                                </dd>\n                                <dt>evalue:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.evalue>=1e-5\" class=\"badge bg-red\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-5 && bh.evalue>=1e-10\" class=\"badge bg-yellow\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-10 && bh.evalue>=1e-50\" class=\"badge bg-green\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-50 && bh.evalue>=1e-100\" class=\"badge bg-blue\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-100\" class=\"badge bg-black\"> {{ bh.evalue }} </span>\n\n                                </dd>\n\n\n                                <hr>\n                                <strong> AMR profile: </strong>\n\n\n                                <!-- <dd> -->\n                                <p> {{bh.metadata.description}} </p>\n                                <div *ngFor=\"let type of bh.metadata.resistance_profile\">\n                                    <strong> <span class=\"strong\">{{ type.type }} </span> </strong>\n                                    <p *ngIf=\"type.description\"> {{ type.description }} </p>\n                                </div>\n                                <!-- <dd> -->\n\n\n                    </dl>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 692:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"render\">\n\n\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n\n        <div *ngIf=\"bh.best_hit_database=='CARD'\" class=\"\">\n            <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p>\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n                    <dl class=\"dl-horizontal\">\n                        <dt>Gene Name:</dt>\n                        <dd> {{ bh.metadata.subtype }}</dd>\n                        <dt>Best Hit ID</dt>\n                        <dd> {{ bh.best_hit }}\n                            <dd>\n                                <dt>Similarity:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.identity<=30\" class=\"badge bg-red\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>30 && bh.identity<=50\" class=\"badge bg-yellow\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>50 && bh.identity<=80\" class=\"badge bg-green\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>80 && bh.identity<=90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n\n                                </dd>\n                                <dt>Coverage:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"alCoverage<=30\" class=\"badge bg-red\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>30 && alCoverage<=50\" class=\"badge bg-yellow\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>\n                                    <span *ngIf=\"alCoverage>50 && alCoverage<=80\" class=\"badge bg-green\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>80 && alCoverage<=90\" class=\"badge bg-blue\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n                                    <span *ngIf=\"alCoverage>90\" class=\"badge bg-black\"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>\n\n                                </dd>\n                                <dt>Bitscore:</dt>\n                                <dd>\n                                    <span *ngIf=\"bh.bitscore<=50\" class=\"badge bg-red\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>50 && bh.bitscore<=100\" class=\"badge bg-yellow\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>100 && bh.bitscore<=500\" class=\"badge bg-green\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>500 && bh.bitscore<=800\" class=\"badge bg-blue\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>800\" class=\"badge bg-black\"> {{ bh.bitscore }} </span>\n\n                                </dd>\n                                <dt>evalue:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.evalue>=1e-5\" class=\"badge bg-red\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-5 && bh.evalue>=1e-10\" class=\"badge bg-yellow\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-10 && bh.evalue>=1e-50\" class=\"badge bg-green\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-50 && bh.evalue>=1e-100\" class=\"badge bg-blue\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-100\" class=\"badge bg-black\"> {{ bh.evalue }} </span>\n\n                                </dd>\n\n\n                                <hr>\n                                <h4> AMR profile: </h4>\n\n                                <!-- <dd> -->\n                                <p> {{bh.metadata.description}} </p>\n\n                                <div *ngFor=\"let type of bh.metadata.type\">\n\n                                    <div *ngIf=\"type.relationship\">\n                                        <div *ngFor=\"let rel of type.relationship\">\n                                            <i class=\"fa fa-bug\" *ngIf=\"rel.accession=='confers_resistance_to'\"></i>\n                                            <i class=\"fa fa-cogs\" *ngIf=\"rel.accession=='participates_in'\"></i>\n                                            <span> {{ rel.term }}</span>\n                                            <strong *ngIf=\"rel.accession=='confers_resistance_to'\">[Class]</strong>\n                                            <strong *ngIf=\"rel.accession=='participates_in'\">[Mechanism]</strong>\n                                        </div>\n                                    </div>\n                                    <p class=\"small\">{{ type.name }}, {{ type.def }}.</p>\n                                    <div *ngIf=\"!type.relationship\">\n                                        <i class=\"fa fa-cogs\"></i>\n                                        <span> {{ type.name }} </span> <strong>[Mechanism]</strong>\n                                    </div>\n                                    <!-- <p> {{ type.def }} </p> -->\n\n\n                                    <!-- <div *ngIf=\"type.is_a\">\n                                        <div *ngFor=\"let rel of type.is_a\">\n                                            <p> {{ rel.term }} </p>\n                                        </div>\n                                    </div> -->\n\n\n\n                                </div>\n                                <!-- </dd> -->\n\n\n\n                    </dl>\n                </div>\n                <!-- /.box-body -->\n            </div>\n            <!-- /.box -->\n        </div>\n    </div>\n\n</div>"
-
-/***/ }),
-
-/***/ 693:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database!=='CARD' && bh.best_hit_database!=='ARDB'\" class=\"\">\n            <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p>\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n                <div class=\"box-body\">\n                    <dl class=\"dl-horizontal\">\n                        <dt>Gene Name:</dt>\n                        <dd>{{ bh.subtype }}</dd>\n                        <dt>Best Hit ID</dt>\n                        <dd> {{ bh.best_hit.substring(0, 30) }}\n                            <dd>\n\n                                <dt>Similarity:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.identity<=30\" class=\"badge bg-red\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>30 && bh.identity<=50\" class=\"badge bg-yellow\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>50 && bh.identity<=80\" class=\"badge bg-green\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>80 && bh.identity<=90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n                                    <span *ngIf=\"bh.identity>90\" class=\"badge bg-blue\"> {{ bh.identity }}% </span>\n\n                                </dd>\n\n                                <dt>Coverage:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"alCoverage<=30\" class=\"badge bg-red\"> {{ alCoverage.toFixed(2) }}% </span>\n                                    <span *ngIf=\"alCoverage>50 && alCoverage<=80\" class=\"badge bg-green\"> {{ alCoverage.toFixed(2) }}% </span>\n                                    <span *ngIf=\"alCoverage>80 && alCoverage<=90\" class=\"badge bg-blue\"> {{ alCoverage.toFixed(2) }}% </span>\n                                    <span *ngIf=\"alCoverage>90\" class=\"badge bg-black\"> {{ alCoverage.toFixed(2) }}% </span>\n\n                                </dd>\n                                <dt>Bitscore:</dt>\n                                <dd>\n                                    <span *ngIf=\"bh.bitscore<=50\" class=\"badge bg-red\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>50 && bh.bitscore<=100\" class=\"badge bg-yellow\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>100 && bh.bitscore<=500\" class=\"badge bg-green\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>500 && bh.bitscore<=800\" class=\"badge bg-blue\"> {{ bh.bitscore }} </span>\n                                    <span *ngIf=\"bh.bitscore>800\" class=\"badge bg-black\"> {{ bh.bitscore }} </span>\n\n                                </dd>\n                                <dt>evalue:</dt>\n                                <dd>\n\n                                    <span *ngIf=\"bh.evalue>=1e-5\" class=\"badge bg-red\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-5 && bh.evalue>=1e-10\" class=\"badge bg-yellow\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-10 && bh.evalue>=1e-50\" class=\"badge bg-green\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-50 && bh.evalue>=1e-100\" class=\"badge bg-blue\"> {{ bh.evalue }} </span>\n                                    <span *ngIf=\"bh.evalue<1e-100\" class=\"badge bg-black\"> {{ bh.evalue }} </span>\n\n                                </dd>\n\n\n                                <hr>\n                                <strong> AMR profile: </strong><br><br>\n\n                                <!-- <dd> -->\n\n\n                                <strong> Antibiotic Class: </strong> {{ bh.type }}<br>\n                                <strong> Gene Name: </strong> {{ bh.subtype }}<br>\n                                <strong> Antibiotic Mechanism: </strong> {{ bh.mechanism }}<br>\n\n                                <!-- </dd> -->\n\n\n\n                    </dl>\n                </div>\n            </div>\n        </div>\n    </div>\n    <hr>\n</div>"
-
-/***/ }),
-
-/***/ 694:
-/***/ (function(module, exports) {
-
-module.exports = "<p-growl class=\"user_growl\" [(value)]=\"notification\"></p-growl>\n\n<div class=\"\">\n\n    <div *ngIf=\"!render\" class=\"col-md-4 col-md-offset-4\">\n        <div class=\"col-sm-4 col-sm-offset-4\">\n            <object>\n            <embed src=\"assets/images/loading_1.svg\" />\n          </object>\n        </div>\n    </div>\n\n\n\n    <div *ngIf=\"render\">\n        <!--Left panel-->\n        <div class=\"col-sm-3 affix coffix\">\n            <!-- <div class=\"\"> -->\n            <div *ngIf=\"randomARG.status==true\" class=\"\">\n                <!-- <div class=\"col-md-12\"> -->\n\n                <div class=\"box box-solid box-primary\">\n                    <div class=\"box-header with-border\">\n\n\n\n                        <i class=\"fa fa-gears\"></i>\n                        <!-- <p *ngIf=\"loading\"><md-progress-bar mode=\"indeterminate\"></md-progress-bar></p>  -->\n                        <h3 class=\"box-title\"><strong>Current Annotation </strong> </h3>\n\n                    </div>\n\n                    <!-- /.box-header -->\n\n                    <!-- <tour-step class=\"intro-tour-hint-wrapper\" selector=\"step1\" order=\"1\" position=\"right\">\n                        <div class=\"box box-step\">\n                            <div class=\"box-header\">\n                                <h3 class=\"box-title\">\n                                    ARG you have to curate\n                                </h3>\n                            </div>\n                            <div class=\"box-body\">\n                                This panel shows you the basic information about the antibiotic reistance gene you need to inspect. Note this information may contain errors. Therefore, by comparing this information with the known ARGs databases you will be able to correct or accept\n                                the current annotation.\n                            </div>\n                        </div>\n                    </tour-step> -->\n\n                    <div class=\"box-body\">\n\n                        <dl id=\"step1\" class=\"dl\">\n                            <!-- <p> -->\n                            <!-- </p> -->\n                            <!-- <p> -->\n\n                            <strong>Gene Name:</strong>\n                            <span class=\"\">{{ randomARG.entry.subtype }}</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong>Antibiotic Class:</strong>\n                            <span class=\"\">{{ randomARG.entry.type }}</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong>Database:</strong>\n                            <span class=\"\">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong data-intro=\"step1\">Inspected:</strong>\n                            <span class=\"\">{{ randomARG.inspected.length }}</span>\n                            <br>\n                            <!-- </p> -->\n                            <!-- <dt>Score:</dt> -->\n                            <!-- <dd><span class=\"badge bg-blue\">{{ randomARG.entry.score }}</span></dd> -->\n                        </dl>\n\n                        <p class=\"small text-center\">\n                            *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>\n                            <a (click)=\"startTour()\" class=\"badge bg-blue btn-xs\"><span class=\"\"> <strong> <i class=\"fa fa-compass\"></i> <u>Take a tour </u></strong> </span></a>\n                        </p>\n\n\n                        <hr>\n                        <!-- <h4>Tutorial</h4> -->\n\n                        <!-- <div class=\"text-left\"> -->\n\n\n\n                        <!-- <a (click)=\"openInstructions()\" class=\"badge bg-red btn-xs\"><span class=\"\"> <strong> <u>Instructions</u></strong> </span></a> -->\n                        <!-- </div> -->\n                        <!-- <br> -->\n                        <!-- <hr> -->\n\n                        <!-- <h4>Filter options</h4> -->\n\n                        <!-- <tour-step class=\"intro-tour-hint-wrapper\" selector=\"step2\" order=\"2\">\n                            <div class=\"col-md-12\">\n                                <div class=\"box box-primary\">\n                                    <div class=\"box-header\">\n                                        <h3 class=\"box-title\">\n                                            <strong>I am a New user</strong>\n                                        </h3>\n                                    </div>\n                                    <div class=\"box-body\">\n                                        If you are a new user, activate the new user button. You will have to complete 20 entries that will help you to get familiar with the system. I will also score your results based on the real annotation.\n                                    </div>\n                                    <div class=\"box-footer\">\n                                       \n                                    </div>\n                                </div>\n                            </div>\n                            \n                        </tour-step> -->\n\n                        <div id=\"step3\">\n                            <md-slide-toggle (change)=\"trainingARGEvent($event)\" [checked]=\"trainingARGFlag\"><strong>New User</strong></md-slide-toggle>\n                            <p class=\"small\">Enable this option if this is the first time you enter the website.</p>\n                        </div>\n                        <!-- <hr> -->\n                        <div id=\"step4\">\n                            <md-slide-toggle (change)=\"selectConflictedArgEvent($event)\" [checked]=\"conflictedArgSubtypeFlag\"><strong>Priority ARGs</strong></md-slide-toggle>\n                            <p class=\"small\">This option selects ARGs with high priority of curation.</p>\n                        </div>\n                        <hr>\n\n\n\n                        <div *ngIf=\"loading==false && conflictedArgSubtypeFlag\">\n\n                            <h4> Conflicted ARGs </h4>\n                            <p class=\"small\">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>\n                            <!-- <div class=\"box-body\"> -->\n                            <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->\n                            <div *ngFor=\"let item of conflictingARGSubtype.conflict\">\n                                <strong>{{ item.class }}</strong> {{ item.genes.length }}\n                            </div>\n                            <hr>\n                            <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                            <button (click)=\"nextGeneConflictList()\" class=\"\" color=\"warn\" md-raised-button>Next ARG</button>\n                            <!-- </div> -->\n                        </div>\n\n                        <div *ngIf=\"conflictedArgSubtypeFlag==false && trainingARGFlag==false\" class=\"col-md-12 text-center\">\n                            <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                        </div>\n\n                        <div *ngIf=\"trainingARGFlag && conflictedArgSubtypeFlag==false\" class=\"col-md-12 text-center\">\n                            <button (click)=\"trainingARGNextGene()\" class=\"\" color=\"primary\" md-raised-button>Next ARG</button>\n                        </div>\n\n                        <!-- <div class=\"col-md-12 text-right\">\n                            <button (click)=\"nextGene()\" class=\"\" color=\"red\" md-raised-button>Random</button>\n                        </div> -->\n\n\n                    </div>\n\n                    <!-- /.box-body -->\n                    <!-- </div> -->\n                    <!-- /.box -->\n                </div>\n            </div>\n\n            <!-- <div class=\"col-md-12 box box-solid \">\n\n                <h4>Note about BitScores</h4>\n                <p class=\"small\">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>\n                <p class=\"small\">Bit-score does not depend on database size. The bit-score gives the same value for hits in databases of different sizes and hence can be used for searching in an constantly increasing database.</p>\n                <p class=\"small\"> The higher the bitscore, the better the quality of the sequence alignment</p>\n\n            </div> -->\n\n        </div>\n\n        <div class=\"col-sm-3\"></div>\n        <div class=\"col-sm-6 col-sm-offset-0\">\n\n            <div id=\"step5\" class=\"\">\n                <div class=\"box box-solid \">\n                    <div class=\"box-body\">\n                        <md-input-container class='col-sm-12 col-sm-offset-0'>\n                            <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" value=\"\" />\n                        </md-input-container>\n                    </div>\n                </div>\n            </div>\n\n            <div *ngIf=\"loading==true\" class=\"col-md-4 col-md-offset-4\">\n                <div class=\"col-sm-8 col-sm-offset-2\">\n                    <object>\n                <embed src=\"assets/images/loading_1.svg\" />\n              </object>\n                </div>\n            </div>\n\n\n            <div *ngIf=\"randomARG.status==true && loading==false\">\n\n                <hr>\n\n\n                <md-expansion-panel id=\"step12\" class=\"box box-solid\" [expanded]=\"true\">\n\n                    <md-expansion-panel-header>\n                        <md-panel-title>\n                            Tips and Tricks\n                        </md-panel-title>\n                        <md-panel-description>\n                            To get a successful annotation take into account the next tips:\n                        </md-panel-description>\n                    </md-expansion-panel-header>\n\n                    <div class=\"box-body\">\n                        <ul>\n                            <li>\n                                <strong>Gene Name:</strong> To validate the gene name take a look at the panels with <span class=\"label bg-blue\"> strong </span> and <span class=\"label bg-black\">very strong</span> evidence. If several panels have strong\n                                evidence, select the gene name in the panel with the highest bitscore. If none of the panels have strong evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong> and verify the Metadata section\n                                (if available) for consensus.\n                            </li>\n                            <li>\n                                <strong>Antibiotic Class:</strong> To validate the antibiotic class take a look at the descriptions from the databases. There is not restrction about evidence. But it is expected to see a consensus between the different\n                                databases also check the Metadata section (if available).\n                            </li>\n                            <li>\n                                <strong>Antibiotic Mechanism:</strong> Check the AMR profile and Metadata (if available) to find the antibiotic mechanism. If the evidence from the <strong>MEGARes</strong> database is <span class=\"label bg-green\"> middle </span>,\n                                <span class=\"label bg-blue\"> strong </span> or <span class=\"label bg-black\"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels and the Metadata section (if available).\n                            </li>\n                            <li>\n                                If the evidence score from the reference databases is <span class=\"label bg-yellow\"> weak </span> or <span class=\"label bg-red\"> very weak </span>, check the Metadata section (if available).\n                            </li>\n                        </ul>\n                    </div>\n                </md-expansion-panel>\n\n                <hr>\n\n                <!-- <br> -->\n                <!-- <h4>Similarity to known ARGs</h4> -->\n                <!-- <md-tab-group (selectChange)=\"tabsEvent($event)\"> -->\n                <!-- <md-tab  label=\"METADATA\"> -->\n\n\n                <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n                    <!-- <p> {{ bh.best_hit_database }} </p>  -->\n\n                    <div id=\"step8\" *ngIf=\"bh.best_hit_database=='ARDB'\">\n                        <besthit-metadata-ardb> </besthit-metadata-ardb>\n                    </div>\n                    <div id=\"step7\" *ngIf=\"bh.best_hit_database=='CARD'\">\n                        <besthit-metadata-card> </besthit-metadata-card>\n                    </div>\n                </div>\n                <!-- </md-tab> -->\n\n                <!-- OTHER DATABASES  -->\n                <div id=\"step9\">\n                    <app-generic></app-generic>\n                </div>\n\n                <!-- <h4 *ngIf=\"randomARG.entry.database=='UNIPROT'\">Metadata</h4> -->\n\n                <!--METADATA SECTION-->\n                <div id=\"step6\">\n                    <classify-metadata-uniprot *ngIf=\"randomARG.entry.database=='UNIPROT'\"> </classify-metadata-uniprot>\n                </div>\n\n\n                <classify-metadata-card> </classify-metadata-card>\n\n\n                <!-- </md-tab> -->\n\n                <!-- <md-tab  label=\"BEST HIT\"> -->\n                <hr *ngIf=\"randomARG.entry.database=='UNIPROT'\">\n\n\n\n                <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->\n\n\n\n                <!-- <md-tab  label=\"HORIZONTAL GENE TRANSFER\"> -->\n                <!-- <div *ngIf=\"drawGenomes\"> -->\n                <div id=\"step10\">\n                    <genome-metadata *ngIf=\"randomARG.entry.database=='UNIPROT'\"></genome-metadata>\n                    <genome-metadata *ngIf=\"randomARG.entry.database=='CARD'\"></genome-metadata>\n                    <genome-metadata *ngIf=\"randomARG.entry.database=='ARDB'\"></genome-metadata>\n                </div>\n                <!-- </div> -->\n                <!-- </md-tab> -->\n\n                <!-- </md-tab-group> -->\n                <hr>\n                <div>\n                    <div class=\"box box-solid \">\n                        <div class=\"box-header with-border\">\n                            <h3 class=\"box-title\"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>\n                        </div>\n                        <div class=\"box-body\">\n                            <p class=\"sequence small\"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>\n                        </div>\n                    </div>\n                </div>\n                <br><br><br><br>\n            </div>\n        </div>\n\n\n        <!-- <div class=\"col-sm-3\"> -->\n        <div id=\"step11\" class=\"curate-nav affix clarify\">\n            <!-- <aside class=\"control-sidebar control-sidebar-open\"> -->\n            <app-curate></app-curate>\n            <!-- </aside> -->\n        </div>\n        <!-- </div> -->\n    </div>\n\n    <!--</md-tab>-->\n\n    <!--<md-tab label=\"Novel ARGs\">Content 2</md-tab>-->\n\n    <!--<md-tab label=\"Potential ARGs\">Content 2</md-tab>-->\n\n    <!--</md-tab-group>-->\n</div>"
-
-/***/ }),
-
-/***/ 695:
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n    <div class=\"box\">\n        <div class=\"box-body\">\n            <p class=\"small\">Please copy and paste this token to the Mturk website.</p>\n            <strong>Token:</strong> <code *ngIf=\"inspectedGenes.length >= classifyComponent.trainingARGTotal+1\">{{antibiotic.token}}</code>\n        </div>\n    </div>\n</div>\n<div class=\"\">\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-body\">\n            <p-steps styleClass=\"steps-custom\" [(activeIndex)]=\"activeIndex\" [readonly]=\"true\" [model]=\"items\"></p-steps>\n\n            <div *ngIf=\"step1 text-center\">\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>ARG Annotation</strong></h4>\n                <p>Please based on your observations add the corresponding data to the form below:</p>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" [formControl]=\"groupControl\" [mdAutocomplete]=\"AGroup\" mdInput [(ngModel)]=\"antibiotic.group\" placeholder=\"Gene Name\">\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [formControl]=\"myControl\" [mdAutocomplete]=\"AClass\" [(ngModel)]=\"antibiotic.class\" placeholder=\"Antibiotic Class\">\n                </md-input-container>\n\n                <md-autocomplete #AClass=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of filteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-autocomplete #AGroup=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of groupFilteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [(ngModel)]=\"antibiotic.mechanism\" placeholder=\"Antibiotic Mechanism\" required>\n                </md-input-container>\n\n                <br><br>\n\n                <div class=\"col-md-12 text-center\">\n                    <a (click)=\"validate(1)\" color=\"primary\" md-raised-button>Next</a>\n                    <!-- <button (click)=\"reportARG()\" class=\"\" color=\"red\" md-raised-button>Report ARG</button> -->\n                </div>\n                <!-- </div> -->\n\n            </div>\n\n\n\n            <div *ngIf=\"step2\">\n\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>Mobile Genetic Elements</strong></h4>\n                <div class=\"col-md-12\">\n                    <p class=\"small\">Is there any evidence that suggests the ARG to be carried by any of the following: </p>\n\n                    <div *ngFor=\"let ht of mge_options\">\n                        <md-checkbox value=\"{{ht}}\" (change)=\"mgeOptions(ht, $event)\">{{ ht }}</md-checkbox>\n                    </div>\n                    <p>How do you rate this evidence? </p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('mge',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <!-- <p class=\"small\"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p> -->\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\"><strong>Pathogenic Genomes</strong></h4>\n\n                    <p>Is there evidence of any pathogenic genomes containing the gene? </p>\n\n                    <!-- <md-radio-group [(ngModel)]=\"antibiotic.pathGenome\">\n                        <md-radio-button value=\"1\">Yes</md-radio-button> <br>\n                        <md-radio-button value=\"2\">Not</md-radio-button> <br>\n                    </md-radio-group> -->\n\n                    <!-- <p>How do you rate this evidence? </p> -->\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('genome',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <p class=\"small\">Scores: 1 means there is not evidence whereas 5 means there is strong evidence.</p>\n                    <hr>\n\n                </div>\n\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"validate(2)\" color=\"primary\" md-raised-button>Next</button>\n                </div>\n                <!-- </div> -->\n\n\n\n            </div>\n\n            <div *ngIf=\"step3\">\n                <div class=\"col-md-12 text-center\">\n                    <h4>Overall Rating</h4>\n                </div>\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <h4 class=\"text-center\"><strong>ARG annotation</strong></h4> -->\n                <!-- <dl class=\"dl\"> -->\n                <!-- <h4></h4>\n                        <strong>ARG Class:</strong>\n                        <span class=\"\"> {{ antibiotic.class }} </span>\n                        <br>\n\n                        <strong>ARG Group:</strong>\n                        <span class=\"\"> {{ antibiotic.group }} </span>\n                        <br>\n\n                        <strong *ngIf=\"!antibiotic.mechanism==null\">ARG Mechanism:</strong>\n                        <span *ngIf=\"!antibiotic.mechanism==null\">{{ antibiotic.mechanism }} </span> -->\n\n                <!-- </dl> -->\n                <!-- <hr> -->\n                <!-- </div> -->\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate the confidence in your observations</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('confidence',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate your level of expertise</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('expertise',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n\n\n                <!-- <md-input-container class=\"col-md-12\">\n                    <p>Please add any relevant comments</p>\n                    <textarea mdInput [(ngModel)]=\"antibiotic.comments\" rows=\"5\"></textarea>\n                </md-input-container> -->\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"submitReview()\" class=\"\" color=\"green\" md-raised-button>Submit</button>\n                    <button (click)=\"validate(3)\" class=\"\" color=\"red\" md-raised-button>Cancel</button>\n                </div>\n\n\n                <!-- </div> -->\n            </div>\n\n\n\n        </div>\n\n    </div>\n\n    <div *ngIf=\"inspectedGenes.length>0\" class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">Inspected genes: {{ inspectedGenes.length }}</h3>\n        </div>\n        <!-- <div class=\"box-body\">\n\n            <span *ngFor=\"let item of inspectedGenes\" class=\"badge\">\n                {{ item }}\n            </span>\n        </div> -->\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 696:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"renderMobile\">\n    <div *ngFor=\"let item of randomARG.mobile\" class=\"\">\n        <div *ngIf=\"item.status==true && item.identity.mean>50\" class=\"\">\n            <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->\n            <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p>\n            <div class=\"box box-solid\">\n                <!-- <div class=\"col-md-10 col-md-offset-1\"> -->\n\n                <div class=\"box-header with-border \">\n                    <i class=\"fa fa-tag\"></i>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='proph'\">Prophages</h3>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='plasmid'\">Plasmids</h3>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='vir'\">Viruses</h3>\n\n                </div>\n\n                <!-- </div> -->\n\n                <!-- <div class=\"col-md-12\"> -->\n                <div class=\"box-body\">\n                    <dl class=\"dl-horizontal\">\n                        <dt>Type:</dt>\n                        <dd>\n                            <strong><p *ngIf=\"item.type=='proph'\">Prophages</p></strong>\n                            <strong><p *ngIf=\"item.type=='plasmid'\">Plasmids</p></strong>\n                            <strong><p *ngIf=\"item.type=='vir'\">Viruses</p></strong>\n                        </dd>\n                        <dt>Count:</dt>\n                        <dd> <span> {{ item.count }} </span></dd>\n                        <dt>Similarity:</dt>\n                        <dd> <span class=\"badge bg-{{ item.identity.color }}\"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>\n                        <dt>BitScore:</dt>\n                        <dd> <span class=\"badge bg-{{ item.bitscore.color }}\"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>\n                        <!-- <dt>Evalue (log):</dt> -->\n                        <!-- <dd> <span class=\"badge bg-{{ item.evalue.color }}\"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd> -->\n                        <dt>Coverage:</dt>\n                        <dd> <span class=\"badge bg-{{ item.coverage.color }}\"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>\n                        <dt>Description:</dt>\n                        <dd>{{ item.mge_description }}</dd>\n                        <dt>Gene Aclame ID:</dt>\n                        <dd>{{ item.mge_id }}</dd>\n                    </dl>\n                </div>\n                <!-- </div> -->\n            </div>\n        </div>\n\n    </div>\n</div>\n\n<div *ngIf=\"renderPathogen\">\n    <div *ngIf=\"randomARG.pathogen.status==true\" class=\"\">\n        <!-- <div class=\"col-md-12\"> -->\n        <!-- <h4>Bacterial Genomes</h4> -->\n        <p>\n            <strong> Scoring </strong>:\n            <span class=\"label bg-red\">Very Weak</span>\n            <span class=\"label bg-yellow\">Weak</span>\n            <span class=\"label bg-green\">Middle</span>\n            <span class=\"label bg-blue\">Strong</span>\n            <span class=\"label bg-black\">Very Strong</span>\n        </p>\n        <div class=\"box box-solid\">\n\n\n            <div class=\"box-header with-border\">\n\n                <!-- <div class=\"col-md-10 col-md-offset-1\">\n                            <svg  width=\"50px\" height=\"50px\"  class=\"resistant\" />  \n                        </div> -->\n                <i class=\"fa fa-bug\"></i>\n                <h3 class=\"box-title\">Pathogenic Genomes</h3>\n\n            </div>\n\n\n            <div class=\"\">\n\n                <div class=\"box-body\">\n\n                    <p>\n                        <strong>Pathogen Score:</strong>\n                        <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\"> \n                                    {{(genomeCount).toFixed(1)}}% \n                                </span>\n                        <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\"> \n                                    {{(genomeCount).toFixed(1)}}% \n                                </span>\n                        <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\"> \n                                    {{(genomeCount).toFixed(1)}}% \n                                </span>\n                        <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\"> \n                                    {{(genomeCount).toFixed(1)}}% \n                                </span>\n                        <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\"> \n                                    {{(genomeCount).toFixed(1)}}% \n                                </span>\n                    </p>\n                    <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href=\"https://www.patricbrc.org/\">PATRIC</a> database using strict cutoffs to ensure the existence of the gene\n                    (>90% identity, >90% coverage).\n                    <br><br><strong>{{ randomARG['pathogen'].genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,\n                    <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (\n                    <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\"> \n                    {{(genomeCount).toFixed(1)}}% \n                </span>\n                    <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\"> \n                    {{(genomeCount).toFixed(1)}}% \n                </span>\n                    <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\"> \n                    {{(genomeCount).toFixed(1)}}% \n                </span>\n                    <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\"> \n                    {{(genomeCount).toFixed(1)}}% \n                </span>\n                    <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\"> \n                    {{(genomeCount).toFixed(1)}}% \n                </span>) genomes are labeled as <u>pathogens</u>.\n\n\n                </div>\n            </div>\n        </div>\n\n        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n\n        <md-expansion-panel class=\"box box-solid\" style=\"background:rgba(0,0,0,0)\">\n\n            <md-expansion-panel-header>\n                <md-panel-title>\n                    Disease and Antimicrobial Resistance profile\n                </md-panel-title>\n                <md-panel-description>\n                    More information about Pathogens\n                </md-panel-description>\n            </md-expansion-panel-header>\n\n            <div *ngIf=\"disease.ready\" class=\"fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Genomes causing diseases</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>\n                    <ngx-charts-pie-grid [scheme]=\"disease.colorScheme\" [results]=\"disease.data\" (select)=\"onSelect($event)\">\n                    </ngx-charts-pie-grid>\n                </div>\n                <!-- </div> -->\n            </div>\n\n            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n            <div *ngIf=\"AMR_phenotype.ready\" class=\" fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Genomes with Antimicrobial Resistance phenotype</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>\n                    <ngx-charts-pie-grid [scheme]=\"AMR_phenotype.colorScheme\" [results]=\"AMR_phenotype.data\" (select)=\"onSelect($event)\">\n                    </ngx-charts-pie-grid>\n                </div>\n                <!-- </div> -->\n            </div>\n\n            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n            <div *ngIf=\"host.ready\" class=\"fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Bacterial hosts</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>\n                    <ngx-charts-pie-grid [scheme]=\"host.colorScheme\" [results]=\"host.data\" (select)=\"onSelect($event)\">\n                    </ngx-charts-pie-grid>\n                </div>\n                <!-- </div> -->\n            </div>\n        </md-expansion-panel>\n\n\n\n\n\n        <!-- </div> -->\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 697:
-/***/ (function(module, exports) {
-
-module.exports = "<div style=\"overflow: auto\" class=\"\">\n    <h3>Instructions</h3>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <h4>1. Get familiar with the environment</h4>\n    <p>\n        In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n    </p>\n    <h4>2. New user</h4>\n    <p class=\"\">\n        If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform three ARG annotations.\n    </p>\n\n    <h4>3. How to get a reward </h4>\n    <p>\n        Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token to\n        the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n    </p>\n\n    <h4>4. Perform a new Hit</h4>\n    <p>\n        First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n    </p>\n\n    <strong><h4 style=\"color:red\"> Be Aware! </h4></strong>\n    <p>\n        If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n    </p>\n    <p>\n        If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n    </p>\n\n</div>"
-
-/***/ }),
-
-/***/ 698:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 699:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 700:
-/***/ (function(module, exports) {
-
-module.exports = "<!-- <div *ngIf=\"randomARG.metadata.status==true\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"panel-title\"> <i class=\"fa fa-bug\"></i> <strong> Lineage (<a class=\"panel-title\" href=\"https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}\">NCBI Taxonomy </a>) </strong></h3>\n        </div>\n       \n        <div class=\"box-body\">\n            <div class=\"dl-vertical\">\n                <span *ngFor=\"let item of randomARG.metadata.organism.lineage\">\n          {{ item }} <strong>&rsaquo;</strong>\t\n        </span>\n            </div>\n            <p *ngIf=\"randomARG.metadata.organism.names\"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>\n        </div>\n        \n    </div>\n    \n</div> -->\n\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-tag\"></i>\n\n            <h3 class=\"box-title\"><strong>Metadata</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <p *ngIf=\"randomARG.metadata.gene\"> <strong *ngIf=\"randomARG.metadata.gene[0].name\">Gene Name: </strong> <span class=\"\" *ngIf=\"randomARG.metadata.gene[0].name\"> {{ randomARG.metadata.gene[0].name.value }} </span></p>\n            <p *ngIf=\"randomARG.metadata.protein.recommendedName\" class=\"\" data-original-title=\"\"> <strong>Protein: </strong> <span class=\"\"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>\n            <p *ngIf=\"randomARG.metadata.proteinExistence\" data-original-title=\"\"> <strong>Protein Existence: </strong> <span class=\"\">  {{ randomARG.metadata.proteinExistence }} </span> </p>\n\n            <p><strong>Sequence length (AA)</strong>: <span> {{ randomARG.entry['length'] }}</span></p>\n\n            <hr>\n\n            <span *ngFor=\"let item of randomARG.metadata.keywords\" class=\"badge bg-blue\" data-original-title=\"\"> {{ item.value }} </span>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Description</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.comments\">\n                    <dt *ngIf=\"item.text\"> {{ item.type }}:</dt>\n                    <dd *ngIf=\"item.text\"> {{ item.text[0].value }}</dd>\n                    <br>\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>Gene Ontology</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Functions and Biological Process\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.dbReferences\">\n                    <dt *ngIf=\"item.type=='GO'\"> {{ item.id }}:</dt>\n                    <dd *ngIf=\"item.type=='GO'\"> {{ item.properties.term }} <span class=\"badge bg-lightblue\">{{ item.properties.source }} </span></dd>\n                    <br *ngIf=\"item.type=='GO'\">\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<!-- <div *ngIf=\"randomARG.metadata.features\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Domains</strong></h3>\n        </div>\n        \n        <div class=\"box-body\">\n\n            <table class=\"table table-bordered text-center\">\n                <tbody>\n                    <tr>\n                        <th><span class=\"\">Type</span></th>\n                        <th><span class=\"\">Position(s)</span></th>\n                        <th><span class=\"\">Description</span></th>\n                        <th><span class=\"\">Evidence</span></th>\n                    </tr>\n                    <tr *ngFor=\"let item of randomARG.metadata.features\">\n                        <th> <span *ngIf=\"item.type!=undefined\"> {{ item.type }}</span></th>\n                        <th> <span *ngIf=\"item.begin!=undefined\">{{ item.begin }}-{{ item.end }}</span></th>\n                        <th><span *ngIf=\"item.description!=undefined\">{{ item.description }}</span></th>\n                        <th *ngIf=\"item.evidences\">\n                            <span *ngIf=\"item.evidences[0].source\">{{ item.evidences[0].source.name }}</span>\n                            <a *ngIf=\"item.evidences[0].source\" href=\"{{ item.evidences[0].source.url }}\">({{ item.evidences[0].source.id}})</a>\n                        </th>\n                    </tr>\n                    \n                </tbody>\n            </table>\n\n        </div>\n  \n    </div>\n\n</div> -->\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>References</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Scientific papers that support the gene {{ randomARG.entry.gene_id }}\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.references\">\n                    <strong> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})\n\n                    <div *ngFor=\"let ref of item.citation.dbReferences\">\n                        <strong>{{ ref.type }}</strong>: {{ ref.id }}\n                        <div *ngIf=\"ref.abstract\">\n\n                            <span *ngFor=\"let kw of ref.abstract\">\n                <span *ngIf=\"kw.type=='paragraph'\">{{ kw.text }}</span> <strong class=\"\" *ngIf=\"kw.type=='keyword'\">{{ kw.text }}</strong>\n                            </span>\n\n                        </div>\n\n                    </div>\n\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n        <!-- </div> -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<div *ngIf=\"renderError\">\n    <div class=\"alert alert-info alert-dismissible\">\n        <h4><i class=\"icon fa fa-ban\"></i> {{ randomARG.entry.database }} Alert!</h4>\n        <strong>There is a problem with this request!</strong>\n        <p>\n            {{ randomARG.metadata.errorMessage[0] }}\n        </p>\n        <p>\n            Please take a look at the provided information to make the annotation.\n        </p>\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 701:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <h4>ARGminer database download</h4>\n            <table class=\"table table-responsive table-bordered text-center\">\n                <tbody>\n                    <tr class=\"table-success\">\n                        <th>Database</th>\n                        <th>Version</th>\n                        <th>Comments</th>\n                    </tr>\n\n                    <tr *ngFor=\"let item of databases\">\n                        <td><a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.fasta'\" target=\"_blank\">ARGminer-DB</a></td>\n                        <td>{{ item.version }}</td>\n                        <td>{{ item.comments }}</td>\n                    </tr>\n                </tbody>\n            </table>\n            <br>\n            <h4>Structure</h4>\n            <p class=\"small\">ARGminer annotation can be downloaded as a fasta file. The annotation of each entry is reported in the fasta header as follows:</p>\n            <code>\n                >gene_id | score:0 | validated:True/False | ARG-Class | ARG-name | ARG-mechanism | MGE-score:0 | Pat-score:0  \n            </code>\n            <br><br>\n            <p class=\"small\">\n                <strong>Score: </strong> Score of the validated entry.\n                <br><strong> Validated:</strong> flag to show if the ARG has been validated.\n                <br><strong>Pat(Pathogen):</strong> Evidence of the ARG being carried by a pathogen.\n                <br><strong>MGE(Mobile Genetic Element):</strong> Evidence of the ARG being carried by a mobie element e.g., plasmids.\n            </p>\n            <p class=\"small\">Genes that have not been validated conserve their original annotation (deepARG-DB)</p>\n        </div>\n        <div class=\"box-footer text-center\">\n            <p class=\"small\">*ARGminer uses the antibiotic resistance annotation from <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a> databases. ARGminer is free for\n                academic use, in any othercase, please check each one of the cited resources.</p>\n        </div>\n    </div>\n</div>"
-
-/***/ }),
-
-/***/ 702:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container-fluid home-font\">\n\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <div class=\"logo-text text-center\">\n                <!-- <img src=\"assets/images/logo.svg\" alt=\"\" /> -->\n                <span class=\"home-logo\"><strong>ARG-miner:</strong>  A database and crowdsourcing platform for the curation of antibiotic resistance genes</span>\n                <hr>\n            </div>\n            <p>\n                Welcome to ARG-miner, a powerful open access web-platform dedicated to the inspection, curation and exploration of <strong>A</strong>ntibiotic <strong>R</strong>esitance <strong>G</strong>enes (ARGs). ARG-miner offers a novel approach\n                to validate the ARGs annotation by inspecting their metadata and relationship with known ARGs resources. It enables the detection of genes that have evidence of being transferred by mobile genetic elements and evidence about the pathogenic\n                hosts. We use a set of different databases including: <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a>.\n            </p>\n            <hr>\n            <a class=\"btn btn-primary \" href=\"#/classify\">Get Started</a>\n            <a class=\"btn btn-primary \" href=\"#/database\">Download</a>\n\n        </div>\n    </div>\n    <hr>\n\n    <!-- <div class=\"col-md-12\">\n        <img src=\"assets/images/main.svg\" alt=\"\">\n    </div> -->\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Structured Database</h4>\n                <p>\n                    The annotation of ARGs is structured into three different levels: Antibiotic Class, Antibiotic Resistance Gene, and Antibiotic Resitance Mechanism.\n                </p>\n                <!-- <div class=\"col-md-12 col-md-offset-0\">\n                    <img src=\"assets/images/main.svg\" alt=\"\">\n                </div> -->\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Mobile Genetic Elements (MGEs)</h4>\n                <p>\n                    ARG-miner provides evidence of the ARGs being transferred by <strong>M</strong>obile <strong>G</strong>enetic <strong>E</strong>lements (MGEs) such as Plasmids, Viruses and Phages.\n                </p>\n                <p>\n                    This information enables the identification of ARGs that are critical for propagation and disemination to different environments. This is crucial for the interpretation of risk assessments studies.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\" col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Pathogen-carried ARGs</h4>\n                <p>\n                    ARG-miner also provides information about ARGs being carried by bacterial genomes and out of those, how many genomes are pathogens. This is useful for identifying chromosomal ARGs that are hosted by pathogen bacteria.\n                </p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Metagenomics Analysis</h4>\n                <p>\n                    ARG-miner database is open sourced and free to download it is currently used by our machine learning metagenomics annotation <strong><a href=\"http://bench.cs.vt.edu/deeparg\">DeepARG</a></strong> model.\n                </p>\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"col-md-12 \">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Crowdsourced Annotation</h4>\n                <p>\n                    Its well known that current ARG databases contain annotation with mistakes that are very easily to propagate. By using crowdsourcing, the ARG annotation is made by a broad community instead of individual labs.\n                </p>\n\n                <p>\n                    ARG-miner is an open, cooperative platform. This means, anyone from anywhere can contribute to the curation of ARGs. You don't need to be a skilled expert to contribute!.\n                </p>\n\n                <h5>How to validate a gene that has been reviewed?</h5>\n\n                <p> To validate annotations a scoring function is designed using curations carried out by experts. This function is optimized by computational techniques that maximize the probability of right annotations.\n                </p>\n\n                <hr>\n                <h4>Reference:</h4>\n                <p>\n                    Paper under submission\n                </p>\n                <hr>\n                <h4>Contact us</h4>\n                email: lqzhang@vt.edu <br> webpage: <a href=\"https://bioinformatics.cs.vt.edu/zhanglab/\">https://bioinformatics.cs.vt.edu/zhanglab/</a>\n                <hr>\n                <h4>Open Source</h4>\n                ARG-miner source code can be found at the git repository <code> https://github.com/gaarangoa/ARG-inspect.git </code>\n                <hr>\n                <h4>API</h4>\n                ARG-miner data can be programatically acccessed through its restAPI (documentation under construction).\n            </div>\n        </div>\n\n\n\n\n\n\n    </div>\n\n</div>\n\n<hr>\n\n<footer class=\"footer\" style=\"background:white\">\n    <br><br>\n\n    <div class=\"col-md-2 col-md-offset-4 funding\" style=\"width:7%\">\n        <img src=\"assets/images/nsf.jpg\" alt=\"\">\n    </div>\n    <div class=\"col-md-2 funding\">\n        <img src=\"assets/images/vt.jpg\" alt=\"\">\n    </div>\n    <div class=\"col-md-2 funding\">\n        <img src=\"assets/images/heard.png\" alt=\"\" style=\"width:60%\">\n    </div>\n    <br><br><br><br>\n    <div class=\"col-md-12\"></div>\n\n</footer>"
-
-/***/ }),
-
-/***/ 74:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_intro_js_intro_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__instructions_instructions_component__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__instructions_instructions_component__ = __webpack_require__(150);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassifyComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2349,6 +2308,8 @@ var ClassifyComponent = (function () {
         });
     }
     ClassifyComponent.prototype.ngOnInit = function () {
+        this.MGE_display = false;
+        this.ARG_display = true;
     };
     ClassifyComponent.prototype.selectConflictedArgEvent = function ($event) {
         this.conflictedArgSubtypeFlag = $event.checked;
@@ -2562,8 +2523,8 @@ var ClassifyComponent = (function () {
 }());
 ClassifyComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        template: __webpack_require__(694),
-        styles: [__webpack_require__(599)],
+        template: __webpack_require__(659),
+        styles: [__webpack_require__(571)],
         providers: [],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_material__["c" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_material__["c" /* MdDialog */]) === "function" && _c || Object])
@@ -2574,13 +2535,118 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 813:
+/***/ 653:
+/***/ (function(module, exports) {
+
+module.exports = "<div style=\"overflow: auto\" class=\"col-md-12\">\n    <h2>Instructions</h2>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <br>\n\n    <img class=\"col-md-8 col-md-offset-2\" src=\"assets/images/demo.png\" alt=\"\">\n\n    <div class=\"col-md-12\">\n\n        <h4>1. Get familiar with the environment</h4>\n        <p>\n            In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n        </p>\n        <h4>2. New user</h4>\n        <p class=\"\">\n            If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform two ARG annotations. An score with your performance will be prompted. <strong>All fields are required</strong>,\n            values unrelated to the gene are not accepted.\n        </p>\n\n        <h4>3. How to get a reward </h4>\n        <p>\n            Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token\n            to the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n        </p>\n\n        <h4>4. Perform a new Hit</h4>\n        <p>\n            First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n        </p>\n\n        <strong><h4 style=\"color:red\"> Please Be Aware! </h4></strong>\n        <p>\n            If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n        </p>\n        <p>\n            If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n        </p>\n        <p>\n            Only tokens are accepted, if you submit other values such as gene_id, the HIT will be rejected. Several workers are working in the same gene_id, if the token is not provided, we cannot check your performance.\n        </p>\n\n    </div>\n    <hr class=\"col-md-10\">\n</div>\n\n<hr>\n\n\n<md-expansion-panel class=\"\" [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Micro-Tasks</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <h4>ARG identification</h4>\n    <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>\n\n    <p class=\"small\">The <strong>Blast alignment</strong> sections associate the queried gene to its closest antibiotic resistance gene from curated databases. From this section you need to look at the scores (Bitscore, evalue, identity and coverage). High identity and\n        coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than 50 is considered\n        significant if it spans at least 90% coverage.\n    </p>\n\n\n    <hr>\n\n    <h4> Mobile Genetic Elements</h4>\n\n    <p><strong>Horizontal Gene Transfer</strong></p>\n    <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>\n    <p class=\"small\">To complete this task please check the Plasmid, Virus, or Prophages sections. If there is not any section with plasmid, prophage or virus tags it means that there is not evidence that the gene is transfered by any of those mechanisms.\n    </p>\n    <p><strong>Pathogen Genomes</strong></p>\n    <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>\n    <p class=\"small\">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens (as percentages) as well as their antimicrobial phenotype (resistant,\n        susceptible, intermediate). Rate your findigns according to the provided evidence.\n\n    </p>\n\n    <hr>\n    <h4>Review and submit</h4>\n    <p>This panel contains your observations for the queried gene.</p>\n    <p><strong>Verify your observations</strong></p>\n    <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>\n    <p><strong>Rate your expertise</strong></p>\n    <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.\n        <p>\n            <p><strong>Rate your annotation confidence</strong></p>\n            <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>\n</md-expansion-panel>\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>MGEs and pathogens</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also\n        transfer genetic material by accidentally package segments of DNA to inject into their host.\n    </p>\n    <p>\n        To identify if the ARG is carried by plasmids, phages or viruses, the gene was aligned to the <a href=\"\">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.\n    </p>\n    <p>\n        Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene is hosted in a pathogen genome, the gene was matched to the <a href=\"\">PATRIC</a>        database. Then, we were able to identify the number of pathogen genomes that carry the gene.\n    </p>\n    <p class=\"small\">Each color represents a different scoring scale</p>\n</md-expansion-panel>\n\n\n\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Similarity to known ARGs</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href=\"\">CARD</a> database. Thus, the entry was compared against the databases\n        to reinforce, reject or modify the <strong>current annotation.</strong>\n    </p>\n    <p>\n        For this comparison, the gene was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.\n    </p>\n\n    <p> <span class=\"label bg-blue\">Tip</span> To identify the\n        <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where the sequence\n        similarity is <u>high</u> with a <u>very strong</u> coverage.\n    </p>\n\n</md-expansion-panel>\n\n<hr><br><br><br><br><br>"
+
+/***/ }),
+
+/***/ 654:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"online\">\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Upgrade database</h4>\n                <!-- <h3 class=\"box-title\">\n                <strong>Main Actions</strong>\n            </h3> -->\n            </div>\n            <div class=\"box-body\">\n\n\n                <p class=\"small\">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads\n                    tab.\n                </p>\n\n\n                <!-- UPGRADE DATABASE FORM -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Database version\" [value]=\"databaseVersion\" #dversion>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput #dmessage maxlength=\"256\" placeholder=\"Comments\" [value]=\"databaseComments\">\n                    <md-hint align=\"start\"><strong>Don't disclose personal info</strong> </md-hint>\n                    <md-hint align=\"end\">{{dmessage.value.length}} / 256</md-hint>\n                </md-input-container>\n\n            </div>\n            <div class=\"box-footer\">\n                <br>\n                <div class=\"col-md-12 text-center\"> <button (click)=\"upgradeDataBase(dversion.value, dmessage.value)\" class=\"bg-black\" color=\"default\" md-raised-button>Upgrade ARG-miner database</button><br><br></div>\n\n                <p class=\"small\">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>\n            </div>\n        </div>\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Recompute Problematic Annotations</h4>\n            </div>\n            <div class=\"box-body\">\n\n                <p class=\"small\">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>\n                <div class=\"text-center\"> <button (click)=\"updateConflictingARGs()\" class=\"bg-blue\" md-raised-button>Compute Problematic ARGs</button></div>\n                <hr>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-sm-9\">\n\n        <div class=\"\">\n            <div class=\"box box-solid \">\n                <div class=\"box-body\">\n                    <md-input-container class='col-sm-12 col-sm-offset-0'>\n                        <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" value=\"\" />\n                    </md-input-container>\n                </div>\n            </div>\n        </div>\n\n        <div *ngFor=\"let item of curatedARGs\" class=\"box box-solid\">\n            <!-- <div class=\"box-header with-border\"> -->\n            <!-- <h3 class=\"box-title\">{{item.entry.gene_id}}</h3> -->\n            <!-- </div> -->\n            <div class=\"box-body\">\n                <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-4\">\n                                <h4 class=\"text-center\"> Current Annotation</h4>\n                                <hr>\n                                <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>\n                                <p><strong>ARG Name:</strong> {{ item.entry.subtype }} </p>\n                                <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>\n                                <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>\n                            </div>\n\n                            <div class=\"col-md-8\">\n                                <h4 class=\"text-center\"> Weighted Annotation</h4>\n                                <hr>\n                                <div class=\"col-md-12\">\n                                    <div class=\"col-md-4\">\n                                        <!-- <strong>Score:</strong> {{ wScore }} -->\n                                    </div>\n                                    <div class=\"box-plot\">\n                                        <div class=\"box-plot-component box-left\"></div>\n                                        <div class=\"box-plot-component box-right\"></div>\n                                        <div class=\"box-plot-component box-mean\" [style.left]=\"20*wScore+'%'\"></div>\n                                    </div>\n                                </div>\n                                <!-- </p> -->\n                                <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->\n                                <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>\n                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }} </p>\n                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }} </p>\n                                <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)}} </p>\n                                <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)}} </p>\n\n                                <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->\n                                <hr>\n                                <div class=\"text-center\">\n                                    <button (click)=\"acceptAnnotation()\" class=\"badge bg-blue\" md-raised-button>Update Gene</button>\n                                    <button (click)=\"getARG(ARGindex)\" class=\"badge bg-red\" md-raised-button>Next Gene</button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\">Crowsourced Annotation</h4>\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argClassChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argClassChart.colorScheme\" [results]=\"argClassChart.data\" [gradient]=\"argClassChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-red\"> Antbiotic Class </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>\n                            </div>\n\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Class</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n\n                                        <tr *ngFor=\"let itemx of argClassChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                            <td> {{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts) + 1.2*((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts))).toFixed(2) }} </td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argGroupChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argGroupChart.colorScheme\" [results]=\"argGroupChart.data\" [gradient]=\"argGroupChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-blue\"> Antbiotic Resistance Gene </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argGroupChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-12\">\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-body\">\n                            <div class=\"col-md-8 box-vis text-center\" *ngIf=\"argMechanismChart.ready\">\n                                <ngx-charts-advanced-pie-chart [scheme]=\"argMechanismChart.colorScheme\" [results]=\"argMechanismChart.data\" [gradient]=\"argMechanismChart.gradient\" (select)=\"onSelect($event)\">\n                                </ngx-charts-advanced-pie-chart>\n                            </div>\n\n                            <div class=\"col-md-4\">\n                                <strong><h4><span class=\"badge bg-success\"> ARG Mechanism </span></h4></strong>\n                                <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>\n                            </div>\n\n                            <div class=\"col-md-12 text-center\">\n                                <!-- <hr> -->\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG Mechanism</th>\n                                            <th>Confidence Score</th>\n                                            <th>Expertise Score</th>\n                                            <th>Score (Cs+1.2*Es)</th>\n                                        </tr>\n                                        <tr *ngFor=\"let itemx of argMechanismChart.data\">\n                                            <td>{{itemx.name}}</td>\n                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>\n                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"col-sm-12\">\n                    <table class=\"table table-responsive table-bordered text-center\">\n                        <tbody>\n                            <tr class=\"table-success\">\n                                <th>Token</th>\n                                <th>Expertise</th>\n                                <th>Confidence</th>\n                                <th>Gene Name</th>\n                                <th>ARG Class</th>\n                                <th>ARG Mechanism</th>\n                            </tr>\n                            <tr *ngFor=\"let itemx of curatedARGs[0]['inspected']\">\n                                <td>{{ itemx.token }}</td>\n                                <td *ngIf=\"itemx.rating.expertise; else expertiseBlockA\">{{ (itemx.rating.expertise.value).toFixed(2) }}</td>\n                                <ng-template #expertiseBlockA>\n                                    <td>0.00</td>\n                                </ng-template>\n                                <td *ngIf=\"itemx.rating.confidence; else confidenceBlockA\">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>\n                                <ng-template #confidenceBlockA>\n                                    <td>0.00</td>\n                                </ng-template>\n                                <td>{{ itemx.group }}</td>\n                                <td>{{ itemx.class }}</td>\n                                <td>{{ itemx.mechanism }}</td>\n                            </tr>\n                        </tbody>\n                    </table>\n                </div>\n\n\n            </div>\n        </div>\n\n\n    </div>\n\n\n\n</div>\n\n\n<div class=\"col-md-3 col-md-offset-4\" *ngIf=\"online==false\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\"> <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button></div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 655:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"home\" class=\"navbar-brand\">ARG-miner</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n        <div class=\"navbar-collapse collapse\" id=\"navbar-main\">\n            <ul class=\"nav navbar-nav\">\n\n                <li>\n                    <a routerLink=\"home\">Home</a>\n                </li>\n\n                <li>\n                    <a routerLink=\"classify\">Classify</a>\n                </li>\n                <li>\n                    <a routerLink=\"database\">Download</a>\n                </li>\n                <li>\n                    <a routerLink=\"about\" target=\"_blank\">Instructions</a>\n                </li>\n            </ul>\n            <ul class=\"nav navbar-nav navbar-right\">\n                <li><a routerLink=\"admin\">Admin</a></li>\n            </ul>\n\n        </div>\n        <!-- </div> -->\n    </div>\n</div>\n\n<hr>\n<br>\n<div class=\"container-par\">\n    <!-- <div class=\"wrapper\"> -->\n    <router-outlet></router-outlet>\n    <!-- </div> -->\n</div>\n\n<!-- <footer class=\"col-lg-12 main-footer\">\n    <div class=\"pull-right\">\n        <b>Version</b> 1.0\n    </div>\n    <strong>Copyright © 2016-2017 <a href=\"\">ZhangLab - Virginia Tech</a>.</strong> All rights reserved.\n</footer> -->"
+
+/***/ }),
+
+/***/ 656:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database=='ARDB'\" class=\"\">\n\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n\n                    <!-- <dd> -->\n                    <p> {{bh.metadata.description}} </p>\n                    <div *ngFor=\"let type of bh.metadata.resistance_profile\">\n                        <strong> <span class=\"strong\">{{ type.type }} </span> </strong>\n                        <p *ngIf=\"type.description\"> {{ type.description }} </p>\n                    </div>\n                    <!-- <dd> -->\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 657:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"render\">\n\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n\n            <p-dataTable [value]=\"cars\">\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Database</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.database.toUpperCase()}} </strong>\n                    </ng-template>\n\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Gene Name</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        {{gene.gene_name}}\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Similarity</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <p-progressBar [value]=\"gene.similarity\"></p-progressBar>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Coverage</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <p-progressBar [value]=\"gene.coverage\"></p-progressBar>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>*Bitscore Rate</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <p-progressBar [value]=\"gene.bitscore_rate\"></p-progressBar>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Bitscore</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        {{ gene.bitscore }}\n                    </ng-template>\n                </p-column>\n\n\n            </p-dataTable>\n\n            <br>\n            <p class=\"small\"> <strong>*Bitscore Rate</strong>: Reffers to the rate between the alignment bitscore and the optimal bitscore curated by CARD for this ARG.</p>\n\n\n        </div>\n    </div>\n\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n\n\n\n\n\n\n\n\n\n\n\n\n\n        <div *ngIf=\"bh.best_hit_database=='CARD'\" class=\"\">\n            <!-- <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p> -->\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n                    <h3 class=\"box-title\"> <strong> {{ bh.best_hit_database }} </strong> Database </h3>\n\n                </div>\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n\n\n\n                    <h4>AMR Gene Family (Antibiotic Class)</h4>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'AMR Gene Family'\">\n                            <p>\n                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>\n                        </div>\n                    </div>\n\n                    <h4>Resistance Mechanism</h4>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'Resistance Mechanism'\">\n                            <p>\n                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>\n                        </div>\n                    </div>\n\n                    <h4>Drug Class</h4>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'Drug Class'\">\n                            <p>\n                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>\n                        </div>\n                    </div>\n\n                    <!-- <button color=\"primary\" class=\"pull-left\" md-mini-fab> <i class=\"fa fa-chevron-left\"></i> </button> -->\n                    <!-- <button color=\"primary\" class=\"pull-right\" md-mini-fab> <i class=\"fa fa-chevron-right\"></i> </button> -->\n                </div>\n                <!-- /.box-body -->\n            </div>\n            <!-- /.box -->\n        </div>\n    </div>\n\n</div>"
+
+/***/ }),
+
+/***/ 658:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database!=='CARD' && bh.best_hit_database!=='ARDB'\" class=\"\">\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n                <div class=\"box-body\">\n\n                    <strong> Antibiotic Class: </strong> {{ bh.type }}<br>\n                    <strong> Gene Name: </strong> {{ bh.subtype }}<br>\n                    <strong> Antibiotic Mechanism: </strong> {{ bh.mechanism }}<br>\n\n                </div>\n            </div>\n        </div>\n    </div>\n    <!-- <hr> -->\n</div>"
+
+/***/ }),
+
+/***/ 659:
+/***/ (function(module, exports) {
+
+module.exports = "<p-growl class=\"user_growl\" [(value)]=\"notification\"></p-growl>\n\n<div class=\"\">\n\n    <div *ngIf=\"!render\" class=\"col-md-4 col-md-offset-4\">\n    </div>\n\n    <div *ngIf=\"render\">\n        <!--Left panel-->\n        <div class=\"col-sm-3 affix coffix\">\n            <!-- <div class=\"\"> -->\n            <div *ngIf=\"randomARG.status==true\" class=\"\">\n                <!-- <div class=\"col-md-12\"> -->\n\n                <div class=\"box box-solid box-primary\">\n                    <div class=\"box-header with-border\">\n\n\n\n                        <i class=\"fa fa-gears\"></i>\n                        <!-- <p *ngIf=\"loading\"><md-progress-bar mode=\"indeterminate\"></md-progress-bar></p>  -->\n                        <h3 class=\"box-title\"><strong>Current Annotation </strong> </h3>\n\n                    </div>\n\n                    <!-- /.box-header -->\n\n                    <!-- <tour-step class=\"intro-tour-hint-wrapper\" selector=\"step1\" order=\"1\" position=\"right\">\n                        <div class=\"box box-step\">\n                            <div class=\"box-header\">\n                                <h3 class=\"box-title\">\n                                    ARG you have to curate\n                                </h3>\n                            </div>\n                            <div class=\"box-body\">\n                                This panel shows you the basic information about the antibiotic reistance gene you need to inspect. Note this information may contain errors. Therefore, by comparing this information with the known ARGs databases you will be able to correct or accept\n                                the current annotation.\n                            </div>\n                        </div>\n                    </tour-step> -->\n\n                    <div class=\"box-body\">\n\n                        <dl id=\"step1\" class=\"dl\">\n                            <!-- <p> -->\n                            <!-- </p> -->\n                            <!-- <p> -->\n\n                            <strong>Gene Name:</strong>\n                            <span class=\"\">{{ randomARG.entry.subtype }}</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong>Antibiotic Class:</strong>\n                            <span class=\"\">{{ randomARG.entry.type }}</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong>Database:</strong>\n                            <span class=\"\">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>\n                            <!-- </p> -->\n                            <!-- <p> -->\n                            <br>\n                            <strong data-intro=\"step1\">Inspected:</strong>\n                            <span class=\"\">{{ randomARG.inspected.length }}</span>\n                            <br>\n                            <!-- </p> -->\n                            <!-- <dt>Score:</dt> -->\n                            <!-- <dd><span class=\"badge bg-blue\">{{ randomARG.entry.score }}</span></dd> -->\n                        </dl>\n\n                        <p class=\"small text-left\">\n                            *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>\n                            <!-- <a (click)=\"startTour()\" class=\"badge bg-blue btn-xs\"><span class=\"\"> <strong> <i class=\"fa fa-compass\"></i> <u>Take a tour </u></strong> </span></a> -->\n                        </p>\n\n\n                        <hr>\n                        <!-- <h4>Tutorial</h4> -->\n\n                        <!-- <div class=\"text-left\"> -->\n\n\n\n                        <!-- <a (click)=\"openInstructions()\" class=\"badge bg-red btn-xs\"><span class=\"\"> <strong> <u>Instructions</u></strong> </span></a> -->\n                        <!-- </div> -->\n                        <!-- <br> -->\n                        <!-- <hr> -->\n\n                        <!-- <h4>Filter options</h4> -->\n\n                        <!-- <tour-step class=\"intro-tour-hint-wrapper\" selector=\"step2\" order=\"2\">\n                            <div class=\"col-md-12\">\n                                <div class=\"box box-primary\">\n                                    <div class=\"box-header\">\n                                        <h3 class=\"box-title\">\n                                            <strong>I am a New user</strong>\n                                        </h3>\n                                    </div>\n                                    <div class=\"box-body\">\n                                        If you are a new user, activate the new user button. You will have to complete 20 entries that will help you to get familiar with the system. I will also score your results based on the real annotation.\n                                    </div>\n                                    <div class=\"box-footer\">\n\n                                    </div>\n                                </div>\n                            </div>\n\n                        </tour-step> -->\n\n                        <div id=\"step3\">\n                            <md-slide-toggle (change)=\"trainingARGEvent($event)\" [checked]=\"trainingARGFlag\"><strong>New User</strong></md-slide-toggle>\n                            <p class=\"small\">Enable this option if this is the first time you enter the website.</p>\n                        </div>\n                        <!-- <hr> -->\n                        <div id=\"step4\">\n                            <md-slide-toggle (change)=\"selectConflictedArgEvent($event)\" [checked]=\"conflictedArgSubtypeFlag\"><strong>Priority ARGs</strong></md-slide-toggle>\n                            <p class=\"small\">This option selects ARGs with high priority of curation.</p>\n                        </div>\n                        <hr>\n\n\n\n                        <div *ngIf=\"loading==false && conflictedArgSubtypeFlag\">\n\n                            <h4> Conflicted ARGs </h4>\n                            <p class=\"small\">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>\n                            <!-- <div class=\"box-body\"> -->\n                            <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->\n                            <div *ngFor=\"let item of conflictingARGSubtype.conflict\">\n                                <strong>{{ item.class }}</strong> {{ item.genes.length }}\n                            </div>\n                            <hr>\n                            <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                            <button (click)=\"nextGeneConflictList()\" class=\"\" color=\"warn\" md-raised-button>Next ARG</button>\n                            <!-- </div> -->\n                        </div>\n\n                        <div *ngIf=\"conflictedArgSubtypeFlag==false && trainingARGFlag==false\" class=\"col-md-12 text-center\">\n                            <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                        </div>\n\n                        <div *ngIf=\"trainingARGFlag && conflictedArgSubtypeFlag==false\" class=\"col-md-12 text-center\">\n                            <button (click)=\"trainingARGNextGene()\" class=\"\" color=\"primary\" md-raised-button>Next ARG</button>\n                        </div>\n\n                        <!-- <div class=\"col-md-12 text-right\">\n                            <button (click)=\"nextGene()\" class=\"\" color=\"red\" md-raised-button>Random</button>\n                        </div> -->\n\n\n                    </div>\n\n                    <!-- /.box-body -->\n                    <!-- </div> -->\n                    <!-- /.box -->\n                </div>\n            </div>\n\n            <!-- <div class=\"col-md-12 box box-solid \">\n\n                <h4>Note about BitScores</h4>\n                <p class=\"small\">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>\n                <p class=\"small\">Bit-score does not depend on database size. The bit-score gives the same value for hits in databases of different sizes and hence can be used for searching in an constantly increasing database.</p>\n                <p class=\"small\"> The higher the bitscore, the better the quality of the sequence alignment</p>\n\n            </div> -->\n\n        </div>\n\n        <div class=\"col-sm-3\"></div>\n        <div class=\"col-sm-6 col-sm-offset-0\">\n\n            <div id=\"step5\" class=\"\">\n                <div class=\"box box-solid \">\n                    <div class=\"box-body\">\n                        <md-input-container class='col-sm-12 col-sm-offset-0'>\n                            <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" value=\"\" />\n                        </md-input-container>\n                    </div>\n                </div>\n            </div>\n\n            <div *ngIf=\"loading==true\" class=\"col-md-4 col-md-offset-4\">\n                <div class=\"col-sm-8 col-sm-offset-2\">\n                    <object>\n                <embed src=\"assets/images/loading_1.svg\" />\n              </object>\n                </div>\n            </div>\n\n\n            <div *ngIf=\"randomARG.status==true && loading==false && ARG_display\">\n\n                <md-expansion-panel id=\"step12\" class=\"box box-solid\" [expanded]=\"false\">\n\n                    <!-- <md-expansion-panel-header>\n                        <md-panel-title>\n                            Tips and Tricks\n                        </md-panel-title>\n                        <md-panel-description>\n                            To get a successful annotation take into account the next tips:\n                        </md-panel-description>\n                    </md-expansion-panel-header> !-->\n\n                    <div class=\"box-body\">\n                        <ul>\n                            <li>\n                                <strong>Gene Name:</strong> To validate the gene name take a look at the panels with <span class=\"label bg-blue\"> strong </span> and <span class=\"label bg-black\">very strong</span> evidence. If several panels have strong\n                                evidence, select the gene name in the panel with the highest bitscore. If none of the panels have strong evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong> and verify the Metadata section\n                                (if available) for consensus.\n                            </li>\n                            <li>\n                                <strong>Antibiotic Class:</strong> To validate the antibiotic class take a look at the descriptions from the databases. There is not restrction about evidence. But it is expected to see a consensus between the different\n                                databases also check the Metadata section (if available).\n                            </li>\n                            <li>\n                                <strong>Antibiotic Mechanism:</strong> Check the AMR profile and Metadata (if available) to find the antibiotic mechanism. If the evidence from the <strong>MEGARes</strong> database is <span class=\"label bg-green\"> middle </span>,\n                                <span class=\"label bg-blue\"> strong </span> or <span class=\"label bg-black\"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels and the Metadata section (if available).\n                            </li>\n                            <li>\n                                If the evidence score from the reference databases is <span class=\"label bg-yellow\"> weak </span> or <span class=\"label bg-red\"> very weak </span>, check the Metadata section (if available).\n                            </li>\n                        </ul>\n                    </div>\n                </md-expansion-panel>\n\n                <!-- <br> -->\n                <!-- <h4>Similarity to known ARGs</h4> -->\n                <!-- <md-tab-group (selectChange)=\"tabsEvent($event)\"> -->\n                <!-- <md-tab  label=\"METADATA\"> -->\n\n\n                <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n                    <!-- <p> {{ bh.best_hit_database }} </p>  -->\n\n                    <div id=\"step8\" *ngIf=\"bh.best_hit_database=='ARDB'\">\n                        <besthit-metadata-ardb> </besthit-metadata-ardb>\n                    </div>\n                    <div id=\"step7\" *ngIf=\"bh.best_hit_database=='CARD'\">\n                        <besthit-metadata-card> </besthit-metadata-card>\n                    </div>\n                </div>\n                <!-- </md-tab> -->\n\n                <!-- OTHER DATABASES  -->\n                <div id=\"step9\">\n                    <app-generic></app-generic>\n                </div>\n\n                <!-- <h4 *ngIf=\"randomARG.entry.database=='UNIPROT'\">Metadata</h4> -->\n\n                <!--METADATA SECTION-->\n                <div id=\"step6\">\n                    <classify-metadata-uniprot *ngIf=\"randomARG.entry.database=='UNIPROT'\"> </classify-metadata-uniprot>\n                </div>\n\n\n                <classify-metadata-card> </classify-metadata-card>\n\n\n                <!-- </md-tab> -->\n\n                <!-- <md-tab  label=\"BEST HIT\"> -->\n                <!-- <hr *ngIf=\"randomARG.entry.database=='UNIPROT'\"> -->\n\n\n\n                <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->\n\n\n\n                <!-- <md-tab  label=\"HORIZONTAL GENE TRANSFER\"> -->\n                <!-- <div *ngIf=\"drawGenomes\"> -->\n\n                <!-- </div> -->\n                <!-- </md-tab> -->\n\n                <!-- </md-tab-group> -->\n                <br>\n                <div>\n                    <div class=\"box box-solid \">\n                        <div class=\"box-header with-border\">\n                            <h3 class=\"box-title\"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>\n                        </div>\n                        <div class=\"box-body\">\n                            <p class=\"sequence small\"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>\n                        </div>\n                    </div>\n                </div>\n                <br><br><br><br>\n            </div>\n        </div>\n\n\n        <!-- <div class=\"col-sm-3\"> -->\n        <div id=\"step11\" class=\"curate-nav affix clarify\">\n            <!-- <aside class=\"control-sidebar control-sidebar-open\"> -->\n            <app-curate></app-curate>\n            <!-- </aside> -->\n        </div>\n        <!-- </div> -->\n    </div>\n\n    <div class=\"col-sm-6 col-sm-offset-3\">\n        <div id=\"step10\" *ngIf=\"MGE_display\">\n            <genome-metadata *ngIf=\"randomARG.entry.database=='UNIPROT'\"></genome-metadata>\n            <genome-metadata *ngIf=\"randomARG.entry.database=='CARD'\"></genome-metadata>\n            <genome-metadata *ngIf=\"randomARG.entry.database=='ARDB'\"></genome-metadata>\n        </div>\n    </div>\n    <!--</md-tab>-->\n\n    <!--<md-tab label=\"Novel ARGs\">Content 2</md-tab>-->\n\n    <!--<md-tab label=\"Potential ARGs\">Content 2</md-tab>-->\n\n    <!--</md-tab-group>-->\n</div>"
+
+/***/ }),
+
+/***/ 660:
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <div class=\"box\">\n        <div class=\"box-body\">\n            <p class=\"small\">Please copy and paste this token to the Mturk website.</p>\n            <strong>Token:</strong> <code *ngIf=\"inspectedGenes.length >= classifyComponent.trainingARGTotal+1\">{{antibiotic.token}}</code>\n        </div>\n    </div>\n</div>\n<div class=\"\">\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-body\">\n            <p-steps styleClass=\"steps-custom\" [(activeIndex)]=\"activeIndex\" [readonly]=\"true\" [model]=\"items\"></p-steps>\n\n            <div *ngIf=\"step1 text-center\">\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>ARG Annotation</strong></h4>\n                <p>Please based on your observations add the corresponding data to the form below:</p>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" [formControl]=\"groupControl\" [mdAutocomplete]=\"AGroup\" mdInput [(ngModel)]=\"antibiotic.group\" placeholder=\"Gene Name\">\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [formControl]=\"myControl\" [mdAutocomplete]=\"AClass\" [(ngModel)]=\"antibiotic.class\" placeholder=\"Antibiotic Class\">\n                </md-input-container>\n\n                <md-autocomplete #AClass=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of filteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-autocomplete #AGroup=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of groupFilteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [(ngModel)]=\"antibiotic.mechanism\" placeholder=\"Antibiotic Mechanism\" required>\n                </md-input-container>\n\n                <br><br>\n\n                <div class=\"col-md-12 text-center\">\n                    <a (click)=\"validate(1)\" color=\"primary\" md-raised-button>Next</a>\n                    <!-- <button (click)=\"reportARG()\" class=\"\" color=\"red\" md-raised-button>Report ARG</button> -->\n                </div>\n                <!-- </div> -->\n\n            </div>\n\n\n\n            <div *ngIf=\"step2\">\n\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>Mobile Genetic Elements</strong></h4>\n                <div class=\"col-md-12\">\n                    <p class=\"small\">Is there any evidence that suggests the ARG to be carried by any of the following: </p>\n\n                    <div *ngFor=\"let ht of mge_options\">\n                        <md-checkbox value=\"{{ht}}\" (change)=\"mgeOptions(ht, $event)\">{{ ht }}</md-checkbox>\n                    </div>\n                    <p>How do you rate this evidence? </p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('mge',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <!-- <p class=\"small\"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p> -->\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\"><strong>Pathogenic Genomes</strong></h4>\n\n                    <p>Is there evidence of any pathogenic genomes containing the gene? </p>\n\n                    <!-- <md-radio-group [(ngModel)]=\"antibiotic.pathGenome\">\n                        <md-radio-button value=\"1\">Yes</md-radio-button> <br>\n                        <md-radio-button value=\"2\">Not</md-radio-button> <br>\n                    </md-radio-group> -->\n\n                    <!-- <p>How do you rate this evidence? </p> -->\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('genome',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <p class=\"small\">Scores: 1 means there is not evidence whereas 5 means there is strong evidence.</p>\n                    <hr>\n\n                </div>\n\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"validate(2)\" color=\"primary\" md-raised-button>Next</button>\n                </div>\n                <!-- </div> -->\n\n\n\n            </div>\n\n            <div *ngIf=\"step3\">\n                <div class=\"col-md-12 text-center\">\n                    <h4>Overall Rating</h4>\n                </div>\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <h4 class=\"text-center\"><strong>ARG annotation</strong></h4> -->\n                <!-- <dl class=\"dl\"> -->\n                <!-- <h4></h4>\n                        <strong>ARG Class:</strong>\n                        <span class=\"\"> {{ antibiotic.class }} </span>\n                        <br>\n\n                        <strong>ARG Group:</strong>\n                        <span class=\"\"> {{ antibiotic.group }} </span>\n                        <br>\n\n                        <strong *ngIf=\"!antibiotic.mechanism==null\">ARG Mechanism:</strong>\n                        <span *ngIf=\"!antibiotic.mechanism==null\">{{ antibiotic.mechanism }} </span> -->\n\n                <!-- </dl> -->\n                <!-- <hr> -->\n                <!-- </div> -->\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate the confidence in your observations</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('confidence',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate your level of expertise</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('expertise',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n\n\n                <!-- <md-input-container class=\"col-md-12\">\n                    <p>Please add any relevant comments</p>\n                    <textarea mdInput [(ngModel)]=\"antibiotic.comments\" rows=\"5\"></textarea>\n                </md-input-container> -->\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"submitReview()\" class=\"\" color=\"green\" md-raised-button>Submit</button>\n                    <button (click)=\"validate(3)\" class=\"\" color=\"red\" md-raised-button>Cancel</button>\n                </div>\n\n\n                <!-- </div> -->\n            </div>\n\n\n\n        </div>\n\n    </div>\n\n    <div *ngIf=\"inspectedGenes.length>0\" class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">Inspected genes: {{ inspectedGenes.length }}</h3>\n        </div>\n        <!-- <div class=\"box-body\">\n\n            <span *ngFor=\"let item of inspectedGenes\" class=\"badge\">\n                {{ item }}\n            </span>\n        </div> -->\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 661:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"renderMobile\">\n    <div *ngFor=\"let item of randomARG.mobile\" class=\"\">\n        <div *ngIf=\"item.status==true && item.identity.mean>50\" class=\"\">\n            <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->\n            <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p>\n            <div class=\"box box-solid\">\n                <!-- <div class=\"col-md-10 col-md-offset-1\"> -->\n\n                <div class=\"box-header with-border \">\n                    <i class=\"fa fa-tag\"></i>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='proph'\">Prophages</h3>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='plasmid'\">Plasmids</h3>\n                    <h3 class=\"box-title\" *ngIf=\"item.type=='vir'\">Viruses</h3>\n\n                </div>\n\n                <!-- </div> -->\n\n                <!-- <div class=\"col-md-12\"> -->\n                <div class=\"box-body\">\n                    <dl class=\"dl-horizontal\">\n                        <dt>Type:</dt>\n                        <dd>\n                            <strong><p *ngIf=\"item.type=='proph'\">Prophages</p></strong>\n                            <strong><p *ngIf=\"item.type=='plasmid'\">Plasmids</p></strong>\n                            <strong><p *ngIf=\"item.type=='vir'\">Viruses</p></strong>\n                        </dd>\n                        <dt>Count:</dt>\n                        <dd> <span> {{ item.count }} </span></dd>\n                        <dt>Similarity:</dt>\n                        <dd> <span class=\"badge bg-{{ item.identity.color }}\"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>\n                        <dt>BitScore:</dt>\n                        <dd> <span class=\"badge bg-{{ item.bitscore.color }}\"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>\n                        <!-- <dt>Evalue (log):</dt> -->\n                        <!-- <dd> <span class=\"badge bg-{{ item.evalue.color }}\"> {{ item.evalue.mean.toPrecision(2)}} {{ '&plusmn;' }} {{item.evalue.std.toPrecision(2)}} </span></dd> -->\n                        <dt>Coverage:</dt>\n                        <dd> <span class=\"badge bg-{{ item.coverage.color }}\"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>\n                        <dt>Description:</dt>\n                        <dd>{{ item.mge_description }}</dd>\n                        <dt>Gene Aclame ID:</dt>\n                        <dd>{{ item.mge_id }}</dd>\n                    </dl>\n                </div>\n                <!-- </div> -->\n            </div>\n        </div>\n\n    </div>\n</div>\n\n<div *ngIf=\"renderPathogen\">\n    <div *ngIf=\"randomARG.pathogen.status==true\" class=\"\">\n        <!-- <div class=\"col-md-12\"> -->\n        <!-- <h4>Bacterial Genomes</h4> -->\n        <p>\n            <strong> Scoring </strong>:\n            <span class=\"label bg-red\">Very Weak</span>\n            <span class=\"label bg-yellow\">Weak</span>\n            <span class=\"label bg-green\">Middle</span>\n            <span class=\"label bg-blue\">Strong</span>\n            <span class=\"label bg-black\">Very Strong</span>\n        </p>\n        <div class=\"box box-solid\">\n\n\n            <div class=\"box-header with-border\">\n\n                <!-- <div class=\"col-md-10 col-md-offset-1\">\n                            <svg  width=\"50px\" height=\"50px\"  class=\"resistant\" />\n                        </div> -->\n                <i class=\"fa fa-bug\"></i>\n                <h3 class=\"box-title\">Pathogenic Genomes</h3>\n\n            </div>\n\n\n            <div class=\"\">\n\n                <div class=\"box-body\">\n\n                    <p>\n                        <strong>Pathogen Score:</strong>\n                        <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\">\n                                    {{(genomeCount).toFixed(1)}}%\n                                </span>\n                        <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\">\n                                    {{(genomeCount).toFixed(1)}}%\n                                </span>\n                        <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\">\n                                    {{(genomeCount).toFixed(1)}}%\n                                </span>\n                        <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\">\n                                    {{(genomeCount).toFixed(1)}}%\n                                </span>\n                        <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\">\n                                    {{(genomeCount).toFixed(1)}}%\n                                </span>\n                    </p>\n                    <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href=\"https://www.patricbrc.org/\">PATRIC</a> database using strict cutoffs to ensure the existence of the gene\n                    (>90% identity, >90% coverage).\n                    <br><br><strong>{{ randomARG['pathogen'].genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,\n                    <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (\n                    <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\">\n                    {{(genomeCount).toFixed(1)}}%\n                </span>\n                    <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\">\n                    {{(genomeCount).toFixed(1)}}%\n                </span>\n                    <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\">\n                    {{(genomeCount).toFixed(1)}}%\n                </span>\n                    <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\">\n                    {{(genomeCount).toFixed(1)}}%\n                </span>\n                    <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\">\n                    {{(genomeCount).toFixed(1)}}%\n                </span>) genomes are labeled as <u>pathogens</u>.\n\n\n                </div>\n            </div>\n        </div>\n\n        <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n\n        <md-expansion-panel class=\"box box-solid\" style=\"background:rgba(0,0,0,0)\">\n\n            <md-expansion-panel-header>\n                <md-panel-title>\n                    Disease and Antimicrobial Resistance profile\n                </md-panel-title>\n                <md-panel-description>\n                    More information about Pathogens\n                </md-panel-description>\n            </md-expansion-panel-header>\n\n            <div *ngIf=\"disease.ready\" class=\"fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Genomes causing diseases</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>\n                    <!-- <ngx-charts-pie-grid [scheme]=\"disease.colorScheme\" [results]=\"disease.data\" (select)=\"onSelect($event)\"></ngx-charts-pie-grid> -->\n                </div>\n                <!-- </div> -->\n            </div>\n\n            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n            <div *ngIf=\"AMR_phenotype.ready\" class=\" fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Genomes with Antimicrobial Resistance phenotype</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>\n                    <!-- <ngx-charts-pie-grid [scheme]=\"AMR_phenotype.colorScheme\" [results]=\"AMR_phenotype.data\" (select)=\"onSelect($event)\"></ngx-charts-pie-grid> -->\n                </div>\n                <!-- </div> -->\n            </div>\n\n            <!-- PIE CHARTS WITH THE DATA INFORMATION  -->\n            <div *ngIf=\"host.ready\" class=\"fig-panel\">\n                <!-- <div class=\"box box-solid\"> -->\n                <div class=\"box-header with-border\">\n                    <!-- <i class=\"fa fa-bug\"></i> -->\n                    <h3 class=\"box-title\">Bacterial hosts</h3>\n                </div>\n                <div class=\"box-body\">\n                    <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>\n                    <!-- <ngx-charts-pie-grid [scheme]=\"host.colorScheme\" [results]=\"host.data\" (select)=\"onSelect($event)\"></ngx-charts-pie-grid> -->\n                </div>\n                <!-- </div> -->\n            </div>\n        </md-expansion-panel>\n\n\n\n\n\n        <!-- </div> -->\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 662:
+/***/ (function(module, exports) {
+
+module.exports = "<div style=\"overflow: auto\" class=\"\">\n    <h3>Instructions</h3>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <h4>1. Get familiar with the environment</h4>\n    <p>\n        In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n    </p>\n    <h4>2. New user</h4>\n    <p class=\"\">\n        If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform three ARG annotations.\n    </p>\n\n    <h4>3. How to get a reward </h4>\n    <p>\n        Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token to\n        the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n    </p>\n\n    <h4>4. Perform a new Hit</h4>\n    <p>\n        First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n    </p>\n\n    <strong><h4 style=\"color:red\"> Be Aware! </h4></strong>\n    <p>\n        If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n    </p>\n    <p>\n        If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n    </p>\n\n</div>"
+
+/***/ }),
+
+/***/ 663:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 664:
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ 665:
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <div *ngIf=\"randomARG.metadata.status==true\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"panel-title\"> <i class=\"fa fa-bug\"></i> <strong> Lineage (<a class=\"panel-title\" href=\"https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}\">NCBI Taxonomy </a>) </strong></h3>\n        </div>\n       \n        <div class=\"box-body\">\n            <div class=\"dl-vertical\">\n                <span *ngFor=\"let item of randomARG.metadata.organism.lineage\">\n          {{ item }} <strong>&rsaquo;</strong>\t\n        </span>\n            </div>\n            <p *ngIf=\"randomARG.metadata.organism.names\"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>\n        </div>\n        \n    </div>\n    \n</div> -->\n\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-tag\"></i>\n\n            <h3 class=\"box-title\"><strong>Metadata</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <p *ngIf=\"randomARG.metadata.gene\"> <strong *ngIf=\"randomARG.metadata.gene[0].name\">Gene Name: </strong> <span class=\"\" *ngIf=\"randomARG.metadata.gene[0].name\"> {{ randomARG.metadata.gene[0].name.value }} </span></p>\n            <p *ngIf=\"randomARG.metadata.protein.recommendedName\" class=\"\" data-original-title=\"\"> <strong>Protein: </strong> <span class=\"\"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>\n            <p *ngIf=\"randomARG.metadata.proteinExistence\" data-original-title=\"\"> <strong>Protein Existence: </strong> <span class=\"\">  {{ randomARG.metadata.proteinExistence }} </span> </p>\n\n            <p><strong>Sequence length (AA)</strong>: <span> {{ randomARG.entry['length'] }}</span></p>\n\n            <hr>\n\n            <span *ngFor=\"let item of randomARG.metadata.keywords\" class=\"badge bg-blue\" data-original-title=\"\"> {{ item.value }} </span>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Description</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.comments\">\n                    <dt *ngIf=\"item.text\"> {{ item.type }}:</dt>\n                    <dd *ngIf=\"item.text\"> {{ item.text[0].value }}</dd>\n                    <br>\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>Gene Ontology</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Functions and Biological Process\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.dbReferences\">\n                    <dt *ngIf=\"item.type=='GO'\"> {{ item.id }}:</dt>\n                    <dd *ngIf=\"item.type=='GO'\"> {{ item.properties.term }} <span class=\"badge bg-lightblue\">{{ item.properties.source }} </span></dd>\n                    <br *ngIf=\"item.type=='GO'\">\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<!-- <div *ngIf=\"randomARG.metadata.features\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Domains</strong></h3>\n        </div>\n        \n        <div class=\"box-body\">\n\n            <table class=\"table table-bordered text-center\">\n                <tbody>\n                    <tr>\n                        <th><span class=\"\">Type</span></th>\n                        <th><span class=\"\">Position(s)</span></th>\n                        <th><span class=\"\">Description</span></th>\n                        <th><span class=\"\">Evidence</span></th>\n                    </tr>\n                    <tr *ngFor=\"let item of randomARG.metadata.features\">\n                        <th> <span *ngIf=\"item.type!=undefined\"> {{ item.type }}</span></th>\n                        <th> <span *ngIf=\"item.begin!=undefined\">{{ item.begin }}-{{ item.end }}</span></th>\n                        <th><span *ngIf=\"item.description!=undefined\">{{ item.description }}</span></th>\n                        <th *ngIf=\"item.evidences\">\n                            <span *ngIf=\"item.evidences[0].source\">{{ item.evidences[0].source.name }}</span>\n                            <a *ngIf=\"item.evidences[0].source\" href=\"{{ item.evidences[0].source.url }}\">({{ item.evidences[0].source.id}})</a>\n                        </th>\n                    </tr>\n                    \n                </tbody>\n            </table>\n\n        </div>\n  \n    </div>\n\n</div> -->\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>References</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Scientific papers that support the gene {{ randomARG.entry.gene_id }}\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.references\">\n                    <strong> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})\n\n                    <div *ngFor=\"let ref of item.citation.dbReferences\">\n                        <strong>{{ ref.type }}</strong>: {{ ref.id }}\n                        <div *ngIf=\"ref.abstract\">\n\n                            <span *ngFor=\"let kw of ref.abstract\">\n                <span *ngIf=\"kw.type=='paragraph'\">{{ kw.text }}</span> <strong class=\"\" *ngIf=\"kw.type=='keyword'\">{{ kw.text }}</strong>\n                            </span>\n\n                        </div>\n\n                    </div>\n\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n        <!-- </div> -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<div *ngIf=\"renderError\">\n    <div class=\"alert alert-info alert-dismissible\">\n        <h4><i class=\"icon fa fa-ban\"></i> {{ randomARG.entry.database }} Alert!</h4>\n        <strong>There is a problem with this request!</strong>\n        <p>\n            {{ randomARG.metadata.errorMessage[0] }}\n        </p>\n        <p>\n            Please take a look at the provided information to make the annotation.\n        </p>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 666:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <h4>ARGminer database download</h4>\n            <table class=\"table table-responsive table-bordered text-center\">\n                <tbody>\n                    <tr class=\"table-success\">\n                        <th>Database</th>\n                        <th>Version</th>\n                        <th>Comments</th>\n                    </tr>\n\n                    <tr *ngFor=\"let item of databases\">\n                        <td><a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.fasta'\" target=\"_blank\">ARGminer-DB</a></td>\n                        <td>{{ item.version }}</td>\n                        <td>{{ item.comments }}</td>\n                    </tr>\n                </tbody>\n            </table>\n            <br>\n            <h4>Structure</h4>\n            <p class=\"small\">ARGminer annotation can be downloaded as a fasta file. The annotation of each entry is reported in the fasta header as follows:</p>\n            <code>\n                >gene_id | score:0 | validated:True/False | ARG-Class | ARG-name | ARG-mechanism | MGE-score:0 | Pat-score:0  \n            </code>\n            <br><br>\n            <p class=\"small\">\n                <strong>Score: </strong> Score of the validated entry.\n                <br><strong> Validated:</strong> flag to show if the ARG has been validated.\n                <br><strong>Pat(Pathogen):</strong> Evidence of the ARG being carried by a pathogen.\n                <br><strong>MGE(Mobile Genetic Element):</strong> Evidence of the ARG being carried by a mobie element e.g., plasmids.\n            </p>\n            <p class=\"small\">Genes that have not been validated conserve their original annotation (deepARG-DB)</p>\n        </div>\n        <div class=\"box-footer text-center\">\n            <p class=\"small\">*ARGminer uses the antibiotic resistance annotation from <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a> databases. ARGminer is free for\n                academic use, in any othercase, please check each one of the cited resources.</p>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ 667:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid home-font\">\n\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <div class=\"logo-text text-center\">\n                <!-- <img src=\"assets/images/logo.svg\" alt=\"\" /> -->\n                <span class=\"home-logo\"><strong>ARG-miner:</strong>  A database and crowdsourcing platform for the curation of antibiotic resistance genes</span>\n                <hr>\n            </div>\n            <p>\n                Welcome to ARG-miner, a powerful open access web-platform dedicated to the inspection, curation and exploration of <strong>A</strong>ntibiotic <strong>R</strong>esitance <strong>G</strong>enes (ARGs). ARG-miner offers a novel approach\n                to validate the ARGs annotation by inspecting their metadata and relationship with known ARGs resources. It enables the detection of genes that have evidence of being transferred by mobile genetic elements and evidence about the pathogenic\n                hosts. We use a set of different databases including: <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a>.\n            </p>\n            <hr>\n            <a class=\"btn btn-primary \" href=\"#/classify\">Get Started</a>\n            <a class=\"btn btn-primary \" href=\"#/database\">Download</a>\n\n        </div>\n    </div>\n    <hr>\n\n    <!-- <div class=\"col-md-12\">\n        <img src=\"assets/images/main.svg\" alt=\"\">\n    </div> -->\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Structured Database</h4>\n                <p>\n                    The annotation of ARGs is structured into three different levels: Antibiotic Class, Antibiotic Resistance Gene, and Antibiotic Resitance Mechanism.\n                </p>\n                <!-- <div class=\"col-md-12 col-md-offset-0\">\n                    <img src=\"assets/images/main.svg\" alt=\"\">\n                </div> -->\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Mobile Genetic Elements (MGEs)</h4>\n                <p>\n                    ARG-miner provides evidence of the ARGs being transferred by <strong>M</strong>obile <strong>G</strong>enetic <strong>E</strong>lements (MGEs) such as Plasmids, Viruses and Phages.\n                </p>\n                <p>\n                    This information enables the identification of ARGs that are critical for propagation and disemination to different environments. This is crucial for the interpretation of risk assessments studies.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class=\" col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Pathogen-carried ARGs</h4>\n                <p>\n                    ARG-miner also provides information about ARGs being carried by bacterial genomes and out of those, how many genomes are pathogens. This is useful for identifying chromosomal ARGs that are hosted by pathogen bacteria.\n                </p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Metagenomics Analysis</h4>\n                <p>\n                    ARG-miner database is open sourced and free to download it is currently used by our machine learning metagenomics annotation <strong><a href=\"http://bench.cs.vt.edu/deeparg\">DeepARG</a></strong> model.\n                </p>\n            </div>\n        </div>\n    </div>\n\n\n    <div class=\"col-md-12 \">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h4 class=\"\">Crowdsourced Annotation</h4>\n                <p>\n                    Its well known that current ARG databases contain annotation with mistakes that are very easily to propagate. By using crowdsourcing, the ARG annotation is made by a broad community instead of individual labs.\n                </p>\n\n                <p>\n                    ARG-miner is an open, cooperative platform. This means, anyone from anywhere can contribute to the curation of ARGs. You don't need to be a skilled expert to contribute!.\n                </p>\n\n                <h5>How to validate a gene that has been reviewed?</h5>\n\n                <p> To validate annotations a scoring function is designed using curations carried out by experts. This function is optimized by computational techniques that maximize the probability of right annotations.\n                </p>\n\n                <hr>\n                <h4>Reference:</h4>\n                <p>\n                    Paper under submission\n                </p>\n                <hr>\n                <h4>Contact us</h4>\n                email: lqzhang@vt.edu <br> webpage: <a href=\"https://bioinformatics.cs.vt.edu/zhanglab/\">https://bioinformatics.cs.vt.edu/zhanglab/</a>\n                <hr>\n                <h4>Open Source</h4>\n                ARG-miner source code can be found at the git repository <code> https://github.com/gaarangoa/ARG-inspect.git </code>\n                <hr>\n                <h4>API</h4>\n                ARG-miner data can be programatically acccessed through its restAPI (documentation under construction).\n            </div>\n        </div>\n\n\n\n\n\n\n    </div>\n\n</div>\n\n<hr>\n\n<footer class=\"footer\" style=\"background:white\">\n    <br><br>\n\n    <div class=\"col-md-2 col-md-offset-4 funding\" style=\"width:7%\">\n        <img src=\"assets/images/nsf.jpg\" alt=\"\">\n    </div>\n    <div class=\"col-md-2 funding\">\n        <img src=\"assets/images/vt.jpg\" alt=\"\">\n    </div>\n    <div class=\"col-md-2 funding\">\n        <img src=\"assets/images/heard.png\" alt=\"\" style=\"width:60%\">\n    </div>\n    <br><br><br><br>\n    <div class=\"col-md-12\"></div>\n\n</footer>"
+
+/***/ }),
+
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(268);
+module.exports = __webpack_require__(253);
 
 
 /***/ })
 
-},[813]);
+},[718]);
 //# sourceMappingURL=main.bundle.js.map

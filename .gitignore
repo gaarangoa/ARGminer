@@ -1,6 +1,8 @@
 backend/preprocess/
 *.pyc
 front_end/node_modules
-database/mongo
+database
 preprocess/
 database/release/*
+updates/
+backend/rest/config.py

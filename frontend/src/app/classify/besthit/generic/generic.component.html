@@ -1,14 +1,6 @@
 <div *ngIf="render">
     <div *ngFor="let bh of randomARG.besthit.alignments">
         <div *ngIf="bh.best_hit_database!=='CARD' && bh.best_hit_database!=='ARDB'" class="">
-            <p>
-                <strong> Scoring </strong>:
-                <span class="label bg-red">Very Weak</span>
-                <span class="label bg-yellow">Weak</span>
-                <span class="label bg-green">Middle</span>
-                <span class="label bg-blue">Strong</span>
-                <span class="label bg-black">Very Strong</span>
-            </p>
             <div class="box box-solid ">
                 <div class="box-header with-border">
                     <i class="fa fa-gears"></i>
@@ -16,72 +8,14 @@
                     <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> Database </h3>
                 </div>
                 <div class="box-body">
-                    <dl class="dl-horizontal">
-                        <dt>Gene Name:</dt>
-                        <dd>{{ bh.subtype }}</dd>
-                        <dt>Best Hit ID</dt>
-                        <dd> {{ bh.best_hit.substring(0, 30) }}
-                            <dd>
 
-                                <dt>Similarity:</dt>
-                                <dd>
+                    <strong> Antibiotic Class: </strong> {{ bh.type }}<br>
+                    <strong> Gene Name: </strong> {{ bh.subtype }}<br>
+                    <strong> Antibiotic Mechanism: </strong> {{ bh.mechanism }}<br>
 
-                                    <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>80 && bh.identity<=90" class="badge bg-blue"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>90" class="badge bg-blue"> {{ bh.identity }}% </span>
-
-                                </dd>
-
-                                <dt>Coverage:</dt>
-                                <dd>
-
-                                    <span *ngIf="alCoverage<=30" class="badge bg-red"> {{ alCoverage.toFixed(2) }}% </span>
-                                    <span *ngIf="alCoverage>50 && alCoverage<=80" class="badge bg-green"> {{ alCoverage.toFixed(2) }}% </span>
-                                    <span *ngIf="alCoverage>80 && alCoverage<=90" class="badge bg-blue"> {{ alCoverage.toFixed(2) }}% </span>
-                                    <span *ngIf="alCoverage>90" class="badge bg-black"> {{ alCoverage.toFixed(2) }}% </span>
-
-                                </dd>
-                                <dt>Bitscore:</dt>
-                                <dd>
-                                    <span *ngIf="bh.bitscore<=50" class="badge bg-red"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>50 && bh.bitscore<=100" class="badge bg-yellow"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>100 && bh.bitscore<=500" class="badge bg-green"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>500 && bh.bitscore<=800" class="badge bg-blue"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>800" class="badge bg-black"> {{ bh.bitscore }} </span>
-
-                                </dd>
-                                <dt>evalue:</dt>
-                                <dd>
-
-                                    <span *ngIf="bh.evalue>=1e-5" class="badge bg-red"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-5 && bh.evalue>=1e-10" class="badge bg-yellow"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-10 && bh.evalue>=1e-50" class="badge bg-green"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-50 && bh.evalue>=1e-100" class="badge bg-blue"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-100" class="badge bg-black"> {{ bh.evalue }} </span>
-
-                                </dd>
-
-
-                                <hr>
-                                <strong> AMR profile: </strong><br><br>
-
-                                <!-- <dd> -->
-
-
-                                <strong> Antibiotic Class: </strong> {{ bh.type }}<br>
-                                <strong> Gene Name: </strong> {{ bh.subtype }}<br>
-                                <strong> Antibiotic Mechanism: </strong> {{ bh.mechanism }}<br>
-
-                                <!-- </dd> -->
-
-
-
-                    </dl>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
+    <!-- <hr> -->
 </div>

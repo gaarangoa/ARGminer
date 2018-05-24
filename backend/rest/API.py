@@ -5,8 +5,7 @@ import base64
 # from rest.config import add_path
 # add_path
 import sys
-sys.path.insert(0, '')
-
+sys.path.insert(0, '/src/')
 from rest.ARGsClass import GENE
 from rest.AntibioticClass import Antibiotic
 from rest.AdminClass import Admin
@@ -100,7 +99,7 @@ def PostCuration():
     return jsonify(arg)
 
 # ADMIN SECTION
- 
+
 @app.route('/admin/inspect/arg/<index>', methods = ['GET','POST'])
 def inspectedARG(index):
     arg = ARG.getInspectedARGs(index,int(index)+1)
