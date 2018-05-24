@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MdInputModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,6 @@ import { DatabaseModule } from './database/database.module';
 // import {NgCytoscapeModule} from "ng2-cytoscape/dist";
 
 // Visualization
-import { jqxChartComponent } from 'jqwidgets-framework/jqwidgets-ts/angular_jqxchart';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 // Services
@@ -39,9 +38,9 @@ import { AdminComponent } from './admin/admin.component';
   declarations: [
     AppComponent,
     AboutComponent,
-    jqxChartComponent,
+    // jqxChartComponent,
     AdminComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +56,6 @@ import { AdminComponent } from './admin/admin.component';
     NgxChartsModule,
     ReactiveFormsModule,
     MdInputModule,
-    
     // NgCytoscapeModule
   ],
   providers: [

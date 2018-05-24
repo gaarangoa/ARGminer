@@ -9,8 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const router: Routes = [
-    { 
-        path: '', 
+    {
+        path: '',
         children: [
             { path: '', component: HomeComponent },
             { path: 'classify', component: ClassifyComponent },

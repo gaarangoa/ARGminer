@@ -1,111 +1,129 @@
 <div *ngIf="render">
 
+    <div class="box box-solid">
+        <div class="box-body">
+
+            <p-dataTable [value]="cars">
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Database</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <strong> {{gene.database.toUpperCase()}} </strong>
+                    </ng-template>
+
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Gene Name</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        {{gene.gene_name}}
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Similarity</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <p-progressBar [value]="gene.similarity"></p-progressBar>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Coverage</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <p-progressBar [value]="gene.coverage"></p-progressBar>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>*Bitscore Rate</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <p-progressBar [value]="gene.bitscore_rate"></p-progressBar>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Bitscore</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        {{ gene.bitscore }}
+                    </ng-template>
+                </p-column>
+
+
+            </p-dataTable>
+
+            <br>
+            <p class="small"> <strong>*Bitscore Rate</strong>: Reffers to the rate between the alignment bitscore and the optimal bitscore curated by CARD for this ARG.</p>
+
+
+        </div>
+    </div>
 
     <div *ngFor="let bh of randomARG.besthit.alignments">
 
+
+
+
+
+
+
+
+
+
+
+
+
         <div *ngIf="bh.best_hit_database=='CARD'" class="">
-            <p>
+            <!-- <p>
                 <strong> Scoring </strong>:
                 <span class="label bg-red">Very Weak</span>
                 <span class="label bg-yellow">Weak</span>
                 <span class="label bg-green">Middle</span>
                 <span class="label bg-blue">Strong</span>
                 <span class="label bg-black">Very Strong</span>
-            </p>
+            </p> -->
             <div class="box box-solid ">
                 <div class="box-header with-border">
                     <i class="fa fa-gears"></i>
+                    <h3 class="box-title"> <strong> {{ bh.best_hit_database }} </strong> Database </h3>
 
-                    <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> Database </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <dl class="dl-horizontal">
-                        <dt>Gene Name:</dt>
-                        <dd> {{ bh.metadata.subtype }}</dd>
-                        <dt>Best Hit ID</dt>
-                        <dd> {{ bh.best_hit }}
-                            <dd>
-                                <dt>Similarity:</dt>
-                                <dd>
-
-                                    <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>80 && bh.identity<=90" class="badge bg-blue"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>90" class="badge bg-blue"> {{ bh.identity }}% </span>
-
-                                </dd>
-                                <dt>Coverage:</dt>
-                                <dd>
-
-                                    <span *ngIf="alCoverage<=30" class="badge bg-red"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>30 && alCoverage<=50" class="badge bg-yellow"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>
-                                    <span *ngIf="alCoverage>50 && alCoverage<=80" class="badge bg-green"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>80 && alCoverage<=90" class="badge bg-blue"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>90" class="badge bg-black"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-
-                                </dd>
-                                <dt>Bitscore:</dt>
-                                <dd>
-                                    <span *ngIf="bh.bitscore<=50" class="badge bg-red"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>50 && bh.bitscore<=100" class="badge bg-yellow"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>100 && bh.bitscore<=500" class="badge bg-green"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>500 && bh.bitscore<=800" class="badge bg-blue"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>800" class="badge bg-black"> {{ bh.bitscore }} </span>
-
-                                </dd>
-                                <dt>evalue:</dt>
-                                <dd>
-
-                                    <span *ngIf="bh.evalue>=1e-5" class="badge bg-red"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-5 && bh.evalue>=1e-10" class="badge bg-yellow"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-10 && bh.evalue>=1e-50" class="badge bg-green"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-50 && bh.evalue>=1e-100" class="badge bg-blue"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-100" class="badge bg-black"> {{ bh.evalue }} </span>
-
-                                </dd>
-
-
-                                <hr>
-                                <h4> AMR profile: </h4>
-
-                                <!-- <dd> -->
-                                <p> {{bh.metadata.description}} </p>
-
-                                <div *ngFor="let type of bh.metadata.type">
-
-                                    <div *ngIf="type.relationship">
-                                        <div *ngFor="let rel of type.relationship">
-                                            <i class="fa fa-bug" *ngIf="rel.accession=='confers_resistance_to'"></i>
-                                            <i class="fa fa-cogs" *ngIf="rel.accession=='participates_in'"></i>
-                                            <span> {{ rel.term }}</span>
-                                            <strong *ngIf="rel.accession=='confers_resistance_to'">[Class]</strong>
-                                            <strong *ngIf="rel.accession=='participates_in'">[Mechanism]</strong>
-                                        </div>
-                                    </div>
-                                    <p class="small">{{ type.name }}, {{ type.def }}.</p>
-                                    <div *ngIf="!type.relationship">
-                                        <i class="fa fa-cogs"></i>
-                                        <span> {{ type.name }} </span> <strong>[Mechanism]</strong>
-                                    </div>
-                                    <!-- <p> {{ type.def }} </p> -->
-
-
-                                    <!-- <div *ngIf="type.is_a">
-                                        <div *ngFor="let rel of type.is_a">
-                                            <p> {{ rel.term }} </p>
-                                        </div>
-                                    </div> -->
 
 
 
-                                </div>
-                                <!-- </dd> -->
+                    <h4>AMR Gene Family (Antibiotic Class)</h4>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'AMR Gene Family'">
+                            <p>
+                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>
+                        </div>
+                    </div>
 
+                    <h4>Resistance Mechanism</h4>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'Resistance Mechanism'">
+                            <p>
+                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>
+                        </div>
+                    </div>
 
+                    <h4>Drug Class</h4>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'Drug Class'">
+                            <p>
+                                <strong> {{ meta.category_aro_name }} </strong>: {{ meta.category_aro_description}} </p>
+                        </div>
+                    </div>
 
-                    </dl>
+                    <!-- <button color="primary" class="pull-left" md-mini-fab> <i class="fa fa-chevron-left"></i> </button> -->
+                    <!-- <button color="primary" class="pull-right" md-mini-fab> <i class="fa fa-chevron-right"></i> </button> -->
                 </div>
                 <!-- /.box-body -->
             </div>

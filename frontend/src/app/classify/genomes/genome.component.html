@@ -73,7 +73,7 @@
             <div class="box-header with-border">
 
                 <!-- <div class="col-md-10 col-md-offset-1">
-                            <svg  width="50px" height="50px"  class="resistant" />  
+                            <svg  width="50px" height="50px"  class="resistant" />
                         </div> -->
                 <i class="fa fa-bug"></i>
                 <h3 class="box-title">Pathogenic Genomes</h3>
@@ -87,40 +87,40 @@
 
                     <p>
                         <strong>Pathogen Score:</strong>
-                        <span class="badge bg-red" *ngIf="genomeCount<10"> 
-                                    {{(genomeCount).toFixed(1)}}% 
+                        <span class="badge bg-red" *ngIf="genomeCount<10">
+                                    {{(genomeCount).toFixed(1)}}%
                                 </span>
-                        <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10"> 
-                                    {{(genomeCount).toFixed(1)}}% 
+                        <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10">
+                                    {{(genomeCount).toFixed(1)}}%
                                 </span>
-                        <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20"> 
-                                    {{(genomeCount).toFixed(1)}}% 
+                        <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20">
+                                    {{(genomeCount).toFixed(1)}}%
                                 </span>
-                        <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30"> 
-                                    {{(genomeCount).toFixed(1)}}% 
+                        <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30">
+                                    {{(genomeCount).toFixed(1)}}%
                                 </span>
-                        <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60"> 
-                                    {{(genomeCount).toFixed(1)}}% 
+                        <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60">
+                                    {{(genomeCount).toFixed(1)}}%
                                 </span>
                     </p>
                     <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href="https://www.patricbrc.org/">PATRIC</a> database using strict cutoffs to ensure the existence of the gene
                     (>90% identity, >90% coverage).
                     <br><br><strong>{{ randomARG['pathogen'].genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,
                     <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (
-                    <span class="badge bg-red" *ngIf="genomeCount<10"> 
-                    {{(genomeCount).toFixed(1)}}% 
+                    <span class="badge bg-red" *ngIf="genomeCount<10">
+                    {{(genomeCount).toFixed(1)}}%
                 </span>
-                    <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10"> 
-                    {{(genomeCount).toFixed(1)}}% 
+                    <span class="badge bg-yellow" *ngIf="genomeCount<20 && genomeCount>10">
+                    {{(genomeCount).toFixed(1)}}%
                 </span>
-                    <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20"> 
-                    {{(genomeCount).toFixed(1)}}% 
+                    <span class="badge bg-green" *ngIf="genomeCount<30 && genomeCount>20">
+                    {{(genomeCount).toFixed(1)}}%
                 </span>
-                    <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30"> 
-                    {{(genomeCount).toFixed(1)}}% 
+                    <span class="badge bg-blue" *ngIf="genomeCount<60 && genomeCount>30">
+                    {{(genomeCount).toFixed(1)}}%
                 </span>
-                    <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60"> 
-                    {{(genomeCount).toFixed(1)}}% 
+                    <span class="badge bg-black" *ngIf="genomeCount<90 && genomeCount>60">
+                    {{(genomeCount).toFixed(1)}}%
                 </span>) genomes are labeled as <u>pathogens</u>.
 
 
@@ -149,8 +149,7 @@
                 </div>
                 <div class="box-body">
                     <p>This figure shows the distribution of the bacterial genomes that are reported to cause or be involved in any diseases and contain the gene <u>{{ randomARG.entry.gene_id }}</u>.</p>
-                    <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)">
-                    </ngx-charts-pie-grid>
+                    <!-- <ngx-charts-pie-grid [scheme]="disease.colorScheme" [results]="disease.data" (select)="onSelect($event)"></ngx-charts-pie-grid> -->
                 </div>
                 <!-- </div> -->
             </div>
@@ -164,8 +163,7 @@
                 </div>
                 <div class="box-body">
                     <p>This figure shows the existing antimicrobial resistance phenotype from the genomes.</p>
-                    <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)">
-                    </ngx-charts-pie-grid>
+                    <!-- <ngx-charts-pie-grid [scheme]="AMR_phenotype.colorScheme" [results]="AMR_phenotype.data" (select)="onSelect($event)"></ngx-charts-pie-grid> -->
                 </div>
                 <!-- </div> -->
             </div>
@@ -179,8 +177,7 @@
                 </div>
                 <div class="box-body">
                     <p>This figure shows the distribution of the host organisms. The number of genomes corresponds to the genomes with it reported hosts.</p>
-                    <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)">
-                    </ngx-charts-pie-grid>
+                    <!-- <ngx-charts-pie-grid [scheme]="host.colorScheme" [results]="host.data" (select)="onSelect($event)"></ngx-charts-pie-grid> -->
                 </div>
                 <!-- </div> -->
             </div>

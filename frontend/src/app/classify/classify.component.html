@@ -3,14 +3,7 @@
 <div class="">
 
     <div *ngIf="!render" class="col-md-4 col-md-offset-4">
-        <div class="col-sm-4 col-sm-offset-4">
-            <object>
-            <embed src="assets/images/loading_1.svg" />
-          </object>
-        </div>
     </div>
-
-
 
     <div *ngIf="render">
         <!--Left panel-->
@@ -76,9 +69,9 @@
                             <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                         </dl>
 
-                        <p class="small text-center">
+                        <p class="small text-left">
                             *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>
-                            <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a>
+                            <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
                         </p>
 
 
@@ -108,11 +101,11 @@
                                         If you are a new user, activate the new user button. You will have to complete 20 entries that will help you to get familiar with the system. I will also score your results based on the real annotation.
                                     </div>
                                     <div class="box-footer">
-                                       
+
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </tour-step> -->
 
                         <div id="step3">
@@ -197,21 +190,18 @@
             </div>
 
 
-            <div *ngIf="randomARG.status==true && loading==false">
+            <div *ngIf="randomARG.status==true && loading==false && ARG_display">
 
-                <hr>
+                <md-expansion-panel id="step12" class="box box-solid" [expanded]="false">
 
-
-                <md-expansion-panel id="step12" class="box box-solid" [expanded]="true">
-
-                    <md-expansion-panel-header>
+                    <!-- <md-expansion-panel-header>
                         <md-panel-title>
                             Tips and Tricks
                         </md-panel-title>
                         <md-panel-description>
                             To get a successful annotation take into account the next tips:
                         </md-panel-description>
-                    </md-expansion-panel-header>
+                    </md-expansion-panel-header> !-->
 
                     <div class="box-body">
                         <ul>
@@ -234,8 +224,6 @@
                         </ul>
                     </div>
                 </md-expansion-panel>
-
-                <hr>
 
                 <!-- <br> -->
                 <!-- <h4>Similarity to known ARGs</h4> -->
@@ -274,7 +262,7 @@
                 <!-- </md-tab> -->
 
                 <!-- <md-tab  label="BEST HIT"> -->
-                <hr *ngIf="randomARG.entry.database=='UNIPROT'">
+                <!-- <hr *ngIf="randomARG.entry.database=='UNIPROT'"> -->
 
 
 
@@ -284,16 +272,12 @@
 
                 <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
                 <!-- <div *ngIf="drawGenomes"> -->
-                <div id="step10">
-                    <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
-                    <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
-                    <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
-                </div>
+
                 <!-- </div> -->
                 <!-- </md-tab> -->
 
                 <!-- </md-tab-group> -->
-                <hr>
+                <br>
                 <div>
                     <div class="box box-solid ">
                         <div class="box-header with-border">
@@ -318,6 +302,13 @@
         <!-- </div> -->
     </div>
 
+    <div class="col-sm-6 col-sm-offset-3">
+        <div id="step10" *ngIf="MGE_display">
+            <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
+            <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
+            <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+        </div>
+    </div>
     <!--</md-tab>-->
 
     <!--<md-tab label="Novel ARGs">Content 2</md-tab>-->
