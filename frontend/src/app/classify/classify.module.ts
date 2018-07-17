@@ -20,6 +20,7 @@ import { StepsModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
 import {DataTableModule} from 'primeng/components/datatable/datatable';
+import {AccordionModule} from 'primeng/components/accordion/accordion';
 
 import { ClassifyComponent } from './classify.component';
 import { ClassifyRoutingModule } from './classify-routing.module';
@@ -44,11 +45,11 @@ import { ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
 import { DialogModule, ButtonModule, TabViewModule, CodeHighlighterModule } from 'primeng/primeng';
 import { GenericComponent } from './besthit/generic/generic.component';
 import { InstructionsComponent } from './instructions/instructions.component';
-
+import { ExploreComponent } from './explore/explore.component'
 
 // tour walkthroug
 // import { HintModule } from 'angular-custom-tour';
-
+import { ExploreModule } from './explore/explore.module';
 
 @NgModule({
   imports: [
@@ -76,7 +77,9 @@ import { InstructionsComponent } from './instructions/instructions.component';
     CodeHighlighterModule,
     GrowlModule,
     ProgressBarModule,
-    DataTableModule
+    DataTableModule,
+    AccordionModule,
+    ExploreModule
     // HintModule,
     // GenomeModule
   ],
@@ -85,15 +88,16 @@ import { InstructionsComponent } from './instructions/instructions.component';
   ],
   declarations: [
     ClassifyComponent,
-      UniprotComponent,
-      CardComponent,
-      ArdbComponent,
-      BestHitArdbComponent,
-      BestHitCardComponent,
-      GenomeComponent,
-      CurateComponent,
-      GenericComponent,
-      InstructionsComponent
+    UniprotComponent,
+    CardComponent,
+    ArdbComponent,
+    BestHitArdbComponent,
+    BestHitCardComponent,
+    GenomeComponent,
+    CurateComponent,
+    GenericComponent,
+    ExploreComponent,
+    InstructionsComponent,
   ],
   providers: [
     ConfirmationService

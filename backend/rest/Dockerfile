@@ -6,6 +6,8 @@ RUN pip install requests
 RUN pip install numpy
 RUN pip install networkx
 
+RUN pip install git+https://github.com/facebookresearch/fastText.git
+
 EXPOSE 5000
 
 ENTRYPOINT ["python", "/src/rest/API.py"]

@@ -9,9 +9,21 @@
                 </div>
                 <div class="box-body">
 
-                    <strong> Antibiotic Class: </strong> {{ bh.type }}<br>
-                    <strong> Gene Name: </strong> {{ bh.subtype }}<br>
-                    <strong> Antibiotic Mechanism: </strong> {{ bh.mechanism }}<br>
+                    <h5> Antibiotic Class: </h5>
+
+                    <p-accordion>
+                        <p-accordionTab [header]="bh.type">
+                            <p *ngIf="bh.description"> {{ bh.description }} </p>
+                        </p-accordionTab>
+                    </p-accordion>
+
+                    <!-- <strong> Gene Name: </strong> {{ bh.subtype }}<br> -->
+                    <h5> Antibiotic Mechanism: </h5>
+                    <p-accordion>
+                        <p-accordionTab [header]="bh.mechanism">
+                            <p *ngIf="bh.description"> {{ bh.description }} </p>
+                        </p-accordionTab>
+                    </p-accordion>
 
                 </div>
             </div>

@@ -26,4 +26,3 @@ make a copy of the database
         mongodump --host localhost --port 27897 --db argpedia --username xxx --password xxx
         mongorestore --host localhost --port 17863 /data/db/dump/
 
-*to restore in the server, need to run without the --auth

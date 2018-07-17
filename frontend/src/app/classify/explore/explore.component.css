@@ -1,0 +1,9 @@
+.close-btn {
+    float: right;
+    /* background: red; */
+    /* color: white; */
+    top: 10px;
+    right: 0px;
+    z-index: 1;
+    position: relative;
+}

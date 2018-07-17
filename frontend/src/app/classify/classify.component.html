@@ -1,31 +1,29 @@
 <p-growl class="user_growl" [(value)]="notification"></p-growl>
 
-<div class="">
+<div *ngIf="!render" class="col-md-4 col-md-offset-4">
+</div>
 
-    <div *ngIf="!render" class="col-md-4 col-md-offset-4">
-    </div>
+<div *ngIf="render">
+    <!--Left panel-->
+    <div class="col-sm-3 affix coffix">
+        <!-- <div class=""> -->
+        <div *ngIf="randomARG.status==true" class="">
+            <!-- <div class="col-md-12"> -->
 
-    <div *ngIf="render">
-        <!--Left panel-->
-        <div class="col-sm-3 affix coffix">
-            <!-- <div class=""> -->
-            <div *ngIf="randomARG.status==true" class="">
-                <!-- <div class="col-md-12"> -->
-
-                <div class="box box-solid box-primary">
-                    <div class="box-header with-border">
+            <div class="box box-solid box-primary">
+                <div class="box-header with-border">
 
 
 
-                        <i class="fa fa-gears"></i>
-                        <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
-                        <h3 class="box-title"><strong>Current Annotation </strong> </h3>
+                    <i class="fa fa-gears"></i>
+                    <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
+                    <h3 class="box-title"><strong>Current Annotation </strong> </h3>
 
-                    </div>
+                </div>
 
-                    <!-- /.box-header -->
+                <!-- /.box-header -->
 
-                    <!-- <tour-step class="intro-tour-hint-wrapper" selector="step1" order="1" position="right">
+                <!-- <tour-step class="intro-tour-hint-wrapper" selector="step1" order="1" position="right">
                         <div class="box box-step">
                             <div class="box-header">
                                 <h3 class="box-title">
@@ -39,57 +37,57 @@
                         </div>
                     </tour-step> -->
 
-                    <div class="box-body">
+                <div class="box-body">
 
-                        <dl id="step1" class="dl">
-                            <!-- <p> -->
-                            <!-- </p> -->
-                            <!-- <p> -->
+                    <dl id="step1" class="dl">
+                        <!-- <p> -->
+                        <!-- </p> -->
+                        <!-- <p> -->
 
-                            <strong>Gene Name:</strong>
-                            <span class="">{{ randomARG.entry.subtype }}</span>
-                            <!-- </p> -->
-                            <!-- <p> -->
-                            <br>
-                            <strong>Antibiotic Class:</strong>
-                            <span class="">{{ randomARG.entry.type }}</span>
-                            <!-- </p> -->
-                            <!-- <p> -->
-                            <br>
-                            <strong>Database:</strong>
-                            <span class="">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>
-                            <!-- </p> -->
-                            <!-- <p> -->
-                            <br>
-                            <strong data-intro="step1">Inspected:</strong>
-                            <span class="">{{ randomARG.inspected.length }}</span>
-                            <br>
-                            <!-- </p> -->
-                            <!-- <dt>Score:</dt> -->
-                            <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
-                        </dl>
+                        <strong>Gene Name:</strong>
+                        <span class="">{{ randomARG.entry.subtype }}</span>
+                        <!-- </p> -->
+                        <!-- <p> -->
+                        <br>
+                        <strong>Antibiotic Class:</strong>
+                        <span class="">{{ randomARG.entry.type }}</span>
+                        <!-- </p> -->
+                        <!-- <p> -->
+                        <br>
+                        <strong>Database:</strong>
+                        <span class="">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>
+                        <!-- </p> -->
+                        <!-- <p> -->
+                        <br>
+                        <strong data-intro="step1">Inspected:</strong>
+                        <span class="">{{ randomARG.inspected.length }}</span>
+                        <br>
+                        <!-- </p> -->
+                        <!-- <dt>Score:</dt> -->
+                        <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
+                    </dl>
 
-                        <p class="small text-left">
-                            *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>
-                            <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
-                        </p>
-
-
-                        <hr>
-                        <!-- <h4>Tutorial</h4> -->
-
-                        <!-- <div class="text-left"> -->
+                    <p class="small text-left">
+                        *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>
+                        <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
+                    </p>
 
 
+                    <hr>
+                    <!-- <h4>Tutorial</h4> -->
 
-                        <!-- <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a> -->
-                        <!-- </div> -->
-                        <!-- <br> -->
-                        <!-- <hr> -->
+                    <!-- <div class="text-left"> -->
 
-                        <!-- <h4>Filter options</h4> -->
 
-                        <!-- <tour-step class="intro-tour-hint-wrapper" selector="step2" order="2">
+
+                    <!-- <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a> -->
+                    <!-- </div> -->
+                    <!-- <br> -->
+                    <!-- <hr> -->
+
+                    <!-- <h4>Filter options</h4> -->
+
+                    <!-- <tour-step class="intro-tour-hint-wrapper" selector="step2" order="2">
                             <div class="col-md-12">
                                 <div class="box box-primary">
                                     <div class="box-header">
@@ -108,56 +106,56 @@
 
                         </tour-step> -->
 
-                        <div id="step3">
-                            <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>New User</strong></md-slide-toggle>
-                            <p class="small">Enable this option if this is the first time you enter the website.</p>
-                        </div>
-                        <!-- <hr> -->
-                        <div id="step4">
-                            <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority ARGs</strong></md-slide-toggle>
-                            <p class="small">This option selects ARGs with high priority of curation.</p>
+                    <div id="step3">
+                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>New User</strong></md-slide-toggle>
+                        <p class="small">Enable this option if this is the first time you enter the website.</p>
+                    </div>
+                    <!-- <hr> -->
+                    <div id="step4">
+                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority ARGs</strong></md-slide-toggle>
+                        <p class="small">This option selects ARGs with high priority of curation.</p>
+                    </div>
+                    <hr>
+
+
+
+                    <div *ngIf="loading==false && conflictedArgSubtypeFlag">
+
+                        <h4> Conflicted ARGs </h4>
+                        <p class="small">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>
+                        <!-- <div class="box-body"> -->
+                        <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->
+                        <div *ngFor="let item of conflictingARGSubtype.conflict">
+                            <strong>{{ item.class }}</strong> {{ item.genes.length }}
                         </div>
                         <hr>
+                        <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
+                        <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next ARG</button>
+                        <!-- </div> -->
+                    </div>
 
+                    <div *ngIf="conflictedArgSubtypeFlag==false && trainingARGFlag==false" class="col-md-12 text-center">
+                        <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
+                    </div>
 
+                    <div *ngIf="trainingARGFlag && conflictedArgSubtypeFlag==false" class="col-md-12 text-center">
+                        <button (click)="trainingARGNextGene()" class="" color="primary" md-raised-button>Next ARG</button>
+                    </div>
 
-                        <div *ngIf="loading==false && conflictedArgSubtypeFlag">
-
-                            <h4> Conflicted ARGs </h4>
-                            <p class="small">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>
-                            <!-- <div class="box-body"> -->
-                            <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->
-                            <div *ngFor="let item of conflictingARGSubtype.conflict">
-                                <strong>{{ item.class }}</strong> {{ item.genes.length }}
-                            </div>
-                            <hr>
-                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
-                            <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next ARG</button>
-                            <!-- </div> -->
-                        </div>
-
-                        <div *ngIf="conflictedArgSubtypeFlag==false && trainingARGFlag==false" class="col-md-12 text-center">
-                            <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
-                        </div>
-
-                        <div *ngIf="trainingARGFlag && conflictedArgSubtypeFlag==false" class="col-md-12 text-center">
-                            <button (click)="trainingARGNextGene()" class="" color="primary" md-raised-button>Next ARG</button>
-                        </div>
-
-                        <!-- <div class="col-md-12 text-right">
+                    <!-- <div class="col-md-12 text-right">
                             <button (click)="nextGene()" class="" color="red" md-raised-button>Random</button>
                         </div> -->
 
 
-                    </div>
-
-                    <!-- /.box-body -->
-                    <!-- </div> -->
-                    <!-- /.box -->
                 </div>
-            </div>
 
-            <!-- <div class="col-md-12 box box-solid ">
+                <!-- /.box-body -->
+                <!-- </div> -->
+                <!-- /.box -->
+            </div>
+        </div>
+
+        <!-- <div class="col-md-12 box box-solid ">
 
                 <h4>Note about BitScores</h4>
                 <p class="small">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>
@@ -166,154 +164,61 @@
 
             </div> -->
 
-        </div>
-
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 col-sm-offset-0">
-
-            <div id="step5" class="">
-                <div class="box box-solid ">
-                    <div class="box-body">
-                        <md-input-container class='col-sm-12 col-sm-offset-0'>
-                            <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
-                        </md-input-container>
-                    </div>
-                </div>
-            </div>
-
-            <div *ngIf="loading==true" class="col-md-4 col-md-offset-4">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <object>
-                <embed src="assets/images/loading_1.svg" />
-              </object>
-                </div>
-            </div>
-
-
-            <div *ngIf="randomARG.status==true && loading==false && ARG_display">
-
-                <md-expansion-panel id="step12" class="box box-solid" [expanded]="false">
-
-                    <!-- <md-expansion-panel-header>
-                        <md-panel-title>
-                            Tips and Tricks
-                        </md-panel-title>
-                        <md-panel-description>
-                            To get a successful annotation take into account the next tips:
-                        </md-panel-description>
-                    </md-expansion-panel-header> !-->
-
-                    <div class="box-body">
-                        <ul>
-                            <li>
-                                <strong>Gene Name:</strong> To validate the gene name take a look at the panels with <span class="label bg-blue"> strong </span> and <span class="label bg-black">very strong</span> evidence. If several panels have strong
-                                evidence, select the gene name in the panel with the highest bitscore. If none of the panels have strong evidence, then, keep the <u>gene name</u> as in the <strong> current annotation</strong> and verify the Metadata section
-                                (if available) for consensus.
-                            </li>
-                            <li>
-                                <strong>Antibiotic Class:</strong> To validate the antibiotic class take a look at the descriptions from the databases. There is not restrction about evidence. But it is expected to see a consensus between the different
-                                databases also check the Metadata section (if available).
-                            </li>
-                            <li>
-                                <strong>Antibiotic Mechanism:</strong> Check the AMR profile and Metadata (if available) to find the antibiotic mechanism. If the evidence from the <strong>MEGARes</strong> database is <span class="label bg-green"> middle </span>,
-                                <span class="label bg-blue"> strong </span> or <span class="label bg-black"> very strong </span>, it is safe to set this mechanism. Other case, seek for consensus from the different panels and the Metadata section (if available).
-                            </li>
-                            <li>
-                                If the evidence score from the reference databases is <span class="label bg-yellow"> weak </span> or <span class="label bg-red"> very weak </span>, check the Metadata section (if available).
-                            </li>
-                        </ul>
-                    </div>
-                </md-expansion-panel>
-
-                <!-- <br> -->
-                <!-- <h4>Similarity to known ARGs</h4> -->
-                <!-- <md-tab-group (selectChange)="tabsEvent($event)"> -->
-                <!-- <md-tab  label="METADATA"> -->
-
-
-                <div *ngFor="let bh of randomARG.besthit.alignments">
-                    <!-- <p> {{ bh.best_hit_database }} </p>  -->
-
-                    <div id="step8" *ngIf="bh.best_hit_database=='ARDB'">
-                        <besthit-metadata-ardb> </besthit-metadata-ardb>
-                    </div>
-                    <div id="step7" *ngIf="bh.best_hit_database=='CARD'">
-                        <besthit-metadata-card> </besthit-metadata-card>
-                    </div>
-                </div>
-                <!-- </md-tab> -->
-
-                <!-- OTHER DATABASES  -->
-                <div id="step9">
-                    <app-generic></app-generic>
-                </div>
-
-                <!-- <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4> -->
-
-                <!--METADATA SECTION-->
-                <div id="step6">
-                    <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
-                </div>
-
-
-                <classify-metadata-card> </classify-metadata-card>
-
-
-                <!-- </md-tab> -->
-
-                <!-- <md-tab  label="BEST HIT"> -->
-                <!-- <hr *ngIf="randomARG.entry.database=='UNIPROT'"> -->
-
-
-
-                <!-- <h4>Mobile Genetic Elements (MGEs)</h4> -->
-
-
-
-                <!-- <md-tab  label="HORIZONTAL GENE TRANSFER"> -->
-                <!-- <div *ngIf="drawGenomes"> -->
-
-                <!-- </div> -->
-                <!-- </md-tab> -->
-
-                <!-- </md-tab-group> -->
-                <br>
-                <div>
-                    <div class="box box-solid ">
-                        <div class="box-header with-border">
-                            <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
-                        </div>
-                        <div class="box-body">
-                            <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
-                        </div>
-                    </div>
-                </div>
-                <br><br><br><br>
-            </div>
-        </div>
-
-
-        <!-- <div class="col-sm-3"> -->
-        <div id="step11" class="curate-nav affix clarify">
-            <!-- <aside class="control-sidebar control-sidebar-open"> -->
-            <app-curate></app-curate>
-            <!-- </aside> -->
-        </div>
-        <!-- </div> -->
     </div>
 
+    <app-explore class="col-sm-6 col-sm-offset-3"></app-explore>
     <div class="col-sm-6 col-sm-offset-3">
-        <div id="step10" *ngIf="MGE_display">
-            <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
-            <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
-            <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+
+        <div *ngIf="randomARG.status==true && loading==false && ARG_display">
+            <br>
+            <div *ngFor="let bh of randomARG.besthit.alignments">
+                <besthit-metadata-ardb *ngIf="bh.best_hit_database=='ARDB'"> </besthit-metadata-ardb>
+                <besthit-metadata-card *ngIf="bh.best_hit_database=='CARD'"> </besthit-metadata-card>
+            </div>
+            <!-- </md-tab> -->
+
+            <!-- OTHER DATABASES  -->
+            <div id="step9">
+                <app-generic></app-generic>
+            </div>
+
+            <!-- <h4 *ngIf="randomARG.entry.database=='UNIPROT'">Metadata</h4> -->
+
+            <!--METADATA SECTION-->
+            <div id="step6">
+                <classify-metadata-uniprot *ngIf="randomARG.entry.database=='UNIPROT'"> </classify-metadata-uniprot>
+            </div>
+            <classify-metadata-card> </classify-metadata-card>
+            <br>
+            <div>
+                <div class="box box-solid ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
+                    </div>
+                    <div class="box-body">
+                        <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
+                    </div>
+                </div>
+            </div>
+            <br>
         </div>
     </div>
-    <!--</md-tab>-->
 
-    <!--<md-tab label="Novel ARGs">Content 2</md-tab>-->
 
-    <!--<md-tab label="Potential ARGs">Content 2</md-tab>-->
+    <!-- <div class="col-sm-3"> -->
+    <div id="step11" class="curate-nav affix clarify">
+        <!-- <aside class="control-sidebar control-sidebar-open"> -->
+        <app-curate></app-curate>
+        <!-- </aside> -->
+    </div>
+    <!-- </div> -->
+</div>
 
-    <!--</md-tab-group>-->
+<div class="col-sm-6 col-sm-offset-3">
+    <!-- *ngIf="MGE_display" -->
+    <div id="step10">
+        <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
+        <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
+        <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+    </div>
 </div>

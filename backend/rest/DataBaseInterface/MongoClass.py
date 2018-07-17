@@ -52,6 +52,16 @@ class Mongo():
         self.client.close()
         return models
 
+    def get_by_id(self, table, gene_id):
+        models = [i for i in self.db[table].find({"_id": gene_id})]
+        if not models:
+            return []
+        for model in models:
+            model["_id"] = str(model["_id"])
+            model['status'] = True
+        self.client.close()
+        return models
+
     def getRandomGene(self, table):
         count = self.db[table].count()
 

@@ -1,0 +1,45 @@
+<script type="text/javascript" src="./prototype.js"></script>
+<script type="text/javascript" src="./domain_graphics.js"></script>
+<script type="text/javascript" src="./graphic_generator.js"></script>
+
+<div id="dg">
+    <canvas width="100%" height="20px"></canvas>
+</div>
+
+<script type="text/javascript">
+    var seq = {
+        "length": "400",
+        "regions": [{
+            "type": "pfama",
+            "text": "PartN",
+            "colour": "#9999ff",
+            "display": "true",
+            "startStyle": "jagged",
+            "endStyle": "curved",
+            "start": "10",
+            "end": "110"
+        }, {
+            "type": "pfama",
+            "text": "PartN_C",
+            "colour": "#399",
+            "display": true,
+            "startStyle": "jagged",
+            "endStyle": "jagged",
+            "start": "115",
+            "end": "204"
+        }, {
+            "type": "pfama",
+            "text": "PartC",
+            "colour": "#1fc01f",
+            "display": true,
+            "startStyle": "curved",
+            "endStyle": "jagged",
+            "start": "210",
+            "end": "350"
+        }]
+    };
+
+    var generator;
+    generator = new GraphicGenerator();
+    generator.generate(seq, "dg");
+</script>

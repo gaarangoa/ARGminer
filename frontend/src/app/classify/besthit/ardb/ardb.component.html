@@ -12,10 +12,17 @@
                 <div class="box-body">
 
                     <!-- <dd> -->
+                    <h5>Resistance Mechanism</h5>
                     <p> {{bh.metadata.description}} </p>
+                    <h5>AMR drug class / Gene family</h5>
                     <div *ngFor="let type of bh.metadata.resistance_profile">
-                        <strong> <span class="strong">{{ type.type }} </span> </strong>
-                        <p *ngIf="type.description"> {{ type.description }} </p>
+
+                        <p-accordion>
+                            <p-accordionTab [header]="type.type">
+                                <p *ngIf="type.description"> {{ type.description }} </p>
+                            </p-accordionTab>
+                        </p-accordion>
+
                     </div>
                     <!-- <dd> -->
                 </div>

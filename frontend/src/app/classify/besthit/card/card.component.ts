@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../../services/data.service';
 import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 
-
 @Component({
   selector: 'besthit-metadata-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
+
 export class BestHitCardComponent implements OnInit {
 
   public randomARG: Object;
   public alCoverage: number;
   public render: boolean;
   public cars: any;
+  public color: string;
+  public predicted_nomenclature: Array<Object>;
 
   constructor(
     private dataService: DataService,
@@ -52,31 +54,57 @@ export class BestHitCardComponent implements OnInit {
     }
   }
 
+  get_nomenclature(keyword: string, _res: any) {
+    this.dataService.predict_nomenclature({ sentence:  keyword } )
+      .subscribe(res => {
+        _res = res;
+      });
+  }
+
   ngOnInit() {
+    this.color = 'rgb(255,0,0)';
     this.randomARG = this.dataService.ARG;
     this.render = false;
     this.cars = [];
+    this.predicted_nomenclature = [];
     this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0)
     // console.log(this.alCoverage)
     if(this.randomARG['besthit']){
       // traverse the alignments and create the table
+      let _max_bitscore = this.randomARG['besthit']['alignments'].map(e => {
+        return e.bitscore;
+      });
+
+      _max_bitscore = Math.max(..._max_bitscore);
 
       this.randomARG['besthit']['alignments'].forEach(element => {
         this.cars.push({
           database: element.best_hit_database,
           gene_name: this.get_subtype(element),
           best_hit_id: this.get_best_hit_id(element),
-          similarity: element.identity,
+          similarity: element.identity.toFixed(2),
           coverage: this.get_coverage(element),
-          bitscore_rate: this.get_bitscore_rate(element),
-          bitscore: element.bitscore
+          bitscore_rate: 'rgba(' + (255 * element.bitscore / _max_bitscore).toFixed(0) + ',0,0,'+ element.bitscore / _max_bitscore +')' ,
+          bitscore: element.bitscore.toFixed(1)
         });
       });
 
-      this.render = true;
+      const _sentence = this.cars.map(e => {
+        return (e.bitscore > 150) ? e.gene_name : '';
+      }
+      ).join(' ');
 
+      // this.get_nomenclature(_sentence, this.predicted_nomenclature);
+      this.dataService.predict_nomenclature({ sentence:  _sentence } )
+      .subscribe(res => {
+        this.predicted_nomenclature = res;
+      });
+      this.render = true;
     }
 
   }
 
 }
+
+
+

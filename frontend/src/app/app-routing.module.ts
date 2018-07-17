@@ -1,3 +1,4 @@
+// import { ExploreComponent } from './classify/explore/explore.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -18,6 +19,7 @@ export const router: Routes = [
             { path: 'database', component: DatabaseComponent },
             { path: 'about', component: AboutComponent },
             { path: 'admin', component: AdminComponent },
+            // { path: 'explore', component: ExploreComponent}
         ]
     },
 ];
