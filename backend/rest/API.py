@@ -28,7 +28,7 @@ CORS(app)
 
 
 @app.route('/')
-def index():
+def root():
     return jsonify(message="ARG-inspect REST API")
 
 
@@ -186,9 +186,8 @@ def get_nomenclature():
     sentence = data['sentence']
     return jsonify(nomenclature_prediction(q=sentence, ft_model=ft_model))
 
+
 # PLASMIDS
-
-
 @app.route('/get/plasmid/', methods=['GET', 'POST'])
 def get_plasmid():
     data = request.get_json()

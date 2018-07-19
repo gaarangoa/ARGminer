@@ -24,5 +24,5 @@ To compile the angular project just type:
 make a copy of the database
 
         mongodump --host localhost --port 27897 --db argpedia --username xxx --password xxx
-        mongorestore --host localhost --port 17863 /data/db/dump/
+        mongorestore --host localhost --port 27897 /data/db/dump/
 

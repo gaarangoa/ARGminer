@@ -8,8 +8,8 @@ MongoHost = {
     # "hostdb": "mongo://mongo-server-arg-miner",
     "hostdbport": 17863,
     "database": "argpedia",
-    "hostuser": "argpedia",
-    "hostpwd": "AdminArgpedia2018.#"
+    "hostuser": "",
+    "hostpwd": ""
 }
 
 
