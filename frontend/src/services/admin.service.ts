@@ -66,4 +66,11 @@ export class AdminService {
       });
   }
 
+    score_annotation(gene_id: any) {
+        return this.http.get(this.baseUrl + '/admin/score/' + gene_id)
+            .map(res => {
+                return res.json()
+            });
+    }
+
 }

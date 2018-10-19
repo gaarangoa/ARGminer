@@ -21,7 +21,7 @@ To compile the angular project just type:
     ng build --base-href /argpedia/
 
 # move database from local to production
-make a copy of the database
+make a copy of the database. Go inside the container and do this!
 
         mongodump --host localhost --port 27897 --db argpedia --username xxx --password xxx
         mongorestore --host localhost --port 27897 /data/db/dump/

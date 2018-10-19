@@ -20,18 +20,18 @@ export class UniprotComponent implements OnInit {
     private dataService: DataService,
     private ncbiService: NcbiService,
   ) {
-    
+
    }
 
 
   ngOnInit() {
     this.randomARG = this.dataService.ARG;
-    
+
     // GET all reference ids from pubmed:
     if(this.randomARG['metadata'].status==false){
       this.renderError = true;
     }
-    if(this.randomARG['metadata'].status==true){ 
+    if(this.randomARG['metadata'].status==true){
       this.render = true;
       this.randomARG['metadata'].references.forEach(element => {
         if(element.citation.dbReferences){
@@ -39,11 +39,16 @@ export class UniprotComponent implements OnInit {
             if(citation.type == "PubMed"){
               this.ncbiService.getPubMed(citation.id)
                 .subscribe( response=>{
-                  
+
                   let str = response.text;
                   let lstr = [];
-                  let inpos = 0;
-                  let denotations = response.denotations.sort((a, b) => b.span.begin - a.span.begin).reverse();
+                    let inpos = 0;
+                    let denotations = []
+                    try {
+                        let denotations = response.denotations.sort((a, b) => b.span.begin - a.span.begin).reverse();
+                    } catch(err) {
+                        denotations = [];
+                    }
                   // let denotations = response.denotations
 
                   for(let pos of denotations){
@@ -54,7 +59,7 @@ export class UniprotComponent implements OnInit {
                   lstr.push( str.substring( inpos, str.length ) )
                   // console.log(denotations)
                   citation['abstract'] = lstr
-                    
+
                   }
                 )
             }
@@ -66,6 +71,6 @@ export class UniprotComponent implements OnInit {
     // console.log(this.randomARG)
 
   }
-  
+
 
 }

@@ -15,10 +15,11 @@
     </div>
 </div>
 
-<!-- table with the information -->
+<!-- table with the search information -->
 <!-- <div class="col-md-12"> -->
 <div *ngIf="search_on">
-    <a class="close-btn" [style.cursor]="'pointer'" (click)="close_search()"> <i class="fa fa-times-circle fa-lg text-danger"></i> </a>
+    <a class="close-btn" [style.cursor]="'pointer'" (click)="close_search()"> <i class="fa fa-times-circle fa-lg text-danger"></i>
+    </a>
     <p-dataTable [value]="search_general_result" [rows]="5" [paginator]="true">
         <p-column>
             <ng-template pTemplate="header">
@@ -34,9 +35,9 @@
             </ng-template>
             <ng-template let-gene="rowData" pTemplate="body">
                 <u>
-            <a [style.color]="'blue'" [style.cursor]="'pointer'" (click)="explore_gene(gene)"> {{gene.subtype}} </a>
+          <a [style.color]="'blue'" [style.cursor]="'pointer'" (click)="explore_gene(gene)"> {{gene.subtype}} </a>
 
-          </u>
+        </u>
 
 
             </ng-template>
@@ -48,9 +49,9 @@
             <ng-template let-gene="rowData" pTemplate="body">
                 <!-- <strong> {{gene.count}} </strong> -->
                 <span *ngFor="let _db of gene.db_counts">
-                  <a [style.color]="'green'" [style.cursor]="'pointer'"> <u> {{_db['database']}} </u></a>
-                  <strong> ({{ _db['counts'] }}) </strong>
-                </span>
+          <a [style.color]="'green'" [style.cursor]="'pointer'"> <u> {{_db['database']}} </u></a>
+          <strong> ({{ _db['counts'] }}) </strong>
+        </span>
             </ng-template>
         </p-column>
         <!-- <p-column>

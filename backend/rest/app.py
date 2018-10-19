@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restplus import Api, Resource, fields
-from Metadata import Metadata
+from access_point.Metadata import Metadata
 
 app_name = 'ARGminer'
 app_link = 'argminer_api'
@@ -12,6 +12,7 @@ api = Api(app, version='1.0', title=app_name,
 
 metadata = Metadata()
 metadata.build(api, fields, app_link)
+metadata.build(api, fields, app_link+"123")
 
 
 if __name__ == '__main__':

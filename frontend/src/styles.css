@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+/* @import "assets/css/boostwatch4.css"; */
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
@@ -7,4 +10,4 @@
 @import "../node_modules/primeng/resources/themes/omega/theme.css";
 @import "assets/css/adminLTE.css";
 @import "assets/css/bootstrap.css";
-@import "assets/css/custom.css"
+@import "assets/css/custom.css";

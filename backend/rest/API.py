@@ -172,7 +172,14 @@ def loginAdmin():
     return jsonify(arg)
 
 
+@app.route('/admin/score/<gene_id>', methods=['GET', 'POST'])
+def scoreAdmin(gene_id):
+    scores = ADMIN.score(gene_id)
+    return jsonify(scores)
+
 # DOWNLOAD SECTION
+
+
 @app.route('/get/database/list', methods=['GET', 'POST'])
 def getDatabaseList():
     arg = ARG.databaseList()

@@ -168,7 +168,7 @@ exports.i(__webpack_require__(346), "");
 exports.i(__webpack_require__(347), "");
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n\n/* @import \"assets/css/boostwatch4.css\"; */", ""]);
 
 // exports
 

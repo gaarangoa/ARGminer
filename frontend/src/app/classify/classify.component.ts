@@ -41,7 +41,7 @@ export class ClassifyComponent implements OnInit {
   public trainingGenes: Array<string>;
   public trainingARGFlag: Boolean = false;
   public trainingARGCount: number = 0;
-  public trainingARGTotal: number = 2;
+  public trainingARGTotal: number = 0;
   public MGE_display: boolean;
   public ARG_display: boolean;
 
@@ -109,6 +109,7 @@ export class ClassifyComponent implements OnInit {
 
   trainingARGEvent($event){
     // the conflicting ARGs cannot be enabled.
+      this.trainingARGTotal = 2;
     this.conflictedArgSubtypeFlag = false;
     this.trainingARGCount = 0;
     this.trainingARGFlag = $event.checked;
@@ -129,7 +130,7 @@ export class ClassifyComponent implements OnInit {
     }else{
       this.notification = [];
       this.notification.push({severity:'success', summary:'End of Training', detail:'Training is done!'});
-      this.notification.push({severity:'info', summary:'Get Reward', detail:'Click on <strong>Priority ARGs</strong> to start'});
+      this.notification.push({severity:'info', summary:'Get Reward', detail:'Click on <strong>Random ARG</strong> to start'});
       // this.notification.push({severity:'success', summary:'End of Training', detail:'You are ready to perform tasks with reward'});
       this.trainingARGFlag = false;
       this.nextGeneConflictList()

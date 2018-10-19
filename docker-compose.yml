@@ -20,7 +20,7 @@ services:
 
 # database with everything!
   database:
-    image: mongo
+    image: mongo:3.6
     environment:
       - MONGO_DATA_DIR=./database/mongo
       - MONGO_LOG_DIR=./database/mongo

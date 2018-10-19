@@ -12,6 +12,8 @@ from rest.MetadataInterface import ArgDatabaseClass
 from rest.MetadataInterface import plasmidClass
 from collections import Counter
 
+import json
+
 
 class GENE():
     def __init__(self, db):
@@ -63,17 +65,31 @@ class GENE():
 
     def fast_search(self, params):
         data = self.Search.retrieve(params['keyword'])
+
         if params['action'] == 'overall':
             try:
                 _data = {}
                 for i in data:
+
+                    list_type_str = i['entry']['type']
+                    if isinstance(i['entry']['type'], list):
+                        list_type_str = " ".join(
+                            i['entry']['type']).replace('antibiotic', '')
+
                     try:
-                        _data[(i['entry']['type'], i['entry']['subtype'])].append(
-                            [i['entry']['gene_id'], i['entry']['database']]
+                        _data[(list_type_str, i['entry']['subtype'])].append(
+                            [
+                                i['entry']['gene_id'],
+                                i['entry']['database'],
+                            ]
                         )
                     except Exception as e:
-                        _data[(i['entry']['type'], i['entry']['subtype'])] = [
-                            [i['entry']['gene_id'], i['entry']['database']]]
+                        _data[(list_type_str, i['entry']['subtype'])] = [
+                            [
+                                i['entry']['gene_id'],
+                                i['entry']['database'],
+                            ]
+                        ]
 
                 _db_count = {}
                 for item in _data:
@@ -81,7 +97,8 @@ class GENE():
                                        for k in Counter([k[1] for k in _data[item]]).items()]
 
                 return sorted([{"type": i[0], "subtype": i[1], "count":len(_data[i]), "sequences":_data[i], "db_counts": _db_count[i]} for i in _data], key=lambda k: k['count'], reverse=True)
-            except:
+            except Exception as e:
+                print(str(e))
                 return []
 
     def getARG(self, gene_id):

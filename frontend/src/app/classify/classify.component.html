@@ -17,7 +17,7 @@
 
                     <i class="fa fa-gears"></i>
                     <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
-                    <h3 class="box-title"><strong>Current Annotation </strong> </h3>
+                    <h3 class="box-title"><strong>Gene to validate</strong> </h3>
 
                 </div>
 
@@ -44,23 +44,26 @@
                         <!-- </p> -->
                         <!-- <p> -->
 
-                        <strong>Gene Name:</strong>
-                        <span class="">{{ randomARG.entry.subtype }}</span>
+                        <!-- <strong>Gene Name:</strong> -->
+                        <!-- <span class="">{{ randomARG.entry.subtype }}</span> -->
                         <!-- </p> -->
                         <!-- <p> -->
-                        <br>
-                        <strong>Antibiotic Class:</strong>
-                        <span class="">{{ randomARG.entry.type }}</span>
+                        <!-- <br> -->
+                        <!-- <strong>Antibiotic Class:</strong> -->
+                        <!-- <span class="">{{ randomARG.entry.type }}</span> -->
                         <!-- </p> -->
                         <!-- <p> -->
-                        <br>
+                        <!-- <br> -->
                         <strong>Database:</strong>
-                        <span class="">{{ randomARG.entry.database }} ({{ randomARG.entry.gene_id }})</span>
+                        <span class="">{{ randomARG.entry.database }}</span>
                         <!-- </p> -->
                         <!-- <p> -->
                         <br>
                         <strong data-intro="step1">Inspected:</strong>
                         <span class="">{{ randomARG.inspected.length }}</span>
+                        <br>
+                        <strong data-intro="step1">Gene ID:</strong>
+                        <span class="">{{ randomARG.entry.gene_id }}</span>
                         <br>
                         <!-- </p> -->
                         <!-- <dt>Score:</dt> -->
@@ -107,12 +110,13 @@
                         </tour-step> -->
 
                     <div id="step3">
-                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>New User</strong></md-slide-toggle>
+                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Enable Training</strong></md-slide-toggle>
                         <p class="small">Enable this option if this is the first time you enter the website.</p>
                     </div>
                     <!-- <hr> -->
                     <div id="step4">
-                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority ARGs</strong></md-slide-toggle>
+                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority
+                ARGs</strong></md-slide-toggle>
                         <p class="small">This option selects ARGs with high priority of curation.</p>
                     </div>
                     <hr>
@@ -196,7 +200,8 @@
                         <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
                     </div>
                     <div class="box-body">
-                        <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}</p>
+                        <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}
+                        </p>
                     </div>
                 </div>
             </div>

@@ -10,19 +10,19 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const router: Routes = [
-    {
-        path: '',
-        children: [
-            { path: '', component: HomeComponent },
-            { path: 'classify', component: ClassifyComponent },
-            { path: 'home', component: HomeComponent },
-            { path: 'database', component: DatabaseComponent },
-            { path: 'about', component: AboutComponent },
-            { path: 'admin', component: AdminComponent },
-            // { path: 'explore', component: ExploreComponent}
-        ]
-    },
+	{
+		path: '',
+		children: [
+			{ path: '', component: HomeComponent },
+			{ path: 'classify', component: ClassifyComponent },
+			{ path: 'home', component: HomeComponent },
+			{ path: 'database', component: DatabaseComponent },
+			{ path: 'about', component: AboutComponent },
+			{ path: 'admin', component: AdminComponent },
+			{ path: 'instructions', component: AboutComponent }
+			// { path: 'explore', component: ExploreComponent}
+		]
+	}
 ];
 
-export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(router, {useHash: true});
-
+export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(router, { useHash: true });

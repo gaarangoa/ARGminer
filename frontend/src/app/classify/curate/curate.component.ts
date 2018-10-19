@@ -187,7 +187,7 @@ export class CurateComponent implements OnInit {
       if(this.antibiotic['class']==null || this.antibiotic['group']==null || this.antibiotic['mechanism']==null){
         this.classifyComponent.notification.push({severity:'error', summary:'Score', detail:'Your score is: 0 out of 100'});
 
-      }else if(this.liveScoreAnnotation.class < 30 || this.liveScoreAnnotation.group < 20 || this.liveScoreAnnotation.mechanism < 50){
+      }else if(this.liveScoreAnnotation.class < 50 || this.liveScoreAnnotation.group < 50 || this.liveScoreAnnotation.mechanism < 50){
 
         let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
         this.classifyComponent.notification.push({severity:'error', summary:'Error', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });

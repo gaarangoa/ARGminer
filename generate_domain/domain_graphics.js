@@ -374,6 +374,7 @@ var PfamGraphic = Class.create({
         }
 
         this._context = this._canvas.getContext("2d");
+        this._context.scale(2, 2);
 
         if (this._context === undefined) {
             this._throw("couldn't create a 2d context from canvas");
@@ -797,7 +798,9 @@ var PfamGraphic = Class.create({
         throw {
             name: "PfamGraphicException",
             message: message,
-            toString: function() { return this.message; }
+            toString: function() {
+                return this.message;
+            }
         };
     },
 
@@ -862,7 +865,16 @@ var PfamGraphic = Class.create({
 
         // have to set the dimensions explicitly too
         canvas.width = width;
-        canvas.height = height;
+        // canvas.height = height;
+        // canvas.style.width = Math.round(canvas.width / 2).toString() + "px";
+        // canvas.style.height = Math.round(canvas.height / 2).toString() + "px";
+
+        // canvas.width = 1000;
+        canvas.height = height * 2;
+        canvas.style.width = canvas.width / 2;
+        canvas.style.height = canvas.height / 2;
+
+        // console.log(height, canvas.style.height, canvas.height)
 
         // add the new <canvas> to the parent and generate an identifier for it
         this._parent.appendChild(canvas);
@@ -1004,7 +1016,9 @@ var PfamGraphic = Class.create({
                         // Ugly hack, to be removed eventually
                         url = url.replace(/\/+/g, '/').replace(':/', '://');
 
-                        activeCanvas.setStyle({ cursor: "pointer" });
+                        activeCanvas.setStyle({
+                            cursor: "pointer"
+                        });
                         window.status = url;
                     }
                 }
@@ -1016,7 +1030,9 @@ var PfamGraphic = Class.create({
                 // we aren't inside an area...
                 if (this._inside) {
 
-                    activeCanvas.setStyle({ cursor: "default" });
+                    activeCanvas.setStyle({
+                        cursor: "default"
+                    });
 
                     this._inside = null;
                     window.status = "";
@@ -1252,7 +1268,9 @@ var PfamGraphic = Class.create({
         bridgeMarkups.each(function(bridgeMarkup) {
 
             // the hash that stores the bridge parameters
-            var bridge = { markup: bridgeMarkup };
+            var bridge = {
+                markup: bridgeMarkup
+            };
 
             // we need to keep track of the markup for a bridge, but also its
             // calculated height and direction
@@ -1580,7 +1598,9 @@ var PfamGraphic = Class.create({
 
         // add an <area> for the stick (the head drawing function will add a separate
         // <area> for the head)
-        var ys = [y1, y2].sort(function(a, b) { return a - b; });
+        var ys = [y1, y2].sort(function(a, b) {
+            return a - b;
+        });
         var area = {
             start: start,
             type: "lollipop",
@@ -1916,7 +1936,9 @@ var PfamGraphic = Class.create({
         //----------------------------------
 
         // add <area> tags for each of the legs and the horizontal
-        var ys = [y1, y2].sort(function(a, b) { return a - b; });
+        var ys = [y1, y2].sort(function(a, b) {
+            return a - b;
+        });
         this._areasList.push({
             start: start,
             type: "bridge-start",
@@ -2647,7 +2669,9 @@ var PfamGraphic = Class.create({
             }
 
             // uniquify and (numerically) sort the list of Y-coords
-            list = yShifts.uniq().sort(function(a, b) { return a - b; });
+            list = yShifts.uniq().sort(function(a, b) {
+                return a - b;
+            });
 
             // cache the list for later
             this._cache[cacheKey] = list;

@@ -38,11 +38,12 @@ export class BestHitCardComponent implements OnInit {
   }
 
   get_coverage(element: any){
-    if(element.best_hit_database === 'CARD' ){
-      return element.coverage;
-    }else{
-      return (100*element.algn_len / this.randomARG['entry'].length).toFixed(0);
-    }
+      if (element.best_hit_database === 'ARDB') {
+          let coverage = (100 * element.algn_len / this.randomARG['entry'].length).toFixed(0);
+          return element.coverage <= 100 ? element.coverage : 100;
+      } else {
+          return element.coverage <= 100 ? element.coverage : 100;
+      }
   }
 
   get_bitscore_rate(element: any){
@@ -53,6 +54,21 @@ export class BestHitCardComponent implements OnInit {
       return null;
     }
   }
+
+    get_antibiotic_class(element: any) {
+        if (element.best_hit_database === 'CARD') {
+
+            return element.metadata.filter(e => e.category_aro_class_name === "Drug Class").map(e => e.category_aro_name);
+
+
+        } else if (element.best_hit_database === 'ARDB') {
+            // return (100*element.bitscore/1000).toFixed(0);
+            return element.metadata.resistance_profile.map(e => e.type);
+        } else{
+            return [element.type];
+        }
+
+    }
 
   get_nomenclature(keyword: string, _res: any) {
     this.dataService.predict_nomenclature({ sentence:  keyword } )
@@ -67,42 +83,45 @@ export class BestHitCardComponent implements OnInit {
     this.render = false;
     this.cars = [];
     this.predicted_nomenclature = [];
-    this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0)
+    // this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0)
     // console.log(this.alCoverage)
     if(this.randomARG['besthit']){
-      // traverse the alignments and create the table
-      let _max_bitscore = this.randomARG['besthit']['alignments'].map(e => {
+    // traverse the alignments and create the table
+    let _max_bitscore = this.randomARG['besthit']['alignments'].map(e => {
         return e.bitscore;
-      });
+    });
 
-      _max_bitscore = Math.max(..._max_bitscore);
+    _max_bitscore = Math.max(..._max_bitscore);
 
-      this.randomARG['besthit']['alignments'].forEach(element => {
+    this.randomARG['besthit']['alignments'].forEach(element => {
         this.cars.push({
-          database: element.best_hit_database,
-          gene_name: this.get_subtype(element),
-          best_hit_id: this.get_best_hit_id(element),
-          similarity: element.identity.toFixed(2),
-          coverage: this.get_coverage(element),
-          bitscore_rate: 'rgba(' + (255 * element.bitscore / _max_bitscore).toFixed(0) + ',0,0,'+ element.bitscore / _max_bitscore +')' ,
-          bitscore: element.bitscore.toFixed(1)
+            database: element.best_hit_database,
+            gene_name: this.get_subtype(element),
+            best_hit_id: this.get_best_hit_id(element),
+            similarity: element.identity.toFixed(2),
+            coverage: this.get_coverage(element),
+            bitscore_rate: 'rgba(' + (255 * element.bitscore / _max_bitscore).toFixed(0) + ',0,0,'+ element.bitscore / _max_bitscore +')' ,
+            bitscore: element.bitscore.toFixed(1),
+            antibiotic: this.get_antibiotic_class(element),
         });
-      });
+    });
 
-      const _sentence = this.cars.map(e => {
+    const _sentence = this.cars.map(e => {
         return (e.bitscore > 150) ? e.gene_name : '';
-      }
-      ).join(' ');
+    }
+    ).join(' ');
 
-      // this.get_nomenclature(_sentence, this.predicted_nomenclature);
-      this.dataService.predict_nomenclature({ sentence:  _sentence } )
-      .subscribe(res => {
+        console.log(this.cars)
+
+    // this.get_nomenclature(_sentence, this.predicted_nomenclature);
+    this.dataService.predict_nomenclature({ sentence:  _sentence } )
+    .subscribe(res => {
         this.predicted_nomenclature = res;
-      });
-      this.render = true;
+    });
+    this.render = true;
     }
 
-  }
+}
 
 }
 

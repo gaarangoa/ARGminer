@@ -66,16 +66,22 @@ class Mongo():
         count = self.db[table].count()
 
         item = self.db[table].aggregate(
-            [{"$sample": {"size": 1}}]
+            [
+                {"$sample": {"size": 200}},
+                {"$match": {"entry.database": "UNIPROT"}},
+                {"$match": {"entry.deprecated": False}},
+
+            ]
         )
 
         item = [i for i in item][0]
 
         # item = self.db[table].find({
-        #     "$and":[
-        #         { "inspected": { "$lt": 5 } },
-        #         # { "database": "UNIPROT" }
-        #     ]
+        #     "entry.database": "UNIPROT"
+        #     # "$and": [
+        #     # {"inspected": {"$lt": 0}},
+        #     # {"database": "UNIPROT"}
+        #     # ]
         # })
         # item = [i for i in item]
         # random.shuffle(item)
