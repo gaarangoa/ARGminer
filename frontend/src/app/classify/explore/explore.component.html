@@ -1,0 +1,96 @@
+<div class="box box-solid ">
+    <div class="box-body">
+        <md-input-container class='col-sm-12 col-sm-offset-0'>
+            <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " [(ngModel)]="search_keyword" />
+        </md-input-container>
+    </div>
+</div>
+
+<div class="col-md-12" *ngIf="loading_search">
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
+</div>
+
+<!-- table with the search information -->
+<!-- <div class="col-md-12"> -->
+<div *ngIf="search_on">
+    <a class="close-btn" [style.cursor]="'pointer'" (click)="close_search()"> <i class="fa fa-times-circle fa-lg text-danger"></i>
+    </a>
+    <p-dataTable [value]="search_general_result" [rows]="5" [paginator]="true">
+        <p-column>
+            <ng-template pTemplate="header">
+                <th>Antibiotic Class</th>
+            </ng-template>
+            <ng-template let-gene="rowData" pTemplate="body">
+                <strong> {{gene.type}} </strong>
+            </ng-template>
+        </p-column>
+        <p-column>
+            <ng-template pTemplate="header">
+                <th>Gene Name</th>
+            </ng-template>
+            <ng-template let-gene="rowData" pTemplate="body">
+                <u>
+          <a [style.color]="'blue'" [style.cursor]="'pointer'" (click)="explore_gene(gene)"> {{gene.subtype}} </a>
+
+        </u>
+
+
+            </ng-template>
+        </p-column>
+        <p-column>
+            <ng-template pTemplate="header">
+                <th>Sequences</th>
+            </ng-template>
+            <ng-template let-gene="rowData" pTemplate="body">
+                <!-- <strong> {{gene.count}} </strong> -->
+                <span *ngFor="let _db of gene.db_counts">
+          <a [style.color]="'green'" [style.cursor]="'pointer'"> <u> {{_db['database']}} </u></a>
+          <strong> ({{ _db['counts'] }}) </strong>
+        </span>
+            </ng-template>
+        </p-column>
+        <!-- <p-column>
+        <ng-template pTemplate="header">
+            <th>Databases</th>
+        </ng-template>
+        <ng-template let-gene="rowData" pTemplate="body">
+            <span *ngFor="let _db of gene.db_counts"> {{_db['database']}}
+                        <span class="badge" bg-color="red"> {{ _db['counts'] }} </span>
+            </span>
+        </ng-template>
+    </p-column> -->
+    </p-dataTable>
+
+    <br>
+
+    <p *ngIf="selected_gene.sequences" class="text-center"> {{search_index+1}} of {{ selected_gene.sequences.length }}
+        <a [style.cursor]="'pointer'" (click)="explore_next()"> <i class="fa fa-arrow-alt-circle-right fa-lg"></i> Next
+
+        </a>
+    </p>
+
+</div>
+<!-- </div> -->
+<!-- <div class="col-md-12">
+        <span class='badge'>
+          <strong> UNIPROT </strong>
+        </span>
+
+        <span class='badge bg-green'>
+          <strong> CARD/ARDB </strong>
+        </span>
+
+        <span [style.cursor]="'pointer'" *ngFor="let _gene of selected_gene.sequences">
+        <span class="badge" *ngIf="_gene[1]=='UNIPROT'; else other_db"> {{ _gene[0] }} </span>
+
+        <ng-template #other_db>
+            <span class='badge bg-green'> {{ _gene[0] }} </span>
+        </ng-template>
+        </span>
+
+    </div> -->

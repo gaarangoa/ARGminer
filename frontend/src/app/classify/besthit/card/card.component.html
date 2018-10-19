@@ -1,111 +1,191 @@
 <div *ngIf="render">
 
+    <div class="box box-solid">
+        <div class="box-body">
+
+            <p-dataTable [value]="cars">
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Database</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <strong> {{gene.database.toUpperCase()}} </strong>
+                    </ng-template>
+
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Gene Name</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        {{gene.gene_name}}
+                        <i *ngIf="gene.similarity>=80" class="fa fa-check text-primary"></i> <i span *ngIf="gene.similarity<80" class="text-danger fa fa-exclamation-circle"></i>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Antibiotic Class</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+
+                        <p *ngFor='let ant of gene.antibiotic'>{{ant}}</p>
+
+                    </ng-template>
+                </p-column>
+                <!-- <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Nomenclature</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        {{gene.gene_nomenclature}}
+                    </ng-template>
+                </p-column> -->
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Similarity</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <p-progressBar [value]="gene.similarity"></p-progressBar>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Coverage</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <p-progressBar [value]="gene.coverage"></p-progressBar>
+                    </ng-template>
+                </p-column>
+                <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Bitscore</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        <span [ngStyle]="{'color': gene.bitscore_rate}"> <strong> {{gene.bitscore}} </strong> </span>
+                        <!-- <p-progressBar style="display:inline" [value]="gene.bitscore_rate"></p-progressBar> -->
+                    </ng-template>
+                </p-column>
+                <!-- <p-column>
+                    <ng-template pTemplate="header">
+                        <th>Bitscore</th>
+                    </ng-template>
+                    <ng-template let-gene="rowData" pTemplate="body">
+                        {{ gene.bitscore }}
+                    </ng-template>
+                </p-column> -->
+
+
+            </p-dataTable>
+
+            <br>
+            <!-- <h5>Pay attention to:</h5> -->
+            <p><i class="fa fa-check text-primary"></i> <span> Strong evidence.</span> <br></p>
+            <p><i class="text-danger fa fa-exclamation-circle"></i> <span>Caution! <strong> not </strong> strong evidence,
+          try to find a consensus from all gene names, if all gene names differ its recommended to keep the original
+          gene name.</span></p>
+
+            <!-- nomenclature -->
+            <hr>
+            <!-- <div *ngIf="nomenclature.probability>0.8"> -->
+            <h5 class="">Predicted Gene <strong> Nomenclature </strong></h5>
+            <!-- <p>This is the suggested structure for the nomenclature of the gene name.</p> -->
+            <div class="" *ngFor="let nomenclature of predicted_nomenclature">
+                <span *ngIf="nomenclature.probability>0.3">
+          <h2 class="nomenclature-text"> {{ nomenclature.nomenclature }} </h2>
+          <span>(probability = {{
+            nomenclature.probability.toFixed(2) }})</span>
+                </span>
+
+            </div>
+            <hr>
+            <p>
+                The structure of the gene nomenclature is retrieved by using a machine learning model that predicts the shape of the gene name. For instance, a gene name <strong>BACA</strong> with a nomenclature <strong> xxxX </strong>, should be written
+                as <strong><i> bacA</i></strong>.
+            </p>
+
+            <p-accordion>
+                <p-accordionTab [header]="'Bacterial Gene Nomenclature (more)'">
+                    <h5>Antibiotic Resistance</h5>
+                    <p>
+                        Two and three letter designations are used for ARGs. There is not a real consensus in the nomenclature of ARGs and there are multiple ways in which ARGs are named. For instance, the gene APH(3') corresponds to a
+                        <i> Phosphorylation of 2-deoxystreptamine aminoglycosides on the hydroxyl group at position 3' </i> does not compy with the suggested gene nomenclature making difficult to determine the real ARG name.
+                    </p>
+                    <p>
+                        In ARG miner, we decided to build a machine learning model that predicts the structure of the gene name based on the information provided by the CARD database and the UniProt TreMBL database. Thus, only gene names from entries that have been experimentally
+                        validated were subtracted to train the a text classifier. As result, ARGminer reports to users the likely structure of the gene name. For instance, when ARGminer prints xxxX it means the three first words are in lower case whereas
+                        the latest word is in upper case (bacA, uppP, etc.). Other cases such as the <i>APH(3')-Ia</i> gene has a nomenclature <strong> XXX(N')-Xx </strong>, where x represents lower case, X upper case and N a number.
+                    </p>
+                </p-accordionTab>
+            </p-accordion>
+
+            <!-- </div> -->
+            <!-- <p class="small"> <strong>*Bitscore Rate</strong>: Reffers to the rate between the alignment bitscore and the optimal bitscore curated by CARD for this ARG.</p> -->
+
+
+        </div>
+    </div>
 
     <div *ngFor="let bh of randomARG.besthit.alignments">
 
         <div *ngIf="bh.best_hit_database=='CARD'" class="">
-            <p>
+            <!-- <p>
                 <strong> Scoring </strong>:
                 <span class="label bg-red">Very Weak</span>
                 <span class="label bg-yellow">Weak</span>
                 <span class="label bg-green">Middle</span>
                 <span class="label bg-blue">Strong</span>
                 <span class="label bg-black">Very Strong</span>
-            </p>
+            </p> -->
             <div class="box box-solid ">
                 <div class="box-header with-border">
                     <i class="fa fa-gears"></i>
+                    <h3 class="box-title"> <strong> {{ bh.best_hit_database }} </strong> Database </h3>
 
-                    <h3 class="box-title"><strong> {{ bh.best_hit_database }} </strong> Database </h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <dl class="dl-horizontal">
-                        <dt>Gene Name:</dt>
-                        <dd> {{ bh.metadata.subtype }}</dd>
-                        <dt>Best Hit ID</dt>
-                        <dd> {{ bh.best_hit }}
-                            <dd>
-                                <dt>Similarity:</dt>
-                                <dd>
 
-                                    <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>80 && bh.identity<=90" class="badge bg-blue"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>90" class="badge bg-blue"> {{ bh.identity }}% </span>
+                    <strong>
+            <h5>AMR Gene Family (Antibiotic Class)</h5>
+          </strong>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'AMR Gene Family'">
+                            <p-accordion>
+                                <p-accordionTab [header]="meta.category_aro_name">
+                                    {{ meta.category_aro_description}}
+                                </p-accordionTab>
+                            </p-accordion>
+                        </div>
+                    </div>
 
-                                </dd>
-                                <dt>Coverage:</dt>
-                                <dd>
+                    <strong>
+            <h5>Resistance Mechanism</h5>
+          </strong>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'Resistance Mechanism'">
+                            <p-accordion>
+                                <p-accordionTab [header]="meta.category_aro_name">
+                                    {{ meta.category_aro_description}}
+                                </p-accordionTab>
+                            </p-accordion>
+                        </div>
+                    </div>
 
-                                    <span *ngIf="alCoverage<=30" class="badge bg-red"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>30 && alCoverage<=50" class="badge bg-yellow"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>
-                                    <span *ngIf="alCoverage>50 && alCoverage<=80" class="badge bg-green"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>80 && alCoverage<=90" class="badge bg-blue"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>90" class="badge bg-black"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
+                    <strong>
+            <h5>Drug Class</h5>
+          </strong>
+                    <div *ngFor="let meta of bh.metadata">
+                        <div *ngIf="meta.category_aro_class_name == 'Drug Class'">
+                            <p-accordion>
+                                <p-accordionTab [header]="meta.category_aro_name">
+                                    {{ meta.category_aro_description}}
+                                </p-accordionTab>
+                            </p-accordion>
+                        </div>
+                    </div>
 
-                                </dd>
-                                <dt>Bitscore:</dt>
-                                <dd>
-                                    <span *ngIf="bh.bitscore<=50" class="badge bg-red"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>50 && bh.bitscore<=100" class="badge bg-yellow"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>100 && bh.bitscore<=500" class="badge bg-green"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>500 && bh.bitscore<=800" class="badge bg-blue"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>800" class="badge bg-black"> {{ bh.bitscore }} </span>
-
-                                </dd>
-                                <dt>evalue:</dt>
-                                <dd>
-
-                                    <span *ngIf="bh.evalue>=1e-5" class="badge bg-red"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-5 && bh.evalue>=1e-10" class="badge bg-yellow"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-10 && bh.evalue>=1e-50" class="badge bg-green"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-50 && bh.evalue>=1e-100" class="badge bg-blue"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-100" class="badge bg-black"> {{ bh.evalue }} </span>
-
-                                </dd>
-
-
-                                <hr>
-                                <h4> AMR profile: </h4>
-
-                                <!-- <dd> -->
-                                <p> {{bh.metadata.description}} </p>
-
-                                <div *ngFor="let type of bh.metadata.type">
-
-                                    <div *ngIf="type.relationship">
-                                        <div *ngFor="let rel of type.relationship">
-                                            <i class="fa fa-bug" *ngIf="rel.accession=='confers_resistance_to'"></i>
-                                            <i class="fa fa-cogs" *ngIf="rel.accession=='participates_in'"></i>
-                                            <span> {{ rel.term }}</span>
-                                            <strong *ngIf="rel.accession=='confers_resistance_to'">[Class]</strong>
-                                            <strong *ngIf="rel.accession=='participates_in'">[Mechanism]</strong>
-                                        </div>
-                                    </div>
-                                    <p class="small">{{ type.name }}, {{ type.def }}.</p>
-                                    <div *ngIf="!type.relationship">
-                                        <i class="fa fa-cogs"></i>
-                                        <span> {{ type.name }} </span> <strong>[Mechanism]</strong>
-                                    </div>
-                                    <!-- <p> {{ type.def }} </p> -->
-
-
-                                    <!-- <div *ngIf="type.is_a">
-                                        <div *ngFor="let rel of type.is_a">
-                                            <p> {{ rel.term }} </p>
-                                        </div>
-                                    </div> -->
-
-
-
-                                </div>
-                                <!-- </dd> -->
-
-
-
-                    </dl>
+                    <!-- <button color="primary" class="pull-left" md-mini-fab> <i class="fa fa-chevron-left"></i> </button> -->
+                    <!-- <button color="primary" class="pull-right" md-mini-fab> <i class="fa fa-chevron-right"></i> </button> -->
                 </div>
                 <!-- /.box-body -->
             </div>

@@ -8,9 +8,9 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class NcbiService {
-  
+
   reference: any;
-  
+
   constructor (private http:Http){
 
   }
@@ -26,7 +26,7 @@ export class NcbiService {
           console.log(res)
           return res.json()
         }
-        
+
       })
   }
 

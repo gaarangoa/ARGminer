@@ -22,7 +22,7 @@
 
                 <md-input-container class="col-md-12">
                     <input type="text" mdInput #dmessage maxlength="256" placeholder="Comments" [value]="databaseComments">
-                    <md-hint align="start"><strong>Don't disclose personal info</strong> </md-hint>
+
                     <md-hint align="end">{{dmessage.value.length}} / 256</md-hint>
                 </md-input-container>
 
@@ -36,12 +36,13 @@
         </div>
         <div class="box box-solid">
             <div class="box-header with-border text-center">
-                <h4>Recompute Problematic Annotations</h4>
+                <h4>Obtain Problematic Annotations</h4>
             </div>
             <div class="box-body">
 
                 <p class="small">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>
-                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute Problematic ARGs</button></div>
+                <div class="text-center"> <button (click)="updateConflictingARGs()" class="bg-blue" md-raised-button>Compute
+            Problematic ARGs</button></div>
                 <hr>
             </div>
         </div>
@@ -49,176 +50,113 @@
 
     <div class="col-sm-9">
 
-        <div class="">
+        <div class="box-body">
             <div class="box box-solid ">
                 <div class="box-body">
                     <md-input-container class='col-sm-12 col-sm-offset-0'>
-                        <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search term " value="" />
+                        <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search ARG " value="" />
                     </md-input-container>
                 </div>
             </div>
         </div>
 
-        <div *ngFor="let item of curatedARGs" class="box box-solid">
+        <div *ngFor="let item of curatedARGs" class="">
             <!-- <div class="box-header with-border"> -->
             <!-- <h3 class="box-title">{{item.entry.gene_id}}</h3> -->
             <!-- </div> -->
-            <div class="box-body">
-                <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->
-                <div class="col-md-12">
-                    <div class="box box-solid with-border">
-                        <div class="box-body">
-                            <div class="col-md-4">
-                                <h4 class="text-center"> Current Annotation</h4>
-                                <hr>
-                                <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p>
-                                <p><strong>ARG Name:</strong> {{ item.entry.subtype }} </p>
-                                <p><strong>Gene Class:</strong> {{ item.entry.type }}</p>
-                                <p><strong>ARG Database:</strong> {{ item.entry.database }}</p>
-                            </div>
 
-                            <div class="col-md-8">
-                                <h4 class="text-center"> Weighted Annotation</h4>
-                                <hr>
-                                <div class="col-md-12">
-                                    <div class="col-md-4">
-                                        <!-- <strong>Score:</strong> {{ wScore }} -->
-                                    </div>
-                                    <div class="box-plot">
-                                        <div class="box-plot-component box-left"></div>
-                                        <div class="box-plot-component box-right"></div>
-                                        <div class="box-plot-component box-mean" [style.left]="20*wScore+'%'"></div>
-                                    </div>
-                                </div>
-                                <!-- </p> -->
-                                <!-- <p> <strong>Gene ID:</strong> {{ item.entry.gene_id }}</p> -->
-                                <p><strong>ARG Name:</strong> {{ argGroupChart.bestCategory }} </p>
-                                <p><strong>Gene Class:</strong> {{ argClassChart.bestCategory }} </p>
-                                <p><strong>ARG Mechanism:</strong> {{ argMechanismChart.bestCategory }} </p>
-                                <p><strong>MGEs Evidence Score:</strong> {{ (argClassChart.mge/item.inspected.length).toFixed(2)}} </p>
-                                <p><strong>Pathogenic Evidence Score:</strong> {{ (argClassChart.pathogen/item.inspected.length).toFixed(2)}} </p>
+            <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->
+            <div class="col-md-12">
 
-                                <!-- <p><strong>MGE Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->
-                                <!-- <p><strong>Genome Integron Evidence:</strong> {{ item.entry.subtype }} </p> -->
-                                <hr>
-                                <div class="text-center">
-                                    <button (click)="acceptAnnotation()" class="badge bg-blue" md-raised-button>Update Gene</button>
-                                    <button (click)="getARG(ARGindex)" class="badge bg-red" md-raised-button>Next Gene</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <h4 class="text-center">Crowsourced Annotation</h4>
-                    <div class="box box-solid with-border box-primary">
-                        <div class="box-body">
-                            <div class="col-md-8 box-vis text-center" *ngIf="argClassChart.ready">
-                                <ngx-charts-advanced-pie-chart [scheme]="argClassChart.colorScheme" [results]="argClassChart.data" [gradient]="argClassChart.gradient" (select)="onSelect($event)">
-                                </ngx-charts-advanced-pie-chart>
-                            </div>
-
-                            <div class="col-md-4">
-                                <strong><h4><span class="badge bg-red"> Antbiotic Class </span></h4></strong>
-                                <p>This panel shows the distribution of the crowsourced antibiotic classes for the gene {{ item.entry.gene_id }}</p>
-                            </div>
-
-
-                            <div class="col-md-12 text-center">
-                                <!-- <hr> -->
-                                <table class="table table-responsive table-bordered text-center">
-                                    <tbody>
-                                        <tr class="table-success">
-                                            <th>ARG Class</th>
-                                            <th>Confidence Score</th>
-                                            <th>Expertise Score</th>
-                                            <th>Score (Cs+1.2*Es)</th>
-                                        </tr>
-
-                                        <tr *ngFor="let itemx of argClassChart.data">
-                                            <td>{{itemx.name}}</td>
-                                            <td>{{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
-                                            <td>{{ ((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
-                                            <td> {{ ((itemx.confidence/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts) + 1.2*((itemx.expertice/itemx.value)*(itemx.value/argClassChart.totalCategoryCounts))).toFixed(2) }} </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!-- <hr> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-12">
-                    <div class="box box-solid with-border box-primary">
-                        <div class="box-body">
-                            <div class="col-md-8 box-vis text-center" *ngIf="argGroupChart.ready">
-                                <ngx-charts-advanced-pie-chart [scheme]="argGroupChart.colorScheme" [results]="argGroupChart.data" [gradient]="argGroupChart.gradient" (select)="onSelect($event)">
-                                </ngx-charts-advanced-pie-chart>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <strong><h4><span class="badge bg-blue"> Antbiotic Resistance Gene </span></h4></strong>
-                                <p>This panel shows the distribution of the crowsourced antibiotic gene for what the entry {{ item.entry.gene_id }} has been identified.</p>
-                            </div>
-
-                            <div class="col-md-12 text-center">
-                                <!-- <hr> -->
-                                <table class="table table-responsive table-bordered text-center">
-                                    <tbody>
-                                        <tr class="table-success">
-                                            <th>ARG</th>
-                                            <th>Confidence Score</th>
-                                            <th>Expertise Score</th>
-                                            <th>Score (Cs+1.2*Es)</th>
-                                        </tr>
-                                        <tr *ngFor="let itemx of argGroupChart.data">
-                                            <td>{{itemx.name}}</td>
-                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
-                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
-                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!-- <hr> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="box box-solid box-primary">
+                        <div class="box-header">
+                            <h4 class="text-center"> <strong> Current Annotation </strong></h4>
+                        </div>
                         <div class="box-body">
-                            <div class="col-md-8 box-vis text-center" *ngIf="argMechanismChart.ready">
-                                <ngx-charts-advanced-pie-chart [scheme]="argMechanismChart.colorScheme" [results]="argMechanismChart.data" [gradient]="argMechanismChart.gradient" (select)="onSelect($event)">
-                                </ngx-charts-advanced-pie-chart>
-                            </div>
+                            <ul class="clearfix">
 
-                            <div class="col-md-4">
-                                <strong><h4><span class="badge bg-success"> ARG Mechanism </span></h4></strong>
-                                <p>This panel shows the distribution of the crowsourced ARG mechanism identified for the gene {{ item.entry.gene_id }}.</p>
-                            </div>
+                                <li>
+                                    <span class="users-list-date">Antibiotic Class</span> {{ item.entry.type }}
+                                </li>
+                                <li>
+                                    <span class="users-list-date">ARG Name</span> {{ item.entry.subtype }}
+                                </li>
+                                <li>
+                                    <span class="users-list-date">Database</span> {{ item.entry.database }}
+                                </li>
+                                <li>
+                                    <span class="users-list-date">Gene ID</span> {{ item.entry.gene_id }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="col-md-12 text-center">
+                <div class="col-md-8">
+
+                    <div class="box box-solid box-primary">
+                        <div class="box-header">
+                            <h4 class="text-center"> <strong> Weighted Annotation </strong> </h4>
+                        </div>
+
+                        <div class="box-body">
+                            <ul class="clearfix">
+                                <li>
+                                    <span class="users-list-date">Antibiotic Class</span> {{ scores[0]['scores'][0]['name'] }}
+                                </li>
+                                <li>
+                                    <span class="users-list-date">ARG name</span> {{ scores[1]['scores'][0]['name'] }}
+                                </li>
+                                <li>
+                                    <span class="users-list-date">Antibiotic Resistance Mechanism</span> {{scores[2]['scores'][0]['name']}}
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="box-footer">
+                            <button (click)="acceptAnnotation()" class="pull-left bg-blue" md-raised-button>Approve</button>
+                            <button (click)="getARG(ARGindex)" class="pull-right bg-red" md-raised-button>Next Gene</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-body">
+                <div class="col-md-12">
+                    <!-- <h3 class="text-center">Crowsourced Annotation</h3> -->
+                    <div class="box box-solid with-border box-primary">
+                        <div class="box-body">
+
+                            <div *ngFor="let kind of scores" class="col-md-12">
                                 <!-- <hr> -->
+                                <div>
+                                    <h3>{{ kind.kind }}</h3>
+                                    <p>This table shows the {{kind.kind}} results for the gene {{ item.entry.gene_id }}</p>
+                                </div>
+                                <br>
                                 <table class="table table-responsive table-bordered text-center">
                                     <tbody>
                                         <tr class="table-success">
-                                            <th>ARG Mechanism</th>
-                                            <th>Confidence Score</th>
-                                            <th>Expertise Score</th>
-                                            <th>Score (Cs+1.2*Es)</th>
+                                            <th>ARG {{kind.kind}}</th>
+                                            <th>Counts</th>
+                                            <th>Confidence/Expertise Score</th>
+                                            <th>Majority Votes</th>
+                                            <th>Validation Filter</th>
+                                            <th>Score</th>
+                                            <th>Weighted Score</th>
                                         </tr>
-                                        <tr *ngFor="let itemx of argMechanismChart.data">
-                                            <td>{{itemx.name}}</td>
-                                            <td>{{ (itemx.confidence/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
-                                            <td>{{ (itemx.expertice/argClassChart.totalCategoryCounts).toFixed(2) }}</td>
-                                            <td>{{ ((itemx.confidence/argClassChart.totalCategoryCounts)+1.2*(itemx.expertice/argClassChart.totalCategoryCounts)).toFixed(2) }}</td>
+
+                                        <tr *ngFor="let itemx of kind.scores">
+                                            <td>{{ itemx.name }}</td>
+                                            <td>{{ itemx.counts }}</td>
+                                            <td>{{ itemx.expertise_confidence_score.toFixed(4) }}</td>
+                                            <td>{{ itemx.majority_voting_score.toFixed(2) }}</td>
+                                            <td>{{ itemx.true_validation_filter_score.toFixed(2) }}</td>
+                                            <td>{{ itemx.raw_score.toFixed(2) }}</td>
+                                            <td>{{ itemx.score.toFixed(6) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -227,35 +165,43 @@
                         </div>
                     </div>
                 </div>
+
+
+
 
 
                 <div class="col-sm-12">
-                    <table class="table table-responsive table-bordered text-center">
-                        <tbody>
-                            <tr class="table-success">
-                                <th>Token</th>
-                                <th>Expertise</th>
-                                <th>Confidence</th>
-                                <th>Gene Name</th>
-                                <th>ARG Class</th>
-                                <th>ARG Mechanism</th>
-                            </tr>
-                            <tr *ngFor="let itemx of curatedARGs[0]['inspected']">
-                                <td>{{ itemx.token }}</td>
-                                <td *ngIf="itemx.rating.expertise; else expertiseBlockA">{{ (itemx.rating.expertise.value).toFixed(2) }}</td>
-                                <ng-template #expertiseBlockA>
-                                    <td>0.00</td>
-                                </ng-template>
-                                <td *ngIf="itemx.rating.confidence; else confidenceBlockA">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
-                                <ng-template #confidenceBlockA>
-                                    <td>0.00</td>
-                                </ng-template>
-                                <td>{{ itemx.group }}</td>
-                                <td>{{ itemx.class }}</td>
-                                <td>{{ itemx.mechanism }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="box box-solid">
+                        <table class="table table-responsive table-bordered text-center">
+                            <tbody>
+                                <tr class="table-success">
+                                    <th>Token</th>
+                                    <th>Date</th>
+                                    <th>Expertise</th>
+                                    <th>Confidence</th>
+                                    <th>Gene Name</th>
+                                    <th>ARG Class</th>
+                                    <th>ARG Mechanism</th>
+                                </tr>
+                                <tr *ngFor="let itemx of curatedARGs[0]['inspected']">
+                                    <td>{{ itemx.token }}</td>
+                                    <td>{{ itemx.date }}</td>
+                                    <td *ngIf="itemx.rating.expertise; else expertiseBlockA">{{ (itemx.rating.expertise.value).toFixed(2) }}
+                                    </td>
+                                    <ng-template #expertiseBlockA>
+                                        <td>0.00</td>
+                                    </ng-template>
+                                    <td *ngIf="itemx.rating.confidence; else confidenceBlockA">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
+                                    <ng-template #confidenceBlockA>
+                                        <td>0.00</td>
+                                    </ng-template>
+                                    <td>{{ itemx.group }}</td>
+                                    <td>{{ itemx.class }}</td>
+                                    <td>{{ itemx.mechanism }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
 

@@ -1,14 +1,7 @@
 <div *ngIf="render">
     <div *ngFor="let bh of randomARG.besthit.alignments">
         <div *ngIf="bh.best_hit_database=='ARDB'" class="">
-            <p>
-                <strong> Scoring </strong>:
-                <span class="label bg-red">Very Weak</span>
-                <span class="label bg-yellow">Weak</span>
-                <span class="label bg-green">Middle</span>
-                <span class="label bg-blue">Strong</span>
-                <span class="label bg-black">Very Strong</span>
-            </p>
+
             <div class="box box-solid ">
                 <div class="box-header with-border">
                     <i class="fa fa-gears"></i>
@@ -17,69 +10,21 @@
 
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <dl class="dl-horizontal">
-                        <dt><u>Gene Name:</u></dt>
-                        <dd>{{ bh.metadata.subtype }}</dd>
 
-                        <dt>Best Hit ID</dt>
-                        <dd> {{ bh.best_hit }}
-                            <dd>
-                                <dt>Similarity:</dt>
-                                <dd>
+                    <!-- <dd> -->
+                    <h5>Resistance Mechanism</h5>
+                    <p> {{bh.metadata.description}} </p>
+                    <h5>AMR drug class / Gene family</h5>
+                    <div *ngFor="let type of bh.metadata.resistance_profile">
 
-                                    <span *ngIf="bh.identity<=30" class="badge bg-red"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>30 && bh.identity<=50" class="badge bg-yellow"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>50 && bh.identity<=80" class="badge bg-green"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>80 && bh.identity<=90" class="badge bg-blue"> {{ bh.identity }}% </span>
-                                    <span *ngIf="bh.identity>90" class="badge bg-blue"> {{ bh.identity }}% </span>
+                        <p-accordion>
+                            <p-accordionTab [header]="type.type">
+                                <p *ngIf="type.description"> {{ type.description }} </p>
+                            </p-accordionTab>
+                        </p-accordion>
 
-                                </dd>
-                                <dt>Coverage:</dt>
-                                <dd>
-
-                                    <span *ngIf="alCoverage<=30" class="badge bg-red"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>30 && alCoverage<=50" class="badge bg-yellow"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}%</span>
-                                    <span *ngIf="alCoverage>50 && alCoverage<=80" class="badge bg-green"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>80 && alCoverage<=90" class="badge bg-blue"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-                                    <span *ngIf="alCoverage>90" class="badge bg-black"> {{ (100*bh.algn_len/randomARG.entry['length']).toFixed(0) }}% </span>
-
-
-                                </dd>
-                                <dt>Bitscore:</dt>
-                                <dd>
-                                    <span *ngIf="bh.bitscore<=50" class="badge bg-red"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>50 && bh.bitscore<=100" class="badge bg-yellow"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>100 && bh.bitscore<=500" class="badge bg-green"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>500 && bh.bitscore<=800" class="badge bg-blue"> {{ bh.bitscore }} </span>
-                                    <span *ngIf="bh.bitscore>800" class="badge bg-black"> {{ bh.bitscore }} </span>
-
-                                </dd>
-                                <dt>evalue:</dt>
-                                <dd>
-
-                                    <span *ngIf="bh.evalue>=1e-5" class="badge bg-red"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-5 && bh.evalue>=1e-10" class="badge bg-yellow"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-10 && bh.evalue>=1e-50" class="badge bg-green"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-50 && bh.evalue>=1e-100" class="badge bg-blue"> {{ bh.evalue }} </span>
-                                    <span *ngIf="bh.evalue<1e-100" class="badge bg-black"> {{ bh.evalue }} </span>
-
-                                </dd>
-
-
-                                <hr>
-                                <strong> AMR profile: </strong>
-
-
-                                <!-- <dd> -->
-                                <p> {{bh.metadata.description}} </p>
-                                <div *ngFor="let type of bh.metadata.resistance_profile">
-                                    <strong> <span class="strong">{{ type.type }} </span> </strong>
-                                    <p *ngIf="type.description"> {{ type.description }} </p>
-                                </div>
-                                <!-- <dd> -->
-
-
-                    </dl>
+                    </div>
+                    <!-- <dd> -->
                 </div>
             </div>
         </div>

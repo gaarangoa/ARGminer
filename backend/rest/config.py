@@ -8,10 +8,19 @@ MongoHost = {
     # "hostdb": "mongo://mongo-server-arg-miner",
     "hostdbport": 17863,
     "database": "argpedia",
-    "hostuser": "argpedia",
-    "hostpwd": "AdminArgpedia2018.#"
+    "hostuser": "",
+    "hostpwd": ""
 }
+
 
 def add_path():
     # sys.path.insert(0, '/Users/gustavoarango/Dropbox/Data/ARG/BPatterns/external/')
     sys.path.insert(0, '/src/')
+
+
+# use argpedia
+# db.createUser({
+#     user: 'argpedia',
+#     pwd: 'AdminArgpedia2018.#',
+#     roles: [{role: 'readWrite', db: 'notynews'}]
+# })

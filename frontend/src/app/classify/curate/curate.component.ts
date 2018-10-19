@@ -64,13 +64,13 @@ export class CurateComponent implements OnInit {
   filteredOptions: Observable<string[]>;
   groupFilteredOptions: Observable<string[]>;
   mgeFilteredOptions: Observable<string[]>;
-  
+
   constructor(
     private dataService: DataService,
     public classifyComponent: ClassifyComponent,
     private confirmationService: ConfirmationService,
   ) {
-    
+
   }
 
   ngOnInit() {
@@ -92,9 +92,9 @@ export class CurateComponent implements OnInit {
     // Get ARG data
     this.randomARG = this.dataService.ARG;
     this.liveScore = new ScoreAnnotation();
-    
+
     this.liveScoreAnnotation = {class: 0, group: 0, mechanism: 0};
-    
+
 
     this.antibiotic = {
       class:null,
@@ -107,11 +107,11 @@ export class CurateComponent implements OnInit {
       gene_id: "",
       token: "------------"
     }
-    
+
 
     // Get the list of antibiotic types in the database
     this.dataService.getListAntibioticClass()
-      .subscribe( 
+      .subscribe(
         response =>{
           for (let type of this.dataService.ATYPE){
             this.options_type.push(type['type'])
@@ -127,7 +127,7 @@ export class CurateComponent implements OnInit {
 
     // Get list of antibiotic subtypes
     this.dataService.getListAntibioticClass()
-      .subscribe( 
+      .subscribe(
         response =>{
           for (let type of this.dataService.ATYPE){
             // this.group_options.push(type['subtype'])
@@ -145,16 +145,16 @@ export class CurateComponent implements OnInit {
 
   // Filter once typing the type of antibiotic
   filter(val: string, Marray: any): string[] {
-    return Marray.filter(option => new RegExp(`${val}`, 'gi').test(option)); 
+    return Marray.filter(option => new RegExp(`${val}`, 'gi').test(option));
   }
 
   // setup the options under mobile genetic elements
   mgeOptions(label: any, event: any){
-      this.antibiotic['MGE'][label] = 
+      this.antibiotic['MGE'][label] =
         {
           name:label,
           value:event.checked
-        }   
+        }
   };
 
   // keep track of the ratings bars
@@ -167,7 +167,7 @@ export class CurateComponent implements OnInit {
           };
   };
 
-  
+
 
   showDialog() {
       this.display = true;
@@ -180,25 +180,30 @@ export class CurateComponent implements OnInit {
 
     if(value == 1){
 
-      
+
       this.liveScoreAnnotation = this.liveScore.score(this.classifyComponent.randomARG , this.antibiotic)
       console.log(this.liveScoreAnnotation);
 
       if(this.antibiotic['class']==null || this.antibiotic['group']==null || this.antibiotic['mechanism']==null){
         this.classifyComponent.notification.push({severity:'error', summary:'Score', detail:'Your score is: 0 out of 100'});
 
-      }else if(this.liveScoreAnnotation.class < 70 || this.liveScoreAnnotation.group < 20 || this.liveScoreAnnotation.mechanism < 50){
-          
+      }else if(this.liveScoreAnnotation.class < 50 || this.liveScoreAnnotation.group < 50 || this.liveScoreAnnotation.mechanism < 50){
+
         let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
         this.classifyComponent.notification.push({severity:'error', summary:'Error', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
-      
+
       }else{
         this.classifyComponent.notification = [];
         let points = (this.liveScoreAnnotation.class + this.liveScoreAnnotation.group + this.liveScoreAnnotation.mechanism)/3;
         this.classifyComponent.notification.push({severity:'success', summary:'Success', detail:'Your score is: '+points.toFixed(0)+' out of 100 <hr>Class Score: '+this.liveScoreAnnotation.class.toFixed(1) + '<br>Gene Name Score: ' + this.liveScoreAnnotation.group.toFixed(1) + '<br>Mechanism Score: ' + this.liveScoreAnnotation.mechanism.toFixed(1) });
 
         this.antibiotic['onlineScore'] = this.liveScoreAnnotation
-        
+
+        this.classifyComponent.ARG_display = false;
+        this.classifyComponent.MGE_display = true;
+
+        console.log(this.classifyComponent.ARG_display, this.classifyComponent.MGE_display)
+
         this.activeIndex = 1;
         this.step1=false;
         this.step2=true;
@@ -208,12 +213,16 @@ export class CurateComponent implements OnInit {
     }else if(value ==2){
 
 
+      console.log(this.classifyComponent.ARG_display, this.classifyComponent.MGE_display)
 
       this.step2 = false;
       this.step3 = true;
       this.activeIndex = 2;
-      
+
+
     }else if(value == 3){
+      this.classifyComponent.ARG_display = true;
+      this.classifyComponent.MGE_display = false;
       this.step3 = false;
       this.step1 = true;
       this.activeIndex = 0;
@@ -224,7 +233,8 @@ export class CurateComponent implements OnInit {
 
   submitReview(){
     // console.log(this.antibiotic)
-
+    this.classifyComponent.ARG_display = true;
+      this.classifyComponent.MGE_display = false;
     // show the overlay with the score
     // this.showDialog()
     this.antibiotic['token'] = Date.now();
@@ -238,7 +248,7 @@ export class CurateComponent implements OnInit {
           // alert("token: "+this.antibiotic['token']);
         }
       )
-      
+
   }
 
 continueReview(){
@@ -255,7 +265,7 @@ continueReview(){
   this.classifyComponent.randomARG['entry']['score'] = '----';
 
   this.classifyComponent.loading = true;
-  
+
   this.antibiotic['class'] = null;
   this.antibiotic['group'] = null;
   this.antibiotic['mechanism'] = null;
@@ -266,10 +276,10 @@ continueReview(){
   }else if(this.classifyComponent.trainingARGFlag){
     this.classifyComponent.trainingARGNextGene()
   }else{
-   this.classifyComponent.nextGene(); 
+   this.classifyComponent.nextGene();
   }
-  
-  
+
+
   this.display = false;
 
 }

@@ -3,18 +3,18 @@
         <div class="box-header">
             <h3 class="panel-title"> <i class="fa fa-bug"></i> <strong> Lineage (<a class="panel-title" href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}">NCBI Taxonomy </a>) </strong></h3>
         </div>
-       
+
         <div class="box-body">
             <div class="dl-vertical">
                 <span *ngFor="let item of randomARG.metadata.organism.lineage">
-          {{ item }} <strong>&rsaquo;</strong>	
+          {{ item }} <strong>&rsaquo;</strong>
         </span>
             </div>
             <p *ngIf="randomARG.metadata.organism.names"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>
         </div>
-        
+
     </div>
-    
+
 </div> -->
 
 
@@ -105,7 +105,7 @@
 
             <h3 class="box-title"><strong>Domains</strong></h3>
         </div>
-        
+
         <div class="box-body">
 
             <table class="table table-bordered text-center">
@@ -125,12 +125,12 @@
                             <a *ngIf="item.evidences[0].source" href="{{ item.evidences[0].source.url }}">({{ item.evidences[0].source.id}})</a>
                         </th>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
         </div>
-  
+
     </div>
 
 </div> -->
@@ -152,7 +152,7 @@
         <div class="box-body">
             <dl class="dl-horizontal">
                 <div *ngFor="let item of randomARG.metadata.references">
-                    <strong> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})
+                    <strong *ngIf="item.citation.authors"> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})
 
                     <div *ngFor="let ref of item.citation.dbReferences">
                         <strong>{{ ref.type }}</strong>: {{ ref.id }}

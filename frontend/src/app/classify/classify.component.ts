@@ -14,7 +14,7 @@ import { Inject } from '@angular/core';
 import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 
 // import instructions component for modal window
-import { InstructionsComponent } from './instructions/instructions.component'
+import { InstructionsComponent } from './instructions/instructions.component';
 
 
 @Component({
@@ -41,7 +41,9 @@ export class ClassifyComponent implements OnInit {
   public trainingGenes: Array<string>;
   public trainingARGFlag: Boolean = false;
   public trainingARGCount: number = 0;
-  public trainingARGTotal: number = 2;
+  public trainingARGTotal: number = 0;
+  public MGE_display: boolean;
+  public ARG_display: boolean;
 
   public notification: Message[] = [];
 
@@ -52,7 +54,7 @@ export class ClassifyComponent implements OnInit {
     // public hintService: HintService
 
   ){
-    
+
     this.trainingGenes = [
       "YP_490697.1",
       "AAM15533.1",
@@ -74,11 +76,11 @@ export class ClassifyComponent implements OnInit {
       "P52067",
       "D3V1W5"
     ]
-    
+
     this.dataService.getRandomKnownARG()
       .subscribe(response =>{
         this.randomARG = this.dataService.ARG;
-        this.render=true;
+        this.render = true;
     });
 
 
@@ -86,7 +88,13 @@ export class ClassifyComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.MGE_display = false;
+    this.ARG_display = true;
+    this.randomARG = {
+      entry: {
+        database: false,
+      },
+    };
   }
 
   selectConflictedArgEvent($event){
@@ -101,6 +109,7 @@ export class ClassifyComponent implements OnInit {
 
   trainingARGEvent($event){
     // the conflicting ARGs cannot be enabled.
+      this.trainingARGTotal = 2;
     this.conflictedArgSubtypeFlag = false;
     this.trainingARGCount = 0;
     this.trainingARGFlag = $event.checked;
@@ -121,7 +130,7 @@ export class ClassifyComponent implements OnInit {
     }else{
       this.notification = [];
       this.notification.push({severity:'success', summary:'End of Training', detail:'Training is done!'});
-      this.notification.push({severity:'info', summary:'Get Reward', detail:'Click on <strong>Priority ARGs</strong> to start'});
+      this.notification.push({severity:'info', summary:'Get Reward', detail:'Click on <strong>Random ARG</strong> to start'});
       // this.notification.push({severity:'success', summary:'End of Training', detail:'You are ready to perform tasks with reward'});
       this.trainingARGFlag = false;
       this.nextGeneConflictList()
@@ -136,7 +145,7 @@ export class ClassifyComponent implements OnInit {
     this.randomARG['entry']['inspected'] = '------';
     this.randomARG['entry']['score'] = '------';
     this.loading = true;
-    
+
     if(this.conflictedArgSubtypeFlag){
 
       if (this.conflictedArgSubtypeGeneListCounter >= this.conflictingARGSubtype['conflict'][this.conflictedArgSubtypeClassListCounter]['genes'].length ){
@@ -155,7 +164,7 @@ export class ClassifyComponent implements OnInit {
           this.randomARG = this.dataService.ARG
           this.loading = false;
         });
-        
+
         this.conflictedArgSubtypeGeneListCounter += 1;
       }
     }else{
@@ -171,7 +180,7 @@ export class ClassifyComponent implements OnInit {
     this.randomARG['entry']['inspected'] = '------';
     this.randomARG['entry']['score'] = '------';
     this.loading = true;
-    
+
     if(this.conflictedArgSubtypeFlag){
       this.dataService.getRandomConflictingArgSubtype()
         .subscribe(response => {
@@ -224,85 +233,12 @@ export class ClassifyComponent implements OnInit {
     }
   }
 
-  startTour(){
-    // this.intro.start();
-    // this.hintService.initialize({defaultPosition: 'bottom'});
-
-    introJs.introJs().setOptions({
-      steps: [
-          {
-            element: '#step1',
-            intro: "<div class='text-center'><p class='small'>This panel contains the current annotation of the antibiotic resistance gene. This is the data you will have to validate or modify.</p> <p class='small'>*ARG stands for Antibiotic Resistance Gene.</p></div>",
-            position: 'right'
-          },
-          // {
-          //   element: '#step2',
-          //   intro: "<div class='text-center'><p class='small'>This panel contains the current crowdsourcing score and the number of times the gene has been validated (if available).</p></div>",
-          //   position: 'right'
-          // },
-          {
-            element: '#step3',
-            intro: "<div class='text-center'><p class=''>If this is the first time you visit this page, you need to perform at least two annotations (training). Once you done, you will be able start a real task.</p> </div>",
-            position: 'right'
-          },
-          {
-            element: '#step4',
-            intro: "<div class='text-center'><p class=''> Select ARGs that are priority to curate in the system. Those ARGs contain conflicting annotations, e.g., the have two or more associated classes. </div>",
-            position: 'right'
-          },
-          // {
-          //   element: '#step5',
-          //   intro: "<div class='text-center'><p class='small'>This search tool allow you to query for keywords and retrieve the associated genes.</p></div>",
-          //   position: 'right'
-          // },
-          {
-            element: '#step11',
-            intro: "<div class='text-center'><h4>Microtasks</h4><p class='small'>This panel contains the three main tasks required for the annotation of Antibiotic Resistance Genes. In this panel you will have to add your findings by following simple questions.</p><p>The top panel will prompt the token number once you done the training. You need to insert this token into the Amazon Mturk form.</p></div>", 
-            position: 'left'
-          },
-          {
-            element: '#step12',
-            intro: "<div class='text-center'><h4>Tips for success!</h4><p class='small'>Some tips to get a fast and right annotation.</p></div>", 
-            position: 'right'
-          },
-          // {
-          //   element: '#step6',
-          //   intro: "<div class='text-center'><p class='small'>This panel contains the information from the UniProt database, including taxonomy, domains, functions and gene ontology annotation.</p></div>",
-          //   position: 'right'
-          // },
-          {
-            element: '#step7',
-            intro: "<div class='text-center'><p class='small'>This section shows the query best hit compared to the CARD database. Please take a look at the description and scores.</p> </div>",
-            position: 'right'
-          },
-          // {
-          //   element: '#step8',
-          //   intro: "<div class='text-center'><p class='small'>This panel contains the closest gene from the ARDB database. Pay attention at the different scroes, identity, coverage, evalue and bitscore. The query is definitely close to the gene found in the ARDB database (99% identity, 100% coverage).</p></div>",
-          //   position: 'right'
-          // },
-          // {
-          //   element: '#step9',
-          //   intro: "<div class='text-center'><p class='small'>ARG best hit from the MegaRes database. This database contains hints about the Antibiotic Resistance Mechanism. </p></div>",
-          //   position: 'left'
-          // },
-          {
-            element: '#step10',
-            intro: "<div class='text-center'><p class='small'>This panel comprsises evidence of the queried gene being transferred by a <strong>Mobile Genetic Elements</strong> such as plasmids, phages or viruses and evidence of the gene being hosted by <strong>pathogenic bacteria</strong>.</p> </div>",
-            position: 'right'
-          },
-          
-        ]
-    }).start()
-    .oncomplete(
-        // this.nextGene()
-    );
-  }
 
   openInstructions(): void {
     let dialogRef = this.dialog.open(InstructionsComponent, {
       width: '80%',
       data: { train: 'three', animal: 'faa' }
-    }); 
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed');

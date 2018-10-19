@@ -9,7 +9,7 @@ To get argpedia running in a development environment just do this into your serv
     git clone https://github.com/gaarangoa/ARG-inspect.git
     cd ARG-inspect/docker/
     docker-compose build
-    docker-compose -p ARGpedia up -d 
+    docker-compose -p ARGpedia up -d
 
 Then, you will get a copy of the full project in your system. To enable the system to the web you need to configure the server environment. For apache, just add the next lines to the /etc/apache2/sites-enabled/000-default.conf  file:
 
@@ -20,4 +20,9 @@ To compile the angular project just type:
 
     ng build --base-href /argpedia/
 
-    
+# move database from local to production
+make a copy of the database. Go inside the container and do this!
+
+        mongodump --host localhost --port 27897 --db argpedia --username xxx --password xxx
+        mongorestore --host localhost --port 27897 /data/db/dump/
+

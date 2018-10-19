@@ -1,11 +1,11 @@
 
-import intersectBig from 'intersect/index.js'
+import intersectBig from 'intersect/index.js';
 // import removeStopwords from 'stopword/lib/stopword.js'
 
 export class ScoreAnnotation {
 
     public texts: String = '';
-    
+
 
     constructor(){
 
@@ -13,7 +13,7 @@ export class ScoreAnnotation {
 
     getAllSubstrings(str, size) {
         var i, j, result = [];
-      
+
         for (i = 0; i < str.length-size+1; i++) {
 
             result.push(str.slice(i, i+size));
@@ -36,12 +36,12 @@ export class ScoreAnnotation {
         // let unique2 = this.texts.replace(/\W|\_/g," ").toUpperCase().match(/.{1,4}/g).filter(function(item, i, ar){ return ar.indexOf(item) === i; });
         let unique2 = this.getAllSubstrings(this.texts.replace(/\W/g," ").toUpperCase(), 4).filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 
-        
+
 
         let ggroup = this.getAllSubstrings(JSON.stringify([VAL['group']]).replace(/\W|\_|null/g,"").toUpperCase(), 3).filter(function(item, i, ar){ return ar.indexOf(item) === i; });
         let gclass = this.getAllSubstrings(JSON.stringify([VAL['class']]).replace(/\W|\_|null/g,"").toUpperCase(),4).filter(function(item, i, ar){ return ar.indexOf(item) === i; });
         let gmech = this.getAllSubstrings(JSON.stringify([VAL['mechanism']]).replace(/\W|\_|null/g,"").toUpperCase(), 4).filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-        
+
 
         // console.log(gclass);
 

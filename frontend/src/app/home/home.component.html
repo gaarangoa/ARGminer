@@ -1,16 +1,75 @@
 <div class="container-fluid home-font">
 
-    <div class="box box-solid">
+    <div class="jumbotron">
+        <div class="row">
+
+
+            <div class="col-md-6">
+                <h1 class="display-3">ARGminer</h1>
+                <p class="lead">
+                    <strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene <strong>miner</strong> database
+                </p>
+                <hr class="my-4">
+                <p>A database and crowdsourcing platform for the inspection and validation of antibiotic resistance genes</p>
+                <a routerLink="/classify" class="btn btn-primary btn-large">Help to validate ARGs</a> <a routerLink="/database" class="btn btn-primary btn-large">Download</a>
+            </div>
+
+            <div class="col-md-6 btn-holder">
+                <img src="assets/images/ARGminer_pipeline.svg" alt="pipeline">
+                <!-- <a href='https://www.freepik.com/free-vector/ten-workflow-slide-templates-set_1371515.htm'>Designed by
+              Katemangostar</a> -->
+            </div>
+
+        </div>
+    </div>
+
+
+    <hr class="my-4">
+
+
+    <div class="row">
+        <div *ngFor='let item of info' class="col-md-3 no-gutter">
+            <div class="panel panel-primary no-gutter">
+                <h3 class="panel-heading">{{item.title}}</h3>
+                <div class="panel-body">
+                    <h5 class="panel-title">{{item.subtitle}}</h5>
+                    <h6 class="panel-subtitle text-muted">{{item.subsubtitle}}</h6>
+                </div>
+                <img [src]="item.image" alt="Card image">
+                <!-- <a href='https://www.freepik.com/free-vector/hands-putting-puzzle-pieces-together_795183.htm'>Designed by Freepik</a> -->
+                <div class="panel-body">
+                    <p class="panel-text">
+                        {{item.description}}
+                    </p>
+                </div>
+
+                <div class="panel-body">
+                    <a routerLink="/classify" class="card-link">Inspect ARGs</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- <div class="box box-solid">
         <div class="box-body">
             <div class="logo-text text-center">
-                <!-- <img src="assets/images/logo.svg" alt="" /> -->
-                <span class="home-logo"><strong>ARG-miner:</strong>  A database and crowdsourcing platform for the curation of antibiotic resistance genes</span>
+                <span class="home-logo"><strong>ARG-miner:</strong>
+          A database and crowdsourcing platform for the inspection
+          and validation of
+          antibiotic resistance genes
+        </span>
                 <hr>
             </div>
             <p>
                 Welcome to ARG-miner, a powerful open access web-platform dedicated to the inspection, curation and exploration of <strong>A</strong>ntibiotic <strong>R</strong>esitance <strong>G</strong>enes (ARGs). ARG-miner offers a novel approach
                 to validate the ARGs annotation by inspecting their metadata and relationship with known ARGs resources. It enables the detection of genes that have evidence of being transferred by mobile genetic elements and evidence about the pathogenic
-                hosts. We use a set of different databases including: <a href="https://bench.cs.vt.edu/deeparg/" target="_blank">deepARG-DB</a>, <a href="https://card.mcmaster.ca/home" target="_blank">CARD</a>, <a href="https://ardb.cbcb.umd.edu/" target="_blank">ARDB</a>,
+                hosts. We use a set of different databases including: <a href="https://bench.cs.vt.edu/deeparg/" target="_blank">deepARG-DB</a>,
+                <a href="https://card.mcmaster.ca/home" target="_blank">CARD</a>, <a href="https://ardb.cbcb.umd.edu/" target="_blank">ARDB</a>,
                 <a href="http://www.uniprot.org/" target="_blank">UniProt</a>,
                 <a href="https://megares.meglab.org/" target="_blank">MEGARes</a>,
                 <a href="http://aclame.ulb.ac.be/" target="_blank">ACLAME</a>, <a href="https://www.patricbrc.org/" target="_blank">PATRIC</a> and <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank">PubMed</a>.
@@ -20,121 +79,27 @@
             <a class="btn btn-primary " href="#/database">Download</a>
 
         </div>
-    </div>
-    <hr>
-
-    <!-- <div class="col-md-12">
-        <img src="assets/images/main.svg" alt="">
     </div> -->
 
-    <div class="col-md-3">
-        <div class="box box-solid">
-            <div class="box-body">
-                <h4 class="">Structured Database</h4>
-                <p>
-                    The annotation of ARGs is structured into three different levels: Antibiotic Class, Antibiotic Resistance Gene, and Antibiotic Resitance Mechanism.
-                </p>
-                <!-- <div class="col-md-12 col-md-offset-0">
-                    <img src="assets/images/main.svg" alt="">
-                </div> -->
-            </div>
-        </div>
-    </div>
 
-    <div class="col-md-3">
-        <div class="box box-solid">
-            <div class="box-body">
-                <h4 class="">Mobile Genetic Elements (MGEs)</h4>
-                <p>
-                    ARG-miner provides evidence of the ARGs being transferred by <strong>M</strong>obile <strong>G</strong>enetic <strong>E</strong>lements (MGEs) such as Plasmids, Viruses and Phages.
-                </p>
-                <p>
-                    This information enables the identification of ARGs that are critical for propagation and disemination to different environments. This is crucial for the interpretation of risk assessments studies.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class=" col-md-3">
-        <div class="box box-solid">
-            <div class="box-body">
-                <h4 class="">Pathogen-carried ARGs</h4>
-                <p>
-                    ARG-miner also provides information about ARGs being carried by bacterial genomes and out of those, how many genomes are pathogens. This is useful for identifying chromosomal ARGs that are hosted by pathogen bacteria.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="box box-solid">
-            <div class="box-body">
-                <h4 class="">Metagenomics Analysis</h4>
-                <p>
-                    ARG-miner database is open sourced and free to download it is currently used by our machine learning metagenomics annotation <strong><a href="http://bench.cs.vt.edu/deeparg">DeepARG</a></strong> model.
-                </p>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-md-12 ">
-        <div class="box box-solid">
-            <div class="box-body">
-                <h4 class="">Crowdsourced Annotation</h4>
-                <p>
-                    Its well known that current ARG databases contain annotation with mistakes that are very easily to propagate. By using crowdsourcing, the ARG annotation is made by a broad community instead of individual labs.
-                </p>
-
-                <p>
-                    ARG-miner is an open, cooperative platform. This means, anyone from anywhere can contribute to the curation of ARGs. You don't need to be a skilled expert to contribute!.
-                </p>
-
-                <h5>How to validate a gene that has been reviewed?</h5>
-
-                <p> To validate annotations a scoring function is designed using curations carried out by experts. This function is optimized by computational techniques that maximize the probability of right annotations.
-                </p>
-
-                <hr>
-                <h4>Reference:</h4>
-                <p>
-                    Paper under submission
-                </p>
-                <hr>
-                <h4>Contact us</h4>
-                email: lqzhang@vt.edu <br> webpage: <a href="https://bioinformatics.cs.vt.edu/zhanglab/">https://bioinformatics.cs.vt.edu/zhanglab/</a>
-                <hr>
-                <h4>Open Source</h4>
-                ARG-miner source code can be found at the git repository <code> https://github.com/gaarangoa/ARG-inspect.git </code>
-                <hr>
-                <h4>API</h4>
-                ARG-miner data can be programatically acccessed through its restAPI (documentation under construction).
-            </div>
-        </div>
-
-
-
-
-
-
-    </div>
-
+    <hr>
 </div>
 
-<hr>
+<div class="container-fluid">
+    <footer class="footer" style="background:white">
+        <br><br>
 
-<footer class="footer" style="background:white">
-    <br><br>
+        <div class="col-md-2 col-md-offset-4 funding" style="width:7%">
+            <img src="assets/images/nsf.jpg" alt="">
+        </div>
+        <div class="col-md-2 funding">
+            <img src="assets/images/vt.jpg" alt="">
+        </div>
+        <div class="col-md-2 funding">
+            <img src="assets/images/heard.png" alt="" style="width:60%">
+        </div>
+        <br><br><br><br>
+        <div class="col-md-12"></div>
 
-    <div class="col-md-2 col-md-offset-4 funding" style="width:7%">
-        <img src="assets/images/nsf.jpg" alt="">
-    </div>
-    <div class="col-md-2 funding">
-        <img src="assets/images/vt.jpg" alt="">
-    </div>
-    <div class="col-md-2 funding">
-        <img src="assets/images/heard.png" alt="" style="width:60%">
-    </div>
-    <br><br><br><br>
-    <div class="col-md-12"></div>
-
-</footer>
+    </footer>
+</div>
