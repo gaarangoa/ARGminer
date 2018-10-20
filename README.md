@@ -18,7 +18,7 @@ Then, you will get a copy of the full project in your system. To enable the syst
 
 To compile the angular project just type:
 
-    ng build --base-href /argpedia/
+    ng build --base-href /argminer/ --env=prod
 
 # move database from local to production
 make a copy of the database. Go inside the container and do this!
