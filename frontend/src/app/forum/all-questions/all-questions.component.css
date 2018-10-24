@@ -1,0 +1,9 @@
+.masonry-item {
+    background-color: #FFFFFF;
+}
+
+.masonry-item:hover {
+    background-color: rgba(21, 71, 153, 0.9) !important;
+    color: #FFFFFF;
+    cursor: pointer;
+}

@@ -1,0 +1,22 @@
+<div class="col-md-10" *ngIf='session.get("online") >=1'>
+    <div class="panel no-gutter">
+        <div class="panel-body">
+            <div class="col-md-3"></div>
+            <h3>Title</h3>
+            <md-input-container class="col-md-12 no-gutter">
+                <input mdInput placeholder="What is your ARG question, try to be specific!" #ftitle>
+            </md-input-container>
+
+            <h3>Body</h3>
+            <p-editor [(ngModel)]="text" [style]="{'height':'250px'}"></p-editor>
+
+            <h3>Tags</h3>
+            <md-input-container class="col-md-12 no-gutter">
+                <input mdInput placeholder="Label your question so other users will know about it" #ftags>
+            </md-input-container>
+
+            <a (click)="post_question(ftitle.value, ftags.value)" class="btn btn-primary">Post</a>
+            <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+        </div>
+    </div>
+</div>

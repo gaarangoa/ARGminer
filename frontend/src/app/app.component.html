@@ -11,9 +11,16 @@
         <span class="icon-bar"></span>
       </button>
         </div>
+
         <ul class="nav navbar-nav">
             <li>
                 <a routerLink="home">Home</a>
+            </li>
+        </ul>
+
+        <ul *ngIf='session.get("online") >=1' class="nav navbar-nav">
+            <li>
+                <a routerLink="profile">Profile</a>
             </li>
         </ul>
 
@@ -25,17 +32,26 @@
 
         <ul class="nav navbar-nav">
             <li>
+                <a routerLink="forum">Discussion</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav">
+            <li>
                 <a routerLink="database">Download</a>
             </li>
         </ul>
 
         <ul class="nav navbar-nav">
             <li>
-                <a routerLink="about" target="_blank"> Instructions</a>
+                <a routerLink="about"> Instructions</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a routerLink="admin">Admin</a></li>
+            <li *ngIf='session.get("online") == false || session.get("online") == 0 '><a routerLink="login">Login</a></li>
+            <li *ngIf='session.get("online") == 2'><a routerLink="admin">Admin</a></li>
+            <li *ngIf='session.get("online") >=1'><a (click)="logout()">Logout</a></li>
+
         </ul>
 
         <!-- </div> -->

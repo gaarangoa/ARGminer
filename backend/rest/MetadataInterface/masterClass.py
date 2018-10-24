@@ -21,7 +21,7 @@ class MASTER():
         return gene
 
     def getRandomConfSub(self):
-        gene = self.database.getRandomGene(self.secondaryTable)
+        gene = self.database.getRandomGene_Conflicted(self.secondaryTable)
         return gene
 
     def getInspectedARGs(self, index, limit):

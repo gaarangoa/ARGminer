@@ -50,6 +50,7 @@ import { ExploreComponent } from './explore/explore.component'
 // tour walkthroug
 // import { HintModule } from 'angular-custom-tour';
 import { ExploreModule } from './explore/explore.module';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   imports: [
@@ -98,6 +99,7 @@ import { ExploreModule } from './explore/explore.module';
     GenericComponent,
     ExploreComponent,
     InstructionsComponent,
+    CommentsComponent,
   ],
   providers: [
     ConfirmationService

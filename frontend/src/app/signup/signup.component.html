@@ -1,0 +1,74 @@
+<div class="col-md-3 col-md-offset-4">
+    <div class="box box-solid">
+        <div class="box-header text-center">
+            <br>
+            <h3 class="box-title">Create an Account</h3>
+        </div>
+        <div class="box-body">
+            <form class="example-form">
+                <md-input-container class="col-md-12">
+                    <input mdInput placeholder="Email" [formControl]="emailFormControl" #uemail>
+                    <md-error *ngIf="emailFormControl.hasError('pattern')">
+                        Please enter a valid email address
+                    </md-error>
+                    <md-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                    </md-error>
+                </md-input-container>
+
+                <!-- name -->
+                <md-input-container class="col-md-12">
+                    <input mdInput placeholder="Name" [formControl]="nameFormControl" #uname>
+                    <md-error *ngIf="nameFormControl.hasError('pattern')">
+                        Please enter a valid name
+                    </md-error>
+                    <md-error *ngIf="nameFormControl.hasError('required')">
+                        Name is <strong>required</strong>
+                    </md-error>
+                </md-input-container>
+
+                <!-- institution -->
+                <md-input-container class="col-md-12">
+                    <input mdInput placeholder="Institution" [formControl]="institutionFormControl" #uinstitution>
+                    <md-error *ngIf="institutionFormControl.hasError('pattern')">
+                        Please enter a valid institution
+                    </md-error>
+                    <md-error *ngIf="institutionFormControl.hasError('required')">
+                        Institution is <strong>required</strong>
+                    </md-error>
+                </md-input-container>
+
+                <!-- password -->
+                <br>
+                <md-input-container class="col-md-12">
+                    <input mdInput type="password" placeholder="Password" [formControl]="passwordFormControl" #upass>
+                    <md-error *ngIf="passwordFormControl.hasError('pattern')">
+                        Please enter a valid password
+                    </md-error>
+                    <md-error *ngIf="passwordFormControl.hasError('required')">
+                        Password is <strong>required</strong>
+                    </md-error>
+                    <md-error *ngIf="passwordFormControl.hasError('minlength')">
+                        Password is <strong>minimum length is 8 characters</strong>
+                    </md-error>
+                </md-input-container>
+
+                <md-input-container class="col-md-12">
+                    <input mdInput type="password" placeholder="Confirm password" [formControl]="password2FormControl" #upass2>
+                    <md-error *ngIf="password2FormControl.hasError('pattern')">
+                        Please enter a valid password
+                    </md-error>
+                    <md-error *ngIf="password2FormControl.hasError('required')">
+                        Password is <strong>required</strong>
+                    </md-error>
+                    <md-error *ngIf="password2FormControl.hasError('minlength')">
+                        Password is <strong>minimum length is 8 characters</strong>
+                    </md-error>
+                </md-input-container>
+
+            </form>
+        </div>
+
+        <div class="box-footer text-center"> <button (click)="signup(uemail.value, uname.value, uinstitution.value, upass.value, upass2.value)" class="bg-blue" md-raised-button>Sign Up</button></div>
+    </div>
+</div>

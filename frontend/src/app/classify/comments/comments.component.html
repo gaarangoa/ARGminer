@@ -1,0 +1,39 @@
+<div class="box box-success">
+    <div class="box-header ui-sortable-handle" style="cursor: move;">
+        <i class="fa fa-comments-o"></i>
+
+        <h3 class="box-title">Comments</h3>
+
+    </div>
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 180px;">
+        <div #scrollMe [scrollTop]="scrollMe.scrollHeight" class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: 180px;">
+            <div *ngFor='let message of messages' class="item">
+                <img [src]="message.image" alt="user image" class="online">
+
+                <p class="message">
+                    <strong class=""> {{message.user}} </strong> (<span>{{message.institution}}</span>) <br>
+                    <small class="text-muted"><i class="fa fa-clock-o"></i> {{message.date}}</small> <br>
+                    <small class="text-xs">{{message.message}}</small>
+                </p>
+
+            </div>
+        </div>
+        <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 184.911px;"></div>
+        <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+    </div>
+    <!-- /.chat -->
+    <div class="box-footer">
+        <div class="input-group">
+            <!-- <md-input-container class="col-md-12">
+                <input type="text" mdInput placeholder="User Name" required>
+            </md-input-container>
+            <md-input-container class="col-md-12">
+                <input type="text" mdInput placeholder="Institution" required>
+            </md-input-container> -->
+            <input #message class="form-control" placeholder="Type message ..." (keydown)="send_message($event)" required>
+            <div class="input-group-btn">
+                <button (click)="send_message_click(message)" type="button" class="btn btn-success"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

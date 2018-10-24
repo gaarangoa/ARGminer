@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AdminService } from '../../services/admin.service';
 import { DataService } from '../../services/data.service';
-
+import { Session } from '../../services/session.service'
 import { ComplexPieChart } from './visualize.class'
 
 import {FormControl, Validators} from '@angular/forms';
@@ -29,6 +29,7 @@ export class AdminComponent implements OnInit {
   private ARGindex: any;
     public online: boolean;
     public scores: any;
+    public render: boolean;
   private emailFormControl: any;
   private passwordFormControl: any;
   private databaseVersion: string;
@@ -38,22 +39,13 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private adminService: AdminService,
-    private dataService: DataService,
+      private dataService: DataService,
+      private session: Session,
   ) { }
 
   ngOnInit() {
       this.scores = []
-
-    this.emailFormControl = new FormControl('', [
-      Validators.required,
-      Validators.pattern(EMAIL_REGEX)]
-    );
-
-    this.passwordFormControl = new FormControl('', [
-      Validators.required]
-    );
-
-      this.online = false;
+      this.render = false;
       this.databaseVersion = '';
       this.databaseComments = '';
       this.ARGindex = 0;
@@ -76,14 +68,6 @@ export class AdminComponent implements OnInit {
       })
   }
 
-    login(email: string, password: string) {
-
-    this.adminService.login({email: email, password: password})
-      .subscribe( res => {
-        // console.log(res);
-        this.online = res['token'];
-      });
-  }
 
   upgradeDataBase(version: string, comments:string){
     this.adminService.upgradeDatabase({version:version, comments: comments})
@@ -99,8 +83,6 @@ export class AdminComponent implements OnInit {
     this.adminService.getCuratedARGs(idx)
     .subscribe(res => {
         this.curatedARGs = res;
-
-
         this.curatedARGs[0]['inspected'].forEach(e => {
             let date = new Date(e.token);
             e.date = date.toLocaleDateString('en-GB');
@@ -116,11 +98,12 @@ export class AdminComponent implements OnInit {
                     mechanism: this.scores[2]['scores'][0]['name'],
                     inspected: this.scores[0]['scores'][0]['counts'],
                     score: [
-                        { kind: this.scores[0]['kind'], score: this.scores[0]['scores'][0]['score'] },
-                        { kind: this.scores[1]['kind'], score: this.scores[1]['scores'][0]['score'] },
-                        { kind: this.scores[2]['kind'], score: this.scores[2]['scores'][0]['score'] },
+                        { kind: this.scores[0]['kind'], score: this.scores[0]['scores'][0]['score'], name: this.scores[0]['scores'][0]['name'] },
+                        { kind: this.scores[1]['kind'], score: this.scores[1]['scores'][0]['score'], name: this.scores[1]['scores'][0]['name'] },
+                        { kind: this.scores[2]['kind'], score: this.scores[2]['scores'][0]['score'], name: this.scores[2]['scores'][0]['name'] },
                     ]
                 };
+                this.render = true;
             })
 
         this.ARGindex += 1;

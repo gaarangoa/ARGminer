@@ -76,16 +76,25 @@ class Mongo():
 
         item = [i for i in item][0]
 
-        # item = self.db[table].find({
-        #     "entry.database": "UNIPROT"
-        #     # "$and": [
-        #     # {"inspected": {"$lt": 0}},
-        #     # {"database": "UNIPROT"}
-        #     # ]
-        # })
-        # item = [i for i in item]
-        # random.shuffle(item)
-        # item = item[0]
+        item["_id"] = str(item["_id"])
+        item['status'] = True
+        # print item
+        self.client.close()
+        return item
+
+    def getRandomGene_Conflicted(self, table):
+        count = self.db[table].count()
+
+        item = self.db[table].aggregate(
+            [
+                {"$sample": {"size": 10}},
+                # {"$match": {"entry.database": "UNIPROT"}},
+                # {"$match": {"entry.deprecated": False}},
+
+            ]
+        )
+
+        item = [i for i in item][0]
 
         item["_id"] = str(item["_id"])
         item['status'] = True

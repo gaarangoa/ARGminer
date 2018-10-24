@@ -8,6 +8,13 @@ import { HomeComponent } from './home/home.component';
 import { DatabaseComponent } from './database/database.component';
 import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
+import { ForumComponent } from './forum/forum.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NewQuestionComponent } from './forum/new-question/new-question.component';
+import { AllQuestionsComponent } from './forum/all-questions/all-questions.component';
+import { SelectedQuestionComponent } from './forum/selected-question/selected-question.component';
 
 export const router: Routes = [
 	{
@@ -19,7 +26,19 @@ export const router: Routes = [
 			{ path: 'database', component: DatabaseComponent },
 			{ path: 'about', component: AboutComponent },
 			{ path: 'admin', component: AdminComponent },
-			{ path: 'instructions', component: AboutComponent }
+			{ path: 'instructions', component: AboutComponent },
+			{
+				path: 'forum',
+				component: ForumComponent,
+				children: [
+					{ path: '', component: AllQuestionsComponent },
+					{ path: 'selected_question', component: SelectedQuestionComponent },
+					{ path: 'new_question', component: NewQuestionComponent }
+				]
+			},
+			{ path: 'login', component: LoginComponent },
+			{ path: 'signup', component: SignupComponent },
+			{ path: 'profile', component: ProfileComponent }
 			// { path: 'explore', component: ExploreComponent}
 		]
 	}

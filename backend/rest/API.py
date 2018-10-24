@@ -17,11 +17,15 @@ ft_model = fastText.load_model('/src/nomenclature/model.ftz')
 from rest.DataBaseInterface import DataBaseClass as DB
 db = DB.DataBase()
 
+from rest.AuthenticationClass import Authentication
 
+from rest.ForumClass import Forum
 # Antibiotic resistance init
 ARG = GENE(db)
 ANTIBIOTIC = Antibiotic(db)
 ADMIN = Admin(db)
+auth = Authentication(db)
+forum = Forum(db)
 
 app = Flask(__name__)
 CORS(app)
@@ -200,6 +204,27 @@ def get_plasmid():
     data = request.get_json()
     gene_id = data['gene_id']
     return jsonify(ARG.get_plasmid(gene_id))
+
+
+# USER section
+@app.route('/auth/login/', methods=['GET', 'POST'])
+def user_login():
+    data = request.get_json()
+    return jsonify(auth.login(data))
+
+
+@app.route('/auth/signup/', methods=['GET', 'POST'])
+def user_signup():
+    data = request.get_json()
+    return jsonify(auth.signup(data))
+
+# FORUM section
+
+
+@app.route('/forum/question/create/', methods=['GET', 'POST'])
+def create_post():
+    data = request.get_json()
+    return jsonify(forum.create(data))
 
 
 if __name__ == "__main__":

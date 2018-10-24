@@ -1,0 +1,31 @@
+<div class="col-md-12">
+    <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Post a new Question </strong></a>
+</div>
+<br><br><br>
+
+<ngx-masonry [options]="maso_options">
+    <ngxMasonryItem class="col-md-4" *ngFor="let item of masonryItems">
+        <article (click)="go_to_question(item.id)" class="panel panel-default">
+            <div class="panel-body masonry-item">
+                <h2> <strong> {{item.title}} </strong></h2>
+                <p>by <u class="">{{item.user}}</u> </p>
+
+                <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag}} </strong></span>
+
+                <hr>
+                <p>{{item.body}}</p>
+                <!-- <hr>
+                <p>here the options/comment and so</p> -->
+            </div>
+        </article>
+    </ngxMasonryItem>
+</ngx-masonry>
+
+<div class="col-md-12 text-center">
+    <a routerLink="new_question" class="btn btn-primary"> <strong> Load More </strong></a>
+</div>
+
+<hr>
+<div class="col-md-12">
+    <br><br><br><br>
+</div>

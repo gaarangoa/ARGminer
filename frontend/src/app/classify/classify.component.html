@@ -19,6 +19,7 @@
                     <!-- <p *ngIf="loading"><md-progress-bar mode="indeterminate"></md-progress-bar></p>  -->
                     <h3 class="box-title"><strong>Gene to validate</strong> </h3>
 
+
                 </div>
 
                 <!-- /.box-header -->
@@ -58,25 +59,25 @@
                         <span class="">{{ randomARG.entry.database }}</span>
                         <!-- </p> -->
                         <!-- <p> -->
-                        <br>
+                        <!-- <br>
                         <strong data-intro="step1">Inspected:</strong>
-                        <span class="">{{ randomARG.inspected.length }}</span>
+                        <span class=""></span> -->
                         <br>
                         <strong data-intro="step1">Gene ID:</strong>
-                        <span class="">{{ randomARG.entry.gene_id }}</span>
+                        <span class="">{{ randomARG.entry.gene_id }} ({{ randomARG.inspected.length }})</span>
                         <br>
                         <!-- </p> -->
                         <!-- <dt>Score:</dt> -->
                         <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                     </dl>
 
-                    <p class="small text-left">
-                        *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u>
-                        <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
-                    </p>
+                    <!-- <p class="small text-left"> -->
+                    <!-- *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u> -->
+                    <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
+                    <!-- </p> -->
 
 
-                    <hr>
+                    <!-- <hr> -->
                     <!-- <h4>Tutorial</h4> -->
 
                     <!-- <div class="text-left"> -->
@@ -157,6 +158,9 @@
                 <!-- </div> -->
                 <!-- /.box -->
             </div>
+
+            <app-comments></app-comments>
+
         </div>
 
         <!-- <div class="col-md-12 box box-solid ">
