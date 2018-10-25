@@ -2,3 +2,22 @@
     padding-right: 0;
     padding-left: 0;
 }
+
+.flex-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-input {
+    flex-grow: 2;
+    border: none;
+}
+
+.remove-tag:hover {
+    cursor: pointer;
+    color: #022b6d;
+}
+
+.tag-line {
+    display: inline-block;
+}

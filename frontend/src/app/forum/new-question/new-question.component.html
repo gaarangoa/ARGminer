@@ -2,21 +2,30 @@
     <div class="panel no-gutter">
         <div class="panel-body">
             <div class="col-md-3"></div>
-            <h3>Title</h3>
+            <h4> <strong> Title </strong></h4>
             <md-input-container class="col-md-12 no-gutter">
                 <input mdInput placeholder="What is your ARG question, try to be specific!" #ftitle>
             </md-input-container>
 
-            <h3>Body</h3>
+
+            <h4> <strong> Body </strong></h4>
             <p-editor [(ngModel)]="text" [style]="{'height':'250px'}"></p-editor>
 
-            <h3>Tags</h3>
-            <md-input-container class="col-md-12 no-gutter">
-                <input mdInput placeholder="Label your question so other users will know about it" #ftags>
-            </md-input-container>
+            <br><br>
 
-            <a (click)="post_question(ftitle.value, ftags.value)" class="btn btn-primary">Post</a>
-            <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+            <div class="col-md-12 no-gutter tag-line">
+                <h4> <strong> Tags </strong></h4>
+            </div>
+
+            <div class="col-md-12 no-gutter">
+                <p-chips [(ngModel)]="keywords"></p-chips>
+            </div>
+
+            <div class="col-md-12 no-gutter">
+                <br>
+                <a (click)="post_question(ftitle.value)" class="btn btn-primary">Post</a>
+                <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+            </div>
         </div>
     </div>
 </div>

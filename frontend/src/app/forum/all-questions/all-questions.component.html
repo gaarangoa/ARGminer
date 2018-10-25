@@ -1,31 +1,34 @@
 <div class="col-md-12">
-    <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Post a new Question </strong></a>
+    <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Create a new Post </strong></a>
 </div>
 <br><br><br>
 
-<ngx-masonry [options]="maso_options">
-    <ngxMasonryItem class="col-md-4" *ngFor="let item of masonryItems">
-        <article (click)="go_to_question(item.id)" class="panel panel-default">
-            <div class="panel-body masonry-item">
-                <h2> <strong> {{item.title}} </strong></h2>
-                <p>by <u class="">{{item.user}}</u> </p>
+<div *ngFor="let item of masonryItems " class="col-md-4">
+    <div class="box box-solid">
+        <md-card class="example-card box-fixed-height">
+            <!-- <img md-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg " alt="Photo of a Shiba Inu "> -->
 
-                <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag}} </strong></span>
+            <md-card-content>
+                <a class='masonry-item' (click)="go_to_question(item._id) ">
+                    <h4> <strong> {{item.title}} </strong> </h4>
+                </a>
 
+                <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>
                 <hr>
-                <p>{{item.body}}</p>
-                <!-- <hr>
-                <p>here the options/comment and so</p> -->
-            </div>
-        </article>
-    </ngxMasonryItem>
-</ngx-masonry>
+                <div class="text-body-box text-justify " [innerHTML]="item.body.substring(0, 150)+ '...' "></div>
 
-<div class="col-md-12 text-center">
-    <a routerLink="new_question" class="btn btn-primary"> <strong> Load More </strong></a>
+                <i *ngIf="session.get('user')['email'] === item.email" (click)='remove_post(item._id, item.index)' class="fa fa-trash icon-options" aria-hidden="true"></i>
+
+            </md-card-content>
+        </md-card>
+    </div>
 </div>
 
-<hr>
-<div class="col-md-12">
+
+<div class="col-md-12 text-center ">
+    <a routerLink="new_question " class="btn btn-primary "> <strong> Load More </strong></a>
+</div>
+
+<div class="col-md-12 ">
     <br><br><br><br>
 </div>

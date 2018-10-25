@@ -1,9 +1,26 @@
+.box-fixed-height {
+    height: 300px !important;
+}
+
 .masonry-item {
     background-color: #FFFFFF;
+    color: #000;
+}
+
+.icon-options:hover {
+    color: red !important;
+    cursor: pointer;
 }
 
 .masonry-item:hover {
-    background-color: rgba(21, 71, 153, 0.9) !important;
-    color: #FFFFFF;
+    color: rgba(21, 71, 120, 1) !important;
     cursor: pointer;
+}
+
+.masonry-item:hover .text-muted {
+    color: #FFFFFF;
+}
+
+.text-body-box {
+    word-wrap: break-word;
 }

@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MdInputModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { DatabaseModule } from './database/database.module';
 // import {NgCytoscapeModule} from "ng2-cytoscape/dist";
 
 // Visualization
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import { NgMasonryGridModule } from 'ng-masonry-grid';
 
 // Services
 import { DataService } from '../services/data.service';
@@ -42,9 +44,12 @@ import { ForumComponent } from './forum/forum.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 
+// primeng
 import { GrowlModule } from 'primeng/primeng';
 import { EditorModule } from 'primeng/primeng';
-import { NgxMasonryModule } from 'ngx-masonry';
+// import { NgxMasonryModule } from 'ngx-masonry';
+import { ChipsModule } from 'primeng/primeng';
+import { ListboxModule } from 'primeng/primeng';
 
 import { NewQuestionComponent } from './forum/new-question/new-question.component';
 import { AllQuestionsComponent } from './forum/all-questions/all-questions.component';
@@ -77,12 +82,16 @@ import { SelectedQuestionComponent } from './forum/selected-question/selected-qu
 		BrowserAnimationsModule,
 		NoopAnimationsModule,
 		MaterialModule,
-		NgxChartsModule,
+		// NgxChartsModule,
 		ReactiveFormsModule,
 		MdInputModule,
 		GrowlModule,
 		EditorModule,
-		NgxMasonryModule
+		// NgxMasonryModule,
+		MdCardModule,
+		ChipsModule,
+		ListboxModule
+		// NgMasonryGridModule
 		// QuillModule
 		// NgCytoscapeModule
 	],
