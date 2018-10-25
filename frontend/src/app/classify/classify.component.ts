@@ -7,7 +7,7 @@ import { DataService } from '../../services/data.service';
 import {Message} from 'primeng/components/common/api';
 // import { HintService } from 'angular-custom-tour'
 
-import introJs  from "intro.js/intro.js";
+// import introJs  from "intro.js/intro.js";
 // const IntroJs = require("intro.js/intro.js");
 
 import { Inject } from '@angular/core';

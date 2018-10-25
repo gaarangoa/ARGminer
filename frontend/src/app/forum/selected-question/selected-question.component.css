@@ -1,0 +1,8 @@
+.user-block p {
+    padding: 0%;
+}
+
+.icon-options:hover {
+    color: red !important;
+    cursor: pointer;
+}

@@ -1,20 +1,48 @@
-<div class="panel no-gutter">
-    <div class="panel-body">
-        <div class="col-md-3"></div>
-        <h3>Title</h3>
+<div class="col-md-10">
+    <div class="panel no-gutter">
 
+        <div class="panel-body">
+            <h3> <strong> {{post.title}} </strong></h3>
+            <span class="badge" *ngFor='let tag of post.tags'> <strong> {{tag.name}} </strong></span><br><br>
 
-        <h3>Body</h3>
+            <span class="text-muted small"> {{post.date}}</span>
+            <hr>
+        </div>
 
-
-        <h3>Tags</h3>
-
+        <div class="panel-body">
+            <div class="text-body-box text-justify" [innerHTML]="post.body"></div>
+        </div>
     </div>
+</div>
 
-    <div class="panel-body">
-        <p-editor [(ngModel)]="text" [style]="{'height':'250px'}"></p-editor>
-        <hr>
-        <a class="btn btn-primary">Post your answer/comment</a>
-        <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+<div *ngFor='let comment of post.comments' class="col-md-10">
+    <div class="panel no-gutter">
+        <div class="panel-body">
+            <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: auto;">
+                <div class="item">
+                    <img alt="user image" class="online" src="assets/images/user1.svg">
+                    <p class="message">
+                        <strong class=""> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>
+                        <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>
+                        <i *ngIf="session.get('user')['email'] === comment.email" (click)='remove_comment(comment)' class="fa fa-trash icon-options" aria-hidden="true"></i> <br>
+                        <small class="text-body-box text-justify" [innerHTML]="comment.body"></small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-10">
+    <div class="panel no-gutter">
+
+        <div class="panel-body">
+            <h4> <strong>Your Comment</strong> </h4>
+            <br>
+            <p-editor [(ngModel)]="comment_body" [style]="{'height':'250px'}"></p-editor>
+            <hr>
+            <a (click)='add_comment()' class="btn btn-primary">Post your answer/comment</a>
+            <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+        </div>
     </div>
 </div>

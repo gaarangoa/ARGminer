@@ -221,10 +221,41 @@ def user_signup():
 # FORUM section
 
 
-@app.route('/forum/question/create/', methods=['GET', 'POST'])
+@app.route('/forum/post/create/', methods=['GET', 'POST'])
 def create_post():
     data = request.get_json()
     return jsonify(forum.create(data))
+
+
+@app.route('/forum/post/get/latest/', methods=['GET', 'POST'])
+def get_latest_post():
+    data = request.get_json()
+    _from = data['_from']
+    _to = data['_to']
+    return jsonify(forum.get_latest(_from, _to))
+
+
+@app.route('/forum/post/get/one/<post_id>', methods=['GET'])
+def get_one_post(post_id):
+    return jsonify(forum.get_one(int(post_id)))
+
+
+@app.route('/forum/post/add/comment/', methods=['POST'])
+def add_one_post():
+    data = request.get_json()
+    return jsonify(forum.add_comment(data))
+
+
+@app.route('/forum/post/remove/<post_id>', methods=['GET'])
+def remove_one_post(post_id):
+    return jsonify(forum.remove_post(post_id))
+
+
+@app.route('/forum/post/remove/comment', methods=['GET'])
+def remove_one_post_comment():
+    post_id = request.args.get('post_id')
+    comment_id = request.args.get('comment_id')
+    return jsonify(forum.remove_comment(post_id, comment_id))
 
 
 if __name__ == "__main__":
