@@ -1490,10 +1490,11 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_quill__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectedQuestionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1509,17 +1510,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var Quill = __WEBPACK_IMPORTED_MODULE_4_quill__;
 
-Quill.register('modules/imageResize', __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module___default.a);
+var Quill = __WEBPACK_IMPORTED_MODULE_5_quill__;
+
+Quill.register('modules/imageResize', __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module___default.a);
 var SelectedQuestionComponent = (function () {
-    function SelectedQuestionComponent(activatedRoute, postService, session) {
+    function SelectedQuestionComponent(activatedRoute, postService, session, meta) {
         this.activatedRoute = activatedRoute;
         this.postService = postService;
         this.session = session;
+        this.meta = meta;
     }
     SelectedQuestionComponent.prototype.ngOnInit = function () {
         var _this = this;
+        // tags for sharing
+        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
+        this.meta.addTag({ name: 'twitter:site', content: '@alligatorio' });
+        this.meta.addTag({ name: 'twitter:title', content: 'Front-end Web Development, Chewed Up' });
+        this.meta.addTag({ name: 'twitter:description', content: 'Learn frontend web development...' });
+        this.meta.addTag({ name: 'twitter:image', content: 'https://alligator.io/images/front-end-cover.png' });
+        // variables
         this.post = [];
         this.comment_body = '';
         // Editor
@@ -1595,10 +1605,10 @@ SelectedQuestionComponent = __decorate([
         template: __webpack_require__(410),
         styles: [__webpack_require__(287)],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["Meta"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__["Meta"]) === "function" && _d || Object])
 ], SelectedQuestionComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=selected-question.component.js.map
 
 /***/ }),

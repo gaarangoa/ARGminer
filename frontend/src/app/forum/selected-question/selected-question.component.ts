@@ -3,6 +3,8 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DiscussionService } from '../../../services/discussion.service'
 import { Session } from '../../../services/session.service';
 
+import { Meta } from '@angular/platform-browser';
+
 import * as QuillNamespace from 'quill';
 let Quill: any = QuillNamespace;
 import ImageResize from 'quill-image-resize-module';
@@ -23,10 +25,20 @@ export class SelectedQuestionComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private postService: DiscussionService,
-        private session: Session
+        private session: Session,
+        private meta: Meta
     ) { }
 
     ngOnInit() {
+
+        // tags for sharing
+        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
+        this.meta.addTag({ name: 'twitter:site', content: '@alligatorio' });
+        this.meta.addTag({ name: 'twitter:title', content: 'Front-end Web Development, Chewed Up' });
+        this.meta.addTag({ name: 'twitter:description', content: 'Learn frontend web development...' });
+        this.meta.addTag({ name: 'twitter:image', content: 'https://alligator.io/images/front-end-cover.png' });
+
+        // variables
         this.post = [];
         this.comment_body = '';
 
