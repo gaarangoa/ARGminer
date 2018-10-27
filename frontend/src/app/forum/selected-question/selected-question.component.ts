@@ -30,6 +30,15 @@ export class SelectedQuestionComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
+        // tags for sharing
+        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
+        this.meta.addTag({ name: 'twitter:site', content: '@alligatorio' });
+        this.meta.addTag({ name: 'twitter:title', content: 'Front-end Web Development, Chewed Up' });
+        this.meta.addTag({ name: 'twitter:description', content: 'Learn frontend web development...' });
+        this.meta.addTag({ name: 'twitter:image', content: 'https://alligator.io/images/front-end-cover.png' });
+
+        // variables
         this.post = [];
         this.comment_body = '';
 
@@ -61,13 +70,6 @@ export class SelectedQuestionComponent implements OnInit {
                     i['index'] = ix;
                 });
             });
-
-        // tags for sharing
-        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
-        this.meta.addTag({ name: 'twitter:site', content: '@alligatorio' });
-        this.meta.addTag({ name: 'twitter:title', content: 'Front-end Web Development, Chewed Up' });
-        this.meta.addTag({ name: 'twitter:description', content: 'Learn frontend web development...' });
-        this.meta.addTag({ name: 'twitter:image', content: 'https://alligator.io/images/front-end-cover.png' });
     }
 
     add_comment() {
