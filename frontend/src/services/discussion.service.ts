@@ -60,4 +60,11 @@ export class DiscussionService {
             });
     }
 
+    update_post(data: any) {
+        return this.http.post(this.baseUrl+"/forum/post/update/", data)
+        .map( res=>{
+          return res.json();
+        });
+    }
+
 }

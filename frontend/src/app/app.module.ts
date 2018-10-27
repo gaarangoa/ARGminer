@@ -50,11 +50,18 @@ import { EditorModule } from 'primeng/primeng';
 // import { NgxMasonryModule } from 'ngx-masonry';
 import { ChipsModule } from 'primeng/primeng';
 import { ListboxModule } from 'primeng/primeng';
+import { ButtonModule } from 'primeng/primeng';
+import { ConfirmDialogModule } from 'primeng/primeng';
+import { ConfirmationService } from 'primeng/primeng';
 
 import { NewQuestionComponent } from './forum/new-question/new-question.component';
 import { AllQuestionsComponent } from './forum/all-questions/all-questions.component';
 import { SelectedQuestionComponent } from './forum/selected-question/selected-question.component';
+import { EditQuestionComponent } from './forum/edit-question/edit-question.component';
 // import { QuillModule } from 'ngx-quill';
+
+import { MasonryModule } from 'angular2-masonry';
+import { QuillModule } from 'ngx-quill';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -68,7 +75,8 @@ import { SelectedQuestionComponent } from './forum/selected-question/selected-qu
 		ProfileComponent,
 		NewQuestionComponent,
 		AllQuestionsComponent,
-		SelectedQuestionComponent
+		SelectedQuestionComponent,
+		EditQuestionComponent
 	],
 	imports: [
 		BrowserModule,
@@ -90,12 +98,26 @@ import { SelectedQuestionComponent } from './forum/selected-question/selected-qu
 		// NgxMasonryModule,
 		MdCardModule,
 		ChipsModule,
-		ListboxModule
+		ListboxModule,
+		ButtonModule,
+		ConfirmDialogModule,
+		MasonryModule,
+		QuillModule
+
 		// NgMasonryGridModule
 		// QuillModule
 		// NgCytoscapeModule
 	],
-	providers: [ DataService, NcbiService, AdminService, AuthService, Session, CookieService, DiscussionService ],
+	providers: [
+		DataService,
+		NcbiService,
+		AdminService,
+		AuthService,
+		Session,
+		CookieService,
+		DiscussionService,
+		ConfirmationService
+	],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

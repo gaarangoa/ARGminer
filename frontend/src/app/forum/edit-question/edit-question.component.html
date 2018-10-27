@@ -1,0 +1,32 @@
+<div class="col-md-10" *ngIf='session.get("online") >=1'>
+    <div class="panel no-gutter">
+        <div class="panel-body">
+            <div class="col-md-3"></div>
+            <h4> <strong> Title </strong></h4>
+            <md-input-container class="col-md-12 no-gutter">
+                <input mdInput [(value)]='title' placeholder="What is your ARG question, try to be specific!" #ftitle>
+            </md-input-container>
+
+
+            <h4> <strong> Body </strong></h4>
+            <!-- <p-editor [(ngModel)]="text" ></p-editor> -->
+            <quill-editor [style]="{'height':'450px'}" [modules]="editor_modules" [(ngModel)]="text"></quill-editor>
+
+            <br><br>
+
+            <div class="col-md-12 no-gutter tag-line">
+                <h4> <strong> Tags </strong></h4>
+            </div>
+
+            <div class="col-md-12 no-gutter">
+                <p-chips [(ngModel)]="tags"></p-chips>
+            </div>
+
+            <div class="col-md-12 no-gutter">
+                <br>
+                <a (click)="update_post(ftitle.value)" class="btn btn-primary">Update</a>
+                <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,10 @@ class Forum():
         ''' get posts by category '''
         return [i for i in self.post.latest(_from, _to)]
 
+    def update_post(self, data):
+        ''' update post title, body and tags'''
+        return self.post.update_post(data)
+
     def get_one(self, post_id):
         return self.post.get_by_id(post_id)
 

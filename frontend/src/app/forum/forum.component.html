@@ -1,9 +1,34 @@
-<div class="col-md-2">
+<div class="col-md-3">
+    <br><br><br>
+    <div class="box box-solid">
 
-    <p-listbox [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
+
+
+        <p-listbox (click)='go_to_option()' [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
+        <br>
+        <div class="box-body">
+            <a (click)='go_to_blog_help()'>How to use ARGminer blog?</a>
+        </div>
+    </div>
+    <hr>
+
+    <!-- <ul class="timeline">
+        <li class="timeline-inverted">
+            <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+            <div class="timeline-panel box box-solid">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
+                </div>
+                <div class="timeline-body">
+                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>
+                </div>
+            </div>
+        </li>
+    </ul> -->
 
 </div>
+
 <div class="col-md-9">
     <router-outlet></router-outlet>
 </div>
-<div class="col-md-1"></div>
+<!-- <div class="col-md-1"></div> -->

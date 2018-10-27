@@ -1,8 +1,8 @@
 <div *ngIf='session.get("online") >=1'>
 
-    <p>
-        profile works!
-    </p>
+    <quill-editor [modules]="editor_modules" [(ngModel)]="content"></quill-editor>
 
+    <!-- <div id="editor" style="max-height:500px;overflow:auto"></div>
+    <button (click)="open_editor()">Open</button> -->
 
 </div>

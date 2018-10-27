@@ -3,8 +3,10 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DiscussionService } from '../../../services/discussion.service'
 import { Session } from '../../../services/session.service';
 
-import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
-
+import * as QuillNamespace from 'quill';
+let Quill: any = QuillNamespace;
+import ImageResize from 'quill-image-resize-module';
+Quill.register('modules/imageResize', ImageResize);
 
 @Component({
     selector: 'app-selected-question',
@@ -16,7 +18,7 @@ export class SelectedQuestionComponent implements OnInit {
     private post_id: any;
     private post: any;
     private comment_body: any;
-    private trancision: any;
+    private editor_modules: any;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -25,9 +27,28 @@ export class SelectedQuestionComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.trancision = 'in';
         this.post = [];
         this.comment_body = '';
+
+        // Editor
+        this.editor_modules = {
+            toolbar: {
+              container: [
+                  [{ 'font': [] }],
+                  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                  [{ 'align': [] }],
+                  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                  ['bold', 'italic', 'underline', 'strike'],
+                  [{ 'script': 'sub'}, { 'script': 'super' }],
+                ['blockquote', 'code-block'],
+                [{ 'color': [] }, { 'background': [] }],
+                ['link', 'image', 'video']
+              ]
+            },
+            imageResize: true
+          };
+
+        // post
         this.post_id = this.activatedRoute.snapshot.params.id;
         this.postService.get_post(this.post_id)
             .subscribe(res => {
@@ -40,7 +61,6 @@ export class SelectedQuestionComponent implements OnInit {
     }
 
     add_comment() {
-        this.trancision = 'in';
         let date = new Date();
         let user = this.session.get('user')
         let comment = {
@@ -65,7 +85,6 @@ export class SelectedQuestionComponent implements OnInit {
     }
 
     remove_comment(comment: any) {
-        this.trancision = 'out';
         let comment_id = comment['_id'];
         let post_id = comment['post_id'];
         let index = comment['index'];
