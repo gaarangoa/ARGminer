@@ -1,33 +1,51 @@
-<div class="col-md-12">
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+
+<div class="col-md-8">
     <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Create a new Post </strong></a>
 </div>
 <br><br><br>
 
-<div *ngFor="let item of masonryItems " class="col-md-4">
-    <div class="box box-solid">
-        <md-card class="example-card box-fixed-height">
-            <!-- <img md-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg " alt="Photo of a Shiba Inu "> -->
 
-            <md-card-content>
-                <a class='masonry-item' (click)="go_to_question(item._id) ">
-                    <h4> <strong> {{item.title}} </strong> </h4>
-                </a>
+<masonry [options]="{ transitionDuration: '0.2s' }">
+    <masonry-brick *ngFor="let item of masonryItems " class="brick col-md-8">
 
-                <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>
-                <hr>
-                <div class="text-body-box text-justify " [innerHTML]="item.body.substring(0, 150)+ '...' "></div>
+        <div class="box box-solid">
+            <md-card class="example-card">
 
-                <i *ngIf="session.get('user')['email'] === item.email" (click)='remove_post(item._id, item.index)' class="fa fa-trash icon-options" aria-hidden="true"></i>
+                <h4 class="title-post" (click)="go_to_question(item._id)">
+                    <strong> <u> {{item.title}} </u> </strong>
+                </h4>
 
-            </md-card-content>
-        </md-card>
-    </div>
-</div>
+                <md-card-header>
+                    <div md-card-avatar class="example-header-image"></div>
+                    <md-card-subtitle>
+                        <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>
+                        <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>
 
+                    </md-card-subtitle>
+                </md-card-header>
 
-<div class="col-md-12 text-center ">
+                <md-card-content class="box-fixed-height">
+                    <br>
+                    <div class="text-body-box" [innerHTML]="item.body.substring(0, 500).replace('h2', 'p').replace('h1', 'p').replace('<p><br></p>', '')+ '...' "></div>
+                </md-card-content>
+
+                <md-card-actions>
+                    <button (click)="go_to_question(item._id)" md-button>VIEW</button>
+                    <button (click)="edit_question(item._id)" md-button>EDIT</button>
+                    <button (click)='remove_post(item._id, item.index)' md-button>REMOVE</button>
+                </md-card-actions>
+
+            </md-card>
+        </div>
+    </masonry-brick>
+</masonry>
+
+<div class="col-md-8 text-center ">
     <a routerLink="new_question " class="btn btn-primary "> <strong> Load More </strong></a>
 </div>
+
+
 
 <div class="col-md-12 ">
     <br><br><br><br>

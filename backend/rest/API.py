@@ -227,6 +227,12 @@ def create_post():
     return jsonify(forum.create(data))
 
 
+@app.route('/forum/post/update/', methods=['GET', 'POST'])
+def update_post():
+    data = request.get_json()
+    return jsonify(forum.update_post(data))
+
+
 @app.route('/forum/post/get/latest/', methods=['GET', 'POST'])
 def get_latest_post():
     data = request.get_json()

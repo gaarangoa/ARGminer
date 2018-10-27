@@ -22,7 +22,7 @@ class Post():
         )
 
     def latest(self, _from, _to):
-        items = self.database.db[self.table].find().sort("_id", 1)[_from:_to]
+        items = self.database.db[self.table].find().sort("_id", -1)[_from:_to]
         return items
 
     def create(self, data):
@@ -68,6 +68,22 @@ class Post():
             {"$set": {"comments_count": number_posts}},
             True
         )
+
+    def update_post(self, data):
+        # update title
+        update = self.database.update(
+            self.table,
+            {"_id": int(data['_id'])},
+            {"$set": {
+                "title": data['title'],
+                "body": data['body'],
+                "tags": data['tags']
+            }
+            },
+            True
+        )
+
+        return {"status": True}
 
     def update(self, field, value, _id):
         # update master table with the new data from the manual inspection

@@ -2,16 +2,18 @@
     <div class="panel no-gutter">
 
         <div class="panel-body">
-            <h3> <strong> {{post.title}} </strong></h3>
-            <span class="badge" *ngFor='let tag of post.tags'> <strong> {{tag.name}} </strong></span><br><br>
-
+            <h3> <strong> {{post.title}} </strong> </h3>
+            <span class="badge" *ngFor='let tag of post.tags'>
+        <strong>
+          {{tag.name}}
+        </strong>
+      </span> <br><br>
             <span class="text-muted small"> {{post.date}}</span>
             <hr>
+            <quill-editor [style]="{'height':'auto'}" [(ngModel)]="post.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor>
+            <!-- <div class="text-body-box" [innerHTML]="post.body"></div> -->
         </div>
 
-        <div class="panel-body">
-            <div class="text-body-box text-justify" [innerHTML]="post.body"></div>
-        </div>
     </div>
 </div>
 
@@ -25,7 +27,9 @@
                         <strong class=""> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>
                         <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>
                         <i *ngIf="session.get('user')['email'] === comment.email" (click)='remove_comment(comment)' class="fa fa-trash icon-options" aria-hidden="true"></i> <br>
-                        <small class="text-body-box text-justify" [innerHTML]="comment.body"></small>
+
+                        <quill-editor [style]="{'height':'auto'}" [(ngModel)]="comment.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor>
+
                     </p>
                 </div>
             </div>
@@ -39,7 +43,8 @@
         <div class="panel-body">
             <h4> <strong>Your Comment</strong> </h4>
             <br>
-            <p-editor [(ngModel)]="comment_body" [style]="{'height':'250px'}"></p-editor>
+            <!-- <p-editor [(ngModel)]="comment_body" [style]="{'height':'250px'}"></p-editor> -->
+            <quill-editor [style]="{'height':'auto'}" [modules]="editor_modules" [(ngModel)]="comment_body"></quill-editor>
             <hr>
             <a (click)='add_comment()' class="btn btn-primary">Post your answer/comment</a>
             <a routerLink="/forum" class="btn btn-danger">Cancel</a>

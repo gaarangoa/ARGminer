@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewQuestionComponent } from './forum/new-question/new-question.component';
 import { AllQuestionsComponent } from './forum/all-questions/all-questions.component';
 import { SelectedQuestionComponent } from './forum/selected-question/selected-question.component';
+import { EditQuestionComponent } from './forum/edit-question/edit-question.component';
 
 export const router: Routes = [
 	{
@@ -33,7 +34,8 @@ export const router: Routes = [
 				children: [
 					{ path: '', component: AllQuestionsComponent },
 					{ path: 'selected_question', component: SelectedQuestionComponent },
-					{ path: 'new_question', component: NewQuestionComponent }
+					{ path: 'new_question', component: NewQuestionComponent },
+					{ path: 'edit_question', component: EditQuestionComponent }
 				]
 			},
 			{ path: 'login', component: LoginComponent },
