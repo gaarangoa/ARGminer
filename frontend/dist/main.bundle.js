@@ -1524,11 +1524,11 @@ var SelectedQuestionComponent = (function () {
     SelectedQuestionComponent.prototype.ngOnInit = function () {
         var _this = this;
         // tags for sharing
-        this.meta.addTag({ name: 'twitter:card', content: 'summary_large_image' });
-        this.meta.addTag({ name: 'twitter:site', content: '@alligatorio' });
+        this.meta.addTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.addTag({ name: 'twitter:site', content: '@gaarangoa' });
         this.meta.addTag({ name: 'twitter:title', content: 'Front-end Web Development, Chewed Up' });
         this.meta.addTag({ name: 'twitter:description', content: 'Learn frontend web development...' });
-        this.meta.addTag({ name: 'twitter:image', content: 'https://alligator.io/images/front-end-cover.png' });
+        this.meta.addTag({ name: 'twitter:image', content: 'https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg' });
         // variables
         this.post = [];
         this.comment_body = '';
