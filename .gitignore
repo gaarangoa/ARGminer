@@ -6,6 +6,7 @@ preprocess/
 database/release/*
 updates/
 backend/rest/config.py
+frontend_bak
 
 
 

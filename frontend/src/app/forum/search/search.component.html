@@ -1,0 +1,7 @@
+<div class="box box-solid ">
+    <div class="box-body">
+        <md-input-container class='col-sm-12 col-sm-offset-0'>
+            <input #keyword type="search" (keyup.enter)="search(keyword.value)" mdInput placeholder="Search" [(ngModel)]="search_keyword" />
+        </md-input-container>
+    </div>
+</div>

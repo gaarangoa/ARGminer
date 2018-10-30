@@ -1,4 +1,5 @@
-<div class="col-md-10">
+<div class="col-md-12">
+    <br><br><br>
     <div class="panel no-gutter">
 
         <div class="panel-body">
@@ -13,11 +14,10 @@
             <quill-editor [style]="{'height':'auto'}" [(ngModel)]="post.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor>
             <!-- <div class="text-body-box" [innerHTML]="post.body"></div> -->
         </div>
-
     </div>
 </div>
 
-<div *ngFor='let comment of post.comments' class="col-md-10">
+<div *ngFor='let comment of post.comments' class="col-md-12">
     <div class="panel no-gutter">
         <div class="panel-body">
             <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: auto;">
@@ -28,7 +28,7 @@
                         <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>
                         <i *ngIf="session.get('user')['email'] === comment.email" (click)='remove_comment(comment)' class="fa fa-trash icon-options" aria-hidden="true"></i> <br>
 
-                        <quill-editor [style]="{'height':'auto'}" [(ngModel)]="comment.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor>
+                        <quill-editor [style]="{'height':'auto'}" [(ngModel)]="comment.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false, imageResize: true}"></quill-editor>
 
                     </p>
                 </div>
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<div class="col-md-10">
+<div class="col-md-12">
     <div class="panel no-gutter">
 
         <div class="panel-body">

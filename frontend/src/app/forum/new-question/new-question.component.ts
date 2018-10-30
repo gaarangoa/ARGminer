@@ -8,7 +8,6 @@ let Quill: any = QuillNamespace;
 import ImageResize from 'quill-image-resize-module';
 Quill.register('modules/imageResize', ImageResize);
 
-
 @Component({
 	selector: 'app-new-question',
 	templateUrl: './new-question.component.html',

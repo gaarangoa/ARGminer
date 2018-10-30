@@ -1,13 +1,20 @@
 <div class="col-md-3">
     <br><br><br>
-    <div class="box box-solid">
 
+    <app-search></app-search>
 
-
-        <p-listbox (click)='go_to_option()' [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
-        <br>
+    <div class="box box-solid box-primary">
+        <div class="box-header">
+            <h3 class="box-title">
+                <strong>Filter</strong>
+            </h3>
+        </div>
+        <div class="box-boxy">
+            <p-listbox (click)='go_to_option()' [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
+        </div>
         <div class="box-body">
-            <a (click)='go_to_blog_help()'>How to use ARGminer blog?</a>
+            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>
+            <a class="a-link" (click)="open_instructions()"> How to inspect an ARG?</a>
         </div>
     </div>
     <hr>
@@ -28,7 +35,7 @@
 
 </div>
 
-<div class="col-md-9">
+<div class="col-md-7">
     <router-outlet></router-outlet>
 </div>
 <!-- <div class="col-md-1"></div> -->

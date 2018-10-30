@@ -263,6 +263,13 @@ def remove_one_post_comment():
     comment_id = request.args.get('comment_id')
     return jsonify(forum.remove_comment(post_id, comment_id))
 
+# INFO
+
+
+# @app.route('/database/info/', methods=['GET'])
+# def get_database_info():
+#     return jsonify()
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

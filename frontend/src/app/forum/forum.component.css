@@ -176,3 +176,7 @@
         right: auto;
     }
 }
+
+.a-link {
+    cursor: pointer;
+}

@@ -44,7 +44,7 @@
 
         <ul class="nav navbar-nav">
             <li>
-                <a routerLink="about"> Instructions</a>
+                <a (click)="open_instructions()"> Instructions</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -62,11 +62,8 @@
 
 
 <div class="container-par">
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- <div class="wrapper"> -->
-    <router-outlet></router-outlet>
-    <!-- </div> -->
+    <br><br><br><br>
+    <div class="wrapper">
+        <router-outlet></router-outlet>
+    </div>
 </div>

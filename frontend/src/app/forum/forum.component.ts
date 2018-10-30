@@ -43,4 +43,8 @@ export class ForumComponent implements OnInit {
         this.router.navigate([this.navigation_options[this.selected_option]['url'], {mode: this.navigation_options[this.selected_option]['label']} ]);
 
     }
+
+    open_instructions() {
+        this.router.navigate(["/forum/selected_question", {id:1540586923155}]);
+    }
 }

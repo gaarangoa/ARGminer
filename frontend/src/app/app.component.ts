@@ -18,4 +18,9 @@ export class AppComponent {
         this.session.removeAll()
         this.router.navigate(['home/'])
     }
+
+    open_instructions() {
+        this.router.navigate(["/forum/selected_question", {id:1540586923155}]);
+    }
+
 }

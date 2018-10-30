@@ -62,6 +62,7 @@ import { EditQuestionComponent } from './forum/edit-question/edit-question.compo
 
 import { MasonryModule } from 'angular2-masonry';
 import { QuillModule } from 'ngx-quill';
+import { SearchComponent } from './forum/search/search.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -76,7 +77,8 @@ import { QuillModule } from 'ngx-quill';
 		NewQuestionComponent,
 		AllQuestionsComponent,
 		SelectedQuestionComponent,
-		EditQuestionComponent
+		EditQuestionComponent,
+		SearchComponent
 	],
 	imports: [
 		BrowserModule,
