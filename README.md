@@ -1,10 +1,28 @@
-# ARGPEDIA
+# ARGminer
 
-ARGpedia is a web platform for the manual inspection of antibiotic resistance genes. It is derived from the development of the deepARG-DB v1.1.1 (reference here). It has a crowdsourcing component that allows to curate new ARGs based on the information collected from repositories such as NCBI, UNIPROT, CARD, ARDB, PUBMED among others.
+ARGminer is a web platform for the manual inspection of antibiotic resistance genes. It is derived from the development of the deepARG-DB. ARGminer uses crowdsourcing as a way to curate new ARGs based on the information collected from repositories such as NCBI, UNIPROT, CARD, ARDB, PUBMED among others.
 
-## Installation setup
+# Availability
+ARGminer is hosted at: https://bench.cs.vt.edu/argminer/
 
-To get argpedia running in a development environment just do this into your server:
+# Resources used in ARGminer
+
+## Antibiotic Resistance Databases
+
+## Mobile Genetic Elements
+
+## Pathogens and plasmids
+
+# About
+For details, please visit ARGminer blog for news and usage: https://bench.cs.vt.edu/argminer/#/forum
+
+# Contact
+If you have any question regarding ARGminer, please post a question, comment, issue in our ARGminer blog: https://bench.cs.vt.edu/argminer/#/forum
+
+
+<!-- ## Installation setup -->
+
+<!-- To get argpedia running in a development environment just do this into your server:
 
     git clone https://github.com/gaarangoa/ARG-inspect.git
     cd ARG-inspect/docker/
@@ -24,5 +42,5 @@ To compile the angular project just type:
 make a copy of the database. Go inside the container and do this!
 
         mongodump --host localhost --port 27897 --db argpedia --username xxx --password xxx
-        mongorestore --host localhost --port 27897 /data/db/dump/
+        mongorestore --host localhost --port 27897 /data/db/dump/ -->
 
