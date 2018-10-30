@@ -37,7 +37,7 @@ If you have any question regarding ARGminer, please post a question, comment, is
 # References
 If you use ARGminer in your research, please cite the following article:
 
-    Arango GA, Guron GK, Garner E, Riquelme MV, Heath L, Pruden A, Vikesland P, Zhang L. ARG-miner: A web platform for crowdsourcing-based curation of antibiotic resistance genes. bioRxiv. 2018 Jan 1:274282.
+Arango GA, Guron GK, Garner E, Riquelme MV, Heath L, Pruden A, Vikesland P, Zhang L. ARG-miner: A web platform for crowdsourcing-based curation of antibiotic resistance genes. bioRxiv. 2018 Jan 1:274282.
 
 <!-- ## Installation setup -->
 
