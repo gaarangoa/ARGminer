@@ -16,6 +16,21 @@ ARGminer is hosted at: https://bench.cs.vt.edu/argminer/
 # About
 For details, please visit ARGminer blog for news and usage: https://bench.cs.vt.edu/argminer/#/forum
 
+# Licence
+ARGminer source code is open source and licenced under the BSD 2-Clause Licence. However, resources used in ARGminer such as databases may have commercial restrictions. Please take a look at each one of the following resources for details about usage:
+
+* CARD
+* SARGs
+* UniProt
+* ACLAME
+* PATRIC
+* MEGARES
+* ARG-ANNOT
+* Resfinder
+* ARDB
+* NCBI
+
+
 # Contact
 If you have any question regarding ARGminer, please post a question, comment, issue in our ARGminer blog: https://bench.cs.vt.edu/argminer/#/forum
 
