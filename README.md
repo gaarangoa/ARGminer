@@ -17,7 +17,7 @@ ARGminer is hosted at: https://bench.cs.vt.edu/argminer/
 For details, please visit ARGminer blog for news and usage: https://bench.cs.vt.edu/argminer/#/forum
 
 # Licence
-ARGminer source code is open source and licenced under the BSD 2-Clause Licence. However, resources used in ARGminer such as databases may have commercial restrictions. Please take a look at each one of the following resources for details about usage:
+ARGminer source code is open source and licenced under the BSD 2-Clause Licence. However, resources used in ARGminer such as databases may have commercial restrictions. Please take a look at each one of the following resources for details about comercial usage:
 
 * CARD
 * SARGs
@@ -34,6 +34,10 @@ ARGminer source code is open source and licenced under the BSD 2-Clause Licence.
 # Contact
 If you have any question regarding ARGminer, please post a question, comment, issue in our ARGminer blog: https://bench.cs.vt.edu/argminer/#/forum
 
+# References
+If you use ARGminer in your research, please cite the following article:
+
+    Arango GA, Guron GK, Garner E, Riquelme MV, Heath L, Pruden A, Vikesland P, Zhang L. ARG-miner: A web platform for crowdsourcing-based curation of antibiotic resistance genes. bioRxiv. 2018 Jan 1:274282.
 
 <!-- ## Installation setup -->
 
