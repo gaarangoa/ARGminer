@@ -53,6 +53,7 @@ import { ListboxModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { ConfirmDialogModule } from 'primeng/primeng';
 import { ConfirmationService } from 'primeng/primeng';
+import { PasswordModule } from 'primeng/primeng';
 
 import { NewQuestionComponent } from './forum/new-question/new-question.component';
 import { AllQuestionsComponent } from './forum/all-questions/all-questions.component';
@@ -63,6 +64,8 @@ import { EditQuestionComponent } from './forum/edit-question/edit-question.compo
 import { MasonryModule } from 'angular2-masonry';
 import { QuillModule } from 'ngx-quill';
 import { SearchComponent } from './forum/search/search.component';
+import { StatsComponent } from './profile/stats/stats.component';
+import { UserService } from 'services/user.service';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -78,7 +81,8 @@ import { SearchComponent } from './forum/search/search.component';
 		AllQuestionsComponent,
 		SelectedQuestionComponent,
 		EditQuestionComponent,
-		SearchComponent
+		SearchComponent,
+		StatsComponent
 	],
 	imports: [
 		BrowserModule,
@@ -104,7 +108,8 @@ import { SearchComponent } from './forum/search/search.component';
 		ButtonModule,
 		ConfirmDialogModule,
 		MasonryModule,
-		QuillModule
+		QuillModule,
+		PasswordModule
 
 		// NgMasonryGridModule
 		// QuillModule
@@ -118,7 +123,8 @@ import { SearchComponent } from './forum/search/search.component';
 		Session,
 		CookieService,
 		DiscussionService,
-		ConfirmationService
+		ConfirmationService,
+		UserService
 	],
 	bootstrap: [ AppComponent ]
 })

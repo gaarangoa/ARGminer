@@ -1,8 +1,132 @@
 <div *ngIf='session.get("online") >=1'>
 
-    <quill-editor [modules]="editor_modules" [(ngModel)]="content"></quill-editor>
+    <div class="col-md-3">
+        <div class="box box-solid">
+            <div class="box-body">
+                <img src="assets/images/admin.svg" alt="">
+            </div>
+            <div class="box-body">
+                <h2>{{ session.get('user')['user'] }}</h2>
+                <h4>{{ session.get('user')['email'] }}</h4>
+                <h4>{{ session.get('user')['institution'] }}</h4>
+                <p>Created at: {{ session.get('user')['date'] }}</p>
+                <p>
+                    <strong *ngIf="session.get('online')===2"> Has administration access </strong>
+                </p>
+            </div>
+        </div>
+    </div>
 
-    <!-- <div id="editor" style="max-height:500px;overflow:auto"></div>
-    <button (click)="open_editor()">Open</button> -->
+    <div class="col-md-9">
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <app-profile-stats></app-profile-stats>
+            </div>
+        </div>
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <h3 class="first">My Posts</h3>
+            </div>
+        </div>
+
+
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <h3>Change Password</h3>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="password" pPassword [(ngModel)]="thepass" placeholder='current password' />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="password" pPassword [(ngModel)]="thepass1" placeholder='new password' />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="password" pPassword [(ngModel)]="thepass2" placeholder='re-enter password' />
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <button pButton type="button" label="Change Password" class="ui-button-rounded"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <h3 class="first">Change User Information</h3>
+                <div class="ui-g ui-fluid">
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="text" pInputText placeholder="username">
+                            <button pButton type="button" label="Change"></button>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="text" pInputText placeholder="First and Last Name">
+                            <button pButton type="button" label="Change"></button>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="text" pInputText placeholder="Institution">
+                            <button pButton type="button" label="Change"></button>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3">
+                        <div class="ui-inputgroup">
+                            <input type="text" pInputText placeholder="em@il">
+                            <button pButton type="button" label="Change"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box box-solid">
+            <div class="box-body">
+                <h3 class="first">Change User Description</h3>
+                <textarea [rows]="5" [style.width]="'100%'" pInputTextarea autoResize="autoResize"></textarea>
+                <div class="ui-g-12 ui-md-12">
+                    <div class="ui-inputgroup">
+                        <button pButton type="button" label="Change User Decription" class="ui-button-rounded"></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
 
 </div>
+
+
+
+
+<!--
+<text transform="matrix(1 0 0 1 1642.1184 -287.7149)" class="st3 st4">{{stats.score}}</text>
+<text transform="matrix(1 0 0 1 2044.7878 -287.365)" class="st3 st4">{{stats.posts}}</text>
+<text transform="matrix(1 0 0 1 2453.6311 -288.4898)" class="st3 st4">{{stats.inspections}}</text>
+<text transform="matrix(1 0 0 1 1646.2368 -47.8215)" class="st3 st4">{{stats.views}}</text>
+<text transform="matrix(1 0 0 1 2044.7878 -42.1466)" class="st3 st4">{{stats.comments}}</text>
+<text transform="matrix(1 0 0 1 2453.6311 -39.8213)" class="st3 st4">{{stats.followers}}</text> -->

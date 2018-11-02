@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { DiscussionService } from '../../../services/discussion.service'
 import { Session } from '../../../services/session.service';
+import { UserService } from '../../../services/user.service';
 
 import { Meta } from '@angular/platform-browser';
 
@@ -26,7 +27,8 @@ export class SelectedQuestionComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private postService: DiscussionService,
         private session: Session,
-        private meta: Meta
+        private meta: Meta,
+        private userService: UserService
     ) { }
 
     ngOnInit() {
@@ -93,6 +95,10 @@ export class SelectedQuestionComponent implements OnInit {
                 this.post.comments.map((i, ix) => {
                     i['index'] = ix;
                 });
+
+                // add count to user comments
+                this.userService.count_comments(this.post['user_id'])
+                    .subscribe(e => { });
             });
     }
 

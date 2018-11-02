@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Session } from '../../services/session.service';
 import { SelectItem } from 'primeng/primeng';
 import { Router } from '@angular/router';
@@ -9,6 +10,7 @@ interface SelectOption {
     url: string
 }
 
+
 @Component({
 	selector: 'app-forum',
 	templateUrl: './forum.component.html',
@@ -17,13 +19,16 @@ interface SelectOption {
 export class ForumComponent implements OnInit {
     private navigation_options: SelectOption[];
     private selected_option: any;
+    private twitter: string;
 
     constructor(
         private session: Session,
-        private router: Router
+        private router: Router,
+        private elementRef: ElementRef
     ) {}
 
     ngOnInit() {
+        this.twitter = '';
         this.selected_option = 'All';
         this.navigation_options = [
             { label: 'All', value: 0, url: 'forum' },
@@ -34,6 +39,7 @@ export class ForumComponent implements OnInit {
             // { label: 'ARGs', value: 6 }
         ];
     }
+
 
     go_to_blog_help() {
         this.router.navigate(['forum/selected_question', { id: '1540583761905'}]);

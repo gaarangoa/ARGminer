@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../../../services/session.service';
-import { DiscussionService } from '../../../services/discussion.service'
+import { DiscussionService } from '../../../services/discussion.service';
+import { UserService } from '../../../services/user.service';
+
 import { Router } from '@angular/router'
 
 import * as QuillNamespace from 'quill';
@@ -24,7 +26,8 @@ export class NewQuestionComponent implements OnInit {
     constructor(
         private session: Session,
         private discussionService: DiscussionService,
-        private router: Router
+        private router: Router,
+        private userService: UserService
     ) {}
 
     ngOnInit() {
@@ -71,6 +74,7 @@ export class NewQuestionComponent implements OnInit {
             user: user['user'],
             institution: user['institution'],
             email: user['email'],
+            user_id: user['_id'],
             comments_count: 0,
             comments: [],
             likes: 0,
@@ -80,12 +84,15 @@ export class NewQuestionComponent implements OnInit {
 
         this.discussionService.create_question(data)
             .subscribe(e => {
-                console.log(e);
+                this.userService.count_post(data['_id'], this.session.get('user')['_id'])
+                    .subscribe(e => {
+                        this.router.navigate(['/forum'])
+                    });
         });
 
         this.tag_position = 0;
         this.tags = [];
-        this.router.navigate(['/forum'])
+        // this.router.navigate(['/forum'])
 
     }
 

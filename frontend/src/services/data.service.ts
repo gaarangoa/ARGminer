@@ -84,10 +84,10 @@ export class DataService {
       })
   }
 
-  insertCuration(curation: Object){
+  insertCuration(curation: Object, user_id: string){
     curation['gene_id'] = this.ARG['entry']['gene_id'];
-    console.log(curation)
-    return this.http.post(this.baseUrl+'/post/curation', curation)
+    console.log(curation, user_id)
+      return this.http.post(this.baseUrl + '/post/curation', { annotation: curation, user_id: user_id})
       .map(res => {
         return res.json()
       })

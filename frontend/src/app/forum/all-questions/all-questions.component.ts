@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { DiscussionService } from '../../../services/discussion.service'
 import { Session } from '../../../services/session.service';
+import { UserService } from '../../../services/user.service';
 import { ConfirmationService } from 'primeng/primeng';
 
 
@@ -20,20 +21,30 @@ export class AllQuestionsComponent implements OnInit {
         private router: Router,
         private postService: DiscussionService,
         private session: Session,
-        private confirmationService: ConfirmationService
+        private confirmationService: ConfirmationService,
+        private userService: UserService
   ) { }
 
     ngOnInit() {
         this.masonryItems = [];
         // get top 10 posts
         this.get_top_n_posts()
-
         TimeAgo.locale(en)
     }
 
-    go_to_question(question_id: any) {
+    go_to_question(question: any) {
         // console.log(question_id);
-        this.router.navigate(['forum/selected_question', {id: question_id}])
+        this.userService.count_view(question['user_id'], question['_id'])
+            .subscribe(e => {
+                this.router.navigate(['forum/selected_question', {id: question._id}])
+            })
+    }
+
+    follow_post(question: any) {
+        this.userService.count_following(this.session.get('user')['_id'], question['_id'])
+            .subscribe(e => {
+
+            })
     }
 
     edit_question(question_id: any) {
