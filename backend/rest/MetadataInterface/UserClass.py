@@ -7,8 +7,8 @@ class User():
         self.table = 'user'
 
     def get_by_id(self, user_id):
-        item = self.database.find(self.table, {"_id": user_id})
-        return item
+        _user = self.database.find(self.table, {"_id": user_id})
+        return _user
 
     def create(self, data):
         # here only the required fields are passed
@@ -19,6 +19,13 @@ class User():
             'email': data['email'],
             'user': data['user'],
             'role': 1,
+            'comments': 0,
+            'score': 0,
+            'inspections': [],
+            'posts': [],
+            'views': 0,
+            'followers': [],
+            'following': [],
             'date': data['date'],
             'timestamp': data['timestamp']
         }
@@ -40,6 +47,16 @@ class User():
                     field: value
                 }
             },
+            True
+        )
+
+        return update
+
+    def push(self, user_id, key, value):
+        update = self.database.update(
+            self.table,
+            {"_id": user_id},
+            {"$addToSet": {key: value}},
             True
         )
 

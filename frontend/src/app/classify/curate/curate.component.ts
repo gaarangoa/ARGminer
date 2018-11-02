@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable'
 
 import { DataService } from '../../../services/data.service';
+import { Session } from '../../../services/session.service';
 
 import {MenuItem} from 'primeng/primeng';
 
@@ -68,7 +69,8 @@ export class CurateComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public classifyComponent: ClassifyComponent,
-    private confirmationService: ConfirmationService,
+      private confirmationService: ConfirmationService,
+    private session: Session
   ) {
 
   }
@@ -238,13 +240,15 @@ export class CurateComponent implements OnInit {
     // show the overlay with the score
     // this.showDialog()
     this.antibiotic['token'] = Date.now();
-    this.dataService.insertCuration(this.antibiotic)
+    this.dataService.insertCuration(this.antibiotic, this.session.get('user')['_id'])
       .subscribe(
         response =>{
           // console.log(response)
           // restart the form values to empty.
           this.inspectedGenes.push(this.classifyComponent.randomARG['entry']['gene_id']);
-          this.continueReview();
+            this.continueReview();
+            // update the views and add the entry to the user
+
           // alert("token: "+this.antibiotic['token']);
         }
       )

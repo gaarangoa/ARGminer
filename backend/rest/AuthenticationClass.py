@@ -20,7 +20,8 @@ class Authentication():
                     'role': credentials['role'],
                     'email': credentials['email'],
                     'date': credentials['date'],
-                    'message': 'logged in!'
+                    'message': 'logged in!',
+                    '_id': credentials['_id']
                 }
             else:
                 return {'status': 'failed', 'role': 0, "message": "incorrect password!"}

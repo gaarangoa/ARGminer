@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { DataService } from '../../services/data.service';
 
@@ -50,51 +50,66 @@ export class ClassifyComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    public dialog: MdDialog
-    // public hintService: HintService
+    public dialog: MdDialog,
+    private activatedRoute: ActivatedRoute,
 
-  ){
-
-    this.trainingGenes = [
-      "YP_490697.1",
-      "AAM15533.1",
-      "AAR84672.1",
-      "P52067",
-      "YP_042788",
-      "YP_416138",
-      "AAB53445.1",
-      "F0JWD5",
-      "A0A0D0NPG2",
-      "A0A0E9C576",
-      "AAN80811",
-      "A0A0Q9QYU5",
-      "ABC54722",
-      "YP_001346278",
-      "A0A0U9H4P4",
-      "Q1RPS3",
-      "J2LT98",
-      "P52067",
-      "D3V1W5"
-    ]
-
-    this.dataService.getRandomKnownARG()
-      .subscribe(response =>{
-        this.randomARG = this.dataService.ARG;
-        this.render = true;
-    });
+  ){}
 
 
-  }
+    ngOnInit() {
 
+        this.MGE_display = false;
+        this.ARG_display = true;
+        this.randomARG = {
+        entry: {
+            database: false,
+        },
+        };
 
-  ngOnInit() {
-    this.MGE_display = false;
-    this.ARG_display = true;
-    this.randomARG = {
-      entry: {
-        database: false,
-      },
-    };
+        this.trainingGenes = [
+            "YP_490697.1",
+            "AAM15533.1",
+            "AAR84672.1",
+            "P52067",
+            "YP_042788",
+            "YP_416138",
+            "AAB53445.1",
+            "F0JWD5",
+            "A0A0D0NPG2",
+            "A0A0E9C576",
+            "AAN80811",
+            "A0A0Q9QYU5",
+            "ABC54722",
+            "YP_001346278",
+            "A0A0U9H4P4",
+            "Q1RPS3",
+            "J2LT98",
+            "P52067",
+            "D3V1W5"
+          ]
+
+        let _gene_id = this.activatedRoute.snapshot.params.gene_id;
+
+        if (_gene_id) {
+            console.log(_gene_id)
+            this.dataService.getKnownARGInfo(_gene_id)
+                .subscribe(res2 => {
+                    this.randomARG = this.dataService.ARG
+                    // console.log(this.randomARG)
+                    this.loading = false;
+                    this.render = true;
+                    this.router.navigate(['/classify/', { gene_id: this.randomARG['entry']['gene_id'] }])
+                });
+
+        } else {
+            this.dataService.getRandomKnownARG()
+                .subscribe(response => {
+                    this.randomARG = this.dataService.ARG;
+                    this.render = true;
+                    this.router.navigate(['/classify/', { gene_id: this.randomARG['entry']['gene_id'] }]);
+                });
+        }
+
   }
 
   selectConflictedArgEvent($event){
@@ -162,7 +177,8 @@ export class ClassifyComponent implements OnInit {
         this.dataService.getKnownARGInfo( this.conflictingARGSubtype['conflict'][this.conflictedArgSubtypeClassListCounter]['genes'][this.conflictedArgSubtypeGeneListCounter] )
         .subscribe(res2=>{
           this.randomARG = this.dataService.ARG
-          this.loading = false;
+            this.loading = false;
+            this.router.navigate(['/classify/', {gene_id: this.randomARG['entry']['gene_id']}])
         });
 
         this.conflictedArgSubtypeGeneListCounter += 1;
@@ -190,7 +206,8 @@ export class ClassifyComponent implements OnInit {
           this.dataService.getKnownARGInfo(this.conflictingARGSubtype['conflict'][0]['genes'][0])
             .subscribe(res2=>{
               this.randomARG = this.dataService.ARG
-              this.loading = false;
+                this.loading = false;
+                this.router.navigate(['/classify/', {gene_id: this.randomARG['entry']['gene_id']}])
           });
       });
     }else{
@@ -198,7 +215,8 @@ export class ClassifyComponent implements OnInit {
         .subscribe(response =>{
           this.randomARG = this.dataService.ARG
           // console.log(this.randomARG)
-          this.loading = false;
+            this.loading = false;
+            this.router.navigate(['/classify/', {gene_id: this.randomARG['entry']['gene_id']}])
       });
     }
   }
@@ -219,7 +237,8 @@ export class ClassifyComponent implements OnInit {
           .subscribe(res2=>{
             this.randomARG = this.dataService.ARG
             // console.log(this.randomARG)
-            this.loading = false;
+              this.loading = false;
+              this.router.navigate(['/classify/', {gene_id: this.randomARG['entry']['gene_id']}])
           })
 
     });

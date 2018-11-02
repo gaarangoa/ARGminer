@@ -20,12 +20,18 @@ db = DB.DataBase()
 from rest.AuthenticationClass import Authentication
 
 from rest.ForumClass import Forum
+from rest.UserClass import LoggedUser as User
+
+from rest.EmailClass import Email
+
 # Antibiotic resistance init
 ARG = GENE(db)
 ANTIBIOTIC = Antibiotic(db)
 ADMIN = Admin(db)
 auth = Authentication(db)
 forum = Forum(db)
+user = User(db)
+email = Email()
 
 app = Flask(__name__)
 CORS(app)
@@ -126,9 +132,18 @@ def getargi(gene_id):
 @app.route('/post/curation', methods=['POST'])
 def PostCuration():
     data = request.get_json()
-    # data = {"info":1000}
-    # print(data)
-    arg = ANTIBIOTIC.insertCuration(data)
+
+    try:
+        user_id = data['user_id']
+        user.push(
+            user_id=user_id,
+            post_id=data['annotation']['gene_id'],
+            key='inspections'
+        )
+    except:
+        pass
+    arg = ANTIBIOTIC.insertCuration(data['annotation'])
+
     return jsonify(arg)
 
 # ADMIN SECTION
@@ -254,6 +269,9 @@ def add_one_post():
 
 @app.route('/forum/post/remove/<post_id>', methods=['GET'])
 def remove_one_post(post_id):
+    # print(forum.get_one(int(post_id))[0])
+    user_id = forum.get_one(int(post_id))[0]['user_id']
+    user.remove_post_from_list(post_id=int(post_id), user_id=user_id)
     return jsonify(forum.remove_post(post_id))
 
 
@@ -269,6 +287,54 @@ def remove_one_post_comment():
 # @app.route('/database/info/', methods=['GET'])
 # def get_database_info():
 #     return jsonify()
+
+
+# USER
+@app.route('/user/stats/<user_id>', methods=['GET'])
+def get_user_stats(user_id):
+    return jsonify(user.stats(user_id))
+
+
+@app.route('/user/add/post/', methods=['POST'])
+def user_add_post():
+    data = request.get_json()
+    user_id = data['user_id']
+    post_id = data['post_id']
+    return jsonify(user.push(user_id=user_id, post_id=post_id, key='posts'))
+
+
+@app.route('/user/add/following/', methods=['POST'])
+def user_add_following():
+    data = request.get_json()
+    user_id = data['user_id']
+    post_id = data['following_id']
+    # add followers of the post
+    forum.push(post_id=post_id, user_id=user_id, key='followers')
+    return jsonify(user.push(user_id=user_id, post_id=post_id, key='following'))
+
+
+@app.route('/user/add/followers/', methods=['POST'])
+def user_add_follower():
+    data = request.get_json()
+    user_id = data['user_id']
+    post_id = data['follower_id']
+    return jsonify(user.push(user_id=user_id, post_id=post_id, key='followers'))
+
+
+@app.route('/user/sum/comments/', methods=['POST'])
+def user_sum_comments():
+    data = request.get_json()
+    user_id = data['user_id']
+    return jsonify(user.sum(user_id=user_id, key='comments'))
+
+
+@app.route('/user/sum/views/', methods=['POST'])
+def user_sum_views():
+    data = request.get_json()
+    user_id = data['user_id']
+    post_id = data['post_id']
+    forum.sum_views(post_id, 'views')
+    return jsonify(user.sum(user_id=user_id, key='views'))
 
 
 if __name__ == "__main__":

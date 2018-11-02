@@ -41,6 +41,8 @@ class Post():
             'like': data['likes'],
             'date': data['date'],
             'views': data['views'],
+            'user_id': data['user_id'],
+            'followers': []
         }
 
         try:
@@ -95,6 +97,16 @@ class Post():
                     field: value
                 }
             },
+            True
+        )
+
+        return update
+
+    def push(self, user_id, key, value):
+        update = self.database.update(
+            self.table,
+            {"_id": user_id},
+            {"$addToSet": {key: value}},
             True
         )
 
