@@ -16,9 +16,16 @@
 
             <div class="col-md-12 no-gutter tag-line">
                 <h4> <strong> Tags </strong></h4>
+                <p>Add at least one of the following categories: </p>
+                <span *ngFor="let key of categories" class="badge bg-green"> <strong> {{key}} </strong></span>
+                <br><br>
+                <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit
+            enter</u>.
+                </p>
             </div>
 
             <div class="col-md-12 no-gutter">
+                <br>
                 <p-chips [(ngModel)]="keywords"></p-chips>
             </div>
 

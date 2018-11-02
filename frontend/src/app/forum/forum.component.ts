@@ -36,6 +36,8 @@ export class ForumComponent implements OnInit {
             { label: 'Questions', value: 2, url: 'forum' },
             { label: 'Tutorials', value: 3, url: 'forum' },
             { label: 'Tools', value: 4, url: 'forum' },
+            { label: 'Issues', value: 5, url: 'forum' },
+            { label: 'Nomenclature', value: 6, url: 'forum' },
             // { label: 'ARGs', value: 6 }
         ];
     }
