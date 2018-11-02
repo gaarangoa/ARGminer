@@ -1497,6 +1497,8 @@ var ForumComponent = (function () {
             { label: 'Questions', value: 2, url: 'forum' },
             { label: 'Tutorials', value: 3, url: 'forum' },
             { label: 'Tools', value: 4, url: 'forum' },
+            { label: 'Issues', value: 5, url: 'forum' },
+            { label: 'Nomenclature', value: 6, url: 'forum' },
         ];
     };
     ForumComponent.prototype.go_to_blog_help = function () {
@@ -1563,6 +1565,7 @@ var NewQuestionComponent = (function () {
         this.userService = userService;
     }
     NewQuestionComponent.prototype.ngOnInit = function () {
+        this.categories = ['Posts', 'Tutorials', 'Issues', 'Questions', 'Nomenclature', 'Tools'];
         this.keywords = [];
         this.text = '';
         this.tags = [];
@@ -4914,7 +4917,7 @@ module.exports = "<div class=\"col-md-3\">\n    <br><br><br>\n\n    <app-search>
 /* 417 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" [style]=\"{'height':'500px', 'max-height':'auto'}\"></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Post</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" [style]=\"{'height':'500px', 'max-height':'auto'}\"></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n                <p>Add at least one of the following categories: </p>\n                <span *ngFor=\"let key of categories\" class=\"badge bg-green\"> <strong> {{key}} </strong></span>\n                <br><br>\n                <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit\n            enter</u>.\n                </p>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Post</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 418 */

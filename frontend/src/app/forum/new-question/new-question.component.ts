@@ -22,6 +22,7 @@ export class NewQuestionComponent implements OnInit {
     private keywords: any;
     private tag_position: any;
     private editor_modules: any;
+    private categories: any;
 
     constructor(
         private session: Session,
@@ -31,6 +32,7 @@ export class NewQuestionComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.categories = ['Posts', 'Tutorials', 'Issues', 'Questions','Nomenclature', 'Tools']
         this.keywords = [];
         this.text = '';
         this.tags = [];
