@@ -1,3 +1,4 @@
+credentials*
 email_service/credentials.py
 backend/preprocess/
 *.pyc
