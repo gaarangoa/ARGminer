@@ -35,13 +35,14 @@ class Forum():
     def add_comment(self, comment):
         try:
             self.email.send({
-                "receiver": 'gustavo1@vt.edu',
+                "receiver": comment['owner_email'],
                 "subject": "ARGminer | Post: "+str(comment['post_id']),
                 "body": "<strong>"+comment['user']+"</strong> has commented on your post: " +
                 " <a href='https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=" + str(comment['post_id']) + "'> " + comment['post_id'] + '</a>' +
                 "<br><u>" + comment['body'] + "</u>" +
                 "<br>Sincerely,<br><strong>ARGminer Team</strong>"
             })
+            del comment['owner_email']
             return {'status': True, 'comment': self.post.add_comment(comment, int(comment['post_id']))}
         except:
             return {'status': False}

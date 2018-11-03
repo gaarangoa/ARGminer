@@ -44,7 +44,7 @@ export class ForumComponent implements OnInit {
 
 
     go_to_blog_help() {
-        this.router.navigate(['forum/selected_question', { id: '1540583761905'}]);
+        this.router.navigate(['forum/selected_question', { id: '1541191967102'}]);
     }
 
     go_to_option() {
@@ -53,6 +53,6 @@ export class ForumComponent implements OnInit {
     }
 
     open_instructions() {
-        this.router.navigate(["/forum/selected_question", {id:1540586923155}]);
+        this.router.navigate(["/forum/selected_question", {id:1541191047351}]);
     }
 }

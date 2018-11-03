@@ -1502,13 +1502,13 @@ var ForumComponent = (function () {
         ];
     };
     ForumComponent.prototype.go_to_blog_help = function () {
-        this.router.navigate(['forum/selected_question', { id: '1540583761905' }]);
+        this.router.navigate(['forum/selected_question', { id: '1541191967102' }]);
     };
     ForumComponent.prototype.go_to_option = function () {
         this.router.navigate([this.navigation_options[this.selected_option]['url'], { mode: this.navigation_options[this.selected_option]['label'] }]);
     };
     ForumComponent.prototype.open_instructions = function () {
-        this.router.navigate(["/forum/selected_question", { id: 1540586923155 }]);
+        this.router.navigate(["/forum/selected_question", { id: 1541191047351 }]);
     };
     return ForumComponent;
 }());
@@ -1732,7 +1732,8 @@ var SelectedQuestionComponent = (function () {
             date: date.toLocaleString(),
             timestamp: date.getTime(),
             _id: date.getTime(),
-            post_id: this.post_id
+            post_id: this.post_id,
+            owner_email: this.post['email']
         };
         this.postService.add_comment(comment)
             .subscribe(function (e) {
@@ -2441,7 +2442,7 @@ var AppComponent = (function () {
         this.router.navigate(['home/']);
     };
     AppComponent.prototype.open_instructions = function () {
-        this.router.navigate(["/forum/selected_question", { id: 1540586923155 }]);
+        this.router.navigate(["/forum/selected_question", { id: 1541191047351 }]);
     };
     return AppComponent;
 }());
@@ -4809,7 +4810,7 @@ module.exports = "<div *ngIf='render && session.get(\"online\") == 2'>\n    <div
 /* 399 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"home\" class=\"navbar-brand\">ARGminer</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"home\">Home</a>\n            </li>\n        </ul>\n\n        <ul *ngIf='session.get(\"online\") >=1' class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"profile\">Profile</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"classify\">Inspect ARGs</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"forum\">Blog</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"database\">Download</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a (click)=\"open_instructions()\"> Instructions</a>\n            </li>\n        </ul>\n        <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf='session.get(\"online\") == false || session.get(\"online\") == 0 '><a routerLink=\"login\">Login</a></li>\n            <li *ngIf='session.get(\"online\") == 2'><a routerLink=\"admin\">Admin</a></li>\n            <li *ngIf='session.get(\"online\") >=1'><a (click)=\"logout()\">Logout</a></li>\n\n        </ul>\n\n        <!-- </div> -->\n        <!-- </div> -->\n    </div>\n</div>\n\n\n\n<div class=\"container-par\">\n    <br><br><br><br>\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n    </div>\n</div>"
+module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"home\" class=\"navbar-brand\">ARGminer</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n\n\n        <ul *ngIf='session.get(\"online\") >=1' class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"profile\"> {{session.get('user')['user']}} </a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"home\">Home</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"classify\">Inspect ARGs</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"forum\">Blog</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a routerLink=\"database\">Download</a>\n            </li>\n        </ul>\n\n        <ul class=\"nav navbar-nav\">\n            <li>\n                <a (click)=\"open_instructions()\"> Instructions</a>\n            </li>\n        </ul>\n        <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf='session.get(\"online\") == false || session.get(\"online\") == 0 '><a routerLink=\"login\">Login</a></li>\n            <li *ngIf='session.get(\"online\") == 2'><a routerLink=\"admin\">Admin</a></li>\n            <li *ngIf='session.get(\"online\") >=1'><a (click)=\"logout()\">Logout</a></li>\n\n        </ul>\n\n        <!-- </div> -->\n        <!-- </div> -->\n    </div>\n</div>\n\n\n\n<div class=\"container-par\">\n    <br><br><br><br>\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n    </div>\n</div>"
 
 /***/ }),
 /* 400 */
@@ -4911,7 +4912,7 @@ module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\
 /* 416 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-3\">\n    <br><br><br>\n\n    <app-search></app-search>\n\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">\n                <strong>Filter</strong>\n            </h3>\n        </div>\n        <div class=\"box-boxy\">\n            <p-listbox (click)='go_to_option()' [options]=\"navigation_options\" [(ngModel)]=\"selected_option\" optionLabel=\"name\"></p-listbox>\n        </div>\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n            <a class=\"a-link\" (click)=\"open_instructions()\"> How to inspect an ARG?</a>\n        </div>\n    </div>\n    <hr>\n\n    <!-- <ul class=\"timeline\">\n        <li class=\"timeline-inverted\">\n            <div class=\"timeline-badge warning\"><i class=\"glyphicon glyphicon-credit-card\"></i></div>\n            <div class=\"timeline-panel box box-solid\">\n                <div class=\"timeline-heading\">\n                    <h4 class=\"timeline-title\">Mussum ipsum cacilds</h4>\n                </div>\n                <div class=\"timeline-body\">\n                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>\n                </div>\n            </div>\n        </li>\n    </ul> -->\n    <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n</div>\n\n<div class=\"col-md-7\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-2 no-gutter\">\n    <br><br><br>\n</div>"
+module.exports = "<div class=\"col-md-3\">\n    <br><br><br>\n\n    <app-search></app-search>\n\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">\n                <strong>Filter</strong>\n            </h3>\n        </div>\n        <div class=\"box-boxy\">\n            <p-listbox (click)='go_to_option()' [options]=\"navigation_options\" [(ngModel)]=\"selected_option\" optionLabel=\"name\"></p-listbox>\n        </div>\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n            <!-- <a class=\"a-link\" (click)=\"open_instructions()\"> How to inspect an ARG?</a> -->\n        </div>\n    </div>\n    <hr>\n\n    <!-- <ul class=\"timeline\">\n        <li class=\"timeline-inverted\">\n            <div class=\"timeline-badge warning\"><i class=\"glyphicon glyphicon-credit-card\"></i></div>\n            <div class=\"timeline-panel box box-solid\">\n                <div class=\"timeline-heading\">\n                    <h4 class=\"timeline-title\">Mussum ipsum cacilds</h4>\n                </div>\n                <div class=\"timeline-body\">\n                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>\n                </div>\n            </div>\n        </li>\n    </ul> -->\n    <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n</div>\n\n<div class=\"col-md-7\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-2 no-gutter\">\n    <br><br><br>\n</div>"
 
 /***/ }),
 /* 417 */
