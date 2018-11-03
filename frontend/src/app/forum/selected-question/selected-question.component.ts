@@ -85,7 +85,8 @@ export class SelectedQuestionComponent implements OnInit {
             date: date.toLocaleString(),
             timestamp: date.getTime(),
             _id: date.getTime(),
-            post_id: this.post_id
+            post_id: this.post_id,
+            owner_email: this.post['email']
         }
 
         this.postService.add_comment(comment)
