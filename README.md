@@ -39,6 +39,10 @@ If you use ARGminer in your research, please cite the following article:
 
 Arango GA, Guron GK, Garner E, Riquelme MV, Heath L, Pruden A, Vikesland P, Zhang L. ARG-miner: A web platform for crowdsourcing-based curation of antibiotic resistance genes. bioRxiv. 2018 Jan 1:274282.
 
+
+# Installation
+make sure to add the corresponding /email_service/credentials.py and backend/rest/config.py variables
+
 <!-- ## Installation setup -->
 
 <!-- To get argpedia running in a development environment just do this into your server:
