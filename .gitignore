@@ -8,7 +8,7 @@ database/release/*
 updates/
 backend/rest/config.py
 frontend_bak
-email_service/credentials.py
+
 
 
 
