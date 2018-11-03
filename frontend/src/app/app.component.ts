@@ -20,7 +20,7 @@ export class AppComponent {
     }
 
     open_instructions() {
-        this.router.navigate(["/forum/selected_question", {id:1540586923155}]);
+        this.router.navigate(["/forum/selected_question", {id:1541191047351}]);
     }
 
 }
