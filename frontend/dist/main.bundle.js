@@ -19,11 +19,11 @@ webpackJsonp([0,5],[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -227,11 +227,120 @@ var environment = {
 //# sourceMappingURL=environment.js.map
 
 /***/ }),
-/* 35 */,
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__session_service__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(67);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+// import {CookieService} from 'angular2-cookie/core';
+
+
+
+
+
+
+
+var UserService = (function () {
+    function UserService(http, session) {
+        this.http = http;
+        this.session = session;
+        this.base_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api_url;
+        this.encript = new __WEBPACK_IMPORTED_MODULE_8__encrypt__["a" /* Sha512 */]();
+    }
+    UserService.prototype.stats = function (user_id) {
+        return this.http.get(this.base_url + '/user/stats/' + user_id)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_post = function (post_id, user_id) {
+        return this.http.post(this.base_url + '/user/add/post/', { post_id: post_id, user_id: user_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_view = function (user_id, post_id) {
+        return this.http.post(this.base_url + '/user/sum/views/', { user_id: user_id, post_id: post_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_comments = function (user_id) {
+        return this.http.post(this.base_url + '/user/sum/comments/', { user_id: user_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_followers = function (follower_id, user_id) {
+        return this.http.post(this.base_url + '/user/add/followers/', { user_id: user_id, follower_id: follower_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_following = function (user_id, following_id) {
+        return this.http.post(this.base_url + '/user/add/following/', { user_id: user_id, following_id: following_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.count_unfollowing = function (user_id, following_id) {
+        return this.http.post(this.base_url + '/user/remove/following/', { user_id: user_id, following_id: following_id })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.change_password = function (data) {
+        return this.http.post(this.base_url + '/user/password/update/', data)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.change_info = function (_id, key, value) {
+        return this.http.post(this.base_url + '/user/info/update/', { _id: _id, key: key, value: value })
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    return UserService;
+}());
+UserService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__session_service__["a" /* Session */]) === "function" && _b || Object])
+], UserService);
+
+var _a, _b;
+//# sourceMappingURL=user.service.js.map
+
+/***/ }),
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */
+/* 39 */,
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -483,17 +592,17 @@ var _a, _b, _c, _d;
 //# sourceMappingURL=classify.component.js.map
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environments_environment__ = __webpack_require__(34);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DiscussionService; });
@@ -571,97 +680,6 @@ var _a;
 //# sourceMappingURL=discussion.service.js.map
 
 /***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(67);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-// import {CookieService} from 'angular2-cookie/core';
-
-
-
-
-
-
-
-var UserService = (function () {
-    function UserService(http, session) {
-        this.http = http;
-        this.session = session;
-        this.base_url = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api_url;
-        this.encript = new __WEBPACK_IMPORTED_MODULE_8__encrypt__["a" /* Sha512 */]();
-    }
-    UserService.prototype.stats = function (user_id) {
-        return this.http.get(this.base_url + '/user/stats/' + user_id)
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    UserService.prototype.count_post = function (post_id, user_id) {
-        return this.http.post(this.base_url + '/user/add/post/', { post_id: post_id, user_id: user_id })
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    UserService.prototype.count_view = function (user_id, post_id) {
-        return this.http.post(this.base_url + '/user/sum/views/', { user_id: user_id, post_id: post_id })
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    UserService.prototype.count_comments = function (user_id) {
-        return this.http.post(this.base_url + '/user/sum/comments/', { user_id: user_id })
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    UserService.prototype.count_followers = function (follower_id, user_id) {
-        return this.http.post(this.base_url + '/user/add/followers/', { user_id: user_id, follower_id: follower_id })
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    UserService.prototype.count_following = function (user_id, following_id) {
-        return this.http.post(this.base_url + '/user/add/following/', { user_id: user_id, following_id: following_id })
-            .map(function (res) {
-            return res.json();
-        });
-    };
-    return UserService;
-}());
-UserService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__session_service__["a" /* Session */]) === "function" && _b || Object])
-], UserService);
-
-var _a, _b;
-//# sourceMappingURL=user.service.js.map
-
-/***/ }),
 /* 42 */,
 /* 43 */,
 /* 44 */,
@@ -694,11 +712,11 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__session_service__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__);
@@ -1008,7 +1026,7 @@ var _a, _b, _c;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExploreComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1263,9 +1281,9 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__ = __webpack_require__(311);
@@ -1290,18 +1308,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AllQuestionsComponent = (function () {
-    function AllQuestionsComponent(router, postService, session, confirmationService, userService) {
+    function AllQuestionsComponent(router, postService, session, confirmationService, userService, activatedRoute) {
         this.router = router;
         this.postService = postService;
         this.session = session;
         this.confirmationService = confirmationService;
         this.userService = userService;
+        this.activatedRoute = activatedRoute;
     }
     AllQuestionsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.selected_category = this.activatedRoute.snapshot.params.mode ? this.activatedRoute.snapshot.params.mode.split(',') : 'All';
+        this._from = 0;
+        this._to = 5;
         this.masonryItems = [];
         // get top 10 posts
         this.get_top_n_posts();
         __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__["a" /* default */].locale(__WEBPACK_IMPORTED_MODULE_7_javascript_time_ago_locale_en___default.a);
+        this.activatedRoute.params.subscribe(function (val) {
+            _this._from = 0;
+            _this._to = 5;
+            _this.selected_category = _this.activatedRoute.snapshot.params.mode ? _this.activatedRoute.snapshot.params.mode.split(',') : 'All';
+            _this.get_top_n_posts();
+        });
     };
     AllQuestionsComponent.prototype.go_to_question = function (question) {
         var _this = this;
@@ -1312,9 +1341,16 @@ var AllQuestionsComponent = (function () {
         });
     };
     AllQuestionsComponent.prototype.follow_post = function (question) {
-        this.userService.count_following(this.session.get('user')['_id'], question['_id'])
-            .subscribe(function (e) {
-        });
+        if (question.am_I_following === 'FOLLOW') {
+            question.am_I_following = 'UNFOLLOW';
+            this.userService.count_following(this.session.get('user')['_id'], question['_id'])
+                .subscribe(function (e) { });
+        }
+        else {
+            question.am_I_following = 'FOLLOW';
+            this.userService.count_unfollowing(this.session.get('user')['_id'], question['_id'])
+                .subscribe(function (e) { });
+        }
     };
     AllQuestionsComponent.prototype.edit_question = function (question_id) {
         // console.log(question_id);
@@ -1322,14 +1358,31 @@ var AllQuestionsComponent = (function () {
     };
     AllQuestionsComponent.prototype.get_top_n_posts = function () {
         var _this = this;
-        this.postService.get_posts({ _from: 0, _to: 10 })
+        this.postService.get_posts({ _from: this._from, _to: this._to, category: this.selected_category })
             .subscribe(function (e) {
             _this.masonryItems = e;
             var timeAgo = new __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__["a" /* default */]('en-US');
             _this.masonryItems.map(function (i, ix) {
                 i['index'] = ix;
                 i['time_ago'] = timeAgo.format(i['timestamp']);
+                i['am_I_following'] = i['followers'].filter(function (e) { return e.status === true && e._id === _this.session.get('user')['_id']; }).length > 0 ? 'UNFOLLOW' : 'FOLLOW';
             });
+        });
+    };
+    AllQuestionsComponent.prototype.get_more_posts = function () {
+        var _this = this;
+        this._from = this._to;
+        this._to = this._from + 5;
+        this.postService.get_posts({ _from: this._from, _to: this._to, category: this.selected_category })
+            .subscribe(function (e) {
+            _this.masonryItems = _this.masonryItems.concat(e);
+            var timeAgo = new __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__["a" /* default */]('en-US');
+            _this.masonryItems.map(function (i, ix) {
+                i['index'] = ix;
+                i['time_ago'] = timeAgo.format(i['timestamp']);
+                i['am_I_following'] = i['followers'].filter(function (e) { return e.status === true && e._id === _this.session.get('user')['_id']; }).length > 0 ? 'UNFOLLOW' : 'FOLLOW';
+            });
+            console.log(_this.masonryItems);
         });
     };
     AllQuestionsComponent.prototype.remove_post = function (item_id, index) {
@@ -1356,10 +1409,10 @@ AllQuestionsComponent = __decorate([
         template: __webpack_require__(414),
         styles: [__webpack_require__(288)]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _f || Object])
 ], AllQuestionsComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=all-questions.component.js.map
 
 /***/ }),
@@ -1369,7 +1422,7 @@ var _a, _b, _c, _d, _e;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_quill__);
@@ -1489,8 +1542,9 @@ var ForumComponent = (function () {
         this.elementRef = elementRef;
     }
     ForumComponent.prototype.ngOnInit = function () {
+        this.keywords = [];
         this.twitter = '';
-        this.selected_option = 'All';
+        this.selected_option = 0;
         this.navigation_options = [
             { label: 'All', value: 0, url: 'forum' },
             { label: 'Posts', value: 1, url: 'forum' },
@@ -1505,10 +1559,17 @@ var ForumComponent = (function () {
         this.router.navigate(['forum/selected_question', { id: '1541191967102' }]);
     };
     ForumComponent.prototype.go_to_option = function () {
-        this.router.navigate([this.navigation_options[this.selected_option]['url'], { mode: this.navigation_options[this.selected_option]['label'] }]);
+        var selected = this.navigation_options[this.selected_option]['label'] === 'All' ? [] : this.navigation_options[this.selected_option]['label'];
+        var _mode = this.keywords.concat(selected);
+        this.router.navigate([this.navigation_options[this.selected_option]['url'], { mode: _mode }]);
     };
     ForumComponent.prototype.open_instructions = function () {
         this.router.navigate(["/forum/selected_question", { id: 1541191047351 }]);
+    };
+    ForumComponent.prototype.search = function () {
+        var selected = this.navigation_options[this.selected_option]['label'] === 'All' ? [] : this.navigation_options[this.selected_option]['label'];
+        var _mode = this.keywords.concat(selected);
+        this.router.navigate([this.navigation_options[this.selected_option]['url'], { mode: _mode }]);
     };
     return ForumComponent;
 }());
@@ -1531,8 +1592,8 @@ var _a, _b, _c;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_quill__);
@@ -1565,7 +1626,14 @@ var NewQuestionComponent = (function () {
         this.userService = userService;
     }
     NewQuestionComponent.prototype.ngOnInit = function () {
-        this.categories = ['Posts', 'Tutorials', 'Issues', 'Questions', 'Nomenclature', 'Tools'];
+        this.categories = [
+            { name: 'Posts', index: 0 },
+            { name: 'Questions', index: 1 },
+            { name: 'Tutorials', index: 2 },
+            { name: 'Tools', index: 3 },
+            { name: 'Issues', index: 4 },
+            { name: 'Nomenclature', index: 5 }
+        ];
         this.keywords = [];
         this.text = '';
         this.tags = [];
@@ -1624,6 +1692,13 @@ var NewQuestionComponent = (function () {
         this.tags = [];
         // this.router.navigate(['/forum'])
     };
+    NewQuestionComponent.prototype.add_category = function (key) {
+        this.keywords.push(key.name);
+        this.categories.splice(key.index, 1);
+        this.categories.map(function (i, ix) {
+            i.index = ix;
+        });
+    };
     return NewQuestionComponent;
 }());
 NewQuestionComponent = __decorate([
@@ -1645,9 +1720,9 @@ var _a, _b, _c, _d;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_quill__);
@@ -1918,7 +1993,8 @@ var _a, _b;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_encrypt__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_encrypt__ = __webpack_require__(67);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1932,12 +2008,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = (function () {
-    function ProfileComponent(session) {
+    function ProfileComponent(session, userService) {
         this.session = session;
+        this.userService = userService;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        this.encrypt = new __WEBPACK_IMPORTED_MODULE_2__services_encrypt__["a" /* Sha512 */]();
+        this.pass = { pass1: '', pass2: '', pass3: '' };
+        this.info = { username: this.session.get('user')['email'], fullname: this.session.get('user')['user'], institution: this.session.get('user')['institution'], email: this.session.get('user')['email'] };
+        this.description = '';
+        this.encrypt = new __WEBPACK_IMPORTED_MODULE_3__services_encrypt__["a" /* Sha512 */]();
+    };
+    ProfileComponent.prototype.change_info = function (key) {
+        console.log(key, this.info[key]);
+        this.userService.change_info(this.session.get('user')['_id'], key, this.info[key])
+            .subscribe(function (e) {
+            alert(e['message']);
+        });
+    };
+    ProfileComponent.prototype.change_password = function () {
+        var pass1 = this.encrypt.SHA512(this.pass.pass1).toString();
+        var pass2 = this.encrypt.SHA512(this.pass.pass2).toString();
+        var pass3 = this.encrypt.SHA512(this.pass.pass3).toString();
+        this.pass = { pass1: '', pass2: '', pass3: '' };
+        if (pass2 != pass3) {
+            alert("passwords don't match");
+        }
+        else {
+            this.userService.change_password({ _id: this.session.get('user')['_id'], pass1: pass1, pass2: pass2 })
+                .subscribe(function (e) {
+                alert(e['message']);
+            });
+        }
     };
     return ProfileComponent;
 }());
@@ -1947,10 +2050,10 @@ ProfileComponent = __decorate([
         template: __webpack_require__(424),
         styles: [__webpack_require__(298)]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */]) === "function" && _b || Object])
 ], ProfileComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=profile.component.js.map
 
 /***/ }),
@@ -2039,11 +2142,11 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__(34);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminService; });
@@ -2129,11 +2232,11 @@ var _a, _b;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NcbiService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2351,7 +2454,7 @@ var ComplexPieChart = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classify_classify_component__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classify_classify_component__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home_component__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_database_component__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__about_about_component__ = __webpack_require__(101);
@@ -2481,7 +2584,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_admin_service__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_discussion_service__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_hammerjs__ = __webpack_require__(307);
@@ -2502,7 +2605,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33_ngx_quill__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__forum_search_search_component__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__profile_stats_stats_component__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_services_user_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_services_user_service__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2900,7 +3003,7 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classify_component__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassifyRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2948,7 +3051,7 @@ ClassifyRoutingModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__classify_component__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__classify_component__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__classify_routing_module__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__metadata_uniprot_uniprot_component__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__metadata_card_card_component__ = __webpack_require__(192);
@@ -3173,7 +3276,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classify_component__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classify_component__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__score_class__ = __webpack_require__(187);
@@ -4057,7 +4160,7 @@ NewsComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_session_service__ = __webpack_require__(14);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4515,7 +4618,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ".timeline {\n    list-style: none;\n    padding: 20px 0 20px;\n    position: relative;\n}\n\n.timeline:before {\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    content: \" \";\n    width: 3px;\n    background-color: #eeeeee;\n    left: 0%;\n    margin-left: -1.5px;\n}\n\n.timeline>li {\n    margin-bottom: 20px;\n    position: relative;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li>.timeline-panel {\n    width: 96%;\n    float: left;\n    border: 1px solid #d4d4d4;\n    border-radius: 2px;\n    padding: 20px;\n    position: relative;\n    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);\n}\n\n.timeline>li>.timeline-panel:before {\n    position: absolute;\n    top: 26px;\n    right: -15px;\n    display: inline-block;\n    border-top: 15px solid transparent;\n    border-left: 15px solid #ccc;\n    border-right: 0 solid #ccc;\n    border-bottom: 15px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-panel:after {\n    position: absolute;\n    top: 27px;\n    right: -14px;\n    display: inline-block;\n    border-top: 14px solid transparent;\n    border-left: 14px solid #fff;\n    border-right: 0 solid #fff;\n    border-bottom: 14px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-badge {\n    color: #fff;\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    font-size: 1.4em;\n    text-align: center;\n    position: absolute;\n    top: 16px;\n    left: 0%;\n    margin-left: -25px;\n    background-color: #999999;\n    z-index: 100;\n    border-top-right-radius: 50%;\n    border-top-left-radius: 50%;\n    border-bottom-right-radius: 50%;\n    border-bottom-left-radius: 50%;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel {\n    float: right;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:before {\n    border-left-width: 0;\n    border-right-width: 15px;\n    left: -15px;\n    right: auto;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:after {\n    border-left-width: 0;\n    border-right-width: 14px;\n    left: -14px;\n    right: auto;\n}\n\n.timeline-badge.primary {\n    background-color: #2e6da4 !important;\n}\n\n.timeline-badge.success {\n    background-color: #3f903f !important;\n}\n\n.timeline-badge.warning {\n    background-color: #f0ad4e !important;\n}\n\n.timeline-badge.danger {\n    background-color: #d9534f !important;\n}\n\n.timeline-badge.info {\n    background-color: #5bc0de !important;\n}\n\n.timeline-title {\n    margin-top: 0;\n    color: inherit;\n}\n\n.timeline-body>p,\n.timeline-body>ul {\n    margin-bottom: 0;\n}\n\n.timeline-body>p+p {\n    margin-top: 5px;\n}\n\n@media (max-width: 767px) {\n    ul.timeline:before {\n        left: 40px;\n    }\n    ul.timeline>li>.timeline-panel {\n        width: calc(100% - 90px);\n        width: -webkit-calc(100% - 90px);\n    }\n    ul.timeline>li>.timeline-badge {\n        left: 15px;\n        margin-left: 0;\n        top: 16px;\n    }\n    ul.timeline>li>.timeline-panel {\n        float: right;\n    }\n    ul.timeline>li>.timeline-panel:before {\n        border-left-width: 0;\n        border-right-width: 15px;\n        left: -15px;\n        right: auto;\n    }\n    ul.timeline>li>.timeline-panel:after {\n        border-left-width: 0;\n        border-right-width: 14px;\n        left: -14px;\n        right: auto;\n    }\n}\n\n.a-link {\n    cursor: pointer;\n}", ""]);
+exports.push([module.i, ".timeline {\n    list-style: none;\n    padding: 20px 0 20px;\n    position: relative;\n}\n\n.full-width {\n    width: 100%;\n    background-color: #ffffff !important;\n}\n\n.timeline:before {\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    content: \" \";\n    width: 3px;\n    background-color: #eeeeee;\n    left: 0%;\n    margin-left: -1.5px;\n}\n\n.timeline>li {\n    margin-bottom: 20px;\n    position: relative;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li>.timeline-panel {\n    width: 96%;\n    float: left;\n    border: 1px solid #d4d4d4;\n    border-radius: 2px;\n    padding: 20px;\n    position: relative;\n    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);\n}\n\n.timeline>li>.timeline-panel:before {\n    position: absolute;\n    top: 26px;\n    right: -15px;\n    display: inline-block;\n    border-top: 15px solid transparent;\n    border-left: 15px solid #ccc;\n    border-right: 0 solid #ccc;\n    border-bottom: 15px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-panel:after {\n    position: absolute;\n    top: 27px;\n    right: -14px;\n    display: inline-block;\n    border-top: 14px solid transparent;\n    border-left: 14px solid #fff;\n    border-right: 0 solid #fff;\n    border-bottom: 14px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-badge {\n    color: #fff;\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    font-size: 1.4em;\n    text-align: center;\n    position: absolute;\n    top: 16px;\n    left: 0%;\n    margin-left: -25px;\n    background-color: #999999;\n    z-index: 100;\n    border-top-right-radius: 50%;\n    border-top-left-radius: 50%;\n    border-bottom-right-radius: 50%;\n    border-bottom-left-radius: 50%;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel {\n    float: right;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:before {\n    border-left-width: 0;\n    border-right-width: 15px;\n    left: -15px;\n    right: auto;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:after {\n    border-left-width: 0;\n    border-right-width: 14px;\n    left: -14px;\n    right: auto;\n}\n\n.timeline-badge.primary {\n    background-color: #2e6da4 !important;\n}\n\n.timeline-badge.success {\n    background-color: #3f903f !important;\n}\n\n.timeline-badge.warning {\n    background-color: #f0ad4e !important;\n}\n\n.timeline-badge.danger {\n    background-color: #d9534f !important;\n}\n\n.timeline-badge.info {\n    background-color: #5bc0de !important;\n}\n\n.timeline-title {\n    margin-top: 0;\n    color: inherit;\n}\n\n.timeline-body>p,\n.timeline-body>ul {\n    margin-bottom: 0;\n}\n\n.timeline-body>p+p {\n    margin-top: 5px;\n}\n\n@media (max-width: 767px) {\n    ul.timeline:before {\n        left: 40px;\n    }\n    ul.timeline>li>.timeline-panel {\n        width: calc(100% - 90px);\n        width: -webkit-calc(100% - 90px);\n    }\n    ul.timeline>li>.timeline-badge {\n        left: 15px;\n        margin-left: 0;\n        top: 16px;\n    }\n    ul.timeline>li>.timeline-panel {\n        float: right;\n    }\n    ul.timeline>li>.timeline-panel:before {\n        border-left-width: 0;\n        border-right-width: 15px;\n        left: -15px;\n        right: auto;\n    }\n    ul.timeline>li>.timeline-panel:after {\n        border-left-width: 0;\n        border-right-width: 14px;\n        left: -14px;\n        right: auto;\n    }\n}\n\n.a-link {\n    cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -4532,7 +4635,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, ".no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}", ""]);
+exports.push([module.i, ".no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}\n\n.categories {\n    cursor: pointer;\n}\n\n.categories-block {\n    display: inline-block;\n}\n\n.categories:hover {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n    color: #000000 !important;\n}", ""]);
 
 // exports
 
@@ -4900,7 +5003,7 @@ module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"bo
 /* 414 */
 /***/ (function(module, exports) {
 
-module.exports = "<p-confirmDialog header=\"Confirmation\" icon=\"pi pi-exclamation-triangle\" width=\"425\"></p-confirmDialog>\n\n<div class=\"col-md-12\">\n    <a routerLink=\"new_question\" class=\"btn btn-primary pull-right\"> <strong> Create a new Post </strong></a>\n</div>\n<br><br><br>\n\n\n<masonry [options]=\"{ transitionDuration: '0.5s' }\">\n    <masonry-brick *ngFor=\"let item of masonryItems \" class=\"brick col-md-12\">\n\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n\n                <h4 class=\"title-post\" (click)=\"go_to_question(item)\">\n                    <strong> <u> {{item.title}} </u> </strong>\n                </h4>\n\n                <md-card-header>\n                    <div md-card-avatar class=\"example-header-image\"></div>\n                    <md-card-subtitle>\n                        <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>\n                        <span class=\"badge\" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>\n\n                    </md-card-subtitle>\n                </md-card-header>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <br>\n                    <div class=\"text-body-box\" [innerHTML]=\"item.body.substring(0, 500).replace('h2', 'p').replace('h1', 'p').replace('<br>', '')+ '...' \"></div>\n                </md-card-content>\n\n                <md-card-actions>\n                    <button (click)=\"go_to_question(item)\" md-button>VIEW</button>\n                    <button (click)=\"edit_question(item._id)\" md-button [disabled]=\"session.get('user')['email'] !== item.email\">\n            EDIT\n          </button>\n                    <button (click)='follow_post(item)' md-button [disabled]=\"session.get('online')==0\">FOLLOW</button>\n                    <button (click)='remove_post(item._id, item.index)' md-button [disabled]=\"session.get('user')['email'] !== item.email\">REMOVE</button>\n\n                </md-card-actions>\n\n            </md-card>\n        </div>\n    </masonry-brick>\n</masonry>\n\n<div class=\"col-md-12 text-center \">\n    <a routerLink=\"new_question \" class=\"btn btn-primary \"> <strong> Load More </strong></a>\n</div>\n\n\n\n<div class=\"col-md-12 \">\n    <br><br><br><br>\n</div>"
+module.exports = "<p-confirmDialog header=\"Confirmation\" icon=\"pi pi-exclamation-triangle\" width=\"425\"></p-confirmDialog>\n\n<div class=\"col-md-12\">\n    <a routerLink=\"new_question\" class=\"btn btn-primary pull-right\"> <strong> Create a new Post </strong></a>\n</div>\n<br><br><br>\n\n\n<masonry [options]=\"{ transitionDuration: '0.5s' }\">\n    <masonry-brick *ngFor=\"let item of masonryItems \" class=\"brick col-md-12\">\n\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n\n                <h4 class=\"title-post\" (click)=\"go_to_question(item)\">\n                    <strong> <u> {{item.title}} </u> </strong>\n                </h4>\n\n                <md-card-header>\n                    <div md-card-avatar class=\"example-header-image\"></div>\n                    <md-card-subtitle>\n                        <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>\n                        <span class=\"badge\" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>\n\n                    </md-card-subtitle>\n                </md-card-header>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <br>\n                    <div class=\"text-body-box\" [innerHTML]=\"item.body.substring(0, 500).replace('h2', 'p').replace('h1', 'p').replace('<br>', '')+ '...' \"></div>\n                </md-card-content>\n\n                <md-card-actions>\n                    <button (click)=\"go_to_question(item)\" md-button>VIEW</button>\n                    <button (click)=\"edit_question(item._id)\" md-button [disabled]=\"session.get('user')['email'] !== item.email\">EDIT</button>\n                    <button (click)='follow_post(item)' md-button [disabled]=\"session.get('online')==0\">{{ item.am_I_following}}</button>\n                    <button (click)='remove_post(item._id, item.index)' md-button [disabled]=\"session.get('user')['email'] !== item.email\">REMOVE</button>\n\n                </md-card-actions>\n\n            </md-card>\n        </div>\n    </masonry-brick>\n</masonry>\n\n<div class=\"col-md-12 text-center \">\n    <a (click)=\"get_more_posts()\" class=\"btn btn-primary \"> <strong> Load More </strong></a>\n</div>\n\n\n\n<div class=\"col-md-12 \">\n    <br><br><br><br>\n</div>"
 
 /***/ }),
 /* 415 */
@@ -4912,19 +5015,19 @@ module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\
 /* 416 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-3\">\n    <br><br><br>\n\n    <app-search></app-search>\n\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">\n                <strong>Filter</strong>\n            </h3>\n        </div>\n        <div class=\"box-boxy\">\n            <p-listbox (click)='go_to_option()' [options]=\"navigation_options\" [(ngModel)]=\"selected_option\" optionLabel=\"name\"></p-listbox>\n        </div>\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n            <!-- <a class=\"a-link\" (click)=\"open_instructions()\"> How to inspect an ARG?</a> -->\n        </div>\n    </div>\n    <hr>\n\n    <!-- <ul class=\"timeline\">\n        <li class=\"timeline-inverted\">\n            <div class=\"timeline-badge warning\"><i class=\"glyphicon glyphicon-credit-card\"></i></div>\n            <div class=\"timeline-panel box box-solid\">\n                <div class=\"timeline-heading\">\n                    <h4 class=\"timeline-title\">Mussum ipsum cacilds</h4>\n                </div>\n                <div class=\"timeline-body\">\n                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>\n                </div>\n            </div>\n        </li>\n    </ul> -->\n    <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n</div>\n\n<div class=\"col-md-7\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-2 no-gutter\">\n    <br><br><br>\n</div>"
+module.exports = "<div class=\"col-md-3\">\n    <br><br><br>\n\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">\n                <strong>Filter</strong>\n            </h3>\n        </div>\n\n        <div class=\"box-body\">\n            <h4>Select Category to search</h4>\n            <p-listbox (click)='go_to_option()' [options]=\"navigation_options\" [(ngModel)]=\"selected_option\" optionLabel=\"name\"></p-listbox>\n        </div>\n\n        <div class=\"box-body\">\n            <h4>Add keywords (Optional)</h4>\n            <p-chips (onAdd)=\"search()\" (onRemove)=\"search()\" [(ngModel)]=\"keywords\"></p-chips>\n        </div>\n\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n            <!-- <a class=\"a-link\" (click)=\"open_instructions()\"> How to inspect an ARG?</a> -->\n        </div>\n\n    </div>\n\n    <!-- <ul class=\"timeline\">\n        <li class=\"timeline-inverted\">\n            <div class=\"timeline-badge warning\"><i class=\"glyphicon glyphicon-credit-card\"></i></div>\n            <div class=\"timeline-panel box box-solid\">\n                <div class=\"timeline-heading\">\n                    <h4 class=\"timeline-title\">Mussum ipsum cacilds</h4>\n                </div>\n                <div class=\"timeline-body\">\n                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>\n                </div>\n            </div>\n        </li>\n    </ul> -->\n    <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n</div>\n\n<div class=\"col-md-7\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-2 no-gutter\">\n    <br><br><br>\n</div>"
 
 /***/ }),
 /* 417 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" [style]=\"{'height':'500px', 'max-height':'auto'}\"></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n                <p>Add at least one of the following categories: </p>\n                <span *ngFor=\"let key of categories\" class=\"badge bg-green\"> <strong> {{key}} </strong></span>\n                <br><br>\n                <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit\n            enter</u>.\n                </p>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Post</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" [style]=\"{'height':'500px', 'max-height':'auto'}\"></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Categories </strong></h4>\n                <p>Click in at least one of the following categories: </p>\n                <div class=\"categories-block\" *ngFor=\"let key of categories\">\n                    <span (click)='add_category(key)' class=\"badge bg-green categories\"> <strong> {{key.name}} </strong></span>\n                </div>\n                <br><br>\n            </div>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n                <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit\n            enter</u>.</p>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Post</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 418 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"box box-solid \">\n    <div class=\"box-body\">\n        <md-input-container class='col-sm-12 no-gutter'>\n            <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search\" [(ngModel)]=\"search_keyword\" />\n        </md-input-container>\n    </div>\n</div>"
+module.exports = "\n"
 
 /***/ }),
 /* 419 */
@@ -4960,7 +5063,7 @@ module.exports = "<div class=\"col-md-3 col-md-offset-4\">\n    <p-growl class=\
 /* 424 */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='session.get(\"online\") >=1'>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <img src=\"assets/images/admin.svg\" alt=\"\">\n            </div>\n            <div class=\"box-body\">\n                <h2>{{ session.get('user')['user'] }}</h2>\n                <h4>{{ session.get('user')['email'] }}</h4>\n                <h4>{{ session.get('user')['institution'] }}</h4>\n                <p>Created at: {{ session.get('user')['date'] }}</p>\n                <p>\n                    <strong *ngIf=\"session.get('online')===2\"> Has administration access </strong>\n                </p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-9\">\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <app-profile-stats></app-profile-stats>\n            </div>\n        </div>\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">My Posts</h3>\n            </div>\n        </div>\n\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3>Change Password</h3>\n                <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"thepass\" placeholder='current password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"thepass1\" placeholder='new password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"thepass2\" placeholder='re-enter password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <button pButton type=\"button\" label=\"Change Password\" class=\"ui-button-rounded\"></button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">Change User Information</h3>\n                <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText placeholder=\"username\">\n                            <button pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText placeholder=\"First and Last Name\">\n                            <button pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText placeholder=\"Institution\">\n                            <button pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText placeholder=\"em@il\">\n                            <button pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">Change User Description</h3>\n                <textarea [rows]=\"5\" [style.width]=\"'100%'\" pInputTextarea autoResize=\"autoResize\"></textarea>\n                <div class=\"ui-g-12 ui-md-12\">\n                    <div class=\"ui-inputgroup\">\n                        <button pButton type=\"button\" label=\"Change User Decription\" class=\"ui-button-rounded\"></button>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n\n\n\n    </div>\n\n</div>\n\n\n\n\n<!--\n<text transform=\"matrix(1 0 0 1 1642.1184 -287.7149)\" class=\"st3 st4\">{{stats.score}}</text>\n<text transform=\"matrix(1 0 0 1 2044.7878 -287.365)\" class=\"st3 st4\">{{stats.posts}}</text>\n<text transform=\"matrix(1 0 0 1 2453.6311 -288.4898)\" class=\"st3 st4\">{{stats.inspections}}</text>\n<text transform=\"matrix(1 0 0 1 1646.2368 -47.8215)\" class=\"st3 st4\">{{stats.views}}</text>\n<text transform=\"matrix(1 0 0 1 2044.7878 -42.1466)\" class=\"st3 st4\">{{stats.comments}}</text>\n<text transform=\"matrix(1 0 0 1 2453.6311 -39.8213)\" class=\"st3 st4\">{{stats.followers}}</text> -->"
+module.exports = "<div *ngIf='session.get(\"online\") >=1'>\n\n    <div class=\"col-md-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <img src=\"assets/images/admin.svg\" alt=\"\">\n            </div>\n            <div class=\"box-body\">\n                <h2>{{ session.get('user')['user'] }}</h2>\n                <h4>{{ session.get('user')['email'] }}</h4>\n                <h4>{{ session.get('user')['institution'] }}</h4>\n                <p>Created at: {{ session.get('user')['date'] }}</p>\n                <p>\n                    <strong *ngIf=\"session.get('online')===2\"> Has administration access </strong>\n                </p>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-md-9\">\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <app-profile-stats></app-profile-stats>\n            </div>\n        </div>\n        <!--\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">My Posts</h3>\n            </div>\n        </div> -->\n\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3>Change Password</h3>\n                <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"pass.pass1\" placeholder='current password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"pass.pass2\" placeholder='new password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"password\" pPassword [(ngModel)]=\"pass.pass3\" placeholder='re-enter password' />\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <button (click)=\"change_password()\" pButton type=\"button\" label=\"Change Password\" class=\"ui-button-rounded\"></button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">Change User Information</h3>\n                <div class=\"ui-g ui-fluid\">\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText [placeholder]=\"info.username\" [(ngModel)]=\"info.username\">\n                            <button (click)=\"change_info('username')\" pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText [placeholder]=\"info.fullname\" [(ngModel)]=\"info.fullname\">\n                            <button (click)=\"change_info('fullname')\" pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText [placeholder]=\"info.institution\" [(ngModel)]=\"info.institution\">\n                            <button (click)=\"change_info('institution')\" pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n\n                    <div class=\"ui-g-12 ui-md-3\">\n                        <div class=\"ui-inputgroup\">\n                            <input type=\"text\" pInputText [placeholder]=\"info.email\" [(ngModel)]=\"info.email\">\n                            <button (click)=\"change_info('email')\" pButton type=\"button\" label=\"Change\"></button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n\n        <!-- <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <h3 class=\"first\">Change User Description</h3>\n                <textarea [rows]=\"5\" [style.width]=\"'100%'\" pInputTextarea autoResize=\"autoResize\" placeholder=\"description\" [(ngModel)]=\"description\"></textarea>\n                <div class=\"ui-g-12 ui-md-12\">\n                    <div class=\"ui-inputgroup\">\n                        <button (click)=\"change_info('description')\" pButton type=\"button\" label=\"Change User Decription\" class=\"ui-button-rounded\"></button>\n                    </div>\n                </div>\n\n            </div>\n        </div> -->\n\n\n\n    </div>\n\n</div>\n\n\n\n\n<!--\n<text transform=\"matrix(1 0 0 1 1642.1184 -287.7149)\" class=\"st3 st4\">{{stats.score}}</text>\n<text transform=\"matrix(1 0 0 1 2044.7878 -287.365)\" class=\"st3 st4\">{{stats.posts}}</text>\n<text transform=\"matrix(1 0 0 1 2453.6311 -288.4898)\" class=\"st3 st4\">{{stats.inspections}}</text>\n<text transform=\"matrix(1 0 0 1 1646.2368 -47.8215)\" class=\"st3 st4\">{{stats.views}}</text>\n<text transform=\"matrix(1 0 0 1 2044.7878 -42.1466)\" class=\"st3 st4\">{{stats.comments}}</text>\n<text transform=\"matrix(1 0 0 1 2453.6311 -39.8213)\" class=\"st3 st4\">{{stats.followers}}</text> -->"
 
 /***/ }),
 /* 425 */

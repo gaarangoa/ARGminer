@@ -24,12 +24,12 @@
                 <app-profile-stats></app-profile-stats>
             </div>
         </div>
-
+        <!--
         <div class="box box-solid">
             <div class="box-body">
                 <h3 class="first">My Posts</h3>
             </div>
-        </div>
+        </div> -->
 
 
 
@@ -39,25 +39,25 @@
                 <div class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="thepass" placeholder='current password' />
+                            <input type="password" pPassword [(ngModel)]="pass.pass1" placeholder='current password' />
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="thepass1" placeholder='new password' />
+                            <input type="password" pPassword [(ngModel)]="pass.pass2" placeholder='new password' />
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="thepass2" placeholder='re-enter password' />
+                            <input type="password" pPassword [(ngModel)]="pass.pass3" placeholder='re-enter password' />
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <button pButton type="button" label="Change Password" class="ui-button-rounded"></button>
+                            <button (click)="change_password()" pButton type="button" label="Change Password" class="ui-button-rounded"></button>
                         </div>
                     </div>
                 </div>
@@ -71,29 +71,29 @@
                 <div class="ui-g ui-fluid">
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="text" pInputText placeholder="username">
-                            <button pButton type="button" label="Change"></button>
+                            <input type="text" pInputText [placeholder]="info.username" [(ngModel)]="info.username">
+                            <button (click)="change_info('username')" pButton type="button" label="Change"></button>
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="text" pInputText placeholder="First and Last Name">
-                            <button pButton type="button" label="Change"></button>
+                            <input type="text" pInputText [placeholder]="info.fullname" [(ngModel)]="info.fullname">
+                            <button (click)="change_info('fullname')" pButton type="button" label="Change"></button>
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="text" pInputText placeholder="Institution">
-                            <button pButton type="button" label="Change"></button>
+                            <input type="text" pInputText [placeholder]="info.institution" [(ngModel)]="info.institution">
+                            <button (click)="change_info('institution')" pButton type="button" label="Change"></button>
                         </div>
                     </div>
 
                     <div class="ui-g-12 ui-md-3">
                         <div class="ui-inputgroup">
-                            <input type="text" pInputText placeholder="em@il">
-                            <button pButton type="button" label="Change"></button>
+                            <input type="text" pInputText [placeholder]="info.email" [(ngModel)]="info.email">
+                            <button (click)="change_info('email')" pButton type="button" label="Change"></button>
                         </div>
                     </div>
                 </div>
@@ -101,18 +101,18 @@
         </div>
 
 
-        <div class="box box-solid">
+        <!-- <div class="box box-solid">
             <div class="box-body">
                 <h3 class="first">Change User Description</h3>
-                <textarea [rows]="5" [style.width]="'100%'" pInputTextarea autoResize="autoResize"></textarea>
+                <textarea [rows]="5" [style.width]="'100%'" pInputTextarea autoResize="autoResize" placeholder="description" [(ngModel)]="description"></textarea>
                 <div class="ui-g-12 ui-md-12">
                     <div class="ui-inputgroup">
-                        <button pButton type="button" label="Change User Decription" class="ui-button-rounded"></button>
+                        <button (click)="change_info('description')" pButton type="button" label="Change User Decription" class="ui-button-rounded"></button>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div> -->
 
 
 

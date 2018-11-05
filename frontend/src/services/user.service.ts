@@ -66,4 +66,25 @@ export class UserService {
             });
     }
 
+    count_unfollowing(user_id: string, following_id: string) {
+        return this.http.post(this.base_url + '/user/remove/following/', { user_id: user_id, following_id: following_id })
+            .map(res => {
+                return res.json();
+            });
+    }
+
+    change_password(data: any) {
+        return this.http.post(this.base_url + '/user/password/update/', data)
+            .map(res => {
+                return res.json()
+            })
+    }
+
+    change_info(_id: any, key: any, value: any) {
+        return this.http.post(this.base_url + '/user/info/update/', { _id: _id, key: key, value: value })
+            .map(res => {
+                return res.json()
+            })
+    }
+
 }

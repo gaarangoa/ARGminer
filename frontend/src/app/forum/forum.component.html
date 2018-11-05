@@ -1,23 +1,29 @@
 <div class="col-md-3">
     <br><br><br>
 
-    <app-search></app-search>
-
     <div class="box box-solid box-primary">
         <div class="box-header">
             <h3 class="box-title">
                 <strong>Filter</strong>
             </h3>
         </div>
-        <div class="box-boxy">
+
+        <div class="box-body">
+            <h4>Select Category to search</h4>
             <p-listbox (click)='go_to_option()' [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
         </div>
+
+        <div class="box-body">
+            <h4>Add keywords (Optional)</h4>
+            <p-chips (onAdd)="search()" (onRemove)="search()" [(ngModel)]="keywords"></p-chips>
+        </div>
+
         <div class="box-body">
             <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>
             <!-- <a class="a-link" (click)="open_instructions()"> How to inspect an ARG?</a> -->
         </div>
+
     </div>
-    <hr>
 
     <!-- <ul class="timeline">
         <li class="timeline-inverted">

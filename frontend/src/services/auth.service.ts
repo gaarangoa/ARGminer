@@ -53,6 +53,8 @@ export class AuthService {
     this.credentials = []
   }
 
+
+
     signup(data: Object) {
         let date = new Date();
         let timestamp = date.getTime()

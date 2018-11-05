@@ -1,3 +1,5 @@
+import re
+
 
 class Post():
     def __init__(self, DataBase):
@@ -21,8 +23,17 @@ class Post():
             False
         )
 
-    def latest(self, _from, _to):
-        items = self.database.db[self.table].find().sort("_id", -1)[_from:_to]
+    def latest(self, _from, _to, category):
+        if category == 'All':
+            search = {}
+        else:
+            category = [i for i in category if i != 'All']
+            category = [re.compile(i, re.IGNORECASE) for i in category]
+            search = {"tags.name": {"$all": category}}
+
+        print(search)
+        items = self.database.db[self.table].find(
+            search).sort("_id", -1)[_from:_to]
         return items
 
     def create(self, data):
@@ -102,12 +113,21 @@ class Post():
 
         return update
 
-    def push(self, user_id, key, value):
+    def push(self, _id, key, value):
         update = self.database.update(
             self.table,
-            {"_id": user_id},
+            {"_id": _id},
             {"$addToSet": {key: value}},
             True
         )
 
+        return update
+
+    def pull(self, _id, key, value):
+        update = self.database.update(
+            self.table,
+            {"_id": _id},
+            {"$pull": {key: {"_id": value['_id']}}},
+            True
+        )
         return update

@@ -253,7 +253,8 @@ def get_latest_post():
     data = request.get_json()
     _from = data['_from']
     _to = data['_to']
-    return jsonify(forum.get_latest(_from, _to))
+    category = data['category']
+    return jsonify(forum.get_latest(_from, _to, category))
 
 
 @app.route('/forum/post/get/one/<post_id>', methods=['GET'])
@@ -313,6 +314,15 @@ def user_add_following():
     return jsonify(user.push(user_id=user_id, post_id=post_id, key='following'))
 
 
+@app.route('/user/remove/following/', methods=['POST'])
+def user_remove_following():
+    data = request.get_json()
+    user_id = data['user_id']
+    post_id = data['following_id']
+    # add followers of the post
+    return jsonify(forum.pull(post_id=post_id, user_id=user_id, key='followers'))
+
+
 @app.route('/user/add/followers/', methods=['POST'])
 def user_add_follower():
     data = request.get_json()
@@ -335,6 +345,26 @@ def user_sum_views():
     post_id = data['post_id']
     forum.sum_views(post_id, 'views')
     return jsonify(user.sum(user_id=user_id, key='views'))
+
+
+@app.route('/user/password/update/', methods=['POST'])
+def user_password_update():
+    data = request.get_json()
+    _id = data['_id']
+    old_password = data['pass1']
+    new_password = data['pass2']
+
+    return jsonify(user.change_password(_id=_id, old_password=old_password, new_password=new_password))
+
+
+@app.route('/user/info/update/', methods=['POST'])
+def user_info_update():
+    data = request.get_json()
+    _id = data['_id']
+    key = data['key']
+    value = data['value']
+
+    return jsonify(user.update_profile(_id=_id, key=key, value=value))
 
 
 if __name__ == "__main__":

@@ -32,10 +32,8 @@
 
                 <md-card-actions>
                     <button (click)="go_to_question(item)" md-button>VIEW</button>
-                    <button (click)="edit_question(item._id)" md-button [disabled]="session.get('user')['email'] !== item.email">
-            EDIT
-          </button>
-                    <button (click)='follow_post(item)' md-button [disabled]="session.get('online')==0">FOLLOW</button>
+                    <button (click)="edit_question(item._id)" md-button [disabled]="session.get('user')['email'] !== item.email">EDIT</button>
+                    <button (click)='follow_post(item)' md-button [disabled]="session.get('online')==0">{{ item.am_I_following}}</button>
                     <button (click)='remove_post(item._id, item.index)' md-button [disabled]="session.get('user')['email'] !== item.email">REMOVE</button>
 
                 </md-card-actions>
@@ -46,7 +44,7 @@
 </masonry>
 
 <div class="col-md-12 text-center ">
-    <a routerLink="new_question " class="btn btn-primary "> <strong> Load More </strong></a>
+    <a (click)="get_more_posts()" class="btn btn-primary "> <strong> Load More </strong></a>
 </div>
 
 

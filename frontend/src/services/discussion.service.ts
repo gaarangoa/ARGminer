@@ -39,6 +39,7 @@ export class DiscussionService {
         });
     }
 
+
     add_comment(fields: object) {
         return this.http.post(this.baseUrl+"/forum/post/add/comment/", fields)
         .map( res=>{

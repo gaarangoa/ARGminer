@@ -18,9 +18,9 @@ class Forum():
         })
         return self.post.create(data)
 
-    def get_latest(self, _from, _to):
+    def get_latest(self, _from, _to, category):
         ''' get posts by category '''
-        return [i for i in self.post.latest(_from, _to)]
+        return [i for i in self.post.latest(_from, _to, category)]
 
     def update_post(self, data):
         ''' update post title, body and tags'''
@@ -59,3 +59,6 @@ class Forum():
 
     def push(self, post_id='', user_id='', key=''):
         return self.post.push(post_id, key, {"_id": user_id, "status": True})
+
+    def pull(self, post_id='', user_id='', key=''):
+        return self.post.pull(post_id, key, {"_id": user_id, "status": False})

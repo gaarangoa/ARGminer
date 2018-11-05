@@ -32,7 +32,14 @@ export class NewQuestionComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.categories = ['Posts', 'Tutorials', 'Issues', 'Questions','Nomenclature', 'Tools']
+        this.categories = [
+            { name: 'Posts', index: 0 },
+            { name: 'Questions', index: 1 },
+            { name: 'Tutorials', index: 2 },
+            { name: 'Tools', index: 3 },
+            { name: 'Issues', index: 4 },
+            { name: 'Nomenclature', index: 5 }
+        ]
         this.keywords = [];
         this.text = '';
         this.tags = [];
@@ -96,6 +103,14 @@ export class NewQuestionComponent implements OnInit {
         this.tags = [];
         // this.router.navigate(['/forum'])
 
+    }
+
+    add_category(key: any) {
+        this.keywords.push(key.name)
+        this.categories.splice(key.index, 1)
+        this.categories.map((i,ix) => {
+            i.index = ix;
+        })
     }
 
 }

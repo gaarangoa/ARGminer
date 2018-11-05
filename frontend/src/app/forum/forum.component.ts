@@ -20,6 +20,7 @@ export class ForumComponent implements OnInit {
     private navigation_options: SelectOption[];
     private selected_option: any;
     private twitter: string;
+    private keywords: any;
 
     constructor(
         private session: Session,
@@ -28,8 +29,9 @@ export class ForumComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.keywords = []
         this.twitter = '';
-        this.selected_option = 'All';
+        this.selected_option = 0;
         this.navigation_options = [
             { label: 'All', value: 0, url: 'forum' },
             { label: 'Posts', value: 1, url: 'forum' },
@@ -38,8 +40,8 @@ export class ForumComponent implements OnInit {
             { label: 'Tools', value: 4, url: 'forum' },
             { label: 'Issues', value: 5, url: 'forum' },
             { label: 'Nomenclature', value: 6, url: 'forum' },
-            // { label: 'ARGs', value: 6 }
         ];
+
     }
 
 
@@ -48,11 +50,19 @@ export class ForumComponent implements OnInit {
     }
 
     go_to_option() {
-        this.router.navigate([this.navigation_options[this.selected_option]['url'], {mode: this.navigation_options[this.selected_option]['label']} ]);
+        let selected = this.navigation_options[this.selected_option]['label'] === 'All' ? []:this.navigation_options[this.selected_option]['label'];
+        let _mode = this.keywords.concat(selected);
 
+        this.router.navigate([this.navigation_options[this.selected_option]['url'], {mode: _mode} ]);
     }
 
     open_instructions() {
         this.router.navigate(["/forum/selected_question", {id:1541191047351}]);
+    }
+
+    search() {
+        let selected = this.navigation_options[this.selected_option]['label'] === 'All' ? []:this.navigation_options[this.selected_option]['label'];
+        let _mode = this.keywords.concat(selected);
+        this.router.navigate([this.navigation_options[this.selected_option]['url'], {mode: _mode} ]);
     }
 }

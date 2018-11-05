@@ -24,3 +24,23 @@ class LoggedUser():
     def sum(self, user_id='', key=''):
         value = self.user.get_by_id(user_id)[0][key]+1
         return self.user.update(key, value, user_id)
+
+    def change_password(self, _id="", old_password="", new_password=""):
+        # validate if the password is real
+        try:
+            credentials = self.user.get_by_id(_id)[0]
+            if credentials['password'] != old_password:
+                return {'status': 'failed', 'message': 'Error old password'}
+            else:
+                self.user.update('password', new_password, _id)
+                return {'status': 'passed', 'message': 'Password has been changed'}
+        except:
+            return {'status': 'failed', 'role': 0, 'message': 'user does not exists'}
+
+    def update_profile(self, key='', value='', _id=''):
+        try:
+            credentials = self.user.get_by_id(_id)[0]
+            self.user.update(key, value, _id)
+            return {'status': 'passed', 'message': key+' has been changed'}
+        except:
+            return {'status': 'failed', 'role': 0, 'message': 'Error user not registered, try again later. '}

@@ -21,3 +21,16 @@
 .tag-line {
     display: inline-block;
 }
+
+.categories {
+    cursor: pointer;
+}
+
+.categories-block {
+    display: inline-block;
+}
+
+.categories:hover {
+    transform: scale(1.1);
+    color: #000000 !important;
+}

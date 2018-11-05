@@ -15,13 +15,18 @@
             <br><br>
 
             <div class="col-md-12 no-gutter tag-line">
-                <h4> <strong> Tags </strong></h4>
-                <p>Add at least one of the following categories: </p>
-                <span *ngFor="let key of categories" class="badge bg-green"> <strong> {{key}} </strong></span>
+                <h4> <strong> Categories </strong></h4>
+                <p>Click in at least one of the following categories: </p>
+                <div class="categories-block" *ngFor="let key of categories">
+                    <span (click)='add_category(key)' class="badge bg-green categories"> <strong> {{key.name}} </strong></span>
+                </div>
                 <br><br>
+            </div>
+
+            <div class="col-md-12 no-gutter tag-line">
+                <h4> <strong> Tags </strong></h4>
                 <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit
-            enter</u>.
-                </p>
+            enter</u>.</p>
             </div>
 
             <div class="col-md-12 no-gutter">
