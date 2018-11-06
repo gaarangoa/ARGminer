@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
 
     ngOnInit() {
         this.pass = { pass1: '', pass2: '', pass3: '' }
-        this.info = { username: this.session.get('user')['email'], fullname: this.session.get('user')['user'], institution: this.session.get('user')['institution'], email: this.session.get('user')['email'] }
+        this.info = { username: this.session.get('user')['username'], user: this.session.get('user')['user'], institution: this.session.get('user')['institution'], email: this.session.get('user')['email'] }
         this.description = ''
         this.encrypt = new Sha512();
     }
