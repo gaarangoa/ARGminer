@@ -1,0 +1,5 @@
+.example-header-image {
+    background-image: url('../../assets/images/admin.svg');
+    background-size: cover;
+    /* background-color: rgb(32, 47, 182) !important; */
+}

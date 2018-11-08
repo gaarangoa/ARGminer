@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
     private pass: any;
     private info: any;
     private description: string;
+    private stats: any;
 
     constructor(
         private session: Session,

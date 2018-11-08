@@ -38,7 +38,7 @@ import { CookieService } from 'angular2-cookie/core';
 
 import 'hammerjs';
 import { AdminComponent } from './admin/admin.component';
-import { CommentsComponent } from './app/classify/comments/comments.component';
+// import { CommentsComponent } from './app/classify/comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { ForumComponent } from './forum/forum.component';
 import { SignupComponent } from './signup/signup.component';
@@ -72,7 +72,7 @@ import { UserService } from 'services/user.service';
 		AboutComponent,
 		// jqxChartComponent,
 		AdminComponent,
-		CommentsComponent,
+		// CommentsComponent,
 		LoginComponent,
 		ForumComponent,
 		SignupComponent,

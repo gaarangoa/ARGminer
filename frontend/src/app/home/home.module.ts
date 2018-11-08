@@ -5,17 +5,10 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './home.component';
 import { NewsComponent } from './news/news.component';
-import { DatabaseComponent } from './database/database.component'
+// import { DatabaseComponent } from '../database/database.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ],
-  declarations: [
-    HomeComponent,
-    NewsComponent,
-    DatabaseComponent
-  ]
+	imports: [ CommonModule, HomeRoutingModule ],
+	declarations: [ HomeComponent, NewsComponent ]
 })
-export class HomeModule { }
+export class HomeModule {}

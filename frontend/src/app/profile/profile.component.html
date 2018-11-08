@@ -1,132 +1,93 @@
 <div *ngIf='session.get("online") >=1'>
 
-    <div class="col-md-3">
+    <div class="col-md-3 col-md-offset-3">
         <div class="box box-solid">
-            <div class="box-body">
-                <img src="assets/images/admin.svg" alt="">
-            </div>
-            <div class="box-body">
-                <h2>{{ session.get('user')['user'] }}</h2>
-                <h4>{{ session.get('user')['email'] }}</h4>
-                <h4>{{ session.get('user')['institution'] }}</h4>
-                <p>Created at: {{ session.get('user')['date'] }}</p>
-                <p>
-                    <strong *ngIf="session.get('online')===2"> Has administration access </strong>
-                </p>
-            </div>
+            <md-card class="example-card">
+
+                <md-card-header>
+                    <div md-card-avatar class="example-header-image"></div>
+                    <md-card-subtitle>
+                        <span> <strong> {{ session.get('user')['user'] }} </strong></span> <br>
+                        <span> {{ session.get('user')['institution'] }}</span> <br>
+                        <span class=""> {{ session.get('user')['email'] }} </span> <br>
+                        <strong *ngIf="session.get('online')===2"> Administrator</strong> <br>
+                        <span>account created on: {{ session.get('user')['date'] }}</span> <br>
+                    </md-card-subtitle>
+                </md-card-header>
+
+
+                <md-card-content class="box-fixed-height">
+                    <app-profile-stats></app-profile-stats>
+                </md-card-content>
+            </md-card>
         </div>
+
     </div>
 
-    <div class="col-md-9">
 
+    <div class="col-md-3">
         <div class="box box-solid">
-            <div class="box-body">
-                <app-profile-stats></app-profile-stats>
-            </div>
+            <md-card class="example-card">
+                <h3>Settings</h3>
+                <md-card-content class="box-fixed-height">
+                    <div class="ui-g ui-fluid">
+
+                        <h4 class="first">Change User Information</h4>
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="text" pInputText [placeholder]="info.user" [(ngModel)]="info.user">
+                                <button (click)="change_info('user')" pButton type="button" label="Change"></button>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="text" pInputText [placeholder]="info.institution" [(ngModel)]="info.institution">
+                                <button (click)="change_info('institution')" pButton type="button" label="Change"></button>
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="text" pInputText [placeholder]="info.email" [(ngModel)]="info.email">
+                                <button (click)="change_info('email')" pButton type="button" label="Change"></button>
+                            </div>
+                        </div>
+                    </div>
+                </md-card-content>
+
+                <md-card-content class="box-fixed-height">
+                    <h4>Change Password</h4>
+                    <div class="ui-g ui-fluid">
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="password" pPassword [(ngModel)]="pass.pass1" placeholder='current password' />
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="password" pPassword [(ngModel)]="pass.pass2" placeholder='new password' />
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <input type="password" pPassword [(ngModel)]="pass.pass3" placeholder='re-enter password' />
+                            </div>
+                        </div>
+
+                        <div class="ui-g-12 ui-md-12">
+                            <div class="ui-inputgroup">
+                                <button (click)="change_password()" pButton type="button" label="Change Password" class="ui-button-rounded"></button>
+                            </div>
+                        </div>
+                    </div>
+                </md-card-content>
+
+            </md-card>
         </div>
-        <!--
-        <div class="box box-solid">
-            <div class="box-body">
-                <h3 class="first">My Posts</h3>
-            </div>
-        </div> -->
-
-
-
-        <div class="box box-solid">
-            <div class="box-body">
-                <h3>Change Password</h3>
-                <div class="ui-g ui-fluid">
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="pass.pass1" placeholder='current password' />
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="pass.pass2" placeholder='new password' />
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="password" pPassword [(ngModel)]="pass.pass3" placeholder='re-enter password' />
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <button (click)="change_password()" pButton type="button" label="Change Password" class="ui-button-rounded"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="box box-solid">
-            <div class="box-body">
-                <h3 class="first">Change User Information</h3>
-                <div class="ui-g ui-fluid">
-                    <!-- <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="text" pInputText [placeholder]="info.username" [(ngModel)]="info.username">
-                            <button (click)="change_info('username')" pButton type="button" label="Change"></button>
-                        </div>
-                    </div> -->
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="text" pInputText [placeholder]="info.user" [(ngModel)]="info.user">
-                            <button (click)="change_info('user')" pButton type="button" label="Change"></button>
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="text" pInputText [placeholder]="info.institution" [(ngModel)]="info.institution">
-                            <button (click)="change_info('institution')" pButton type="button" label="Change"></button>
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12 ui-md-3">
-                        <div class="ui-inputgroup">
-                            <input type="text" pInputText [placeholder]="info.email" [(ngModel)]="info.email">
-                            <button (click)="change_info('email')" pButton type="button" label="Change"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- <div class="box box-solid">
-            <div class="box-body">
-                <h3 class="first">Change User Description</h3>
-                <textarea [rows]="5" [style.width]="'100%'" pInputTextarea autoResize="autoResize" placeholder="description" [(ngModel)]="description"></textarea>
-                <div class="ui-g-12 ui-md-12">
-                    <div class="ui-inputgroup">
-                        <button (click)="change_info('description')" pButton type="button" label="Change User Decription" class="ui-button-rounded"></button>
-                    </div>
-                </div>
-
-            </div>
-        </div> -->
-
-
 
     </div>
 
 </div>
-
-
-
-
-<!--
-<text transform="matrix(1 0 0 1 1642.1184 -287.7149)" class="st3 st4">{{stats.score}}</text>
-<text transform="matrix(1 0 0 1 2044.7878 -287.365)" class="st3 st4">{{stats.posts}}</text>
-<text transform="matrix(1 0 0 1 2453.6311 -288.4898)" class="st3 st4">{{stats.inspections}}</text>
-<text transform="matrix(1 0 0 1 1646.2368 -47.8215)" class="st3 st4">{{stats.views}}</text>
-<text transform="matrix(1 0 0 1 2044.7878 -42.1466)" class="st3 st4">{{stats.comments}}</text>
-<text transform="matrix(1 0 0 1 2453.6311 -39.8213)" class="st3 st4">{{stats.followers}}</text> -->

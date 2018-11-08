@@ -2,7 +2,7 @@ email_service/credentials.py
 backend/preprocess/
 *.pyc
 front_end/node_modules
-database
+database/mongo/*
 preprocess/
 database/release/*
 updates/
