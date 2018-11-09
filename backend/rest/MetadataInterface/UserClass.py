@@ -34,8 +34,8 @@ class User():
             assert(self.database.insert(self.table, _user))
             return {'status': True, 'message': 'User has been created', '_id': _user['_id'], 'institution': _user['institution'], 'user': _user['user'], 'role': _user['role']}
         except Exception as e:
-            print(str(e))
-            return {'status': False, 'message': str(e)}
+            # print(str(e))
+            return {'status': False, 'message': 'User exists'}
 
     def update(self, field, value, _id):
         # update master table with the new data from the manual inspection

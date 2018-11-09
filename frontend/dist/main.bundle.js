@@ -775,7 +775,6 @@ var AuthService = (function () {
         this.credentials = [];
     };
     AuthService.prototype.signup = function (data) {
-        var _this = this;
         var date = new Date();
         var timestamp = date.getTime();
         data['password'] = this.encript.SHA512(data['password']).toString();
@@ -784,15 +783,15 @@ var AuthService = (function () {
         data['timestamp'] = timestamp;
         return this.http.post(this.base_url + '/auth/signup/', data)
             .map(function (res) {
-            _this.credentials = res.json();
+            // this.credentials = res.json();
+            return res.json();
             // console.log(this.credentials)
-            if (_this.credentials) {
-                _this.session.putObject('online', _this.credentials['role']);
-                _this.session.putObject('user', _this.credentials);
-            }
-            else {
-                _this.session.removeAll();
-            }
+            // if(this.credentials){
+            //     this.session.putObject('online', this.credentials['role']);
+            //     this.session.putObject('user', this.credentials);
+            // }else{
+            //     this.session.removeAll();
+            // }
         });
     };
     return AuthService;
@@ -2117,7 +2116,12 @@ var SignupComponent = (function () {
         else {
             this.authService.signup({ email: email, user: user, institution: institution, password2: password2, password: password })
                 .subscribe(function (res) {
-                _this.router.navigate(['login/']);
+                if (res['status'] === true) {
+                    _this.router.navigate(['login/']);
+                }
+                else {
+                    alert('User exitsts!');
+                }
             });
         }
     };

@@ -52,14 +52,18 @@ export class SignupComponent implements OnInit {
               );
     }
 
-    signup(email: string, user: string, institution: string, password: string,  password2: string ) {
+    signup(email: string, user: string, institution: string, password: string, password2: string) {
 
         if ( password !== password2 || !this.emailFormControl.valid || !this.institutionFormControl.valid || !this.nameFormControl.valid ) {
             alert('Error: check the fields!')
         } else {
             this.authService.signup({ email: email, user: user, institution: institution, password2: password2, password: password })
                 .subscribe(res => {
-                    this.router.navigate(['login/'])
+                    if (res['status'] === true) {
+                        this.router.navigate(['login/'])
+                    } else {
+                        alert('User exitsts!')
+                    }
                 });
         }
 

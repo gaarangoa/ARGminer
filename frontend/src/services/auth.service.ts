@@ -66,14 +66,15 @@ export class AuthService {
 
         return this.http.post(this.base_url+'/auth/signup/', data)
         .map(res => {
-            this.credentials = res.json();
+            // this.credentials = res.json();
+            return res.json()
             // console.log(this.credentials)
-            if(this.credentials){
-                this.session.putObject('online', this.credentials['role']);
-                this.session.putObject('user', this.credentials);
-            }else{
-                this.session.removeAll();
-            }
+            // if(this.credentials){
+            //     this.session.putObject('online', this.credentials['role']);
+            //     this.session.putObject('user', this.credentials);
+            // }else{
+            //     this.session.removeAll();
+            // }
         })
     }
 
