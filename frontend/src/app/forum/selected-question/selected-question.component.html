@@ -22,7 +22,7 @@
         <div class="panel-body">
             <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: auto;">
                 <div class="item">
-                    <img alt="user image" class="online" src="assets/images/user1.svg">
+                    <img alt="user image" class="online" [src]="user_image">
                     <p class="message">
                         <strong class=""> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>
                         <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>

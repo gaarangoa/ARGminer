@@ -17,7 +17,7 @@ Quill.register('modules/imageResize', ImageResize);
     styleUrls: ['./selected-question.component.css'],
 })
 export class SelectedQuestionComponent implements OnInit {
-
+    private user_image: string;
     private post_id: any;
     private post: any;
     private comment_body: any;
@@ -32,6 +32,7 @@ export class SelectedQuestionComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.user_image = this.user_image = 'https://api.adorable.io/avatars/' + this.session.get('user')['email'];
 
         // tags for sharing
         this.meta.addTag({ name: 'twitter:card', content: 'summary' });

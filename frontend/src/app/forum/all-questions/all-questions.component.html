@@ -17,7 +17,7 @@
                 </h4>
 
                 <md-card-header>
-                    <div md-card-avatar class="example-header-image"></div>
+                    <div md-card-avatar md-card-avatar [style.backgroundSize]="'cover'" [style.backgroundImage]=" 'url('+ item.user_image + ')' "></div>
                     <md-card-subtitle>
                         <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>
                         <span class="badge" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>

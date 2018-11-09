@@ -82,6 +82,7 @@ export class AllQuestionsComponent implements OnInit {
                     i['index'] = ix
                     i['time_ago'] = timeAgo.format(i['timestamp']);
                     i['am_I_following'] = i['followers'].filter(e => e.status === true && e._id === this.session.get('user')['_id']).length > 0 ? 'UNFOLLOW' : 'FOLLOW';
+                    i['user_image'] = 'https://api.adorable.io/avatars/'+i['email'];
                 });
             });
     }
@@ -99,6 +100,7 @@ export class AllQuestionsComponent implements OnInit {
                     i['index'] = ix
                     i['time_ago'] = timeAgo.format(i['timestamp']);
                     i['am_I_following'] = i['followers'].filter(e => e.status === true && e._id === this.session.get('user')['_id']).length > 0 ? 'UNFOLLOW' : 'FOLLOW';
+                    i['user_image'] = 'https://api.adorable.io/avatars/'+i['email'];
                 });
 
 

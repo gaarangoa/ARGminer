@@ -10,6 +10,7 @@ from rest.MetadataInterface import masterClass as Master
 from rest.MetadataInterface import conflictedARGsClass as ConflictedARGs
 from rest.MetadataInterface import ArgDatabaseClass
 from rest.MetadataInterface import plasmidClass
+from rest.EmailClass import Email
 from collections import Counter
 
 import json
@@ -30,6 +31,7 @@ class GENE():
         self.argDatabase = ArgDatabaseClass.ArgDataBase(db)
         self.plasmid = plasmidClass.Plasmid(db)
         self.info = ""
+        self.email = Email()
 
     def metadata(self, gene_id):
         # 1. Identify from which database is it coming -  so basically get all the info from the deepARG db
@@ -163,6 +165,20 @@ class GENE():
         return self.master.getInspectedARGs(index, limit)
 
     def updateARG(self, data):
+        # TODO: include all admins and the users who voted that gene!
+        receivers = ['gustavo1@vt.edu', 'cmetangen@gmail.com']
+        for receiver in receivers:
+            self.email.send({
+                "receiver": receiver,
+                "subject": 'The gene ' + data['gene_id'] + ' has been curated',
+                "body": "The annotation for the gene <a href=https://bench.cs.vt.edu/argminer/#/classify;gene_id="+data['gene_id']+">" + data['gene_id'] + '</a> has been accepted <br><br>' +
+                "<table style='font-family: arial, sans-serif; border-collapse: collapse; width: 30%;'>" +
+                "<tr style='color: #FFF; border: 1px solid #000000; text-align: left; padding: 8px; background-color: #4C4983;'><th style='border: 1px solid #000000; text-align: left; padding: 8px;'>Task</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>Label</th> <th>Score</th></tr>" +
+                "<tr style='border: 1px solid #000000; text-align: left; padding: 8px; background-color: #C5C4D8;'><th style='border: 1px solid #000000; text-align: left; padding: 8px;'>Antibiotic Class</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + data['score'][0]['name'] + "</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + str(round(100*data['score'][0]['score'], 2)) + "%</th></tr>" +
+                "<tr style='border: 1px solid #000000; text-align: left; padding: 8px; background-color: #C5C4D8;'><th style='border: 1px solid #000000; text-align: left; padding: 8px;'>ARG name</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + data['score'][1]['name'] + "</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + str(round(100*data['score'][1]['score'], 2)) + "%</th></tr>" +
+                "<tr style='border: 1px solid #000000; text-align: left; padding: 8px; background-color: #C5C4D8;'><th style='border: 1px solid #000000; text-align: left; padding: 8px;'>ARG Mechanism</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + data['score'][2]['name'] + "</th> <th style='border: 1px solid #000000; text-align: left; padding: 8px;'>" + str(round(100 * data['score'][2]['score'], 2)) + "%</th></tr>" +
+                "<br><br>Regards, <br>ARGminer team"
+            })
         return self.master.updateARG(data)
 
     def updateConflictedARG(self):

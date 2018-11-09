@@ -15,10 +15,17 @@ def score(group="G1", kind='group', data=[]):
     Si = group_workers/float(total_workers)
 
     # Trust validation filter
-    Vi = sum(group_data['vi'])/float(group_workers)
+    try:
+        Vi = sum(group_data['vi']) / float(group_workers)
+    except:
+        Vi = 0
 
     # Expertise Confidence
-    Hi = sum(group_data['ci']*group_data['ei'])/float(25*group_workers)
+    try:
+        Hi = sum(group_data['ci'] * group_data['ei']) / \
+            float(25 * group_workers)
+    except:
+        Hi = 0
 
     x = Si*Vi*Hi*100
 
@@ -93,8 +100,20 @@ class Admin():
 
         annotations = self.master.getById(gene_id)[0]['inspected']
 
-        dta = [{'ci': i['rating']['confidence']['value'], 'ei': i['rating']['expertise']['value'], 'vi': 1,
-                'category': i['class'], 'group': i['group'], 'mechanism': i['mechanism']} for i in annotations]
+        dta = []
+        for i in annotations:
+            try:
+                dta.append({
+                    'ci': i['rating']['confidence']['value'],
+                    'ei': i['rating']['expertise']['value'],
+                    'vi': 1,
+                    'category': i['class'],
+                    'group': i['group'],
+                    'mechanism': i['mechanism']
+                })
+            except Exception as e:
+                pass
+
         data = pd.DataFrame(dta)
 
         scorers = []

@@ -5,7 +5,7 @@
             <md-card class="example-card">
 
                 <md-card-header>
-                    <div md-card-avatar class="example-header-image"></div>
+                    <div md-card-avatar [style.backgroundSize]="'cover'" [style.backgroundImage]=" 'url('+ user_image + ')' "></div>
                     <md-card-subtitle>
                         <span> <strong> {{ session.get('user')['user'] }} </strong></span> <br>
                         <span> {{ session.get('user')['institution'] }}</span> <br>

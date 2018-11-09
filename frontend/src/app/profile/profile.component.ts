@@ -21,12 +21,15 @@ export class ProfileComponent implements OnInit {
     private description: string;
     private stats: any;
 
+    public user_image: string;
+
     constructor(
         private session: Session,
         private userService: UserService
     ) {}
 
     ngOnInit() {
+        this.user_image = 'https://api.adorable.io/avatars/'+this.session.get('user')['email'];
         this.pass = { pass1: '', pass2: '', pass3: '' }
         this.info = { username: this.session.get('user')['username'], user: this.session.get('user')['user'], institution: this.session.get('user')['institution'], email: this.session.get('user')['email'] }
         this.description = ''
