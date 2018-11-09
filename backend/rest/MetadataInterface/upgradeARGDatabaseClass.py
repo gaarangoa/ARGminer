@@ -49,8 +49,8 @@ class UpgradeDatabase():
 
     def upgradeBg(self, data):
         # this will create a fasta file with the information from the database
-        fo = open("/release/" + data + ".fasta", "w")
-        fn = open("/release/" + data + ".needInspection.fasta", "w")
+        fo = open("/release/" + data + ".A.fasta", "w")
+        fn = open("/release/" + data + ".B.fasta", "w")
         fp = open("/release/" + data + ".conflicting.fasta", "w")
         fg = open("/release/" + data + ".graph.json", "w")
         fe = open("/release/" + data + ".edges.txt", "w")
@@ -115,12 +115,13 @@ class UpgradeDatabase():
                 pass
 
             is_potential = False
+            fn.write(header + "\n" + sequence + "\n")
+
             if i['entry']['database'] != 'UNIPROT' or i['entry']['inspected'] > 0:
                 total_args += 1
                 fo.write(header + "\n" + sequence + "\n")
             else:
                 potential_args += 1
-                fn.write(header + "\n" + sequence + "\n")
                 is_potential = True
 
             # Build the network here!

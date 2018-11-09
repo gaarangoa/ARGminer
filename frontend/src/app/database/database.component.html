@@ -17,8 +17,8 @@
 
                     <tr *ngFor="let item of databases">
                         <td class="text-left">
-                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.fasta'" target="_blank">database</a>
-                            <br> <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.needInspection.fasta'" target="_blank">potentialARGs</a>
+                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.A.fasta'" target="_blank">ARGminer-A</a>
+                            <br> <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.B.fasta'" target="_blank">ARGminer-B</a>
                         </td>
                         <td>{{ item.version }}</td>
                         <td>{{ item.total_args + item.potential_args }}</td>
@@ -38,10 +38,10 @@
                 ARGminer is released as a two fasta files
                 <ul>
                     <li>
-                        <strong>ARGminer-vxx.fasta:</strong> Contains ARGs that have been inspected by either ARGminer or have been reported in other curated databases (CARD, Resfinder, ARG-ANNOT, SARGs)
+                        <strong>ARGminer-vxx.A.fasta:</strong> Contains ARGs that have been inspected by either ARGminer or have been reported in other curated databases (CARD, Resfinder, ARG-ANNOT, SARGs)
                     </li>
                     <li>
-                        <strong> ARGminer-vxx.needInspection.fasta:</strong> These are ARGs from UniProt that have not been inspected yet and therefore the gene names have not been reviewed. In many cases the genes preserve the gene id from UniProt.
+                        <strong> ARGminer-vxx.B.fasta:</strong> This database contains all ARGs from ARGminer, including the potential ARGs that need inspection from UniProt. In most of the cases the UniProt genes lack of a proper gene nomenclature.
                     </li>
                 </ul>
                 To identify higher diversity, it is recommended to merge both databases and post process gene names.
