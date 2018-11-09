@@ -17,9 +17,9 @@
 
                     <tr *ngFor="let item of databases">
                         <td class="text-left">
-                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.needInspection.fasta'" target="_blank">database</a>
+                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.needInspection.fasta'" target="_blank">potentialARGs</a>
                             <br>
-                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.fasta'" target="_blank">potentialARGs</a>
+                            <a [href]="'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.fasta'" target="_blank">database</a>
                         </td>
                         <td>{{ item.version }}</td>
                         <td>{{ item.total_args + item.potential_args }}</td>
