@@ -200,7 +200,7 @@ exports.i(__webpack_require__(263), "");
 exports.i(__webpack_require__(264), "");
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n\n/* @import \"assets/css/boostwatch4.css\"; */", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n\n/* @import \"assets/css/boostwatch4.css\"; */\npre {\n    background-color: black !important;\n    color: #ffffff !important;\n}", ""]);
 
 // exports
 

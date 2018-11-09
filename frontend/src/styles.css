@@ -13,3 +13,7 @@
 @import "assets/css/custom.css";
 @import "../node_modules/quill/dist/quill.core.css";
 @import "../node_modules/quill/dist/quill.snow.css";
+pre {
+    background-color: black !important;
+    color: #ffffff !important;
+}

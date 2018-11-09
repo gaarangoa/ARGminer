@@ -1,11 +1,11 @@
 <p-growl class="user_growl" [(value)]="notification"></p-growl>
 
-<div *ngIf="!render" class="col-md-4 col-md-offset-4">
+<div *ngIf="!render" class="col-md-0 col-md-offset-0">
 </div>
 
 <div *ngIf="render">
     <!--Left panel-->
-    <div class="col-sm-3 affix coffix">
+    <div class="col-sm-3 ">
         <!-- <div class=""> -->
         <div *ngIf="randomARG.status==true" class="">
             <!-- <div class="col-md-12"> -->
@@ -174,8 +174,8 @@
 
     </div>
 
-    <app-explore class="col-sm-6 col-sm-offset-3"></app-explore>
-    <div class="col-sm-6 col-sm-offset-3">
+    <app-explore class="col-sm-6 col-sm-offset-0"></app-explore>
+    <div class="col-sm-6 col-sm-offset-0">
 
         <div *ngIf="randomARG.status==true && loading==false && ARG_display">
             <br>
@@ -215,7 +215,7 @@
 
 
     <!-- <div class="col-sm-3"> -->
-    <div id="step11" class="curate-nav affix clarify">
+    <div id="step11" class="curate-nav">
         <!-- <aside class="control-sidebar control-sidebar-open"> -->
         <app-curate></app-curate>
         <!-- </aside> -->
