@@ -76,6 +76,9 @@
                         <div class="box-body">
                             <ul class="clearfix">
 
+                                <li *ngIf="item.entry.inspected > 1">
+                                    <span class="badge bg-red"> <strong> Gene already curated </strong></span>
+                                </li>
                                 <li>
                                     <span class="users-list-date">Antibiotic Class</span> {{ item.entry.type }}
                                 </li>
