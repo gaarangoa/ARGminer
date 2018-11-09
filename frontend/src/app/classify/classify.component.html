@@ -71,45 +71,6 @@
                         <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                     </dl>
 
-                    <!-- <p class="small text-left"> -->
-                    <!-- *ARG: <u><strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene</u> -->
-                    <!-- <a (click)="startTour()" class="badge bg-blue btn-xs"><span class=""> <strong> <i class="fa fa-compass"></i> <u>Take a tour </u></strong> </span></a> -->
-                    <!-- </p> -->
-
-
-                    <!-- <hr> -->
-                    <!-- <h4>Tutorial</h4> -->
-
-                    <!-- <div class="text-left"> -->
-
-
-
-                    <!-- <a (click)="openInstructions()" class="badge bg-red btn-xs"><span class=""> <strong> <u>Instructions</u></strong> </span></a> -->
-                    <!-- </div> -->
-                    <!-- <br> -->
-                    <!-- <hr> -->
-
-                    <!-- <h4>Filter options</h4> -->
-
-                    <!-- <tour-step class="intro-tour-hint-wrapper" selector="step2" order="2">
-                            <div class="col-md-12">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">
-                                            <strong>I am a New user</strong>
-                                        </h3>
-                                    </div>
-                                    <div class="box-body">
-                                        If you are a new user, activate the new user button. You will have to complete 20 entries that will help you to get familiar with the system. I will also score your results based on the real annotation.
-                                    </div>
-                                    <div class="box-footer">
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </tour-step> -->
-
                     <div id="step3">
                         <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Enable Training</strong></md-slide-toggle>
                         <p class="small">Enable this option if this is the first time you enter the website.</p>
@@ -211,6 +172,13 @@
             </div>
             <br>
         </div>
+
+        <div id="step10">
+            <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
+            <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
+            <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
+        </div>
+
     </div>
 
 
@@ -221,13 +189,4 @@
         <!-- </aside> -->
     </div>
     <!-- </div> -->
-</div>
-
-<div class="col-sm-6 col-sm-offset-3">
-    <!-- *ngIf="MGE_display" -->
-    <div id="step10">
-        <genome-metadata *ngIf="randomARG.entry.database=='UNIPROT'"></genome-metadata>
-        <genome-metadata *ngIf="randomARG.entry.database=='CARD'"></genome-metadata>
-        <genome-metadata *ngIf="randomARG.entry.database=='ARDB'"></genome-metadata>
-    </div>
 </div>
