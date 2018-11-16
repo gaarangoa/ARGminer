@@ -135,9 +135,9 @@
 
     </div>
 
-    <app-explore class="col-sm-6 col-sm-offset-0"></app-explore>
-    <div class="col-sm-6 col-sm-offset-0">
 
+    <div class="col-sm-6 col-sm-offset-0">
+        <app-explore></app-explore>
         <div *ngIf="randomARG.status==true && loading==false && ARG_display">
             <br>
             <div *ngFor="let bh of randomARG.besthit.alignments">
