@@ -86,24 +86,13 @@
 
             <!-- nomenclature -->
             <hr>
-            <!-- <div *ngIf="nomenclature.probability>0.8"> -->
-            <h5 class="">Predicted Gene <strong> Nomenclature </strong></h5>
+
+            <h5 class=""><strong> Suggested Gene Nomenclature </strong></h5>
             <!-- <p>This is the suggested structure for the nomenclature of the gene name.</p> -->
-            <!-- <div class="" *ngFor="let nomenclature of predicted_nomenclature">
-                <span *ngIf="nomenclature.probability>0.0">
-          <h2 class="nomenclature-text"> {{ nomenclature.nomenclature }} </h2>
-          <span>
-            {{100*nomenclature.probability.toFixed(2) }} match
-          </span>
-                </span>
-
-            </div> -->
+            <h2 class="nomenclature-text"> {{ predicted_nomenclature[0].nomenclature }} <strong class="nomenclature-text-match">
+          ({{100*predicted_nomenclature[0].probability.toFixed(2) }}% Match) </strong> </h2>
 
 
-            <h2 class="nomenclature-text"> {{ predicted_nomenclature[0].nomenclature }} </h2>
-            <span>{{100*predicted_nomenclature[0].probability.toFixed(2) }}% match </span>
-
-            <!-- </div> -->
             <hr>
             <p>
                 The structure of the gene nomenclature is retrieved by using a machine learning model that predicts the shape of the gene name. For instance, a gene name <strong>BACA</strong> with a nomenclature <strong> xxxX </strong>, should be written

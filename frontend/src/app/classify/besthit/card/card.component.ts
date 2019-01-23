@@ -82,7 +82,9 @@ export class BestHitCardComponent implements OnInit {
     this.randomARG = this.dataService.ARG;
     this.render = false;
     this.cars = [];
-    this.predicted_nomenclature = [];
+      this.predicted_nomenclature = [
+          {nomenclature: '', probability: 0}
+    ];
     // this.alCoverage = 100*this.randomARG['besthit']['alignments'][0]['algn_len'] / this.randomARG['entry']['length'].toFixed(0)
     // console.log(this.alCoverage)
     if(this.randomARG['besthit']){

@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Jua');
 .nomenclature-text {
     font-family: 'Jua', sans-serif;
-    color: brown
+    color: green
+}
+
+.nomenclature-text-match {
+    font-family: 'Jua', sans-serif;
+    color: black !important;
+    font-size: 17px !important;
 }
 
 svg {
