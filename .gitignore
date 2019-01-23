@@ -8,6 +8,7 @@ database/release/*
 updates/
 backend/rest/config.py
 frontend_bak
+backend/nomenclature/v*
 
 
 
