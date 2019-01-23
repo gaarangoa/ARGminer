@@ -107,7 +107,7 @@ export class BestHitCardComponent implements OnInit {
     });
 
     const _sentence = this.cars.map(e => {
-        return (e.bitscore > 150) ? e.gene_name : '';
+        return (e.bitscore > 50) ? e.gene_name + ' ' + e.antibiotic.join(' ') : '';
     }
     ).join(' ');
 
