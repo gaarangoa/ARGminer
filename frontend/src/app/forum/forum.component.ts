@@ -21,6 +21,7 @@ export class ForumComponent implements OnInit {
     private selected_option: any;
     private twitter: string;
     private keywords: any;
+    private hide_search: boolean;
 
     constructor(
         private session: Session,
@@ -29,6 +30,7 @@ export class ForumComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.hide_search = false;
         this.keywords = []
         this.twitter = '';
         this.selected_option = 0;
@@ -46,14 +48,20 @@ export class ForumComponent implements OnInit {
 
 
     go_to_blog_help() {
-        this.router.navigate(['forum/selected_question', { id: '1541191967102'}]);
+        this.router.navigate(['forum/selected_question', { id: '1541191967102' }]);
+        this.hide_search = true;
     }
 
-    go_to_option() {
-        let selected = this.navigation_options[this.selected_option]['label'] === 'All' ? []:this.navigation_options[this.selected_option]['label'];
-        let _mode = this.keywords.concat(selected);
+    go_to_option(selected_label:string) {
+        let selected = selected_label['label'] === 'All' ? []:selected_label['label'];
+        this.keywords = this.keywords.concat(selected);
 
-        this.router.navigate([this.navigation_options[this.selected_option]['url'], {mode: _mode} ]);
+        this.router.navigate([selected_label['url'], { mode: this.keywords }]);
+
+    }
+
+    view_search_bar() {
+        this.hide_search = false;
     }
 
     open_instructions() {

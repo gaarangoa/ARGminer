@@ -6,3 +6,7 @@
     color: red !important;
     cursor: pointer;
 }
+
+.ui-view-post {
+    font-family: 'Sarabun', sans-serif !important;
+}

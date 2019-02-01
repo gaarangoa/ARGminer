@@ -1,36 +1,42 @@
 <div class="col-md-12">
-    <br><br><br>
-    <div class="panel no-gutter">
+    <br><br>
+    <div class="col-md-12">
+        <div class="panel ui-view-post">
 
-        <div class="panel-body">
-            <h1> <strong> {{post.title}} </strong> </h1>
-            <span class="badge" *ngFor='let tag of post.tags'>
-        <strong>
-          {{tag.name}}
-        </strong>
-      </span> <br><br>
-            <span class="text-muted small"> {{post.date}}</span>
-            <!-- <hr> -->
-            <!-- <quill-editor [style]="{'height':'auto'}" [(ngModel)]="post.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor> -->
-            <div class="text-body-box" [innerHTML]="post.body"></div>
+            <div class="panel-body">
+                <h2> <strong> {{post.title}} </strong> </h2>
+                <span class="small"> {{post.date}}</span><br>
+                <span class="badge bg-yellow" *ngFor='let tag of post.tags'>
+          <strong>
+            {{tag.name}}
+          </strong>
+        </span>
+                <hr>
+
+                <!-- <hr> -->
+                <!-- <quill-editor [style]="{'height':'auto'}" [(ngModel)]="post.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false}"></quill-editor> -->
+                <div class="text-body-box" [innerHTML]="post.body"></div>
+            </div>
         </div>
     </div>
 </div>
 
-<div *ngFor='let comment of post.comments' class="col-md-12">
-    <div class="panel no-gutter">
-        <div class="panel-body">
-            <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: auto;">
-                <div class="item">
-                    <img alt="user image" class="online" [src]="'https://api.adorable.io/avatars/'+comment.email">
-                    <p class="message">
-                        <strong class=""> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>
-                        <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>
-                        <i *ngIf="session.get('user')['email'] === comment.email" (click)='remove_comment(comment)' class="fa fa-trash icon-options" aria-hidden="true"></i> <br>
+<div class="col-md-12">
+    <div *ngFor='let comment of post.comments' class="col-md-12">
+        <div class="panel no-gutter">
+            <div class="panel-body">
+                <div class="box-body chat" id="chat-box" style="overflow: auto; width: auto; height: auto;">
+                    <div class="item">
+                        <img alt="user image" class="online" [src]="'https://api.adorable.io/avatars/'+comment.email">
+                        <p class="message">
+                            <strong class=""> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>
+                            <small class="text-muted"><i class="fa fa-clock-o"></i> {{comment.date}}</small>
+                            <i *ngIf="session.get('user')['email'] === comment.email" (click)='remove_comment(comment)' class="fa fa-trash icon-options" aria-hidden="true"></i> <br>
 
-                        <quill-editor [style]="{'height':'auto'}" [(ngModel)]="comment.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false, imageResize: true}"></quill-editor>
+                            <quill-editor [style]="{'height':'auto'}" [(ngModel)]="comment.body" [minLength]="3" [required]="true" [readOnly]="true" [modules]="{toolbar: false, imageResize: true}"></quill-editor>
 
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,16 +44,18 @@
 </div>
 
 <div class="col-md-12">
-    <div class="panel no-gutter">
+    <div class="col-md-12">
+        <div class="panel no-gutter">
 
-        <div class="panel-body">
-            <h4> <strong>Your Comment</strong> </h4>
-            <br>
-            <!-- <p-editor [(ngModel)]="comment_body" [style]="{'height':'250px'}"></p-editor> -->
-            <quill-editor [style]="{'height':'auto'}" [modules]="editor_modules" [(ngModel)]="comment_body"></quill-editor>
-            <hr>
-            <a (click)='add_comment()' class="btn btn-primary">Post your answer/comment</a>
-            <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+            <div class="panel-body">
+                <h4> <strong>Your Comment</strong> </h4>
+                <br>
+                <!-- <p-editor [(ngModel)]="comment_body" [style]="{'height':'250px'}"></p-editor> -->
+                <quill-editor [style]="{'height':'auto'}" [modules]="editor_modules" [(ngModel)]="comment_body"></quill-editor>
+                <hr>
+                <a (click)='add_comment()' class="btn btn-primary">Post your answer/comment</a>
+                <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+            </div>
         </div>
     </div>
 </div>

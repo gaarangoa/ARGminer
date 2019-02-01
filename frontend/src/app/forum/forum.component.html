@@ -1,53 +1,32 @@
-<div class="col-md-2 col-md-offset-0">
-    <br><br><br>
+<div class="col-md-12 col-md-offset-0">
 
-    <div class="box box-solid">
-        <!-- <div class="box-header">
-            <h3 class="box-title">
-                <strong>Filter</strong>
-            </h3>
-        </div> -->
 
+    <div class="col-md-12">
+        <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Create a new Post </strong></a>
+        <a routerLink="/forum" class="btn btn-info pull-right">All Posts</a>
+        <!-- <a (click)='view_search_bar()' class="btn btn-info pull-right">Search</a> -->
+    </div>
+
+    <div *ngIf="!hide_search" class="col-md-12">
         <div class="box-body">
-            <h4>Select Category to search</h4>
-            <p-listbox (click)='go_to_option()' [options]="navigation_options" [(ngModel)]="selected_option" optionLabel="name"></p-listbox>
-        </div>
-
-        <div class="box-body">
-            <h4>Add keywords (Optional)</h4>
+            <h4> Type and search by keywords </h4>
             <p-chips (onAdd)="search()" (onRemove)="search()" [(ngModel)]="keywords"></p-chips>
+            <span (click)='go_to_option(option)' class='badge bg-success hand' *ngFor="let option of navigation_options">
+        <strong>{{ option.label }}</strong></span>
         </div>
 
         <div class="box-body">
             <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>
-            <!-- <a class="a-link" (click)="open_instructions()"> How to inspect an ARG?</a> -->
         </div>
-
     </div>
 
-    <!-- <ul class="timeline">
-        <li class="timeline-inverted">
-            <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
-            <div class="timeline-panel box box-solid">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                </div>
-            </div>
-        </li>
-    </ul> -->
-    <!-- <a class="twitter-timeline" data-height="400" href="https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw"></a> -->
 </div>
 
-<div class="col-md-9">
+
+<div class="col-md-12">
     <router-outlet></router-outlet>
 </div>
 
 <div class="col-md-3 no-gutter">
     <br><br><br>
-    <!-- <div class="box box-solid box-primary">
-
-    </div> -->
 </div>

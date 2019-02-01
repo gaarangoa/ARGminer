@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+
 /*!
  *   AdminLTE v2.3.7
  *   Author: Almsaeed Studio
@@ -6,6 +7,7 @@
  *   License: Open source - MIT
  *           Please visit http://opensource.org/licenses/MIT for more information
 !*/
+
 
 /*
  * Core: General Layout Style
@@ -30,6 +32,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 
 /* Layout */
 
@@ -60,6 +63,7 @@ body {
 .layout-boxed {
     /*background: url('../img/boxed-bg.jpg') repeat fixed;*/
 }
+
 
 /*
  * Content Wrapper - contains the main content
@@ -124,6 +128,7 @@ body {
     border-top: 1px solid #d2d6de;
 }
 
+
 /* Fixed layout */
 
 .fixed .main-header,
@@ -167,6 +172,7 @@ body.hold-transition .main-header .logo {
     transition: none;
 }
 
+
 /* Content */
 
 .content {
@@ -177,6 +183,7 @@ body.hold-transition .main-header .logo {
     padding-left: 15px;
     padding-right: 15px;
 }
+
 
 /* H1 - H6 font */
 
@@ -195,6 +202,7 @@ h6,
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+
 /* General Links */
 
 a {
@@ -209,6 +217,7 @@ a:focus {
     color: #72afd2;
 }
 
+
 /* Page Header */
 
 .page-header {
@@ -221,6 +230,7 @@ a:focus {
     display: block;
     margin-top: 5px;
 }
+
 
 /*
  * Component: Main Header
@@ -480,6 +490,7 @@ a:focus {
     }
 }
 
+
 /*
  * Component: Sidebar
  * ------------------
@@ -685,6 +696,7 @@ a:focus {
     width: auto;
 }
 
+
 /*
  * Component: Sidebar Mini
  */
@@ -800,6 +812,7 @@ a:focus {
     top: 50%;
     margin-top: -7px;
 }
+
 
 /*
  * Component: Control sidebar. By default, this is the right sidebar.
@@ -1073,10 +1086,12 @@ a:focus {
     color: #5e5e5e;
 }
 
+
 /*
  * Component: Dropdown menus
  * -------------------------
  */
+
 
 /*Dropdowns in general*/
 
@@ -1374,6 +1389,7 @@ a:focus {
     }
 }
 
+
 /* Add fade animation to dropdown menus by appending
  the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)*/
 
@@ -1428,6 +1444,7 @@ a:focus {
     }
 }
 
+
 /* Fix dropdown menu in navbars */
 
 .navbar-custom-menu>.navbar-nav>li {
@@ -1455,6 +1472,7 @@ a:focus {
         background: #fff;
     }
 }
+
 
 /*
  * Component: Form
@@ -1527,6 +1545,7 @@ a:focus {
     color: #dd4b39;
 }
 
+
 /* Input group */
 
 .input-group .input-group-addon {
@@ -1534,6 +1553,7 @@ a:focus {
     border-color: #d2d6de;
     background-color: #fff;
 }
+
 
 /* button groups */
 
@@ -1545,6 +1565,7 @@ a:focus {
 .icheck>label {
     padding-left: 0;
 }
+
 
 /* support Font Awesome icons in form-control */
 
@@ -1564,6 +1585,7 @@ a:focus {
     line-height: 30px;
 }
 
+
 /*
  * Component: Progress Bar
  * -----------------------
@@ -1581,6 +1603,7 @@ a:focus {
 .progress>.progress-bar .progress-bar {
     border-radius: 1px;
 }
+
 
 /* size variation */
 
@@ -1619,6 +1642,7 @@ a:focus {
 .progress-xxs .progress-bar {
     border-radius: 1px;
 }
+
 
 /* Vertical bars */
 
@@ -1661,6 +1685,7 @@ a:focus {
     font-weight: 400;
     font-size: 16px;
 }
+
 
 /* Remove margins from progress bars when put in a table */
 
@@ -1727,6 +1752,7 @@ a:focus {
     background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
+
 
 /*
  * Component: Small Box
@@ -1819,6 +1845,7 @@ a:focus {
     }
 }
 
+
 /*
  * Component: Box
  * --------------
@@ -1827,11 +1854,12 @@ a:focus {
 .box {
     position: relative;
     border-radius: 3px;
-    background: #ffffff;
-    border-top: 3px solid #d2d6de;
+    background: #ffffff !important;
+    /* border: 1px solid #000000 !important; */
+    /* border-top: 3px solid #d2d6de; */
     margin-bottom: 20px;
     width: 100%;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); */
 }
 
 .box.box-primary {
@@ -2124,8 +2152,8 @@ a:focus {
 .box-body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
     padding: 10px;
 }
 
@@ -2154,7 +2182,7 @@ a:focus {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 0px;
 }
 
 .box-body .box-pane-right {
@@ -2231,6 +2259,7 @@ a:focus {
     font-weight: 400;
     font-size: 12px;
 }
+
 
 /* Widget: TODO LIST */
 
@@ -2325,6 +2354,7 @@ a:focus {
     margin: 0 5px;
 }
 
+
 /* Chat widget (DEPRECATED - this will be removed in the next major release. Use Direct Chat instead)*/
 
 .chat {
@@ -2410,6 +2440,7 @@ a:focus {
     color: #444;
 }
 
+
 /*
  * Component: Info Box
  * -------------------
@@ -2494,6 +2525,7 @@ a:focus {
 .progress-description {
     margin: 0;
 }
+
 
 /*
  * Component: Timeline
@@ -2607,6 +2639,7 @@ a:focus {
 .timeline-inverse>li>.timeline-item>.timeline-header {
     border-bottom-color: #ddd;
 }
+
 
 /*
  * Component: Button
@@ -2795,6 +2828,7 @@ a:focus {
     font-weight: 400;
 }
 
+
 /*
  * Component: Callout
  * ------------------
@@ -2846,6 +2880,7 @@ a:focus {
     border-color: #00733e;
 }
 
+
 /*
  * Component: alert
  * ----------------
@@ -2896,6 +2931,7 @@ a:focus {
     border-color: #00acd6;
 }
 
+
 /*
  * Component: Nav
  * --------------
@@ -2907,6 +2943,7 @@ a:focus {
     color: #444;
     background: #f7f7f7;
 }
+
 
 /* NAV PILLS */
 
@@ -2932,6 +2969,7 @@ a:focus {
     font-weight: 600;
 }
 
+
 /* NAV STACKED */
 
 .nav-stacked>li>a {
@@ -2956,6 +2994,7 @@ a:focus {
     padding: 5px 10px;
     text-transform: uppercase;
 }
+
 
 /* NAV TABS */
 
@@ -3099,6 +3138,7 @@ a:focus {
     border-top-color: #d2d6de;
 }
 
+
 /* PAGINATION */
 
 .pagination>li>a {
@@ -3109,6 +3149,7 @@ a:focus {
 .pagination.pagination-flat>li>a {
     border-radius: 0 !important;
 }
+
 
 /*
  * Component: Products List
@@ -3175,6 +3216,7 @@ a:focus {
     border-bottom-width: 0;
 }
 
+
 /*
  * Component: Table
  * ----------------
@@ -3221,6 +3263,7 @@ a:focus {
     border: 0;
 }
 
+
 /* .text-center in tables */
 
 table.text-center,
@@ -3237,6 +3280,7 @@ table.text-center th {
     text-align: right;
 }
 
+
 /*
  * Component: Label
  * ----------------
@@ -3246,6 +3290,7 @@ table.text-center th {
     background-color: #d2d6de;
     color: #444;
 }
+
 
 /*
  * Component: Direct Chat
@@ -3505,6 +3550,7 @@ table.text-center th {
     border-left-color: #00a65a;
 }
 
+
 /*
  * Component: Users List
  * ---------------------
@@ -3546,6 +3592,7 @@ table.text-center th {
     font-size: 12px;
 }
 
+
 /*
  * Component: Carousel
  * -------------------
@@ -3564,6 +3611,7 @@ table.text-center th {
     display: inline-block;
     margin-top: -20px;
 }
+
 
 /*
  * Component: modal
@@ -3620,6 +3668,7 @@ table.text-center th {
 .modal-danger .modal-footer {
     border-color: #c23321;
 }
+
 
 /*
  * Component: Social Widgets
@@ -3694,6 +3743,7 @@ table.text-center th {
     height: auto;
     float: left;
 }
+
 
 /*
  * Page: Mailbox
@@ -3781,10 +3831,12 @@ table.text-center th {
     height: auto;
 }
 
+
 /*
  * Page: Lock Screen
  * -----------------
  */
+
 
 /* ADD THIS CLASS TO THE <BODY> TAG */
 
@@ -3809,12 +3861,14 @@ table.text-center th {
     margin-top: 10%;
 }
 
+
 /* User name [optional] */
 
 .lockscreen .lockscreen-name {
     text-align: center;
     font-weight: 600;
 }
+
 
 /* Will contain the image and the sign in form */
 
@@ -3826,6 +3880,7 @@ table.text-center th {
     margin: 10px auto 30px auto;
     width: 290px;
 }
+
 
 /* User image */
 
@@ -3844,6 +3899,7 @@ table.text-center th {
     width: 70px;
     height: 70px;
 }
+
 
 /* Contains the password input and the login button */
 
@@ -3864,6 +3920,7 @@ table.text-center th {
 .lockscreen-footer {
     margin-top: 10px;
 }
+
 
 /*
  * Page: Login & Register
@@ -3926,6 +3983,7 @@ table.text-center th {
     margin: 10px 0;
 }
 
+
 /*
  * Page: 400 and 500 error pages
  * ------------------------------
@@ -3977,6 +4035,7 @@ table.text-center th {
     }
 }
 
+
 /*
  * Page: Invoice
  * -------------
@@ -3993,6 +4052,7 @@ table.text-center th {
 .invoice-title {
     margin-top: 0;
 }
+
 
 /*
  * Page: Profile
@@ -4027,6 +4087,7 @@ table.text-center th {
 .post .user-block {
     margin-bottom: 15px;
 }
+
 
 /*
  * Social Buttons for Bootstrap
@@ -4929,6 +4990,7 @@ table.text-center th {
     background-color: #ffffff;
 }
 
+
 /*
  * Plugin: Full Calendar
  * ---------------------
@@ -5040,6 +5102,7 @@ table.text-center th {
 .external-event:hover {
     box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.2);
 }
+
 
 /*
  * Plugin: Select2
@@ -5160,6 +5223,7 @@ table.text-center th {
 .select2-container .select2-selection--single .select2-selection__rendered {
     padding-right: 10px;
 }
+
 
 /*
  * General: Miscellaneous
@@ -5876,6 +5940,7 @@ table.text-center th {
 .chart canvas {
     width: 100% !important;
 }
+
 
 /*
  * Misc: print

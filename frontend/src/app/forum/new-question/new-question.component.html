@@ -1,44 +1,44 @@
 <div class="col-md-12" *ngIf='session.get("online") >=1'>
-    <br><br><br>
-    <div class="panel no-gutter">
-        <div class="panel-body">
-            <div class="col-md-3"></div>
-            <h4> <strong> Title </strong></h4>
+    <div class="col-md-12 post-form">
+        <!-- <div class="panel-body"> -->
+
+        <div class="col-md-12 no-gutter">
+
             <md-input-container class="col-md-12 no-gutter">
-                <input mdInput placeholder="What is your ARG question, try to be specific!" #ftitle>
+                <h3> Title </h3>
+                <input mdInput placeholder="" #ftitle>
             </md-input-container>
+        </div>
 
-
-            <h4> <strong> Body </strong></h4>
-            <!-- <p-editor [(ngModel)]="text" [style]="{'height':'500px', 'max-height':'auto'}"></p-editor> -->
-            <quill-editor [style]="{'height':'450px'}" [modules]="editor_modules" [(ngModel)]="text"></quill-editor>
-            <br><br>
-
-            <div class="col-md-12 no-gutter tag-line">
-                <h4> <strong> Categories </strong></h4>
-                <p>Click in at least one of the following categories: </p>
-                <div class="categories-block" *ngFor="let key of categories">
-                    <span (click)='add_category(key)' class="badge bg-green categories"> <strong> {{key.name}} </strong></span>
-                </div>
-                <br><br>
-            </div>
-
-            <div class="col-md-12 no-gutter tag-line">
-                <h4> <strong> Tags </strong></h4>
-                <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit
-            enter</u>.</p>
-            </div>
-
-            <div class="col-md-12 no-gutter">
-                <br>
-                <p-chips [(ngModel)]="keywords"></p-chips>
-            </div>
-
-            <div class="col-md-12 no-gutter">
-                <br>
-                <a (click)="post_question(ftitle.value)" class="btn btn-primary">Post</a>
-                <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+        <div class="col-md-12 no-gutter">
+            <!-- <h3> Body </h3> -->
+            <div class="box">
+                <quill-editor [style]="{'height':'450px'}" [modules]="editor_modules" [(ngModel)]="text"></quill-editor>
             </div>
         </div>
+        <br><br>
+
+        <div class="col-md-12 no-gutter tag-line">
+            <h3> Categories</h3>
+            <p>Click in at least one of the following categories: </p>
+            <div class="categories-block" *ngFor="let key of categories">
+                <span (click)='add_category(key)' class="badge bg-green categories"> <strong> {{key.name}} </strong></span>
+            </div>
+            <br><br>
+        </div>
+
+        <div class="col-md-12 no-gutter tag-line">
+            <h3> Tags </h3>
+            <p-chips [(ngModel)]="keywords"></p-chips>
+            <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit
+          enter</u>.</p>
+        </div>
+
+        <div class="col-md-12 no-gutter">
+            <br>
+            <a (click)="post_question(ftitle.value)" class="btn btn-primary">Publish</a>
+            <a routerLink="/forum" class="btn btn-danger">Cancel</a>
+        </div>
+        <!-- </div> -->
     </div>
 </div>

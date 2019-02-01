@@ -1,17 +1,12 @@
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
-
-<div class="col-md-12">
-    <a routerLink="new_question" class="btn btn-primary pull-right"> <strong> Create a new Post </strong></a>
-</div>
-<br><br><br>
+<br>
 
 
-<masonry [options]="{ transitionDuration: '0.5s' }">
-    <masonry-brick *ngFor="let item of masonryItems " class="brick col-md-12">
+<masonry [options]="{ transitionDuration: '1s' }">
+    <masonry-brick *ngFor="let item of masonryItems " class="brick col-md-4">
 
-        <div class="box box-solid">
+        <div class="box">
             <md-card class="example-card">
-
                 <h4 class="title-post" (click)="go_to_question(item)">
                     <strong> <u> {{item.title}} </u> </strong>
                 </h4>
@@ -27,7 +22,7 @@
 
                 <md-card-content class="box-fixed-height">
                     <br>
-                    <div class="text-body-box" [innerHTML]="item.body.substring(0, 500).replace('h2', 'p').replace('h1', 'p').replace('<br>', '')+ '...' "></div>
+                    <div class="text-body-box ui-summary" [innerHTML]="item.body.substring(0, 200).replace('h2', 'p').replace('h1', 'p').replace('<br>', '') "></div>
                 </md-card-content>
 
                 <md-card-actions>

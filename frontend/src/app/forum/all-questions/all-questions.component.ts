@@ -33,7 +33,7 @@ export class AllQuestionsComponent implements OnInit {
     ngOnInit() {
         this.selected_category = this.activatedRoute.snapshot.params.mode ? this.activatedRoute.snapshot.params.mode.split(','):'All';
         this._from = 0;
-        this._to = 5;
+        this._to = 6;
         this.masonryItems = [];
         // get top 10 posts
         this.get_top_n_posts()
@@ -41,7 +41,7 @@ export class AllQuestionsComponent implements OnInit {
 
         this.activatedRoute.params.subscribe(val => {
             this._from = 0;
-            this._to = 5;
+            this._to = 6;
             this.selected_category = this.activatedRoute.snapshot.params.mode ? this.activatedRoute.snapshot.params.mode.split(','):'All';
             this.get_top_n_posts();
         })
