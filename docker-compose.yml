@@ -1,8 +1,7 @@
-version: '2'
+version: "2"
 
 services:
-
-# The front end is copied to the nginx
+  # The front end is copied to the nginx
   frontend:
     image: nginx
     build:
@@ -17,10 +16,11 @@ services:
     depends_on:
       - database
       - backend
+    restart: always
 
-# database with everything!
+  # database with everything!
   database:
-    image: mongo:3.6
+    image: mongo:3.6.1
     environment:
       - MONGO_DATA_DIR=./database/mongo
       - MONGO_LOG_DIR=./database/mongo
@@ -30,9 +30,9 @@ services:
       - 27897:17863
     tty: true
     command: mongod --dbpath /data/db --directoryperdb --port 17863 --maxConns 5000
+    restart: always
 
-
-# python rest API with the analysis algorithms
+  # python rest API with the analysis algorithms
   backend:
     image: python
     environment:
@@ -50,7 +50,7 @@ services:
       - database
     links:
       - database
-
+    restart: always
 
   email_service:
     build:
@@ -60,3 +60,4 @@ services:
       - ./email_service/:/src/
     tty: true
     command: python3 /src/api.py
+    restart: always
