@@ -5,6 +5,7 @@ import gzip
 import json
 import networkx as nx
 from networkx.readwrite import json_graph
+import datetime
 
 
 class UpgradeDatabase():
@@ -84,9 +85,9 @@ class UpgradeDatabase():
                 mgeScore = 'unknown'
 
             if type(i['entry']['type']) == list:
-                _type = str(i['entry']['type'])
+                _type = str(";".join(i['entry']['type']))
             else:
-                _type = str([i['entry']['type']])
+                _type = str(i['entry']['type'])
 
             header = ">"+"|".join([
                 str(i['entry']['gene_id']),
@@ -156,6 +157,7 @@ class UpgradeDatabase():
                 "potential_args": potential_args,
                 "inspected_args": inspected_args,
                 "user_inspections": user_inspections,
+                "release_date": str(datetime.datetime.now())
                 # "network": json_graph.node_link_data(self.network, {'link': 'edges', 'source': 'source', 'target': 'target'})
             }
             },

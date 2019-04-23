@@ -8,12 +8,13 @@ import { DataService } from '../../services/data.service';
 })
 export class DatabaseComponent implements OnInit {
   public databases: Object;
-  
+
   constructor(
     private dataService: DataService
   ) { }
 
-  ngOnInit() {
+    ngOnInit() {
+        this.databases = [];
     this.dataService.getDatabaseList()
       .subscribe(response => {
         this.databases = response;
