@@ -1,5 +1,14 @@
 # from rest.DataBaseInterface.DataBaseClass import DataBase
 import random
+import logging
+import sys
+
+logger = logging.getLogger(__name__)
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+out_hdlr.setLevel(logging.DEBUG)
+logger.addHandler(out_hdlr)
+logger.setLevel(logging.DEBUG)
 
 
 class MASTER():
@@ -45,5 +54,7 @@ class MASTER():
             },
             True
         )
+
+        logger.debug('UPDATED ARG: {}'.format(update))
 
         return update

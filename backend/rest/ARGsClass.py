@@ -12,6 +12,15 @@ from rest.MetadataInterface import ArgDatabaseClass
 from rest.MetadataInterface import plasmidClass
 from rest.EmailClass import Email
 from collections import Counter
+import logging
+import sys
+
+logger = logging.getLogger(__name__)
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+out_hdlr.setLevel(logging.DEBUG)
+logger.addHandler(out_hdlr)
+logger.setLevel(logging.DEBUG)
 
 import json
 
@@ -166,7 +175,10 @@ class GENE():
 
     def updateARG(self, data):
         # TODO: include all admins and the users who voted that gene!
-        receivers = ['gustavo1@vt.edu', 'cmetangen@gmail.com']
+        receivers = ['cmetangen@gmail.com']
+
+        logger.debug("Curating ARG: {}".format(data['gene_id']))
+
         for receiver in receivers:
             self.email.send({
                 "receiver": receiver,

@@ -935,6 +935,7 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.acceptAnnotation = function () {
         var _this = this;
+        console.log(this.ARG);
         this.adminService.updateGene(this.ARG)
             .subscribe(function (res) {
             _this.ARGindex += 1;
@@ -987,6 +988,7 @@ var AdminComponent = (function () {
     AdminComponent.prototype.search = function (keyword) {
         var _this = this;
         var indx = '0';
+        this.ARGindex = 0;
         this.dataService.searchAPI(keyword, indx)
             .subscribe(function (response) {
             console.log(response);
@@ -998,6 +1000,18 @@ var AdminComponent = (function () {
             _this.adminService.score_annotation(_this.curatedARGs[0]['entry']['gene_id'])
                 .subscribe(function (response) {
                 _this.scores = response;
+                _this.ARG = {
+                    gene_id: _this.curatedARGs[0]['entry']['gene_id'],
+                    type: _this.scores[0]['scores'][0]['name'],
+                    subtype: _this.scores[1]['scores'][0]['name'],
+                    mechanism: _this.scores[2]['scores'][0]['name'],
+                    inspected: _this.scores[0]['scores'][0]['counts'],
+                    score: [
+                        { kind: _this.scores[0]['kind'], score: _this.scores[0]['scores'][0]['score'], name: _this.scores[0]['scores'][0]['name'] },
+                        { kind: _this.scores[1]['kind'], score: _this.scores[1]['scores'][0]['score'], name: _this.scores[1]['scores'][0]['name'] },
+                        { kind: _this.scores[2]['kind'], score: _this.scores[2]['scores'][0]['score'], name: _this.scores[2]['scores'][0]['name'] },
+                    ]
+                };
             });
         });
     };

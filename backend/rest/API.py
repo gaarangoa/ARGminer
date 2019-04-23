@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
@@ -23,6 +25,16 @@ from rest.ForumClass import Forum
 from rest.UserClass import LoggedUser as User
 
 from rest.EmailClass import Email
+
+import logging
+import sys
+
+logger = logging.getLogger(__name__)
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+out_hdlr.setLevel(logging.DEBUG)
+logger.addHandler(out_hdlr)
+logger.setLevel(logging.DEBUG)
 
 # Antibiotic resistance init
 ARG = GENE(db)
@@ -165,7 +177,9 @@ def adminSearchKeyword(keyword):
 def updateARGAdmin():
     data = request.get_json()
     # print(data)
+    logger.debug("CURATING: Gene ID: {}".format(data['gene_id']))
     arg = ARG.updateARG(data)
+
     return jsonify(arg)
 
 

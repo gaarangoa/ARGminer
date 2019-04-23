@@ -53,12 +53,13 @@ export class AdminComponent implements OnInit {
 
   }
 
-  acceptAnnotation(){
-    this.adminService.updateGene(this.ARG)
-      .subscribe( res => {
-        this.ARGindex += 1;
-        this.getARG(this.ARGindex);
-      })
+    acceptAnnotation() {
+        console.log(this.ARG);
+        this.adminService.updateGene(this.ARG)
+        .subscribe( res => {
+            this.ARGindex += 1;
+            this.getARG(this.ARGindex);
+        })
   }
 
   updateConflictingARGs(){
@@ -111,7 +112,8 @@ export class AdminComponent implements OnInit {
   }
 
   search(keyword: string){
-    let indx = '0';
+      let indx = '0';
+      this.ARGindex = 0;
 
     this.dataService.searchAPI(keyword, indx)
       .subscribe(response =>{
@@ -126,7 +128,19 @@ export class AdminComponent implements OnInit {
         this.adminService.score_annotation(this.curatedARGs[0]['entry']['gene_id'])
             .subscribe(response => {
                 this.scores = response;
-            })
+                this.ARG = {
+                    gene_id: this.curatedARGs[0]['entry']['gene_id'],
+                    type: this.scores[0]['scores'][0]['name'],
+                    subtype: this.scores[1]['scores'][0]['name'],
+                    mechanism: this.scores[2]['scores'][0]['name'],
+                    inspected: this.scores[0]['scores'][0]['counts'],
+                    score: [
+                        { kind: this.scores[0]['kind'], score: this.scores[0]['scores'][0]['score'], name: this.scores[0]['scores'][0]['name'] },
+                        { kind: this.scores[1]['kind'], score: this.scores[1]['scores'][0]['score'], name: this.scores[1]['scores'][0]['name'] },
+                        { kind: this.scores[2]['kind'], score: this.scores[2]['scores'][0]['score'], name: this.scores[2]['scores'][0]['name'] },
+                    ]
+                };
+        })
 
     });
 
