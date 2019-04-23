@@ -87,4 +87,11 @@ export class UserService {
             })
     }
 
+    get_user_info(_email: string) {
+        return this.http.get(this.base_url + '/user/info/' + _email)
+            .map(res => {
+                return res.json();
+            });
+    }
+
 }

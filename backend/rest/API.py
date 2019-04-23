@@ -310,6 +310,11 @@ def get_user_stats(user_id):
     return jsonify(user.stats(user_id))
 
 
+@app.route('/user/info/<user_id>', methods=['GET'])
+def get_user_info(user_id):
+    return jsonify(user.info(user_id))
+
+
 @app.route('/user/add/post/', methods=['POST'])
 def user_add_post():
     data = request.get_json()

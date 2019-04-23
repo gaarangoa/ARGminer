@@ -13,6 +13,14 @@ class LoggedUser():
         except:
             return {'status': 'failed', 'role': 0, 'message': 'user does not exists'}
 
+    def info(self, user_email):
+        try:
+            credentials = self.user.get_by_email(user_email)[0]
+            del credentials['password']
+            return credentials
+        except:
+            return {'status': 'failed', 'role': 0, 'message': 'user does not exists'}
+
     def push(self, user_id='', post_id='', key=''):
         return self.user.push(user_id, key, {"_id": post_id, "status": True})
 

@@ -1,11 +1,13 @@
 <div *ngIf='session.get("online") >=1'>
 
-    <div class="col-md-3 col-md-offset-3">
+
+    <div class="col-md-12 col-md-offset-0">
         <div class="box box-solid">
             <md-card class="example-card">
 
                 <md-card-header>
-                    <div md-card-avatar [style.backgroundSize]="'cover'" [style.backgroundImage]=" 'url('+ user_image + ')' "></div>
+                    <div md-card-avatar [style.backgroundSize]="'cover'" [style.backgroundImage]=" 'url('+ user_image + ')' ">
+                    </div>
                     <md-card-subtitle>
                         <span> <strong> {{ session.get('user')['user'] }} </strong></span> <br>
                         <span> {{ session.get('user')['institution'] }}</span> <br>
@@ -25,7 +27,7 @@
     </div>
 
 
-    <div class="col-md-3">
+    <div class="col-md-12">
         <div class="box box-solid">
             <md-card class="example-card">
                 <h3>Settings</h3>
@@ -89,5 +91,60 @@
         </div>
 
     </div>
+
+
+    <div *ngIf="session.get('online')===2" class="col-md-12">
+        <div class="box box-solid">
+            <md-card class="example-card">
+                <h3>Administration</h3>
+                <md-card-content class="box-fixed-height">
+                    <div class="ui-g ui-fluid">
+
+                        <h4 class="first">Add or remove user from administration</h4>
+                        <div class="col-md-12 col-md-offset-0">
+                            <div class="ui-inputgroup">
+                                <input type="text" pInputText placeholder="user email" [(ngModel)]="add_admin_email">
+                                <button (click)="search_user_by_email()" pButton type="button" label="Search User"></button>
+                            </div>
+
+                            <div *ngIf="new_admin_user">
+                                <br>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>User Name</b> <a class="pull-right">{{ new_admin_user.user }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>User Score</b> <a class="pull-right">{{ new_admin_user.views }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>User Institution</b> <a class="pull-right">{{ new_admin_user.institution }}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>User email</b> <a class="pull-right">{{ new_admin_user.email }}</a>
+                                    </li>
+                                </ul>
+
+                                <button class="text-center" (click)="confirm_administrator(2)" pButton type="button" label="Confirm User as Administrator"></button>
+                                <br><br>
+                                <button class="text-center" (click)="confirm_administrator(1)" pButton type="button" label="Remove User from Administration"></button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </md-card-content>
+
+            </md-card>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-12">
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+
 
 </div>

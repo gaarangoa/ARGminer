@@ -10,6 +10,10 @@ class User():
         _user = self.database.find(self.table, {"_id": user_id})
         return _user
 
+    def get_by_email(self, user_email):
+        _user = self.database.find(self.table, {"email": user_email})
+        return _user
+
     def create(self, data):
         # here only the required fields are passed
         _user = {
