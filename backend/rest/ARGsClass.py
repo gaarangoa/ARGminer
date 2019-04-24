@@ -201,3 +201,6 @@ class GENE():
 
     def get_plasmid(self, gene_id):
         return self.plasmid.getById(gene_id)
+
+    def deprecate(self, gene_id):
+        return self.master.deprecate(gene_id)

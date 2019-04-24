@@ -79,6 +79,11 @@
                                 <li *ngIf="item.entry.inspected > 1">
                                     <span class="badge bg-red"> <strong> Gene already curated </strong></span>
                                 </li>
+
+                                <li *ngIf="item.entry.deprecated">
+                                    <span class="badge bg-red"> <strong> Gene has been deprecated </strong></span>
+                                </li>
+
                                 <li>
                                     <span class="users-list-date">Antibiotic Class</span> {{ item.entry.type }}
                                 </li>
@@ -120,7 +125,9 @@
 
                         <div class="box-footer">
                             <button (click)="acceptAnnotation()" class="pull-left bg-blue" md-raised-button>Approve</button>
-                            <button (click)="getARG(ARGindex)" class="pull-right bg-red" md-raised-button>Next Gene</button>
+                            <button (click)="deprecate()" class="pull-left bg-default" md-raised-button>Deprecate this
+                ARG</button>
+                            <button (click)="getARG(ARGindex)" class="pull-right bg-green" md-raised-button>Next Gene</button>
                         </div>
                     </div>
                 </div>
@@ -189,12 +196,14 @@
                                 <tr *ngFor="let itemx of curatedARGs[0]['inspected']">
                                     <td>{{ itemx.token }}</td>
                                     <td>{{ itemx.date }}</td>
-                                    <td *ngIf="itemx.rating.expertise; else expertiseBlockA">{{ (itemx.rating.expertise.value).toFixed(2) }}
+                                    <td *ngIf="itemx.rating.expertise; else expertiseBlockA">
+                                        {{ (itemx.rating.expertise.value).toFixed(2) }}
                                     </td>
                                     <ng-template #expertiseBlockA>
                                         <td>0.00</td>
                                     </ng-template>
-                                    <td *ngIf="itemx.rating.confidence; else confidenceBlockA">{{ (itemx.rating.confidence.value).toFixed(2) }} </td>
+                                    <td *ngIf="itemx.rating.confidence; else confidenceBlockA">
+                                        {{ (itemx.rating.confidence.value).toFixed(2) }} </td>
                                     <ng-template #confidenceBlockA>
                                         <td>0.00</td>
                                     </ng-template>

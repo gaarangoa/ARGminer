@@ -73,4 +73,12 @@ export class AdminService {
             });
     }
 
+
+    deprecate_gene(gene_id: any) {
+        return this.http.get(this.baseUrl + '/admin/arg/deprecate/'+gene_id)
+            .map(res => {
+                return res.json()
+            })
+    }
+
 }

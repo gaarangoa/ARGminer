@@ -191,6 +191,12 @@ def updateConflictingARGAdmin():
     return jsonify(arg)
 
 
+@app.route('/admin/arg/deprecate/<gene_id>', methods=['GET', 'POST'])
+def admin_arg_deprecate(gene_id):
+    arg = ARG.deprecate(gene_id)
+    return jsonify(arg)
+
+
 @app.route('/admin/upgrade/database/', methods=['GET', 'POST'])
 def adminUpgradeDatabase():
     data = request.get_json()

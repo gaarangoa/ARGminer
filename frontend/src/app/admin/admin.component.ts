@@ -146,4 +146,11 @@ export class AdminComponent implements OnInit {
 
   }
 
+    deprecate() {
+        this.adminService.deprecate_gene(this.ARG['gene_id'])
+            .subscribe(e => {
+                console.log(e);
+            })
+    }
+
 }

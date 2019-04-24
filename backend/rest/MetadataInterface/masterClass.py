@@ -58,3 +58,17 @@ class MASTER():
         logger.debug('UPDATED ARG: {}'.format(update))
 
         return update
+
+    def deprecate(self, gene_id):
+        update = self.database.update(
+            self.table,
+            {"entry.gene_id": gene_id},
+            {
+                "$set": {
+                    "entry.deprecated": True
+                }
+            },
+            True
+        )
+
+        return update

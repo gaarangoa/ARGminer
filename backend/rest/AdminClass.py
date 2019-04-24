@@ -68,6 +68,19 @@ def scorer(data=[], kind=""):
     return y
 
 
+def dummy_score(kind):
+    return [{
+        'kind': kind,
+        'raw_score': 0,
+        'counts': 0,
+        'majority_voting_score': 0,
+        'expertise_confidence_score': 0,
+        'true_validation_filter_score': 0,
+        'score': 0,
+        'name': 'not curated'
+    }]
+
+
 class Admin():
     def __init__(self, DataBase):
         self.info = ""
@@ -118,7 +131,11 @@ class Admin():
 
         scorers = []
         for i in ['category', 'group', 'mechanism']:
-            myscore = scorer(data=data, kind=i)
+            try:
+                myscore = scorer(data=data, kind=i)
+            except:
+                myscore = dummy_score(i)
+
             myscore.sort(key=lambda x: x['score'], reverse=True)
             scorers.append({'scores': myscore, 'kind': i})
 
