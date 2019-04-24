@@ -1,6 +1,15 @@
 from rest.MetadataInterface.PostClass import Post
 from rest.EmailClass import Email
 import json
+import logging
+import sys
+
+logger = logging.getLogger(__name__)
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setFormatter(logging.Formatter('%(asctime)s %(message)s'))
+out_hdlr.setLevel(logging.DEBUG)
+logger.addHandler(out_hdlr)
+logger.setLevel(logging.DEBUG)
 
 
 class Forum():
@@ -34,14 +43,29 @@ class Forum():
 
     def add_comment(self, comment):
         try:
-            self.email.send({
-                "receiver": comment['owner_email'],
-                "subject": "ARGminer | Post: "+str(comment['post_id']),
-                "body": "<strong>"+comment['user']+"</strong> has commented on your post: " +
-                " <a href='https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=" + str(comment['post_id']) + "'> " + comment['post_id'] + '</a>' +
-                "<br><u>" + comment['body'] + "</u>" +
-                "<br>Sincerely,<br><strong>ARGminer Team</strong>"
-            })
+            # get all receivers (the comment's authors, repliers)
+            comments = self.post.get_by_id(int(comment['post_id']))
+
+            users = list(set(
+                [i['email'] for i in comments[0]['comments']] +
+                [comment['email']] + [comment['owner_email']]
+            ))
+
+            logger.debug(users)
+
+            for _user in users:
+                self.email.send({
+                    "receiver": _user,
+                    "subject": "ARGminer | Post: "+str(comment['post_id']),
+                    "body": "<strong>"+comment['user']+"</strong> has commented in the post: " +
+                    " <a href='https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=" + str(comment['post_id']) + "'> " + comments[0]['title'] + '</a>' +
+                    " by " +
+                    comments[0]['user'] +
+                    "<br>" +
+                    "<u>" + comment['body'] + "</u>" +
+                    "<br>Sincerely,<br><strong>ARGminer Team</strong>"
+                })
+
             del comment['owner_email']
             return {'status': True, 'comment': self.post.add_comment(comment, int(comment['post_id']))}
         except:
