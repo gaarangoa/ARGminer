@@ -72,14 +72,17 @@ export class GenomeComponent implements OnInit {
     } catch (error) {
       this.genomeCount = 0;
     }
+      try {
+          if (this.randomARG['mobile'][0].status === true) {
+              this.renderMobile = true;
+          }
 
-    if(this.randomARG['mobile'][0].status === true){
-      this.renderMobile = true;
-    }
+          if (this.randomARG['pathogen'].status === true) {
+              this.renderPathogen = true;
+          }
+      } catch (error) {
 
-    if(this.randomARG['pathogen'].status === true){
-      this.renderPathogen = true;
-    }
+      }
   }
 
 }

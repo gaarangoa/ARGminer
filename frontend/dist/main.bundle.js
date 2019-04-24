@@ -3719,11 +3719,15 @@ var GenomeComponent = (function () {
         catch (error) {
             this.genomeCount = 0;
         }
-        if (this.randomARG['mobile'][0].status === true) {
-            this.renderMobile = true;
+        try {
+            if (this.randomARG['mobile'][0].status === true) {
+                this.renderMobile = true;
+            }
+            if (this.randomARG['pathogen'].status === true) {
+                this.renderPathogen = true;
+            }
         }
-        if (this.randomARG['pathogen'].status === true) {
-            this.renderPathogen = true;
+        catch (error) {
         }
     };
     return GenomeComponent;
