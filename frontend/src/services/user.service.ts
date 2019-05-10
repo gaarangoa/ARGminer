@@ -31,6 +31,13 @@ export class UserService {
             })
     }
 
+    score_user(user_id: any) {
+        return this.http.get(this.base_url + '/user/score/' + user_id)
+            .map(res => {
+                return res.json()
+            })
+    }
+
     stats(user_id: string) {
         return this.http.get(this.base_url + '/user/stats/' + user_id)
             .map(res => {

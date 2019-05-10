@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DiscussionService } from '../../../services/discussion.service'
 import { Session } from '../../../services/session.service';
 import { UserService } from '../../../services/user.service';
@@ -48,20 +48,20 @@ export class SelectedQuestionComponent implements OnInit {
         // Editor
         this.editor_modules = {
             toolbar: {
-              container: [
-                  [{ 'font': [] }],
-                  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                  [{ 'align': [] }],
-                  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                  ['bold', 'italic', 'underline', 'strike'],
-                  [{ 'script': 'sub'}, { 'script': 'super' }],
-                ['blockquote', 'code-block'],
-                [{ 'color': [] }, { 'background': [] }],
-                ['link', 'image', 'video']
-              ]
+                container: [
+                    [{ 'font': [] }],
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'align': [] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],
+                    ['blockquote', 'code-block'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image', 'video']
+                ]
             },
             imageResize: true
-          };
+        };
 
         // post
         this.post_id = this.activatedRoute.snapshot.params.id;
@@ -101,6 +101,9 @@ export class SelectedQuestionComponent implements OnInit {
                 // add count to user comments
                 this.userService.count_comments(this.post['user_id'])
                     .subscribe(e => { });
+
+                this.userService.score_user(this.session.get('user')['_id']).subscribe(e => { })
+
             });
     }
 

@@ -22,7 +22,7 @@ webpackJsonp([0,5],[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
@@ -148,7 +148,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular2_cookie_core__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular2_cookie_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angular2_cookie_core__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Session; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -207,12 +207,7 @@ var _a;
 /* 23 */,
 /* 24 */,
 /* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -222,13 +217,13 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(69);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -258,6 +253,12 @@ var UserService = (function () {
     }
     UserService.prototype.top_scores = function (top_items) {
         return this.http.get(this.base_url + '/user/top_scores/' + top_items)
+            .map(function (res) {
+            return res.json();
+        });
+    };
+    UserService.prototype.score_user = function (user_id) {
+        return this.http.get(this.base_url + '/user/score/' + user_id)
             .map(function (res) {
             return res.json();
         });
@@ -333,6 +334,11 @@ var _a, _b;
 //# sourceMappingURL=user.service.js.map
 
 /***/ }),
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
 /* 32 */,
 /* 33 */,
 /* 34 */,
@@ -593,8 +599,8 @@ var ClassifyComponent = (function () {
 }());
 ClassifyComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        template: __webpack_require__(402),
-        styles: [__webpack_require__(278)],
+        template: __webpack_require__(403),
+        styles: [__webpack_require__(279)],
         providers: [],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_material__["d" /* MdDialog */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_material__["d" /* MdDialog */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _d || Object])
@@ -612,7 +618,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
@@ -716,7 +722,9 @@ var _a;
 /* 63 */,
 /* 64 */,
 /* 65 */,
-/* 66 */
+/* 66 */,
+/* 67 */,
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -726,13 +734,13 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_delay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__encrypt__ = __webpack_require__(69);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -817,12 +825,12 @@ var _a, _b;
 //# sourceMappingURL=auth.service.js.map
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sha512; });
-var _sha512 = __webpack_require__(258);
+var _sha512 = __webpack_require__(259);
 var Sha512 = (function () {
     // _sha512: any;
     function Sha512() {
@@ -837,8 +845,6 @@ var Sha512 = (function () {
 //# sourceMappingURL=encrypt.js.map
 
 /***/ }),
-/* 68 */,
-/* 69 */,
 /* 70 */,
 /* 71 */,
 /* 72 */,
@@ -896,8 +902,8 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-about',
-        template: __webpack_require__(395),
-        styles: [__webpack_require__(271)]
+        template: __webpack_require__(396),
+        styles: [__webpack_require__(272)]
     }),
     __metadata("design:paramtypes", [])
 ], AboutComponent);
@@ -913,7 +919,7 @@ AboutComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_admin_service__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__visualize_class__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__visualize_class__ = __webpack_require__(177);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1038,8 +1044,8 @@ var AdminComponent = (function () {
 AdminComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-admin',
-        template: __webpack_require__(396),
-        styles: [__webpack_require__(272)],
+        template: __webpack_require__(397),
+        styles: [__webpack_require__(273)],
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__visualize_class__["a" /* ComplexPieChart */],
         ]
@@ -1119,8 +1125,8 @@ var ExploreComponent = (function () {
 ExploreComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-explore',
-        template: __webpack_require__(405),
-        styles: [__webpack_require__(281)]
+        template: __webpack_require__(406),
+        styles: [__webpack_require__(282)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__classify_component__["a" /* ClassifyComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__classify_component__["a" /* ClassifyComponent */]) === "function" && _b || Object])
 ], ExploreComponent);
@@ -1139,14 +1145,14 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__explore_routing_module__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__explore_routing_module__ = __webpack_require__(190);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExploreModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1251,8 +1257,8 @@ var InstructionsComponent = (function () {
 InstructionsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-instructions',
-        template: __webpack_require__(407),
-        styles: [__webpack_require__(283)]
+        template: __webpack_require__(408),
+        styles: [__webpack_require__(284)]
     }),
     __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MD_DIALOG_DATA */])),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MdDialogRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MdDialogRef */]) === "function" && _a || Object, Object])
@@ -1297,8 +1303,8 @@ var DatabaseComponent = (function () {
 DatabaseComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-database',
-        template: __webpack_require__(411),
-        styles: [__webpack_require__(287)]
+        template: __webpack_require__(412),
+        styles: [__webpack_require__(288)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], DatabaseComponent);
@@ -1315,11 +1321,11 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__ = __webpack_require__(309);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_javascript_time_ago_locale_en__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_javascript_time_ago__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_javascript_time_ago_locale_en__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_javascript_time_ago_locale_en___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_javascript_time_ago_locale_en__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllQuestionsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1440,8 +1446,8 @@ var AllQuestionsComponent = (function () {
 AllQuestionsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-all-questions',
-        template: __webpack_require__(412),
-        styles: [__webpack_require__(288)]
+        template: __webpack_require__(413),
+        styles: [__webpack_require__(289)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_primeng_primeng__["ConfirmationService"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _f || Object])
 ], AllQuestionsComponent);
@@ -1458,9 +1464,9 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_quill_image_resize_module__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditQuestionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1539,8 +1545,8 @@ var EditQuestionComponent = (function () {
 EditQuestionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-edit-question',
-        template: __webpack_require__(413),
-        styles: [__webpack_require__(289)]
+        template: __webpack_require__(414),
+        styles: [__webpack_require__(290)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["ActivatedRoute"]) === "function" && _d || Object])
 ], EditQuestionComponent);
@@ -1615,8 +1621,8 @@ var ForumComponent = (function () {
 ForumComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-forum',
-        template: __webpack_require__(414),
-        styles: [__webpack_require__(290)]
+        template: __webpack_require__(415),
+        styles: [__webpack_require__(291)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["Router"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _c || Object])
 ], ForumComponent);
@@ -1632,11 +1638,11 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_quill_image_resize_module__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewQuestionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1726,6 +1732,7 @@ var NewQuestionComponent = (function () {
                 .subscribe(function (e) {
                 _this.router.navigate(['/forum']);
             });
+            _this.userService.score_user(_this.session.get('user')['_id']).subscribe(function (e) { });
         });
         this.tag_position = 0;
         this.tags = [];
@@ -1743,8 +1750,8 @@ var NewQuestionComponent = (function () {
 NewQuestionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-new-question',
-        template: __webpack_require__(415),
-        styles: [__webpack_require__(291)]
+        template: __webpack_require__(416),
+        styles: [__webpack_require__(292)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["Router"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */]) === "function" && _d || Object])
 ], NewQuestionComponent);
@@ -1761,11 +1768,11 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_quill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_quill__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_quill_image_resize_module__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_quill_image_resize_module__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_quill_image_resize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_quill_image_resize_module__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectedQuestionComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1860,6 +1867,7 @@ var SelectedQuestionComponent = (function () {
             // add count to user comments
             _this.userService.count_comments(_this.post['user_id'])
                 .subscribe(function (e) { });
+            _this.userService.score_user(_this.session.get('user')['_id']).subscribe(function (e) { });
         });
     };
     SelectedQuestionComponent.prototype.remove_comment = function (comment) {
@@ -1881,8 +1889,8 @@ var SelectedQuestionComponent = (function () {
 SelectedQuestionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-selected-question',
-        template: __webpack_require__(417),
-        styles: [__webpack_require__(293)],
+        template: __webpack_require__(418),
+        styles: [__webpack_require__(294)],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["ActivatedRoute"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_discussion_service__["a" /* DiscussionService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_session_service__["a" /* Session */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__["Meta"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser__["Meta"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */]) === "function" && _e || Object])
 ], SelectedQuestionComponent);
@@ -1950,8 +1958,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
-        template: __webpack_require__(418),
-        styles: [__webpack_require__(294)]
+        template: __webpack_require__(419),
+        styles: [__webpack_require__(295)]
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -1965,7 +1973,7 @@ HomeComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2017,8 +2025,8 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
-        template: __webpack_require__(420),
-        styles: [__webpack_require__(296)]
+        template: __webpack_require__(421),
+        styles: [__webpack_require__(297)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]) === "function" && _b || Object])
 ], LoginComponent);
@@ -2033,8 +2041,8 @@ var _a, _b;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_session_service__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_encrypt__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_encrypt__ = __webpack_require__(69);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2104,8 +2112,8 @@ var ProfileComponent = (function () {
 ProfileComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-profile',
-        template: __webpack_require__(421),
-        styles: [__webpack_require__(297)]
+        template: __webpack_require__(422),
+        styles: [__webpack_require__(298)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */]) === "function" && _b || Object])
 ], ProfileComponent);
@@ -2120,7 +2128,7 @@ var _a, _b;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2187,8 +2195,8 @@ var SignupComponent = (function () {
 SignupComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-signup',
-        template: __webpack_require__(423),
-        styles: [__webpack_require__(299)]
+        template: __webpack_require__(424),
+        styles: [__webpack_require__(300)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["Router"]) === "function" && _b || Object])
 ], SignupComponent);
@@ -2206,7 +2214,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__);
@@ -2302,7 +2310,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
@@ -2400,7 +2408,8 @@ module.exports = __webpack_require__.p + "admin.28560c65e88fe6a300fb.svg";
 /* 160 */,
 /* 161 */,
 /* 162 */,
-/* 163 */
+/* 163 */,
+/* 164 */
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -2409,18 +2418,18 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 163;
+webpackEmptyContext.id = 164;
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(180);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(35);
 
 
@@ -2433,7 +2442,6 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 //# sourceMappingURL=main.js.map
 
 /***/ }),
-/* 165 */,
 /* 166 */,
 /* 167 */,
 /* 168 */,
@@ -2444,7 +2452,8 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 /* 173 */,
 /* 174 */,
 /* 175 */,
-/* 176 */
+/* 176 */,
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2523,7 +2532,7 @@ var ComplexPieChart = (function () {
 //# sourceMappingURL=visualize.class.js.map
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2589,7 +2598,7 @@ var AppRoutingModule = __WEBPACK_IMPORTED_MODULE_0__angular_router__["RouterModu
 //# sourceMappingURL=app-routing.module.js.map
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2626,8 +2635,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
-        template: __webpack_require__(397),
-        styles: [__webpack_require__(273)]
+        template: __webpack_require__(398),
+        styles: [__webpack_require__(274)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["Router"]) === "function" && _b || Object])
 ], AppComponent);
@@ -2636,7 +2645,7 @@ var _a, _b;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2646,22 +2655,22 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routing_module__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_routing_module__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__about_about_component__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__classify_classify_module__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_module__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__database_database_module__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__classify_classify_module__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_module__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__database_database_module__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_data_service__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_ncbi_service__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_admin_service__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_session_service__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_discussion_service__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_angular2_cookie_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_hammerjs__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_hammerjs__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_hammerjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__admin_admin_component__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__login_login_component__ = __webpack_require__(113);
@@ -2674,11 +2683,11 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__forum_all_questions_all_questions_component__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__forum_selected_question_selected_question_component__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__forum_edit_question_edit_question_component__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_angular2_masonry__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_ngx_quill__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__forum_search_search_component__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__profile_stats_stats_component__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_angular2_masonry__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_ngx_quill__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__forum_search_search_component__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__profile_stats_stats_component__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_services_user_service__ = __webpack_require__(26);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2817,12 +2826,16 @@ AppModule = __decorate([
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_TimerObservable__ = __webpack_require__(437);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_TimerObservable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_TimerObservable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeWhile__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeWhile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_takeWhile__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActivityComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2835,24 +2848,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var ActivityComponent = (function () {
     function ActivityComponent(userService) {
         this.userService = userService;
     }
     ActivityComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userService.top_scores(10)
-            .subscribe(function (res) {
-            _this.best_users = res;
+        this.alive = true;
+        __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_TimerObservable__["TimerObservable"].create(0, 5000)
+            .takeWhile(function () { return _this.alive; })
+            .subscribe(function () {
+            _this.userService.top_scores(10)
+                .subscribe(function (res) {
+                _this.best_users = res;
+            });
         });
+    };
+    ActivityComponent.prototype.ngOnDestroy = function () {
+        this.alive = false;
     };
     return ActivityComponent;
 }());
 ActivityComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-activity',
-        template: __webpack_require__(398),
-        styles: [__webpack_require__(274)]
+        template: __webpack_require__(399),
+        styles: [__webpack_require__(275)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */]) === "function" && _a || Object])
 ], ActivityComponent);
@@ -2861,7 +2884,7 @@ var _a;
 //# sourceMappingURL=activity.component.js.map
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2896,8 +2919,8 @@ var BestHitArdbComponent = (function () {
 BestHitArdbComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'besthit-metadata-ardb',
-        template: __webpack_require__(399),
-        styles: [__webpack_require__(275)]
+        template: __webpack_require__(400),
+        styles: [__webpack_require__(276)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], BestHitArdbComponent);
@@ -2906,7 +2929,7 @@ var _a;
 //# sourceMappingURL=ardb.component.js.map
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3026,8 +3049,8 @@ var BestHitCardComponent = (function () {
 BestHitCardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'besthit-metadata-card',
-        template: __webpack_require__(400),
-        styles: [__webpack_require__(276)]
+        template: __webpack_require__(401),
+        styles: [__webpack_require__(277)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], BestHitCardComponent);
@@ -3036,7 +3059,7 @@ var _a;
 //# sourceMappingURL=card.component.js.map
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3071,8 +3094,8 @@ var GenericComponent = (function () {
 GenericComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-generic',
-        template: __webpack_require__(401),
-        styles: [__webpack_require__(277)]
+        template: __webpack_require__(402),
+        styles: [__webpack_require__(278)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], GenericComponent);
@@ -3081,7 +3104,7 @@ var _a;
 //# sourceMappingURL=generic.component.js.map
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3116,7 +3139,7 @@ ClassifyRoutingModule = __decorate([
 //# sourceMappingURL=classify-routing.module.js.map
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3125,31 +3148,31 @@ ClassifyRoutingModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_star_rating__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_platform_browser_animations__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_star_rating__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_primeng_components_progressbar_progressbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_primeng_components_datatable_datatable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_primeng_components_accordion_accordion__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__classify_component__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__classify_routing_module__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__metadata_uniprot_uniprot_component__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__metadata_card_card_component__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__metadata_ardb_ardb_component__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__besthit_card_card_component__ = __webpack_require__(182);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__besthit_ardb_ardb_component__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__genomes_genome_component__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__curate_curate_component__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__besthit_generic_generic_component__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__classify_routing_module__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__metadata_uniprot_uniprot_component__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__metadata_card_card_component__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__metadata_ardb_ardb_component__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__besthit_card_card_component__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__besthit_ardb_ardb_component__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__genomes_genome_component__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__curate_curate_component__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__besthit_generic_generic_component__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__instructions_instructions_component__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__explore_explore_component__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__explore_explore_module__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__comments_comments_component__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__activity_activity_component__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__comments_comments_component__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__activity_activity_component__ = __webpack_require__(181);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassifyModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3268,7 +3291,7 @@ ClassifyModule = __decorate([
 //# sourceMappingURL=classify.module.js.map
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3341,8 +3364,8 @@ var CommentsComponent = (function () {
 CommentsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-comments',
-        template: __webpack_require__(403),
-        styles: [__webpack_require__(279)]
+        template: __webpack_require__(404),
+        styles: [__webpack_require__(280)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */]) === "function" && _b || Object])
 ], CommentsComponent);
@@ -3351,22 +3374,23 @@ var _a, _b;
 //# sourceMappingURL=comments.component.js.map
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__ = __webpack_require__(427);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__ = __webpack_require__(428);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_startWith__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_service__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_session_service__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classify_component__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_primeng_primeng__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__score_class__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__score_class__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_user_service__ = __webpack_require__(26);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CurateComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3386,13 +3410,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CurateComponent = (function () {
-    function CurateComponent(dataService, classifyComponent, confirmationService, session) {
+    function CurateComponent(dataService, classifyComponent, confirmationService, session, userService) {
         var _this = this;
         this.dataService = dataService;
         this.classifyComponent = classifyComponent;
         this.confirmationService = confirmationService;
         this.session = session;
+        this.userService = userService;
         this.display = false;
         this.activeIndex = 0;
         this.options_type = [];
@@ -3537,6 +3563,8 @@ var CurateComponent = (function () {
             _this.inspectedGenes.push(_this.classifyComponent.randomARG['entry']['gene_id']);
             _this.continueReview();
             // update the views and add the entry to the user
+            _this.userService.score_user(_this.session.get('user')['_id'])
+                .subscribe(function (e) { });
             // alert("token: "+this.antibiotic['token']);
         });
     };
@@ -3572,25 +3600,25 @@ var CurateComponent = (function () {
 CurateComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-curate',
-        template: __webpack_require__(404),
-        styles: [__webpack_require__(280)],
+        template: __webpack_require__(405),
+        styles: [__webpack_require__(281)],
         encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewEncapsulation"].None,
         providers: [
             __WEBPACK_IMPORTED_MODULE_8__score_class__["a" /* ScoreAnnotation */]
         ]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__classify_component__["a" /* ClassifyComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__classify_component__["a" /* ClassifyComponent */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_session_service__["a" /* Session */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__classify_component__["a" /* ClassifyComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__classify_component__["a" /* ClassifyComponent */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_primeng_primeng__["ConfirmationService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_session_service__["a" /* Session */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__services_user_service__["a" /* UserService */]) === "function" && _e || Object])
 ], CurateComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=curate.component.js.map
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_intersect_index_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_intersect_index_js__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScoreAnnotation; });
 
@@ -3647,7 +3675,7 @@ var ScoreAnnotation = (function () {
 //# sourceMappingURL=score.class.js.map
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3678,7 +3706,7 @@ ExploreRoutingModule = __decorate([
 //# sourceMappingURL=explore-routing.module.js.map
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3715,13 +3743,13 @@ var PieChart = (function () {
 //# sourceMappingURL=Charts.js.map
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Charts__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Charts__ = __webpack_require__(191);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GenomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3792,8 +3820,8 @@ __decorate([
 GenomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'genome-metadata',
-        template: __webpack_require__(406),
-        styles: [__webpack_require__(282)],
+        template: __webpack_require__(407),
+        styles: [__webpack_require__(283)],
         providers: [__WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__Charts__["a" /* PieChart */]) === "function" && _b || Object])
@@ -3803,7 +3831,7 @@ var _a, _b;
 //# sourceMappingURL=genome.component.js.map
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3837,8 +3865,8 @@ var ArdbComponent = (function () {
 ArdbComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-ardb',
-        template: __webpack_require__(408),
-        styles: [__webpack_require__(284)]
+        template: __webpack_require__(409),
+        styles: [__webpack_require__(285)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], ArdbComponent);
@@ -3847,7 +3875,7 @@ var _a;
 //# sourceMappingURL=ardb.component.js.map
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3881,8 +3909,8 @@ var CardComponent = (function () {
 CardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-card',
-        template: __webpack_require__(409),
-        styles: [__webpack_require__(285)]
+        template: __webpack_require__(410),
+        styles: [__webpack_require__(286)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object])
 ], CardComponent);
@@ -3891,7 +3919,7 @@ var _a;
 //# sourceMappingURL=card.component.js.map
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3967,8 +3995,8 @@ var UniprotComponent = (function () {
 UniprotComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'classify-metadata-uniprot',
-        template: __webpack_require__(410),
-        styles: [__webpack_require__(286)]
+        template: __webpack_require__(411),
+        styles: [__webpack_require__(287)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__["a" /* NcbiService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_ncbi_service__["a" /* NcbiService */]) === "function" && _b || Object])
 ], UniprotComponent);
@@ -3977,7 +4005,7 @@ var _a, _b;
 //# sourceMappingURL=uniprot.component.js.map
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4008,13 +4036,13 @@ DatabaseRoutingModule = __decorate([
 //# sourceMappingURL=database-routing.module.js.map
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__database_routing_module__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__database_routing_module__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_component__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(17);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabaseModule; });
@@ -4045,7 +4073,7 @@ DatabaseModule = __decorate([
 //# sourceMappingURL=database.module.js.map
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4071,8 +4099,8 @@ var SearchComponent = (function () {
 SearchComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-search',
-        template: __webpack_require__(416),
-        styles: [__webpack_require__(292)]
+        template: __webpack_require__(417),
+        styles: [__webpack_require__(293)]
     }),
     __metadata("design:paramtypes", [])
 ], SearchComponent);
@@ -4080,7 +4108,7 @@ SearchComponent = __decorate([
 //# sourceMappingURL=search.component.js.map
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4111,15 +4139,15 @@ HomeRoutingModule = __decorate([
 //# sourceMappingURL=home-routing.module.js.map
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_routing_module__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_routing_module__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_component__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__news_news_component__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__news_news_component__ = __webpack_require__(201);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4148,7 +4176,7 @@ HomeModule = __decorate([
 //# sourceMappingURL=home.module.js.map
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4174,8 +4202,8 @@ var NewsComponent = (function () {
 NewsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-news',
-        template: __webpack_require__(419),
-        styles: [__webpack_require__(295)]
+        template: __webpack_require__(420),
+        styles: [__webpack_require__(296)]
     }),
     __metadata("design:paramtypes", [])
 ], NewsComponent);
@@ -4183,12 +4211,12 @@ NewsComponent = __decorate([
 //# sourceMappingURL=news.component.js.map
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_service__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_session_service__ = __webpack_require__(14);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4236,8 +4264,8 @@ var StatsComponent = (function () {
 StatsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-profile-stats',
-        template: __webpack_require__(422),
-        styles: [__webpack_require__(298)]
+        template: __webpack_require__(423),
+        styles: [__webpack_require__(299)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_session_service__["a" /* Session */]) === "function" && _b || Object])
 ], StatsComponent);
@@ -4246,7 +4274,6 @@ var _a, _b;
 //# sourceMappingURL=stats.component.js.map
 
 /***/ }),
-/* 202 */,
 /* 203 */,
 /* 204 */,
 /* 205 */,
@@ -4315,23 +4342,7 @@ var _a, _b;
 /* 268 */,
 /* 269 */,
 /* 270 */,
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
+/* 271 */,
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4340,7 +4351,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".box-vis {\n    min-height: 190px !important;\n    /* border-style: solid !important; */\n    /* border-width: 1px; */\n    /* border-color: rgba(0, 0, 0, 0.2); */\n}\n\n.box-vis-2 {\n    min-height: 50px !important;\n    max-height: 80px !important;\n}\n\n.box-plot {\n    cursor: pointer;\n    float: right;\n    height: 30px;\n    margin-left: 20px;\n    width: 50%;\n    position: relative;\n    margin-right: 30px;\n}\n\n.box-plot-component {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 0;\n    overflow: hidden;\n    border-style: solid;\n    border-color: #030303\n}\n\n.box-left {\n    left: 0%;\n    width: 50%;\n    height: 20px;\n    border-width: 1px;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    border-right-width: 0;\n    background: #fff;\n}\n\n.box-right {\n    left: 50%;\n    width: 50%;\n    height: 20px;\n    border-width: 1px;\n    border-top-right-radius: 3px;\n    border-bottom-right-radius: 3px;\n    background: #fff;\n}\n\n.box-mean {\n    top: 3px;\n    height: 14px;\n    width: 15px;\n    left: 50%;\n    border: 1px solid #248;\n    background: #abd;\n    border-radius: 3px;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4357,7 +4368,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".container-par {\n    width: 80%;\n    margin: 0 auto;\n}", ""]);
+exports.push([module.i, ".box-vis {\n    min-height: 190px !important;\n    /* border-style: solid !important; */\n    /* border-width: 1px; */\n    /* border-color: rgba(0, 0, 0, 0.2); */\n}\n\n.box-vis-2 {\n    min-height: 50px !important;\n    max-height: 80px !important;\n}\n\n.box-plot {\n    cursor: pointer;\n    float: right;\n    height: 30px;\n    margin-left: 20px;\n    width: 50%;\n    position: relative;\n    margin-right: 30px;\n}\n\n.box-plot-component {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 0;\n    overflow: hidden;\n    border-style: solid;\n    border-color: #030303\n}\n\n.box-left {\n    left: 0%;\n    width: 50%;\n    height: 20px;\n    border-width: 1px;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    border-right-width: 0;\n    background: #fff;\n}\n\n.box-right {\n    left: 50%;\n    width: 50%;\n    height: 20px;\n    border-width: 1px;\n    border-top-right-radius: 3px;\n    border-bottom-right-radius: 3px;\n    background: #fff;\n}\n\n.box-mean {\n    top: 3px;\n    height: 14px;\n    width: 15px;\n    left: 50%;\n    border: 1px solid #248;\n    background: #abd;\n    border-radius: 3px;\n}", ""]);
 
 // exports
 
@@ -4374,7 +4385,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container-par {\n    width: 80%;\n    margin: 0 auto;\n}", ""]);
 
 // exports
 
@@ -4405,10 +4416,10 @@ module.exports = module.exports.toString();
 
 exports = module.exports = __webpack_require__(3)();
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Jua);", ""]);
+
 
 // module
-exports.push([module.i, ".nomenclature-text {\n    font-family: 'Jua', sans-serif;\n    color: green\n}\n\n.nomenclature-text-match {\n    font-family: 'Jua', sans-serif;\n    color: black !important;\n    font-size: 17px !important;\n}\n\nsvg {\n    width: 100%;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4422,10 +4433,10 @@ module.exports = module.exports.toString();
 
 exports = module.exports = __webpack_require__(3)();
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Jua);", ""]);
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".nomenclature-text {\n    font-family: 'Jua', sans-serif;\n    color: green\n}\n\n.nomenclature-text-match {\n    font-family: 'Jua', sans-serif;\n    color: black !important;\n    font-size: 17px !important;\n}\n\nsvg {\n    width: 100%;\n}", ""]);
 
 // exports
 
@@ -4442,7 +4453,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".curate-nav {\n    right: 5%;\n    width: 21.5%;\n    overflow: scroll;\n    max-height: 80%;\n}\n\n.sequence {\n    word-wrap: break-word;\n    overflow-wrap: break-word;\n}\n\n.user_growl {\n    position: absolute !important;\n    top: 20px !important;\n    z-index: 9999 !important;\n}\n\n\n/*  */\n\n.intro-tour-hint-wrapper {\n    position: absolute !important;\n    background-color: rgba(255, 255, 255, .7) !important;\n    text-align: center;\n    font-size: 14px;\n    color: #000;\n    width: 100% !important;\n}\n\n.box-step {\n    border: solid 1px rgba(0, 0, 0, 1) !important;\n    width: 100%;\n    height: 100%;\n}\n\n.coffix {\n    width: 25% !important;\n    padding-right: 3.5% !important;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4459,7 +4470,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".curate-nav {\n    right: 5%;\n    width: 21.5%;\n    overflow: scroll;\n    max-height: 80%;\n}\n\n.sequence {\n    word-wrap: break-word;\n    overflow-wrap: break-word;\n}\n\n.user_growl {\n    position: absolute !important;\n    top: 20px !important;\n    z-index: 9999 !important;\n}\n\n\n/*  */\n\n.intro-tour-hint-wrapper {\n    position: absolute !important;\n    background-color: rgba(255, 255, 255, .7) !important;\n    text-align: center;\n    font-size: 14px;\n    color: #000;\n    width: 100% !important;\n}\n\n.box-step {\n    border: solid 1px rgba(0, 0, 0, 1) !important;\n    width: 100%;\n    height: 100%;\n}\n\n.coffix {\n    width: 25% !important;\n    padding-right: 3.5% !important;\n}", ""]);
 
 // exports
 
@@ -4476,7 +4487,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".ui-steps .ui-steps-item {\n    width: 33%;\n}\n\n.ui-steps.steps-custom {\n    margin-bottom: 10px;\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {\n    height: 4px;\n    /* padding: 0 1em; */\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-steps-number {\n    background-color: #0081c2;\n    color: #FFFFFF;\n    /* display: inline-block;  */\n    width: 26px;\n    /* border-radius: 5%; */\n    margin-top: -20px;\n    margin-bottom: 12px;\n    font-size: 200%;\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-steps-title {\n    /* color: #555555;  */\n    color: #FFFFFF;\n    margin-top: -43px;\n    font-weight: bold;\n}\n\n.badge,\n.ui-steps-item,\n.ui-steps-number,\np-dialog {\n    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 6px 0 rgba(0, 0, 0, 0.19) !important;\n    border-color: rgba(255, 255, 255, 0) !important;\n}\n\n.box,\n.box-primary,\n.panel {\n    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1) !important;\n    border-color: rgba(0, 0, 0, 0.1) !important;\n}\n\nmd-input-container textarea {\n    background-color: rgba(0, 0, 0, 0.05) !important;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4493,7 +4504,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".close-btn {\n    float: right;\n    /* background: red; */\n    /* color: white; */\n    top: 10px;\n    right: 0px;\n    z-index: 1;\n    position: relative;\n}", ""]);
+exports.push([module.i, ".ui-steps .ui-steps-item {\n    width: 33%;\n}\n\n.ui-steps.steps-custom {\n    margin-bottom: 10px;\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {\n    height: 4px;\n    /* padding: 0 1em; */\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-steps-number {\n    background-color: #0081c2;\n    color: #FFFFFF;\n    /* display: inline-block;  */\n    width: 26px;\n    /* border-radius: 5%; */\n    margin-top: -20px;\n    margin-bottom: 12px;\n    font-size: 200%;\n}\n\n.ui-steps.steps-custom .ui-steps-item .ui-steps-title {\n    /* color: #555555;  */\n    color: #FFFFFF;\n    margin-top: -43px;\n    font-weight: bold;\n}\n\n.badge,\n.ui-steps-item,\n.ui-steps-number,\np-dialog {\n    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 6px 0 rgba(0, 0, 0, 0.19) !important;\n    border-color: rgba(255, 255, 255, 0) !important;\n}\n\n.box,\n.box-primary,\n.panel {\n    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1) !important;\n    border-color: rgba(0, 0, 0, 0.1) !important;\n}\n\nmd-input-container textarea {\n    background-color: rgba(0, 0, 0, 0.05) !important;\n}", ""]);
 
 // exports
 
@@ -4510,7 +4521,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "\n\n", ""]);
+exports.push([module.i, ".close-btn {\n    float: right;\n    /* background: red; */\n    /* color: white; */\n    top: 10px;\n    right: 0px;\n    z-index: 1;\n    position: relative;\n}", ""]);
 
 // exports
 
@@ -4527,7 +4538,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n\n", ""]);
 
 // exports
 
@@ -4595,7 +4606,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "ng2-cytoscape {\n    height: 100vh;\n    float: left;\n    width: 100%;\n    position: relative;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4612,7 +4623,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".box-fixed-height {\n    height: auto !important;\n}\n\n.masonry-item {\n    background-color: #FFFFFF;\n    color: #000;\n}\n\n.icon-options:hover {\n    color: red !important;\n    cursor: pointer;\n}\n\n.title-post:hover {\n    color: rgba(21, 71, 120, 1) !important;\n    cursor: pointer;\n}\n\n.masonry-item:hover .text-muted {\n    color: #FFFFFF;\n}\n\n.text-body-box {\n    word-wrap: break-word;\n}\n\n.example-header-image {\n    background-image: url(" + __webpack_require__(136) + ");\n    background-size: cover;\n    /* background-color: rgba(21, 171, 200, 1) !important; */\n}\n\n.example-card {\n    border: 1px #000000 !important;\n    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 0px 0px 0 rgba(0, 0, 0, .14), 0 0px 0px 0 rgba(0, 0, 0, .12) !important;\n}\n\n.grid-item {\n    width: 20%;\n}\n\n.ui-summary {\n    color: rgba(0, 0, 0, .54) !important;\n    font-weight: 400 !important;\n}", ""]);
+exports.push([module.i, "ng2-cytoscape {\n    height: 100vh;\n    float: left;\n    width: 100%;\n    position: relative;\n}", ""]);
 
 // exports
 
@@ -4629,7 +4640,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}", ""]);
+exports.push([module.i, ".box-fixed-height {\n    height: auto !important;\n}\n\n.masonry-item {\n    background-color: #FFFFFF;\n    color: #000;\n}\n\n.icon-options:hover {\n    color: red !important;\n    cursor: pointer;\n}\n\n.title-post:hover {\n    color: rgba(21, 71, 120, 1) !important;\n    cursor: pointer;\n}\n\n.masonry-item:hover .text-muted {\n    color: #FFFFFF;\n}\n\n.text-body-box {\n    word-wrap: break-word;\n}\n\n.example-header-image {\n    background-image: url(" + __webpack_require__(136) + ");\n    background-size: cover;\n    /* background-color: rgba(21, 171, 200, 1) !important; */\n}\n\n.example-card {\n    border: 1px #000000 !important;\n    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 0px 0px 0 rgba(0, 0, 0, .14), 0 0px 0px 0 rgba(0, 0, 0, .12) !important;\n}\n\n.grid-item {\n    width: 20%;\n}\n\n.ui-summary {\n    color: rgba(0, 0, 0, .54) !important;\n    font-weight: 400 !important;\n}", ""]);
 
 // exports
 
@@ -4646,7 +4657,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".timeline {\n    list-style: none;\n    padding: 20px 0 20px;\n    position: relative;\n}\n\n.full-width {\n    width: 100%;\n    background-color: #ffffff !important;\n}\n\n.timeline:before {\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    content: \" \";\n    width: 3px;\n    background-color: #eeeeee;\n    left: 0%;\n    margin-left: -1.5px;\n}\n\n.timeline>li {\n    margin-bottom: 20px;\n    position: relative;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li>.timeline-panel {\n    width: 96%;\n    float: left;\n    border: 1px solid #d4d4d4;\n    border-radius: 2px;\n    padding: 20px;\n    position: relative;\n    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);\n}\n\n.timeline>li>.timeline-panel:before {\n    position: absolute;\n    top: 26px;\n    right: -15px;\n    display: inline-block;\n    border-top: 15px solid transparent;\n    border-left: 15px solid #ccc;\n    border-right: 0 solid #ccc;\n    border-bottom: 15px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-panel:after {\n    position: absolute;\n    top: 27px;\n    right: -14px;\n    display: inline-block;\n    border-top: 14px solid transparent;\n    border-left: 14px solid #fff;\n    border-right: 0 solid #fff;\n    border-bottom: 14px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-badge {\n    color: #fff;\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    font-size: 1.4em;\n    text-align: center;\n    position: absolute;\n    top: 16px;\n    left: 0%;\n    margin-left: -25px;\n    background-color: #999999;\n    z-index: 100;\n    border-top-right-radius: 50%;\n    border-top-left-radius: 50%;\n    border-bottom-right-radius: 50%;\n    border-bottom-left-radius: 50%;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel {\n    float: right;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:before {\n    border-left-width: 0;\n    border-right-width: 15px;\n    left: -15px;\n    right: auto;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:after {\n    border-left-width: 0;\n    border-right-width: 14px;\n    left: -14px;\n    right: auto;\n}\n\n.timeline-badge.primary {\n    background-color: #2e6da4 !important;\n}\n\n.timeline-badge.success {\n    background-color: #3f903f !important;\n}\n\n.timeline-badge.warning {\n    background-color: #f0ad4e !important;\n}\n\n.timeline-badge.danger {\n    background-color: #d9534f !important;\n}\n\n.timeline-badge.info {\n    background-color: #5bc0de !important;\n}\n\n.timeline-title {\n    margin-top: 0;\n    color: inherit;\n}\n\n.timeline-body>p,\n.timeline-body>ul {\n    margin-bottom: 0;\n}\n\n.timeline-body>p+p {\n    margin-top: 5px;\n}\n\n@media (max-width: 767px) {\n    ul.timeline:before {\n        left: 40px;\n    }\n    ul.timeline>li>.timeline-panel {\n        width: calc(100% - 90px);\n        width: -webkit-calc(100% - 90px);\n    }\n    ul.timeline>li>.timeline-badge {\n        left: 15px;\n        margin-left: 0;\n        top: 16px;\n    }\n    ul.timeline>li>.timeline-panel {\n        float: right;\n    }\n    ul.timeline>li>.timeline-panel:before {\n        border-left-width: 0;\n        border-right-width: 15px;\n        left: -15px;\n        right: auto;\n    }\n    ul.timeline>li>.timeline-panel:after {\n        border-left-width: 0;\n        border-right-width: 14px;\n        left: -14px;\n        right: auto;\n    }\n}\n\n.a-link {\n    cursor: pointer;\n}\n\n.hand {\n    cursor: pointer;\n}", ""]);
+exports.push([module.i, ".no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}", ""]);
 
 // exports
 
@@ -4663,7 +4674,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".post-form {\n    font-family: 'Sarabun', sans-serif !important;\n}\n\n.no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}\n\n.categories {\n    cursor: pointer;\n}\n\n.categories-block {\n    display: inline-block;\n}\n\n.categories:hover {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n    color: #000000 !important;\n}", ""]);
+exports.push([module.i, ".timeline {\n    list-style: none;\n    padding: 20px 0 20px;\n    position: relative;\n}\n\n.full-width {\n    width: 100%;\n    background-color: #ffffff !important;\n}\n\n.timeline:before {\n    top: 0;\n    bottom: 0;\n    position: absolute;\n    content: \" \";\n    width: 3px;\n    background-color: #eeeeee;\n    left: 0%;\n    margin-left: -1.5px;\n}\n\n.timeline>li {\n    margin-bottom: 20px;\n    position: relative;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li:before,\n.timeline>li:after {\n    content: \" \";\n    display: table;\n}\n\n.timeline>li:after {\n    clear: both;\n}\n\n.timeline>li>.timeline-panel {\n    width: 96%;\n    float: left;\n    border: 1px solid #d4d4d4;\n    border-radius: 2px;\n    padding: 20px;\n    position: relative;\n    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);\n}\n\n.timeline>li>.timeline-panel:before {\n    position: absolute;\n    top: 26px;\n    right: -15px;\n    display: inline-block;\n    border-top: 15px solid transparent;\n    border-left: 15px solid #ccc;\n    border-right: 0 solid #ccc;\n    border-bottom: 15px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-panel:after {\n    position: absolute;\n    top: 27px;\n    right: -14px;\n    display: inline-block;\n    border-top: 14px solid transparent;\n    border-left: 14px solid #fff;\n    border-right: 0 solid #fff;\n    border-bottom: 14px solid transparent;\n    content: \" \";\n}\n\n.timeline>li>.timeline-badge {\n    color: #fff;\n    width: 50px;\n    height: 50px;\n    line-height: 50px;\n    font-size: 1.4em;\n    text-align: center;\n    position: absolute;\n    top: 16px;\n    left: 0%;\n    margin-left: -25px;\n    background-color: #999999;\n    z-index: 100;\n    border-top-right-radius: 50%;\n    border-top-left-radius: 50%;\n    border-bottom-right-radius: 50%;\n    border-bottom-left-radius: 50%;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel {\n    float: right;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:before {\n    border-left-width: 0;\n    border-right-width: 15px;\n    left: -15px;\n    right: auto;\n}\n\n.timeline>li.timeline-inverted>.timeline-panel:after {\n    border-left-width: 0;\n    border-right-width: 14px;\n    left: -14px;\n    right: auto;\n}\n\n.timeline-badge.primary {\n    background-color: #2e6da4 !important;\n}\n\n.timeline-badge.success {\n    background-color: #3f903f !important;\n}\n\n.timeline-badge.warning {\n    background-color: #f0ad4e !important;\n}\n\n.timeline-badge.danger {\n    background-color: #d9534f !important;\n}\n\n.timeline-badge.info {\n    background-color: #5bc0de !important;\n}\n\n.timeline-title {\n    margin-top: 0;\n    color: inherit;\n}\n\n.timeline-body>p,\n.timeline-body>ul {\n    margin-bottom: 0;\n}\n\n.timeline-body>p+p {\n    margin-top: 5px;\n}\n\n@media (max-width: 767px) {\n    ul.timeline:before {\n        left: 40px;\n    }\n    ul.timeline>li>.timeline-panel {\n        width: calc(100% - 90px);\n        width: -webkit-calc(100% - 90px);\n    }\n    ul.timeline>li>.timeline-badge {\n        left: 15px;\n        margin-left: 0;\n        top: 16px;\n    }\n    ul.timeline>li>.timeline-panel {\n        float: right;\n    }\n    ul.timeline>li>.timeline-panel:before {\n        border-left-width: 0;\n        border-right-width: 15px;\n        left: -15px;\n        right: auto;\n    }\n    ul.timeline>li>.timeline-panel:after {\n        border-left-width: 0;\n        border-right-width: 14px;\n        left: -14px;\n        right: auto;\n    }\n}\n\n.a-link {\n    cursor: pointer;\n}\n\n.hand {\n    cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -4680,7 +4691,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".post-form {\n    font-family: 'Sarabun', sans-serif !important;\n}\n\n.no-gutter {\n    padding-right: 0;\n    padding-left: 0;\n}\n\n.flex-box {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n}\n\n.flex-input {\n    -webkit-box-flex: 2;\n        -ms-flex-positive: 2;\n            flex-grow: 2;\n    border: none;\n}\n\n.remove-tag:hover {\n    cursor: pointer;\n    color: #022b6d;\n}\n\n.tag-line {\n    display: inline-block;\n}\n\n.categories {\n    cursor: pointer;\n}\n\n.categories-block {\n    display: inline-block;\n}\n\n.categories:hover {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n    color: #000000 !important;\n}", ""]);
 
 // exports
 
@@ -4697,7 +4708,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".user-block p {\n    padding: 0%;\n}\n\n.icon-options:hover {\n    color: red !important;\n    cursor: pointer;\n}\n\n.ui-view-post {\n    font-family: 'Sarabun', sans-serif !important;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4707,6 +4718,23 @@ module.exports = module.exports.toString();
 
 /***/ }),
 /* 294 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, ".user-block p {\n    padding: 0%;\n}\n\n.icon-options:hover {\n    color: red !important;\n    cursor: pointer;\n}\n\n.ui-view-post {\n    font-family: 'Sarabun', sans-serif !important;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
@@ -4723,23 +4751,6 @@ exports.push([module.i, ".home-logo {\n    font-family: 'Encode Sans Expanded', 
 module.exports = module.exports.toString();
 
 /***/ }),
-/* 295 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
 /* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4748,7 +4759,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".user_growl {\n    position: absolute !important;\n    top: 20px !important;\n    z-index: 9999 !important;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -4765,7 +4776,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, ".example-header-image {\n    background-image: url(" + __webpack_require__(136) + ");\n    background-size: cover;\n    /* background-color: rgb(32, 47, 182) !important; */\n}", ""]);
+exports.push([module.i, ".user_growl {\n    position: absolute !important;\n    top: 20px !important;\n    z-index: 9999 !important;\n}", ""]);
 
 // exports
 
@@ -4782,7 +4793,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".example-header-image {\n    background-image: url(" + __webpack_require__(136) + ");\n    background-size: cover;\n    /* background-color: rgb(32, 47, 182) !important; */\n}", ""]);
 
 // exports
 
@@ -4808,7 +4819,23 @@ exports.push([module.i, "", ""]);
 module.exports = module.exports.toString();
 
 /***/ }),
-/* 300 */,
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
 /* 301 */,
 /* 302 */,
 /* 303 */,
@@ -4903,88 +4930,83 @@ module.exports = module.exports.toString();
 /* 392 */,
 /* 393 */,
 /* 394 */,
-/* 395 */
+/* 395 */,
+/* 396 */
 /***/ (function(module, exports) {
 
 module.exports = "<div style=\"overflow: auto\" class=\"col-md-12\">\n    <h2>Instructions</h2>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <br>\n\n    <img class=\"col-md-8 col-md-offset-2\" src=\"assets/images/demo.png\" alt=\"\">\n\n    <div class=\"col-md-12\">\n\n        <h4>1. Get familiar with the environment</h4>\n        <p>\n            In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n        </p>\n        <h4>2. New user</h4>\n        <p class=\"\">\n            If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform two ARG annotations. An score with your performance will be prompted. <strong>All fields are required</strong>,\n            values unrelated to the gene are not accepted.\n        </p>\n\n        <h4>3. How to get a reward </h4>\n        <p>\n            Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token\n            to the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n        </p>\n\n        <h4>4. Perform a new Hit</h4>\n        <p>\n            First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n        </p>\n\n        <strong><h4 style=\"color:red\"> Please Be Aware! </h4></strong>\n        <p>\n            If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n        </p>\n        <p>\n            If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n        </p>\n        <p>\n            Only tokens are accepted, if you submit other values such as gene_id, the HIT will be rejected. Several workers are working in the same gene_id, if the token is not provided, we cannot check your performance.\n        </p>\n\n    </div>\n    <hr class=\"col-md-10\">\n</div>\n\n<hr>\n\n\n<md-expansion-panel class=\"\" [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Micro-Tasks</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <h4>ARG identification</h4>\n    <p>Please fill up the Antibiotic resistance class, group and mechanism (if any) of the gene based on the observation from the different resources.</p>\n\n    <p class=\"small\">The <strong>Blast alignment</strong> sections associate the queried gene to its closest antibiotic resistance gene from curated databases. From this section you need to look at the scores (Bitscore, evalue, identity and coverage). High identity and\n        coverage represent close related sequences. Statistically significant alignments don't necesarly need high identity percentages. Therefore, pay attention to the Bitscores and Evalues. <strong>Note</strong>: A bitscore greater than 50 is considered\n        significant if it spans at least 90% coverage.\n    </p>\n\n\n    <hr>\n\n    <h4> Mobile Genetic Elements</h4>\n\n    <p><strong>Horizontal Gene Transfer</strong></p>\n    <p>Please check if there is any evidence that suggests the gene has been observed in a plasmid, prophage or virus.</p>\n    <p class=\"small\">To complete this task please check the Plasmid, Virus, or Prophages sections. If there is not any section with plasmid, prophage or virus tags it means that there is not evidence that the gene is transfered by any of those mechanisms.\n    </p>\n    <p><strong>Pathogen Genomes</strong></p>\n    <p>Please take a look at the pathogen genomes panel under the horizontal gene transfer section. </p>\n    <p class=\"small\">This panel will show you the association of the queried gene against a set of ~100,000 bacterial genomes. You will get information about the association of the gene to pathogens (as percentages) as well as their antimicrobial phenotype (resistant,\n        susceptible, intermediate). Rate your findigns according to the provided evidence.\n\n    </p>\n\n    <hr>\n    <h4>Review and submit</h4>\n    <p>This panel contains your observations for the queried gene.</p>\n    <p><strong>Verify your observations</strong></p>\n    <p>Please, make sure the values in the fields (ARG class, ARG group and ARG mechanism) correspond to what you have observed.</p>\n    <p><strong>Rate your expertise</strong></p>\n    <p>Please in a scale from 1 to 5 rate your confidence or expertice level, where 1 depicts a non expert evaluator, and 5 if you have experience working with Antibiotic Resistance Genes.\n        <p>\n            <p><strong>Rate your annotation confidence</strong></p>\n            <p>Please in a scale from 1 to 5, rate your confidence in the curation of the queried gene where 1 means that there is a lack of evidence about the gene and 5 the data correlates with your observations.</p>\n</md-expansion-panel>\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>MGEs and pathogens</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        Mobile Genetic Elements or MGEs are segments that encode proteins that mediates the movment of DNA within genomes. Plasmids are collection of stable funcional genetic elements. Plasmids can often be transferred to another cell. Bacteriophages can also\n        transfer genetic material by accidentally package segments of DNA to inject into their host.\n    </p>\n    <p>\n        To identify if the ARG is carried by plasmids, phages or viruses, the gene was aligned to the <a href=\"\">ACLAME</a> database. Scores provide insight into the presence of this gene into the MGE.\n    </p>\n    <p>\n        Pathogens are invaders that attack their hosts. The most familiar are viruses and bacteria and they can cause a wide range of infections and diseases. To identify if the gene is hosted in a pathogen genome, the gene was matched to the <a href=\"\">PATRIC</a>        database. Then, we were able to identify the number of pathogen genomes that carry the gene.\n    </p>\n    <p class=\"small\">Each color represents a different scoring scale</p>\n</md-expansion-panel>\n\n\n\n<hr>\n\n<md-expansion-panel [expanded]=\"false\">\n    <md-expansion-panel-header>\n        <md-panel-title>\n            <h4>Similarity to known ARGs</h4>\n        </md-panel-title>\n    </md-expansion-panel-header>\n    <p>\n        To curate a gene as an ARG, it is necesary to validate its evidence. One way to do it is by looking at the information provided from curated databases such as the <a href=\"\">CARD</a> database. Thus, the entry was compared against the databases\n        to reinforce, reject or modify the <strong>current annotation.</strong>\n    </p>\n    <p>\n        For this comparison, the gene was aligned to the genes from the databases using blast and its best hit was extracted. For each database, a panel shows the quality of the alignment and the information regarding that best hit.\n    </p>\n\n    <p> <span class=\"label bg-blue\">Tip</span> To identify the\n        <strong> class of antibiotic </strong> consider looking at <u>middle</u> to <u>high</u> bitscore, evalue and coverage. However, to identify <strong> antibiotic resistance names </strong>, we would recomend to look at the panels where the sequence\n        similarity is <u>high</u> with a <u>very strong</u> coverage.\n    </p>\n\n</md-expansion-panel>\n\n<hr><br><br><br><br><br>"
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf='render && session.get(\"online\") == 2'>\n    <div class=\"col-sm-3\">\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Upgrade database</h4>\n                <!-- <h3 class=\"box-title\">\n                <strong>Main Actions</strong>\n            </h3> -->\n            </div>\n            <div class=\"box-body\">\n\n\n                <p class=\"small\">Publish a new version of the ARG-miner database. This database is updated once a considered number of genes have been curated. Once you click submit it will create a new version of the database and update the download links under the Donwloads\n                    tab.\n                </p>\n\n\n                <!-- UPGRADE DATABASE FORM -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Database version\" [value]=\"databaseVersion\" #dversion>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput #dmessage maxlength=\"256\" placeholder=\"Comments\" [value]=\"databaseComments\">\n\n                    <md-hint align=\"end\">{{dmessage.value.length}} / 256</md-hint>\n                </md-input-container>\n\n            </div>\n            <div class=\"box-footer\">\n                <br>\n                <div class=\"col-md-12 text-center\"> <button (click)=\"upgradeDataBase(dversion.value, dmessage.value)\" class=\"bg-black\" color=\"default\" md-raised-button>Upgrade ARG-miner database</button><br><br></div>\n\n                <p class=\"small\">*The upgrading gets run in the background of the web server and the fasta file will be available under the downloads once the process is done.</p>\n            </div>\n        </div>\n        <div class=\"box box-solid\">\n            <div class=\"box-header with-border text-center\">\n                <h4>Obtain Problematic Annotations</h4>\n            </div>\n            <div class=\"box-body\">\n\n                <p class=\"small\">Use this tool after you have accepted/rejected annotations from the crowdsourcing platform. This action will compute/update all those ARGs that have conflicting annotations e.g., the same gene name associated to several ARG categories.</p>\n                <div class=\"text-center\"> <button (click)=\"updateConflictingARGs()\" class=\"bg-blue\" md-raised-button>Compute\n            Problematic ARGs</button></div>\n                <hr>\n            </div>\n        </div>\n    </div>\n\n    <div class=\"col-sm-9\">\n\n        <div class=\"box-body\">\n            <div class=\"box box-solid \">\n                <div class=\"box-body\">\n                    <md-input-container class='col-sm-12 col-sm-offset-0'>\n                        <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search ARG \" value=\"\" />\n                    </md-input-container>\n                </div>\n            </div>\n        </div>\n\n        <div *ngFor=\"let item of curatedARGs\" class=\"\">\n            <!-- <div class=\"box-header with-border\"> -->\n            <!-- <h3 class=\"box-title\">{{item.entry.gene_id}}</h3> -->\n            <!-- </div> -->\n\n            <!-- <p>The gene <u>{{item.entry.gene_id}}</u> has been curated {{ item.inspected.length }} times.</p> -->\n            <div class=\"col-md-12\">\n\n                <div class=\"col-md-4\">\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-header\">\n                            <h4 class=\"text-center\"> <strong> Current Annotation </strong></h4>\n                        </div>\n                        <div class=\"box-body\">\n                            <ul class=\"clearfix\">\n\n                                <li *ngIf=\"item.entry.inspected > 1\">\n                                    <span class=\"badge bg-red\"> <strong> Gene already curated </strong></span>\n                                </li>\n\n                                <li *ngIf=\"item.entry.deprecated\">\n                                    <span class=\"badge bg-red\"> <strong> Gene has been deprecated </strong></span>\n                                </li>\n\n                                <li>\n                                    <span class=\"users-list-date\">Antibiotic Class</span> {{ item.entry.type }}\n                                </li>\n                                <li>\n                                    <span class=\"users-list-date\">ARG Name</span> {{ item.entry.subtype }}\n                                </li>\n                                <li>\n                                    <span class=\"users-list-date\">Database</span> {{ item.entry.database }}\n                                </li>\n                                <li>\n                                    <span class=\"users-list-date\">Gene ID</span> {{ item.entry.gene_id }}\n                                </li>\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"col-md-8\">\n\n                    <div class=\"box box-solid box-primary\">\n                        <div class=\"box-header\">\n                            <h4 class=\"text-center\"> <strong> Weighted Annotation </strong> </h4>\n                        </div>\n\n                        <div class=\"box-body\">\n                            <ul class=\"clearfix\">\n                                <li>\n                                    <span class=\"users-list-date\">Antibiotic Class</span> {{ scores[0]['scores'][0]['name'] }}\n                                </li>\n                                <li>\n                                    <span class=\"users-list-date\">ARG name</span> {{ scores[1]['scores'][0]['name'] }}\n                                </li>\n                                <li>\n                                    <span class=\"users-list-date\">Antibiotic Resistance Mechanism</span> {{scores[2]['scores'][0]['name']}}\n                                </li>\n                            </ul>\n\n                        </div>\n\n                        <div class=\"box-footer\">\n                            <button (click)=\"acceptAnnotation()\" class=\"pull-left bg-blue\" md-raised-button>Approve</button>\n                            <button (click)=\"deprecate()\" class=\"pull-left bg-default\" md-raised-button>Deprecate this\n                ARG</button>\n                            <button (click)=\"getARG(ARGindex)\" class=\"pull-right bg-green\" md-raised-button>Next Gene</button>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n\n            <div class=\"box-body\">\n                <div class=\"col-md-12\">\n                    <!-- <h3 class=\"text-center\">Crowsourced Annotation</h3> -->\n                    <div class=\"box box-solid with-border box-primary\">\n                        <div class=\"box-body\">\n\n                            <div *ngFor=\"let kind of scores\" class=\"col-md-12\">\n                                <!-- <hr> -->\n                                <div>\n                                    <h3>{{ kind.kind }}</h3>\n                                    <p>This table shows the {{kind.kind}} results for the gene {{ item.entry.gene_id }}</p>\n                                </div>\n                                <br>\n                                <table class=\"table table-responsive table-bordered text-center\">\n                                    <tbody>\n                                        <tr class=\"table-success\">\n                                            <th>ARG {{kind.kind}}</th>\n                                            <th>Counts</th>\n                                            <th>Confidence/Expertise Score</th>\n                                            <th>Majority Votes</th>\n                                            <th>Validation Filter</th>\n                                            <th>Score</th>\n                                            <th>Weighted Score</th>\n                                        </tr>\n\n                                        <tr *ngFor=\"let itemx of kind.scores\">\n                                            <td>{{ itemx.name }}</td>\n                                            <td>{{ itemx.counts }}</td>\n                                            <td>{{ itemx.expertise_confidence_score.toFixed(4) }}</td>\n                                            <td>{{ itemx.majority_voting_score.toFixed(2) }}</td>\n                                            <td>{{ itemx.true_validation_filter_score.toFixed(2) }}</td>\n                                            <td>{{ itemx.raw_score.toFixed(2) }}</td>\n                                            <td>{{ itemx.score.toFixed(6) }}</td>\n                                        </tr>\n                                    </tbody>\n                                </table>\n                                <!-- <hr> -->\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n\n\n\n\n                <div class=\"col-sm-12\">\n                    <div class=\"box box-solid\">\n                        <table class=\"table table-responsive table-bordered text-center\">\n                            <tbody>\n                                <tr class=\"table-success\">\n                                    <th>Token</th>\n                                    <th>Date</th>\n                                    <th>Expertise</th>\n                                    <th>Confidence</th>\n                                    <th>Gene Name</th>\n                                    <th>ARG Class</th>\n                                    <th>ARG Mechanism</th>\n                                </tr>\n                                <tr *ngFor=\"let itemx of curatedARGs[0]['inspected']\">\n                                    <td>{{ itemx.token }}</td>\n                                    <td>{{ itemx.date }}</td>\n                                    <td *ngIf=\"itemx.rating.expertise; else expertiseBlockA\">\n                                        {{ (itemx.rating.expertise.value).toFixed(2) }}\n                                    </td>\n                                    <ng-template #expertiseBlockA>\n                                        <td>0.00</td>\n                                    </ng-template>\n                                    <td *ngIf=\"itemx.rating.confidence; else confidenceBlockA\">\n                                        {{ (itemx.rating.confidence.value).toFixed(2) }} </td>\n                                    <ng-template #confidenceBlockA>\n                                        <td>0.00</td>\n                                    </ng-template>\n                                    <td>{{ itemx.group }}</td>\n                                    <td>{{ itemx.class }}</td>\n                                    <td>{{ itemx.mechanism }}</td>\n                                </tr>\n                            </tbody>\n                        </table>\n                    </div>\n                </div>\n\n\n            </div>\n        </div>\n\n\n    </div>\n\n\n\n</div>"
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"navbar navbar-default navbar-fixed-top\">\n    <div class=\"container-par\">\n        <!-- <div class=\"col-md-12\"> -->\n        <div class=\"navbar-header\">\n            <!-- <div class=\"col-md-1\"> -->\n            <!-- </div> -->\n            <a routerLink=\"home\" class=\"navbar-brand\">ARGminer</a>\n            <button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-main\">\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n        </div>\n\n\n\n        <ul class=\"nav navbar-nav\">\n            <li *ngIf='session.get(\"online\") >=1'>\n                <a routerLink=\"profile\"> {{session.get('user')['user']}} </a>\n            </li>\n\n            <li>\n                <a routerLink=\"home\">Home</a>\n            </li>\n\n            <li>\n                <a routerLink=\"classify\">Inspect ARGs</a>\n            </li>\n\n            <li>\n                <a routerLink=\"forum\">Blog</a>\n            </li>\n\n            <li>\n                <a routerLink=\"database\">Database</a>\n            </li>\n\n            <li>\n                <a (click)=\"open_instructions()\"> Instructions</a>\n            </li>\n        </ul>\n        <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf='session.get(\"online\") == false || session.get(\"online\") == 0 '><a routerLink=\"login\">Login</a></li>\n            <li *ngIf='session.get(\"online\") == 2'><a routerLink=\"admin\">Admin</a></li>\n            <li *ngIf='session.get(\"online\") >=1'><a (click)=\"logout()\">Logout</a></li>\n\n        </ul>\n\n        <!-- </div> -->\n        <!-- </div> -->\n    </div>\n</div>\n\n\n\n<div class=\"container-par\">\n    <br><br><br><br>\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n    </div>\n</div>"
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports) {
 
 module.exports = "<h5> <strong> User Rankings </strong></h5>\n<hr>\n\n<div *ngFor=\"let user of best_users\">\n  <span class=\"badge bg-blue\"> <strong> {{user.score}}</strong></span> {{user.name}} <br>\n  <span class=\"text-sm\"> {{ user.institution}}</span>\n  <span class=\"text-sm\"> {{ user.email }}</span>\n  <hr>\n</div>"
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database=='ARDB'\" class=\"\">\n\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n\n                    <!-- <dd> -->\n                    <h5>Resistance Mechanism</h5>\n                    <p> {{bh.metadata.description}} </p>\n                    <h5>AMR drug class / Gene family</h5>\n                    <div *ngFor=\"let type of bh.metadata.resistance_profile\">\n\n                        <p-accordion>\n                            <p-accordionTab [header]=\"type.type\">\n                                <p *ngIf=\"type.description\"> {{ type.description }} </p>\n                            </p-accordionTab>\n                        </p-accordion>\n\n                    </div>\n                    <!-- <dd> -->\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf=\"render\">\n\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n\n            <p-dataTable [value]=\"cars\">\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Database</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.database.toUpperCase()}} </strong>\n                    </ng-template>\n\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Gene Name</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        {{gene.gene_name}}\n                        <i *ngIf=\"gene.similarity>=80\" class=\"fa fa-check text-primary\"></i> <i span *ngIf=\"gene.similarity<80\" class=\"text-danger fa fa-exclamation-circle\"></i>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Antibiotic Class</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n\n                        <p *ngFor='let ant of gene.antibiotic'>{{ant}}</p>\n\n                    </ng-template>\n                </p-column>\n                <!-- <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Nomenclature</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        {{gene.gene_nomenclature}}\n                    </ng-template>\n                </p-column> -->\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Similarity</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <p-progressBar [value]=\"gene.similarity\"></p-progressBar>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Coverage</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <p-progressBar [value]=\"gene.coverage\"></p-progressBar>\n                    </ng-template>\n                </p-column>\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Bitscore</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <span [ngStyle]=\"{'color': gene.bitscore_rate}\"> <strong> {{gene.bitscore}} </strong> </span>\n                        <!-- <p-progressBar style=\"display:inline\" [value]=\"gene.bitscore_rate\"></p-progressBar> -->\n                    </ng-template>\n                </p-column>\n                <!-- <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Bitscore</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        {{ gene.bitscore }}\n                    </ng-template>\n                </p-column> -->\n\n\n            </p-dataTable>\n\n            <br>\n            <!-- <h5>Pay attention to:</h5> -->\n            <p><i class=\"fa fa-check text-primary\"></i> <span> Strong evidence.</span> <br></p>\n            <p><i class=\"text-danger fa fa-exclamation-circle\"></i> <span>Caution! <strong> not </strong> strong evidence,\n          try to find a consensus from all gene names, if all gene names differ its recommended to keep the original\n          gene name.</span></p>\n\n            <!-- nomenclature -->\n            <hr>\n\n            <h5 class=\"\"><strong> Suggested Gene Nomenclature </strong></h5>\n            <!-- <p>This is the suggested structure for the nomenclature of the gene name.</p> -->\n            <h2 class=\"nomenclature-text\"> {{ predicted_nomenclature[0].nomenclature }} <strong class=\"nomenclature-text-match\">\n          ({{100*predicted_nomenclature[0].probability.toFixed(2) }}% Match) </strong> </h2>\n\n\n            <hr>\n            <p>\n                The structure of the gene nomenclature is retrieved by using a machine learning model that predicts the shape of the gene name. For instance, a gene name <strong>BACA</strong> with a nomenclature <strong> xxxX </strong>, should be written\n                as <strong><i> bacA</i></strong>.\n            </p>\n\n            <p-accordion>\n                <p-accordionTab [header]=\"'Bacterial Gene Nomenclature (more)'\">\n                    <h5>Antibiotic Resistance</h5>\n                    <p>\n                        Two and three letter designations are used for ARGs. There is not a real consensus in the nomenclature of ARGs and there are multiple ways in which ARGs are named. For instance, the gene APH(3') corresponds to a\n                        <i> Phosphorylation of 2-deoxystreptamine aminoglycosides on the hydroxyl group at position 3' </i> does not compy with the suggested gene nomenclature making difficult to determine the real ARG name.\n                    </p>\n                    <p>\n                        In ARG miner, we decided to build a machine learning model that predicts the structure of the gene name based on the information provided by the CARD database and the UniProt TreMBL database. Thus, only gene names from entries that have been experimentally\n                        validated were subtracted to train the a text classifier. As result, ARGminer reports to users the likely structure of the gene name. For instance, when ARGminer prints xxxX it means the three first words are in lower case whereas\n                        the latest word is in upper case (bacA, uppP, etc.). Other cases such as the <i>APH(3')-Ia</i> gene has a nomenclature <strong> XXX(N')-Xx </strong>, where x represents lower case, X upper case and N a number.\n                    </p>\n                </p-accordionTab>\n            </p-accordion>\n\n            <!-- </div> -->\n            <!-- <p class=\"small\"> <strong>*Bitscore Rate</strong>: Reffers to the rate between the alignment bitscore and the optimal bitscore curated by CARD for this ARG.</p> -->\n\n\n        </div>\n    </div>\n\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n\n        <div *ngIf=\"bh.best_hit_database=='CARD'\" class=\"\">\n            <!-- <p>\n                <strong> Scoring </strong>:\n                <span class=\"label bg-red\">Very Weak</span>\n                <span class=\"label bg-yellow\">Weak</span>\n                <span class=\"label bg-green\">Middle</span>\n                <span class=\"label bg-blue\">Strong</span>\n                <span class=\"label bg-black\">Very Strong</span>\n            </p> -->\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n                    <h3 class=\"box-title\"> <strong> {{ bh.best_hit_database }} </strong> Database </h3>\n\n                </div>\n                <!-- /.box-header -->\n                <div class=\"box-body\">\n\n                    <strong>\n            <h5>AMR Gene Family (Antibiotic Class)</h5>\n          </strong>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'AMR Gene Family'\">\n                            <p-accordion>\n                                <p-accordionTab [header]=\"meta.category_aro_name\">\n                                    {{ meta.category_aro_description}}\n                                </p-accordionTab>\n                            </p-accordion>\n                        </div>\n                    </div>\n\n                    <strong>\n            <h5>Resistance Mechanism</h5>\n          </strong>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'Resistance Mechanism'\">\n                            <p-accordion>\n                                <p-accordionTab [header]=\"meta.category_aro_name\">\n                                    {{ meta.category_aro_description}}\n                                </p-accordionTab>\n                            </p-accordion>\n                        </div>\n                    </div>\n\n                    <strong>\n            <h5>Drug Class</h5>\n          </strong>\n                    <div *ngFor=\"let meta of bh.metadata\">\n                        <div *ngIf=\"meta.category_aro_class_name == 'Drug Class'\">\n                            <p-accordion>\n                                <p-accordionTab [header]=\"meta.category_aro_name\">\n                                    {{ meta.category_aro_description}}\n                                </p-accordionTab>\n                            </p-accordion>\n                        </div>\n                    </div>\n\n                    <!-- <button color=\"primary\" class=\"pull-left\" md-mini-fab> <i class=\"fa fa-chevron-left\"></i> </button> -->\n                    <!-- <button color=\"primary\" class=\"pull-right\" md-mini-fab> <i class=\"fa fa-chevron-right\"></i> </button> -->\n                </div>\n                <!-- /.box-body -->\n            </div>\n            <!-- /.box -->\n        </div>\n    </div>\n\n</div>"
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf=\"render\">\n    <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n        <div *ngIf=\"bh.best_hit_database!=='CARD' && bh.best_hit_database!=='ARDB'\" class=\"\">\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n                    <i class=\"fa fa-gears\"></i>\n\n                    <h3 class=\"box-title\"><strong> {{ bh.best_hit_database }} </strong> Database </h3>\n                </div>\n                <div class=\"box-body\">\n\n                    <h5> Antibiotic Class: </h5>\n\n                    <p-accordion>\n                        <p-accordionTab [header]=\"bh.type\">\n                            <p *ngIf=\"bh.description\"> {{ bh.description }} </p>\n                        </p-accordionTab>\n                    </p-accordion>\n\n                    <!-- <strong> Gene Name: </strong> {{ bh.subtype }}<br> -->\n                    <h5> Antibiotic Mechanism: </h5>\n                    <p-accordion>\n                        <p-accordionTab [header]=\"bh.mechanism\">\n                            <p *ngIf=\"bh.description\"> {{ bh.description }} </p>\n                        </p-accordionTab>\n                    </p-accordion>\n\n                </div>\n            </div>\n        </div>\n    </div>\n    <!-- <hr> -->\n</div>"
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports) {
 
 module.exports = "<p-growl class=\"user_growl\" [(value)]=\"notification\"></p-growl>\n\n<div *ngIf=\"!render\" class=\"col-md-0 col-md-offset-0\">\n</div>\n\n<div *ngIf=\"render\">\n    <!--Left panel-->\n    <div class=\"col-sm-3 \">\n        <!-- <div class=\"\"> -->\n        <div *ngIf=\"randomARG.status==true\" class=\"\">\n            <!-- <div class=\"col-md-12\"> -->\n\n            <div class=\"box box-solid \">\n                <div class=\"box-header with-border\">\n\n\n\n                    <i class=\"fa fa-gears\"></i>\n                    <!-- <p *ngIf=\"loading\"><md-progress-bar mode=\"indeterminate\"></md-progress-bar></p>  -->\n                    <h3 class=\"box-title\"><strong>Gene to validate</strong> </h3>\n\n\n                </div>\n                <div class=\"box-body\">\n\n                    <dl id=\"step1\" class=\"dl\">\n\n                        <strong>Database:</strong>\n                        <span class=\"\">{{ randomARG.entry.database }}</span>\n                        <br>\n                        <strong data-intro=\"step1\">Gene ID:</strong>\n                        <span class=\"\">{{ randomARG.entry.gene_id }} ({{ randomARG.inspected.length }})</span>\n                        <br>\n                    </dl>\n\n                    <div id=\"step3\">\n                        <md-slide-toggle (change)=\"trainingARGEvent($event)\" [checked]=\"trainingARGFlag\"><strong>Enable\n                                Training</strong></md-slide-toggle>\n                        <p class=\"small\">Enable this option if this is the first time you enter the website.</p>\n                    </div>\n                    <!-- <hr> -->\n                    <div id=\"step4\">\n                        <md-slide-toggle (change)=\"selectConflictedArgEvent($event)\"\n                            [checked]=\"conflictedArgSubtypeFlag\"><strong>Priority ARGs</strong></md-slide-toggle>\n                        <p class=\"small\">This option selects ARGs with high priority of curation.</p>\n                    </div>\n                    <hr>\n\n\n\n                    <div *ngIf=\"loading==false && conflictedArgSubtypeFlag\">\n\n                        <h4> Conflicted ARGs </h4>\n                        <p class=\"small\">This section contains the list of ARGs under the category\n                            {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class\n                            annotation.</p>\n                        <!-- <div class=\"box-body\"> -->\n                        <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->\n                        <div *ngFor=\"let item of conflictingARGSubtype.conflict\">\n                            <strong>{{ item.class }}</strong> {{ item.genes.length }}\n                        </div>\n                        <hr>\n                        <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                        <button (click)=\"nextGeneConflictList()\" class=\"\" color=\"warn\" md-raised-button>Next\n                            ARG</button>\n                        <!-- </div> -->\n                    </div>\n\n                    <div *ngIf=\"conflictedArgSubtypeFlag==false && trainingARGFlag==false\"\n                        class=\"col-md-12 text-center\">\n                        <button (click)=\"nextGene()\" class=\"\" color=\"primary\" md-raised-button>Random ARG</button>\n                    </div>\n\n                    <div *ngIf=\"trainingARGFlag && conflictedArgSubtypeFlag==false\" class=\"col-md-12 text-center\">\n                        <button (click)=\"trainingARGNextGene()\" class=\"\" color=\"primary\" md-raised-button>Next\n                            ARG</button>\n                    </div>\n\n                </div>\n\n                <!-- /.box-body -->\n                <!-- </div> -->\n                <!-- /.box -->\n            </div>\n\n            <!-- <app-comments></app-comments> -->\n\n        </div>\n\n\n        <div class=\"box box-solid\">\n            <div class=\"box-body\">\n                <app-activity> </app-activity>\n            </div>\n        </div>\n\n    </div>\n\n\n    <div class=\"col-sm-6 col-sm-offset-0\">\n        <app-explore></app-explore>\n        <div *ngIf=\"randomARG.status==true && loading==false && ARG_display\">\n            <br>\n            <div *ngFor=\"let bh of randomARG.besthit.alignments\">\n                <besthit-metadata-ardb *ngIf=\"bh.best_hit_database=='ARDB'\"> </besthit-metadata-ardb>\n                <besthit-metadata-card *ngIf=\"bh.best_hit_database=='CARD'\"> </besthit-metadata-card>\n            </div>\n            <!-- </md-tab> -->\n\n            <!-- OTHER DATABASES  -->\n            <div id=\"step9\">\n                <app-generic></app-generic>\n            </div>\n\n            <!-- <h4 *ngIf=\"randomARG.entry.database=='UNIPROT'\">Metadata</h4> -->\n\n            <!--METADATA SECTION-->\n            <div id=\"step6\">\n                <classify-metadata-uniprot *ngIf=\"randomARG.entry.database=='UNIPROT'\"> </classify-metadata-uniprot>\n            </div>\n            <classify-metadata-card> </classify-metadata-card>\n            <br>\n            <div>\n                <div class=\"box box-solid \">\n                    <div class=\"box-header with-border\">\n                        <h3 class=\"box-title\"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>\n                    </div>\n                    <div class=\"box-body\">\n                        <p class=\"sequence small\"> ><strong>{{randomARG.entry.gene_id}}</strong> <br>\n                            {{ randomARG.entry.sequence }}\n                        </p>\n                    </div>\n                </div>\n            </div>\n            <br>\n        </div>\n\n        <div id=\"step10\">\n            <genome-metadata *ngIf=\"randomARG.entry.database=='UNIPROT'\"></genome-metadata>\n            <genome-metadata *ngIf=\"randomARG.entry.database=='CARD'\"></genome-metadata>\n            <genome-metadata *ngIf=\"randomARG.entry.database=='ARDB'\"></genome-metadata>\n        </div>\n\n    </div>\n\n\n    <!-- <div class=\"col-sm-3\"> -->\n    <div id=\"step11\" class=\"curate-nav\">\n        <!-- <aside class=\"control-sidebar control-sidebar-open\"> -->\n        <app-curate></app-curate>\n        <!-- </aside> -->\n    </div>\n    <!-- </div> -->\n</div>"
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"box box-success\">\n    <div class=\"box-header ui-sortable-handle\" style=\"cursor: move;\">\n        <i class=\"fa fa-comments-o\"></i>\n\n        <h3 class=\"box-title\">Comments</h3>\n\n    </div>\n    <div class=\"slimScrollDiv\" style=\"position: relative; overflow: hidden; width: auto; height: 180px;\">\n        <div #scrollMe [scrollTop]=\"scrollMe.scrollHeight\" class=\"box-body chat\" id=\"chat-box\" style=\"overflow: auto; width: auto; height: 180px;\">\n            <div *ngFor='let message of messages' class=\"item\">\n                <img [src]=\"message.image\" alt=\"user image\" class=\"online\">\n\n                <p class=\"message\">\n                    <strong class=\"\"> {{message.user}} </strong> (<span>{{message.institution}}</span>) <br>\n                    <small class=\"text-muted\"><i class=\"fa fa-clock-o\"></i> {{message.date}}</small> <br>\n                    <small class=\"text-xs\">{{message.message}}</small>\n                </p>\n\n            </div>\n        </div>\n        <div class=\"slimScrollBar\" style=\"background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 184.911px;\"></div>\n        <div class=\"slimScrollRail\" style=\"width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;\"></div>\n    </div>\n    <!-- /.chat -->\n    <div class=\"box-footer\">\n        <div class=\"input-group\">\n            <!-- <md-input-container class=\"col-md-12\">\n                <input type=\"text\" mdInput placeholder=\"User Name\" required>\n            </md-input-container>\n            <md-input-container class=\"col-md-12\">\n                <input type=\"text\" mdInput placeholder=\"Institution\" required>\n            </md-input-container> -->\n            <input #message class=\"form-control\" placeholder=\"Type message ...\" (keydown)=\"send_message($event)\" required>\n            <div class=\"input-group-btn\">\n                <button (click)=\"send_message_click(message)\" type=\"button\" class=\"btn btn-success\"><i class=\"fa fa-plus\"></i></button>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports) {
 
 module.exports = "<div>\n    <div class=\"box\">\n        <div class=\"box-body\">\n            <p class=\"small\">Please copy and paste this token to the Mturk website.</p>\n            <strong>Token:</strong> <code *ngIf=\"inspectedGenes.length >= classifyComponent.trainingARGTotal+1\">{{antibiotic.token}}</code>\n        </div>\n    </div>\n</div>\n<div class=\"\">\n    <div class=\"box box-solid box-primary\">\n        <div class=\"box-body\">\n            <p-steps styleClass=\"steps-custom\" [(activeIndex)]=\"activeIndex\" [readonly]=\"true\" [model]=\"items\"></p-steps>\n\n            <div *ngIf=\"step1 text-center\">\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>ARG Annotation</strong></h4>\n                <p>Please based on your observations add the corresponding data to the form below:</p>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" [formControl]=\"groupControl\" [mdAutocomplete]=\"AGroup\" mdInput [(ngModel)]=\"antibiotic.group\" placeholder=\"Gene Name\">\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [formControl]=\"myControl\" [mdAutocomplete]=\"AClass\" [(ngModel)]=\"antibiotic.class\" placeholder=\"Antibiotic Class\">\n                </md-input-container>\n\n                <md-autocomplete #AClass=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of filteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-autocomplete #AGroup=\"mdAutocomplete\">\n                    <md-option *ngFor=\"let option of groupFilteredOptions | async\" [value]=\"option\" required>\n                        {{ option }}\n                    </md-option>\n                </md-autocomplete>\n\n                <md-input-container class=\"col-md-12\">\n                    <input type=\"text\" mdInput [(ngModel)]=\"antibiotic.mechanism\" placeholder=\"Antibiotic Mechanism\" required>\n                </md-input-container>\n\n                <br><br>\n\n                <div class=\"col-md-12 text-center\">\n                    <a (click)=\"validate(1)\" color=\"primary\" md-raised-button>Next</a>\n                    <!-- <button (click)=\"reportARG()\" class=\"\" color=\"red\" md-raised-button>Report ARG</button> -->\n                </div>\n                <!-- </div> -->\n\n            </div>\n\n\n\n            <div *ngIf=\"step2\">\n\n\n                <!-- <div class=\"col-md-12\"> -->\n                <h4 class=\"text-center\"><strong>Mobile Genetic Elements</strong></h4>\n                <div class=\"col-md-12\">\n                    <p class=\"small\">Is there any evidence that suggests the ARG to be carried by any of the following: </p>\n\n                    <div *ngFor=\"let ht of mge_options\">\n                        <md-checkbox value=\"{{ht}}\" (change)=\"mgeOptions(ht, $event)\">{{ ht }}</md-checkbox>\n                    </div>\n                    <p>How do you rate this evidence? </p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('mge',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <!-- <p class=\"small\"> Scores: 1 means there is not evidence and 5 means there is strong evidene that the gene is being carried by any of the three options.</p> -->\n                </div>\n\n                <div class=\"col-md-12\">\n                    <h4 class=\"text-center\"><strong>Pathogenic Genomes</strong></h4>\n\n                    <p>Is there evidence of any pathogenic genomes containing the gene? </p>\n\n                    <!-- <md-radio-group [(ngModel)]=\"antibiotic.pathGenome\">\n                        <md-radio-button value=\"1\">Yes</md-radio-button> <br>\n                        <md-radio-button value=\"2\">Not</md-radio-button> <br>\n                    </md-radio-group> -->\n\n                    <!-- <p>How do you rate this evidence? </p> -->\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('genome',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <p class=\"small\">Scores: 1 means there is not evidence whereas 5 means there is strong evidence.</p>\n                    <hr>\n\n                </div>\n\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"validate(2)\" color=\"primary\" md-raised-button>Next</button>\n                </div>\n                <!-- </div> -->\n\n\n\n            </div>\n\n            <div *ngIf=\"step3\">\n                <div class=\"col-md-12 text-center\">\n                    <h4>Overall Rating</h4>\n                </div>\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <div class=\"col-md-12\"> -->\n                <!-- <h4 class=\"text-center\"><strong>ARG annotation</strong></h4> -->\n                <!-- <dl class=\"dl\"> -->\n                <!-- <h4></h4>\n                        <strong>ARG Class:</strong>\n                        <span class=\"\"> {{ antibiotic.class }} </span>\n                        <br>\n\n                        <strong>ARG Group:</strong>\n                        <span class=\"\"> {{ antibiotic.group }} </span>\n                        <br>\n\n                        <strong *ngIf=\"!antibiotic.mechanism==null\">ARG Mechanism:</strong>\n                        <span *ngIf=\"!antibiotic.mechanism==null\">{{ antibiotic.mechanism }} </span> -->\n\n                <!-- </dl> -->\n                <!-- <hr> -->\n                <!-- </div> -->\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate the confidence in your observations</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('confidence',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n                <div class=\"col-md-12 col-md-offset-0 text-center\">\n                    <p>Please rate your level of expertise</p>\n                    <star-rating-comp (onRatingChange)=\"onRatingChange('expertise',$event)\" [starType]=\"'svg'\" [rating]=\"0\" [labelPosition]=\"'top'\"></star-rating-comp>\n                    <hr>\n                </div>\n\n\n\n                <!-- <md-input-container class=\"col-md-12\">\n                    <p>Please add any relevant comments</p>\n                    <textarea mdInput [(ngModel)]=\"antibiotic.comments\" rows=\"5\"></textarea>\n                </md-input-container> -->\n\n\n                <div class=\"col-md-12 text-center\">\n                    <button (click)=\"submitReview()\" class=\"\" color=\"green\" md-raised-button>Submit</button>\n                    <button (click)=\"validate(3)\" class=\"\" color=\"red\" md-raised-button>Cancel</button>\n                </div>\n\n\n                <!-- </div> -->\n            </div>\n\n\n\n        </div>\n\n    </div>\n\n    <div *ngIf=\"inspectedGenes.length>0\" class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"box-title\">Inspected genes: {{ inspectedGenes.length }}</h3>\n        </div>\n        <!-- <div class=\"box-body\">\n\n            <span *ngFor=\"let item of inspectedGenes\" class=\"badge\">\n                {{ item }}\n            </span>\n        </div> -->\n    </div>\n</div>"
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"box box-solid \">\n    <div class=\"box-body\">\n        <md-input-container class='col-sm-12 col-sm-offset-0'>\n            <input #keyword type=\"search\" (keyup.enter)=\"search(keyword.value)\" mdInput placeholder=\"Search term \" [(ngModel)]=\"search_keyword\" />\n        </md-input-container>\n    </div>\n</div>\n\n<div class=\"col-md-12\" *ngIf=\"loading_search\">\n    <div class=\"sk-folding-cube\">\n        <div class=\"sk-cube1 sk-cube\"></div>\n        <div class=\"sk-cube2 sk-cube\"></div>\n        <div class=\"sk-cube4 sk-cube\"></div>\n        <div class=\"sk-cube3 sk-cube\"></div>\n    </div>\n</div>\n\n<!-- table with the search information -->\n<!-- <div class=\"col-md-12\"> -->\n<div *ngIf=\"search_on\">\n    <a class=\"close-btn\" [style.cursor]=\"'pointer'\" (click)=\"close_search()\"> <i class=\"fa fa-times-circle fa-lg text-danger\"></i>\n    </a>\n    <p-dataTable [value]=\"search_general_result\" [rows]=\"5\" [paginator]=\"true\">\n        <p-column>\n            <ng-template pTemplate=\"header\">\n                <th>Antibiotic Class</th>\n            </ng-template>\n            <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                <strong> {{gene.type}} </strong>\n            </ng-template>\n        </p-column>\n        <p-column>\n            <ng-template pTemplate=\"header\">\n                <th>Gene Name</th>\n            </ng-template>\n            <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                <u>\n          <a [style.color]=\"'blue'\" [style.cursor]=\"'pointer'\" (click)=\"explore_gene(gene)\"> {{gene.subtype}} </a>\n\n        </u>\n\n\n            </ng-template>\n        </p-column>\n        <p-column>\n            <ng-template pTemplate=\"header\">\n                <th>Sequences</th>\n            </ng-template>\n            <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                <!-- <strong> {{gene.count}} </strong> -->\n                <span *ngFor=\"let _db of gene.db_counts\">\n          <a [style.color]=\"'green'\" [style.cursor]=\"'pointer'\"> <u> {{_db['database']}} </u></a>\n          <strong> ({{ _db['counts'] }}) </strong>\n        </span>\n            </ng-template>\n        </p-column>\n        <!-- <p-column>\n        <ng-template pTemplate=\"header\">\n            <th>Databases</th>\n        </ng-template>\n        <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n            <span *ngFor=\"let _db of gene.db_counts\"> {{_db['database']}}\n                        <span class=\"badge\" bg-color=\"red\"> {{ _db['counts'] }} </span>\n            </span>\n        </ng-template>\n    </p-column> -->\n    </p-dataTable>\n\n    <br>\n\n    <p *ngIf=\"selected_gene.sequences\" class=\"text-center\"> {{search_index+1}} of {{ selected_gene.sequences.length }}\n        <a [style.cursor]=\"'pointer'\" (click)=\"explore_next()\"> <i class=\"fa fa-arrow-alt-circle-right fa-lg\"></i> Next\n\n        </a>\n    </p>\n\n</div>\n<!-- </div> -->\n<!-- <div class=\"col-md-12\">\n        <span class='badge'>\n          <strong> UNIPROT </strong>\n        </span>\n\n        <span class='badge bg-green'>\n          <strong> CARD/ARDB </strong>\n        </span>\n\n        <span [style.cursor]=\"'pointer'\" *ngFor=\"let _gene of selected_gene.sequences\">\n        <span class=\"badge\" *ngIf=\"_gene[1]=='UNIPROT'; else other_db\"> {{ _gene[0] }} </span>\n\n        <ng-template #other_db>\n            <span class='badge bg-green'> {{ _gene[0] }} </span>\n        </ng-template>\n        </span>\n\n    </div> -->"
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"box box-solid\">\n    <div class=\"box-header with-border\">\n        <i class=\"fa fa-tag\"></i>\n        <h3 class=\"box-title\"><strong> PATRIC  </strong>database</h3>\n    </div>\n    <div *ngIf=\"plasmid.length > 0\" class=\"box-body\">\n        <h4>Plasmids</h4>\n        <p>\n            Prevalence of <strong> {{ randomARG.entry.gene_id }} </strong> in plasmids from the <a href=\"\">PATRIC</a> database. Values represent the number of plasmids that contain this particular ARG and its AMR phenotype: resistant (<strong>R</strong>),\n            susceptible (\n            <strong>S</strong>), intermediate (<strong>I</strong>).\n        </p>\n        <p>\n            ARGs were aligned against the plasmids from PATRIC database and only genes with an identity > 80% and a coverage of 90% were selected.\n        </p>\n        <br><br>\n\n        <div *ngFor=\"let _plasmid of plasmid\">\n\n            <p-dataTable [value]=\"_plasmid['taxa-counts']\" [rows]=\"5\" [paginator]=\"true\">\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Specices</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <i> {{gene.taxa}} </i>\n                    </ng-template>\n                </p-column>\n\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>Counts</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.plasmids}} </strong>\n                    </ng-template>\n                </p-column>\n\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>R</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.resistant}} </strong>\n                    </ng-template>\n                </p-column>\n\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>S</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.susceptible}} </strong>\n                    </ng-template>\n                </p-column>\n\n                <p-column>\n                    <ng-template pTemplate=\"header\">\n                        <th>I</th>\n                    </ng-template>\n                    <ng-template let-gene=\"rowData\" pTemplate=\"body\">\n                        <strong> {{gene.intermediate}} </strong>\n                    </ng-template>\n                </p-column>\n\n            </p-dataTable>\n\n        </div>\n\n    </div>\n\n\n    <div *ngIf=\"randomARG.pathogen.status==true\" class=\"box-body\">\n        <h4>Pathogens</h4>\n        <p>\n            This section shows the proportion of pathogen bacteria that contains the gene {{ randomARG.entry['gene_id'] }} ( <strong>{{ randomARG.entry['subtype'] }}</strong>). Colors represent the quality of the evidence from very weak to very strong.\n        </p>\n        <p>\n            <span class=\"label bg-red\">Very Weak</span>\n            <span class=\"label bg-yellow\">Weak</span>\n            <span class=\"label bg-green\">Middle</span>\n            <span class=\"label bg-blue\">Strong</span>\n            <span class=\"label bg-black\">Very Strong</span>\n        </p>\n\n        <p>\n            <strong>Pathogen Score:</strong>\n            <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\">\n                                            {{(genomeCount).toFixed(1)}}%\n                                        </span>\n            <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\">\n                                            {{(genomeCount).toFixed(1)}}%\n                                        </span>\n            <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\">\n                                            {{(genomeCount).toFixed(1)}}%\n                                        </span>\n            <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\">\n                                            {{(genomeCount).toFixed(1)}}%\n                                        </span>\n            <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\">\n                                            {{(genomeCount).toFixed(1)}}%\n                                        </span>\n        </p>\n        <hr> The gene entry {{randomARG.entry.gene_id}} (<strong>{{ randomARG.entry.subtype }}</strong>) has been aligned to the <a href=\"https://www.patricbrc.org/\">PATRIC</a> database using strict cutoffs to ensure the existence of the gene (>80% identity,\n        >90% coverage).\n        <br><br><strong>{{ randomARG['pathogen'].genomes_count }}</strong> genomes contain this particular gene ({{randomARG.entry.gene_id}}). From those,\n        <strong>{{ randomARG.pathogen.genomes_pathogen }}</strong> (\n        <span class=\"badge bg-red\" *ngIf=\"genomeCount<10\">\n                            {{(genomeCount).toFixed(1)}}%\n                        </span>\n        <span class=\"badge bg-yellow\" *ngIf=\"genomeCount<20 && genomeCount>10\">\n                            {{(genomeCount).toFixed(1)}}%\n                        </span>\n        <span class=\"badge bg-green\" *ngIf=\"genomeCount<30 && genomeCount>20\">\n                            {{(genomeCount).toFixed(1)}}%\n                        </span>\n        <span class=\"badge bg-blue\" *ngIf=\"genomeCount<60 && genomeCount>30\">\n                            {{(genomeCount).toFixed(1)}}%\n                        </span>\n        <span class=\"badge bg-black\" *ngIf=\"genomeCount<90 && genomeCount>60\">\n                            {{(genomeCount).toFixed(1)}}%\n                        </span>) genomes are labeled as <u>pathogens</u>.\n    </div>\n\n\n</div>\n\n\n<div *ngIf=\"renderMobile\" class=\"box box-solid\">\n\n    <div class=\"box-header with-border \">\n        <i class=\"fa fa-tag\"></i>\n        <h3 class=\"box-title\"><strong>ACLAME</strong> database </h3>\n    </div>\n\n    <div class=\"box-body\">\n        <p>\n            This section contains evidence of ARGs being present in mobile-associated elements from the <a href=\"\">ACLAME</a> database.\n        </p>\n\n    </div>\n\n    <div *ngFor=\"let item of randomARG.mobile\" class=\"box-body\">\n        <div *ngIf=\"item.status==true && item.identity.mean>50\" class=\"\">\n            <div class=\"box-body\">\n                <dl class=\"dl-horizontal\">\n                    <dt>Type:</dt>\n                    <dd>\n                        <strong><p *ngIf=\"item.type=='proph'\">Prophages</p></strong>\n                        <strong><p *ngIf=\"item.type=='plasmid'\">Plasmids</p></strong>\n                        <strong><p *ngIf=\"item.type=='vir'\">Viruses</p></strong>\n                    </dd>\n                    <dt>Count:</dt>\n                    <dd> <span> {{ item.count }} </span></dd>\n                    <dt>Similarity:</dt>\n                    <dd> <span class=\"badge bg-{{ item.identity.color }}\"> {{ item.identity.mean }}%  {{ '&plusmn;' }} {{item.identity.std}} </span></dd>\n                    <dt>BitScore:</dt>\n                    <dd> <span class=\"badge bg-{{ item.bitscore.color }}\"> {{ item.bitscore.mean }} {{ '&plusmn;' }} {{item.bitscore.std}} </span></dd>\n                    <dt>Coverage:</dt>\n                    <dd> <span class=\"badge bg-{{ item.coverage.color }}\"> {{  (100*item.coverage.mean/randomARG.entry['length']).toFixed(0) }}% {{ '&plusmn;' }} {{(100*item.coverage.std/randomARG.entry['length']).toFixed(0)}} </span></dd>\n                    <dt>Description:</dt>\n                    <dd>{{ item.mge_description }}</dd>\n                    <dt>Gene Aclame ID:</dt>\n                    <dd>{{ item.mge_id }}</dd>\n                </dl>\n            </div>\n\n        </div>\n\n    </div>\n\n</div>\n\n<div class=\"col-md-12\" [style.height]=\"'200px'\"></div>"
 
 /***/ }),
-/* 407 */
-/***/ (function(module, exports) {
-
-module.exports = "<div style=\"overflow: auto\" class=\"\">\n    <h3>Instructions</h3>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <h4>1. Get familiar with the environment</h4>\n    <p>\n        In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n    </p>\n    <h4>2. New user</h4>\n    <p class=\"\">\n        If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform three ARG annotations.\n    </p>\n\n    <h4>3. How to get a reward </h4>\n    <p>\n        Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token to\n        the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n    </p>\n\n    <h4>4. Perform a new Hit</h4>\n    <p>\n        First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n    </p>\n\n    <strong><h4 style=\"color:red\"> Be Aware! </h4></strong>\n    <p>\n        If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n    </p>\n    <p>\n        If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n    </p>\n\n</div>"
-
-/***/ }),
 /* 408 */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div style=\"overflow: auto\" class=\"\">\n    <h3>Instructions</h3>\n    <p>\n        The goal of this platform is to validate and complement the information under the <strong> Current Annotation </strong> panel by looking at the data presented in the main section. Then, you will have to fill the form uder the <strong>ARG Annotation</strong>        section.\n    </p>\n    <h4>1. Get familiar with the environment</h4>\n    <p>\n        In order to understand the structure of this website, please, click on the <strong>Tour</strong> button.\n    </p>\n    <h4>2. New user</h4>\n    <p class=\"\">\n        If this is the first time you enter the website, you are required to perform two classifications. To do so, click the <strong>New User</strong> button and perform three ARG annotations.\n    </p>\n\n    <h4>3. How to get a reward </h4>\n    <p>\n        Once you have done with the training, you are ready to start. First, click on <strong>Priority ARGs</strong> button and perform one annotation. After you done with the annotation you will get a token number. Please, copy and paste this token to\n        the Amazon Mturk website and submit the form. If you plan to make another Hit <strong><span style=\"color:red\">DO NOT close the ARG-miner website.</span></strong> Other case you will have to do the training again.\n    </p>\n\n    <h4>4. Perform a new Hit</h4>\n    <p>\n        First, open a new hit in Amazon Mturk, then, get back to this webpage and just click on the <strong>Other ARG Group</strong> button. Perform the annotation and submit the token to Amazon Mturk.\n    </p>\n\n    <strong><h4 style=\"color:red\"> Be Aware! </h4></strong>\n    <p>\n        If you don't do the mandatory training, the system <strong>will not</strong> prompt the token.\n    </p>\n    <p>\n        If the annotation contains random, unrelated or nonsense words, the HIT will be rejected.\n    </p>\n\n</div>"
 
 /***/ }),
 /* 409 */
@@ -4996,88 +5018,93 @@ module.exports = ""
 /* 410 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div *ngIf=\"randomARG.metadata.status==true\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"panel-title\"> <i class=\"fa fa-bug\"></i> <strong> Lineage (<a class=\"panel-title\" href=\"https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}\">NCBI Taxonomy </a>) </strong></h3>\n        </div>\n\n        <div class=\"box-body\">\n            <div class=\"dl-vertical\">\n                <span *ngFor=\"let item of randomARG.metadata.organism.lineage\">\n          {{ item }} <strong>&rsaquo;</strong>\n        </span>\n            </div>\n            <p *ngIf=\"randomARG.metadata.organism.names\"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>\n        </div>\n\n    </div>\n\n</div> -->\n\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-tag\"></i>\n\n            <h3 class=\"box-title\"><strong>Metadata</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <p *ngIf=\"randomARG.metadata.gene\"> <strong *ngIf=\"randomARG.metadata.gene[0].name\">Gene Name: </strong> <span class=\"\" *ngIf=\"randomARG.metadata.gene[0].name\"> {{ randomARG.metadata.gene[0].name.value }} </span></p>\n            <p *ngIf=\"randomARG.metadata.protein.recommendedName\" class=\"\" data-original-title=\"\"> <strong>Protein: </strong> <span class=\"\"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>\n            <p *ngIf=\"randomARG.metadata.proteinExistence\" data-original-title=\"\"> <strong>Protein Existence: </strong> <span class=\"\">  {{ randomARG.metadata.proteinExistence }} </span> </p>\n\n            <p><strong>Sequence length (AA)</strong>: <span> {{ randomARG.entry['length'] }}</span></p>\n\n            <hr>\n\n            <span *ngFor=\"let item of randomARG.metadata.keywords\" class=\"badge bg-blue\" data-original-title=\"\"> {{ item.value }} </span>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Description</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.comments\">\n                    <dt *ngIf=\"item.text\"> {{ item.type }}:</dt>\n                    <dd *ngIf=\"item.text\"> {{ item.text[0].value }}</dd>\n                    <br>\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>Gene Ontology</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Functions and Biological Process\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.dbReferences\">\n                    <dt *ngIf=\"item.type=='GO'\"> {{ item.id }}:</dt>\n                    <dd *ngIf=\"item.type=='GO'\"> {{ item.properties.term }} <span class=\"badge bg-lightblue\">{{ item.properties.source }} </span></dd>\n                    <br *ngIf=\"item.type=='GO'\">\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<!-- <div *ngIf=\"randomARG.metadata.features\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Domains</strong></h3>\n        </div>\n\n        <div class=\"box-body\">\n\n            <table class=\"table table-bordered text-center\">\n                <tbody>\n                    <tr>\n                        <th><span class=\"\">Type</span></th>\n                        <th><span class=\"\">Position(s)</span></th>\n                        <th><span class=\"\">Description</span></th>\n                        <th><span class=\"\">Evidence</span></th>\n                    </tr>\n                    <tr *ngFor=\"let item of randomARG.metadata.features\">\n                        <th> <span *ngIf=\"item.type!=undefined\"> {{ item.type }}</span></th>\n                        <th> <span *ngIf=\"item.begin!=undefined\">{{ item.begin }}-{{ item.end }}</span></th>\n                        <th><span *ngIf=\"item.description!=undefined\">{{ item.description }}</span></th>\n                        <th *ngIf=\"item.evidences\">\n                            <span *ngIf=\"item.evidences[0].source\">{{ item.evidences[0].source.name }}</span>\n                            <a *ngIf=\"item.evidences[0].source\" href=\"{{ item.evidences[0].source.url }}\">({{ item.evidences[0].source.id}})</a>\n                        </th>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </div>\n\n    </div>\n\n</div> -->\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>References</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Scientific papers that support the gene {{ randomARG.entry.gene_id }}\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.references\">\n                    <strong *ngIf=\"item.citation.authors\"> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})\n\n                    <div *ngFor=\"let ref of item.citation.dbReferences\">\n                        <strong>{{ ref.type }}</strong>: {{ ref.id }}\n                        <div *ngIf=\"ref.abstract\">\n\n                            <span *ngFor=\"let kw of ref.abstract\">\n                <span *ngIf=\"kw.type=='paragraph'\">{{ kw.text }}</span> <strong class=\"\" *ngIf=\"kw.type=='keyword'\">{{ kw.text }}</strong>\n                            </span>\n\n                        </div>\n\n                    </div>\n\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n        <!-- </div> -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<div *ngIf=\"renderError\">\n    <div class=\"alert alert-info alert-dismissible\">\n        <h4><i class=\"icon fa fa-ban\"></i> {{ randomARG.entry.database }} Alert!</h4>\n        <strong>There is a problem with this request!</strong>\n        <p>\n            {{ randomARG.metadata.errorMessage[0] }}\n        </p>\n        <p>\n            Please take a look at the provided information to make the annotation.\n        </p>\n    </div>\n</div>"
+module.exports = ""
 
 /***/ }),
 /* 411 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <h4>Download ARGminer database</h4>\n            <p>Here you can download the current and previous versions of ARGminer </p>\n            <hr>\n            <div *ngFor=\"let item of databases.reverse()\">\n                <h4> <strong> {{ item.version }} </strong></h4>\n                <h5>Release Comments</h5>\n                <p> {{ item.comments }}</p>\n\n                <table class=\"table table-responsive table-bordered text-center\">\n                    <tbody>\n                        <tr class=\"table-success\">\n                            <th>Download Links</th>\n                            <th>Release date</th>\n                            <th>Total ARG sequences</th>\n                            <th>Known ARGs</th>\n                            <th>Inspected ARGs</th>\n                            <th>Potential ARGs</th>\n                            <th>User validations</th>\n                        </tr>\n\n                        <tr>\n                            <td class=\"text-left\">\n                                <a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.A.fasta'\" target=\"_blank\">ARGminer-A</a>\n                                <br> <a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.B.fasta'\" target=\"_blank\">ARGminer-B</a>\n                            </td>\n                            <td>{{ item.release_date }}</td>\n                            <td>{{ item.total_args + item.potential_args }}</td>\n                            <td>{{ item.total_args }}</td>\n                            <td>{{ item.inspected_args }}</td>\n                            <td>{{ item.potential_args }}</td>\n                            <td>{{ item.user_inspections }}</td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <hr>\n\n            </div>\n\n            <h4>Structure of the database</h4>\n            <div class=\"\">\n                ARGminer is released as a two fasta files\n                <ul>\n                    <li>\n                        <strong>ARGminer-vxx.A.fasta:</strong> Contains ARGs that have been inspected by either ARGminer or have been reported in other curated databases (CARD, Resfinder, ARG-ANNOT, SARGs)\n                    </li>\n                    <li>\n                        <strong> ARGminer-vxx.B.fasta:</strong> This database contains all ARGs from ARGminer, including the potential ARGs that need inspection from UniProt. In most of the cases the UniProt genes lack of a proper gene nomenclature.\n                    </li>\n                </ul>\n                To consider higher diversity, it is recommended to use the B database.\n                <hr> The headers of the fasta file contain the ARG information (>GeneID|antibiotic classes|ARG name|Mechanism). See example below: <br> <br>\n            </div>\n            <pre>>ALX99516.1|multidrug;beta-lactam|AdeC|efflux pumps\nMSKSTIVSRGLILSTLSIALVACVNMQAPQPAITSHIPQNFSQNHSGKMIAEKSYK</pre>\n        </div>\n        <div class=\"box-footer text-center\">\n            <p class=\"small\">*ARGminer uses the antibiotic resistance annotation from <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a> databases. ARGminer is free for\n                academic use, in any othercase, please check each one of the cited resources.</p>\n        </div>\n    </div>\n</div>"
+module.exports = "<!-- <div *ngIf=\"randomARG.metadata.status==true\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header\">\n            <h3 class=\"panel-title\"> <i class=\"fa fa-bug\"></i> <strong> Lineage (<a class=\"panel-title\" href=\"https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id={{ randomARG.metadata.organism.taxonomy }}\">NCBI Taxonomy </a>) </strong></h3>\n        </div>\n\n        <div class=\"box-body\">\n            <div class=\"dl-vertical\">\n                <span *ngFor=\"let item of randomARG.metadata.organism.lineage\">\n          {{ item }} <strong>&rsaquo;</strong>\n        </span>\n            </div>\n            <p *ngIf=\"randomARG.metadata.organism.names\"> <strong>Organism: </strong>{{ randomARG.metadata.organism.names[0].value }}</p>\n        </div>\n\n    </div>\n\n</div> -->\n\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-tag\"></i>\n\n            <h3 class=\"box-title\"><strong>Metadata</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <p *ngIf=\"randomARG.metadata.gene\"> <strong *ngIf=\"randomARG.metadata.gene[0].name\">Gene Name: </strong> <span class=\"\" *ngIf=\"randomARG.metadata.gene[0].name\"> {{ randomARG.metadata.gene[0].name.value }} </span></p>\n            <p *ngIf=\"randomARG.metadata.protein.recommendedName\" class=\"\" data-original-title=\"\"> <strong>Protein: </strong> <span class=\"\"> {{ randomARG.metadata.protein.recommendedName.fullName.value }} </span> </p>\n            <p *ngIf=\"randomARG.metadata.proteinExistence\" data-original-title=\"\"> <strong>Protein Existence: </strong> <span class=\"\">  {{ randomARG.metadata.proteinExistence }} </span> </p>\n\n            <p><strong>Sequence length (AA)</strong>: <span> {{ randomARG.entry['length'] }}</span></p>\n\n            <hr>\n\n            <span *ngFor=\"let item of randomARG.metadata.keywords\" class=\"badge bg-blue\" data-original-title=\"\"> {{ item.value }} </span>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <div class=\"box box-solid \">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Description</strong></h3>\n        </div>\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.comments\">\n                    <dt *ngIf=\"item.text\"> {{ item.type }}:</dt>\n                    <dd *ngIf=\"item.text\"> {{ item.text[0].value }}</dd>\n                    <br>\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </div>\n    <!-- /.box -->\n</div>\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>Gene Ontology</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Functions and Biological Process\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.dbReferences\">\n                    <dt *ngIf=\"item.type=='GO'\"> {{ item.id }}:</dt>\n                    <dd *ngIf=\"item.type=='GO'\"> {{ item.properties.term }} <span class=\"badge bg-lightblue\">{{ item.properties.source }} </span></dd>\n                    <br *ngIf=\"item.type=='GO'\">\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<!-- <div *ngIf=\"randomARG.metadata.features\" class=\"\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header with-border\">\n            <i class=\"fa fa-object-group\"></i>\n\n            <h3 class=\"box-title\"><strong>Domains</strong></h3>\n        </div>\n\n        <div class=\"box-body\">\n\n            <table class=\"table table-bordered text-center\">\n                <tbody>\n                    <tr>\n                        <th><span class=\"\">Type</span></th>\n                        <th><span class=\"\">Position(s)</span></th>\n                        <th><span class=\"\">Description</span></th>\n                        <th><span class=\"\">Evidence</span></th>\n                    </tr>\n                    <tr *ngFor=\"let item of randomARG.metadata.features\">\n                        <th> <span *ngIf=\"item.type!=undefined\"> {{ item.type }}</span></th>\n                        <th> <span *ngIf=\"item.begin!=undefined\">{{ item.begin }}-{{ item.end }}</span></th>\n                        <th><span *ngIf=\"item.description!=undefined\">{{ item.description }}</span></th>\n                        <th *ngIf=\"item.evidences\">\n                            <span *ngIf=\"item.evidences[0].source\">{{ item.evidences[0].source.name }}</span>\n                            <a *ngIf=\"item.evidences[0].source\" href=\"{{ item.evidences[0].source.url }}\">({{ item.evidences[0].source.id}})</a>\n                        </th>\n                    </tr>\n\n                </tbody>\n            </table>\n\n        </div>\n\n    </div>\n\n</div> -->\n\n\n<div *ngIf=\"render\" class=\"\">\n    <md-expansion-panel class=\"box box-solid\">\n        <!-- <div class=\"box box-solid\"> -->\n        <md-expansion-panel-header>\n            <md-panel-title>\n                <h4>References</h4>\n            </md-panel-title>\n            <md-panel-description>\n                Scientific papers that support the gene {{ randomARG.entry.gene_id }}\n            </md-panel-description>\n        </md-expansion-panel-header>\n\n        <!-- /.box-header -->\n        <div class=\"box-body\">\n            <dl class=\"dl-horizontal\">\n                <div *ngFor=\"let item of randomARG.metadata.references\">\n                    <strong *ngIf=\"item.citation.authors\"> {{ item.citation.authors[0] }} {{ item.citation.authors[1] }} et al., </strong> {{ item.citation.title }} {{item.citation.publication.submissionDatabase}} ({{ item.citation.publicationDate }})\n\n                    <div *ngFor=\"let ref of item.citation.dbReferences\">\n                        <strong>{{ ref.type }}</strong>: {{ ref.id }}\n                        <div *ngIf=\"ref.abstract\">\n\n                            <span *ngFor=\"let kw of ref.abstract\">\n                <span *ngIf=\"kw.type=='paragraph'\">{{ kw.text }}</span> <strong class=\"\" *ngIf=\"kw.type=='keyword'\">{{ kw.text }}</strong>\n                            </span>\n\n                        </div>\n\n                    </div>\n\n                </div>\n            </dl>\n\n        </div>\n        <!-- /.box-body -->\n        <!-- </div> -->\n    </md-expansion-panel>\n    <!-- /.box -->\n</div>\n\n<div *ngIf=\"renderError\">\n    <div class=\"alert alert-info alert-dismissible\">\n        <h4><i class=\"icon fa fa-ban\"></i> {{ randomARG.entry.database }} Alert!</h4>\n        <strong>There is a problem with this request!</strong>\n        <p>\n            {{ randomARG.metadata.errorMessage[0] }}\n        </p>\n        <p>\n            Please take a look at the provided information to make the annotation.\n        </p>\n    </div>\n</div>"
 
 /***/ }),
 /* 412 */
 /***/ (function(module, exports) {
 
-module.exports = "<p-confirmDialog header=\"Confirmation\" icon=\"pi pi-exclamation-triangle\" width=\"425\"></p-confirmDialog>\n<br>\n\n\n<masonry [options]=\"{ transitionDuration: '1s' }\">\n    <masonry-brick *ngFor=\"let item of masonryItems \" class=\"brick col-md-4\">\n\n        <div class=\"box\">\n            <md-card class=\"example-card\">\n                <h4 class=\"title-post\" (click)=\"go_to_question(item)\">\n                    <strong> <u> {{item.title}} </u> </strong>\n                </h4>\n\n                <md-card-header>\n                    <div md-card-avatar md-card-avatar [style.backgroundSize]=\"'cover'\" [style.backgroundImage]=\" 'url('+ item.user_image + ')' \"></div>\n                    <md-card-subtitle>\n                        <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>\n                        <span class=\"badge\" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>\n\n                    </md-card-subtitle>\n                </md-card-header>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <br>\n                    <div class=\"text-body-box ui-summary\" [innerHTML]=\"item.body.substring(0, 200).replace('h2', 'p').replace('h1', 'p').replace('<br>', '') \"></div>\n                </md-card-content>\n\n                <md-card-actions>\n                    <button (click)=\"go_to_question(item)\" md-button>VIEW</button>\n                    <button (click)=\"edit_question(item._id)\" md-button [disabled]=\"session.get('user')['email'] !== item.email\">EDIT</button>\n                    <button (click)='follow_post(item)' md-button [disabled]=\"session.get('online')==0\">{{ item.am_I_following}}</button>\n                    <button (click)='remove_post(item._id, item.index)' md-button [disabled]=\"session.get('user')['email'] !== item.email\">REMOVE</button>\n\n                </md-card-actions>\n\n            </md-card>\n        </div>\n    </masonry-brick>\n</masonry>\n\n<div class=\"col-md-12 text-center \">\n    <a (click)=\"get_more_posts()\" class=\"btn btn-primary \"> <strong> Load More </strong></a>\n</div>\n\n\n\n<div class=\"col-md-12 \">\n    <br><br><br><br>\n</div>"
+module.exports = "<div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"box box-solid\">\n        <div class=\"box-body\">\n            <h4>Download ARGminer database</h4>\n            <p>Here you can download the current and previous versions of ARGminer </p>\n            <hr>\n            <div *ngFor=\"let item of databases.reverse()\">\n                <h4> <strong> {{ item.version }} </strong></h4>\n                <h5>Release Comments</h5>\n                <p> {{ item.comments }}</p>\n\n                <table class=\"table table-responsive table-bordered text-center\">\n                    <tbody>\n                        <tr class=\"table-success\">\n                            <th>Download Links</th>\n                            <th>Release date</th>\n                            <th>Total ARG sequences</th>\n                            <th>Known ARGs</th>\n                            <th>Inspected ARGs</th>\n                            <th>Potential ARGs</th>\n                            <th>User validations</th>\n                        </tr>\n\n                        <tr>\n                            <td class=\"text-left\">\n                                <a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.A.fasta'\" target=\"_blank\">ARGminer-A</a>\n                                <br> <a [href]=\"'http://bench.cs.vt.edu/ftp/argminer/release/'+item.version+'.B.fasta'\" target=\"_blank\">ARGminer-B</a>\n                            </td>\n                            <td>{{ item.release_date }}</td>\n                            <td>{{ item.total_args + item.potential_args }}</td>\n                            <td>{{ item.total_args }}</td>\n                            <td>{{ item.inspected_args }}</td>\n                            <td>{{ item.potential_args }}</td>\n                            <td>{{ item.user_inspections }}</td>\n                        </tr>\n                    </tbody>\n                </table>\n\n                <hr>\n\n            </div>\n\n            <h4>Structure of the database</h4>\n            <div class=\"\">\n                ARGminer is released as a two fasta files\n                <ul>\n                    <li>\n                        <strong>ARGminer-vxx.A.fasta:</strong> Contains ARGs that have been inspected by either ARGminer or have been reported in other curated databases (CARD, Resfinder, ARG-ANNOT, SARGs)\n                    </li>\n                    <li>\n                        <strong> ARGminer-vxx.B.fasta:</strong> This database contains all ARGs from ARGminer, including the potential ARGs that need inspection from UniProt. In most of the cases the UniProt genes lack of a proper gene nomenclature.\n                    </li>\n                </ul>\n                To consider higher diversity, it is recommended to use the B database.\n                <hr> The headers of the fasta file contain the ARG information (>GeneID|antibiotic classes|ARG name|Mechanism). See example below: <br> <br>\n            </div>\n            <pre>>ALX99516.1|multidrug;beta-lactam|AdeC|efflux pumps\nMSKSTIVSRGLILSTLSIALVACVNMQAPQPAITSHIPQNFSQNHSGKMIAEKSYK</pre>\n        </div>\n        <div class=\"box-footer text-center\">\n            <p class=\"small\">*ARGminer uses the antibiotic resistance annotation from <a href=\"https://bench.cs.vt.edu/deeparg/\" target=\"_blank\">deepARG-DB</a>, <a href=\"https://card.mcmaster.ca/home\" target=\"_blank\">CARD</a>, <a href=\"https://ardb.cbcb.umd.edu/\" target=\"_blank\">ARDB</a>,\n                <a href=\"http://www.uniprot.org/\" target=\"_blank\">UniProt</a>,\n                <a href=\"https://megares.meglab.org/\" target=\"_blank\">MEGARes</a>,\n                <a href=\"http://aclame.ulb.ac.be/\" target=\"_blank\">ACLAME</a>, <a href=\"https://www.patricbrc.org/\" target=\"_blank\">PATRIC</a> and <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/\" target=\"_blank\">PubMed</a> databases. ARGminer is free for\n                academic use, in any othercase, please check each one of the cited resources.</p>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 413 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput [(value)]='title' placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" ></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <p-chips [(ngModel)]=\"tags\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"update_post(ftitle.value)\" class=\"btn btn-primary\">Update</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<p-confirmDialog header=\"Confirmation\" icon=\"pi pi-exclamation-triangle\" width=\"425\"></p-confirmDialog>\n<br>\n\n\n<masonry [options]=\"{ transitionDuration: '1s' }\">\n    <masonry-brick *ngFor=\"let item of masonryItems \" class=\"brick col-md-4\">\n\n        <div class=\"box\">\n            <md-card class=\"example-card\">\n                <h4 class=\"title-post\" (click)=\"go_to_question(item)\">\n                    <strong> <u> {{item.title}} </u> </strong>\n                </h4>\n\n                <md-card-header>\n                    <div md-card-avatar md-card-avatar [style.backgroundSize]=\"'cover'\" [style.backgroundImage]=\" 'url('+ item.user_image + ')' \"></div>\n                    <md-card-subtitle>\n                        <span> <strong> {{item.user}} </strong> - {{item.time_ago}}</span> <br>\n                        <span class=\"badge\" *ngFor='let tag of item.tags'> <strong> {{tag.name}} </strong> </span>\n\n                    </md-card-subtitle>\n                </md-card-header>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <br>\n                    <div class=\"text-body-box ui-summary\" [innerHTML]=\"item.body.substring(0, 200).replace('h2', 'p').replace('h1', 'p').replace('<br>', '') \"></div>\n                </md-card-content>\n\n                <md-card-actions>\n                    <button (click)=\"go_to_question(item)\" md-button>VIEW</button>\n                    <button (click)=\"edit_question(item._id)\" md-button [disabled]=\"session.get('user')['email'] !== item.email\">EDIT</button>\n                    <button (click)='follow_post(item)' md-button [disabled]=\"session.get('online')==0\">{{ item.am_I_following}}</button>\n                    <button (click)='remove_post(item._id, item.index)' md-button [disabled]=\"session.get('user')['email'] !== item.email\">REMOVE</button>\n\n                </md-card-actions>\n\n            </md-card>\n        </div>\n    </masonry-brick>\n</masonry>\n\n<div class=\"col-md-12 text-center \">\n    <a (click)=\"get_more_posts()\" class=\"btn btn-primary \"> <strong> Load More </strong></a>\n</div>\n\n\n\n<div class=\"col-md-12 \">\n    <br><br><br><br>\n</div>"
 
 /***/ }),
 /* 414 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12 col-md-offset-0\">\n\n\n    <div class=\"col-md-12\">\n        <a routerLink=\"new_question\" class=\"btn btn-primary pull-right\"> <strong> Create a new Post </strong></a>\n        <a routerLink=\"/forum\" class=\"btn btn-info pull-right\">All Posts</a>\n        <!-- <a (click)='view_search_bar()' class=\"btn btn-info pull-right\">Search</a> -->\n    </div>\n\n    <div *ngIf=\"!hide_search\" class=\"col-md-12\">\n        <div class=\"box-body\">\n            <h4> Type and search by keywords </h4>\n            <p-chips (onAdd)=\"search()\" (onRemove)=\"search()\" [(ngModel)]=\"keywords\"></p-chips>\n            <span (click)='go_to_option(option)' class='badge bg-success hand' *ngFor=\"let option of navigation_options\">\n        <strong>{{ option.label }}</strong></span>\n        </div>\n\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n        </div>\n    </div>\n\n</div>\n\n\n<div class=\"col-md-12\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-3 no-gutter\">\n    <br><br><br>\n</div>"
+module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <br><br><br>\n    <div class=\"panel no-gutter\">\n        <div class=\"panel-body\">\n            <div class=\"col-md-3\"></div>\n            <h4> <strong> Title </strong></h4>\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <input mdInput [(value)]='title' placeholder=\"What is your ARG question, try to be specific!\" #ftitle>\n            </md-input-container>\n\n\n            <h4> <strong> Body </strong></h4>\n            <!-- <p-editor [(ngModel)]=\"text\" ></p-editor> -->\n            <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n\n            <br><br>\n\n            <div class=\"col-md-12 no-gutter tag-line\">\n                <h4> <strong> Tags </strong></h4>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <p-chips [(ngModel)]=\"tags\"></p-chips>\n            </div>\n\n            <div class=\"col-md-12 no-gutter\">\n                <br>\n                <a (click)=\"update_post(ftitle.value)\" class=\"btn btn-primary\">Update</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 415 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <div class=\"col-md-12 post-form\">\n        <!-- <div class=\"panel-body\"> -->\n\n        <div class=\"col-md-12 no-gutter\">\n\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <h3> Title </h3>\n                <input mdInput placeholder=\"\" #ftitle>\n            </md-input-container>\n        </div>\n\n        <div class=\"col-md-12 no-gutter\">\n            <!-- <h3> Body </h3> -->\n            <div class=\"box\">\n                <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            </div>\n        </div>\n        <br><br>\n\n        <div class=\"col-md-12 no-gutter tag-line\">\n            <h3> Categories</h3>\n            <p>Click in at least one of the following categories: </p>\n            <div class=\"categories-block\" *ngFor=\"let key of categories\">\n                <span (click)='add_category(key)' class=\"badge bg-green categories\"> <strong> {{key.name}} </strong></span>\n            </div>\n            <br><br>\n        </div>\n\n        <div class=\"col-md-12 no-gutter tag-line\">\n            <h3> Tags </h3>\n            <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit\n          enter</u>.</p>\n        </div>\n\n        <div class=\"col-md-12 no-gutter\">\n            <br>\n            <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Publish</a>\n            <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n        </div>\n        <!-- </div> -->\n    </div>\n</div>"
+module.exports = "<div class=\"col-md-12 col-md-offset-0\">\n\n\n    <div class=\"col-md-12\">\n        <a routerLink=\"new_question\" class=\"btn btn-primary pull-right\"> <strong> Create a new Post </strong></a>\n        <a routerLink=\"/forum\" class=\"btn btn-info pull-right\">All Posts</a>\n        <!-- <a (click)='view_search_bar()' class=\"btn btn-info pull-right\">Search</a> -->\n    </div>\n\n    <div *ngIf=\"!hide_search\" class=\"col-md-12\">\n        <div class=\"box-body\">\n            <h4> Type and search by keywords </h4>\n            <p-chips (onAdd)=\"search()\" (onRemove)=\"search()\" [(ngModel)]=\"keywords\"></p-chips>\n            <span (click)='go_to_option(option)' class='badge bg-success hand' *ngFor=\"let option of navigation_options\">\n        <strong>{{ option.label }}</strong></span>\n        </div>\n\n        <div class=\"box-body\">\n            <a class='a-link' (click)='go_to_blog_help()'>How to use ARGminer blog?</a> <br>\n        </div>\n    </div>\n\n</div>\n\n\n<div class=\"col-md-12\">\n    <router-outlet></router-outlet>\n</div>\n\n<div class=\"col-md-3 no-gutter\">\n    <br><br><br>\n</div>"
 
 /***/ }),
 /* 416 */
 /***/ (function(module, exports) {
 
-module.exports = "\n"
+module.exports = "<div class=\"col-md-12\" *ngIf='session.get(\"online\") >=1'>\n    <div class=\"col-md-12 post-form\">\n        <!-- <div class=\"panel-body\"> -->\n\n        <div class=\"col-md-12 no-gutter\">\n\n            <md-input-container class=\"col-md-12 no-gutter\">\n                <h3> Title </h3>\n                <input mdInput placeholder=\"\" #ftitle>\n            </md-input-container>\n        </div>\n\n        <div class=\"col-md-12 no-gutter\">\n            <!-- <h3> Body </h3> -->\n            <div class=\"box\">\n                <quill-editor [style]=\"{'height':'450px'}\" [modules]=\"editor_modules\" [(ngModel)]=\"text\"></quill-editor>\n            </div>\n        </div>\n        <br><br>\n\n        <div class=\"col-md-12 no-gutter tag-line\">\n            <h3> Categories</h3>\n            <p>Click in at least one of the following categories: </p>\n            <div class=\"categories-block\" *ngFor=\"let key of categories\">\n                <span (click)='add_category(key)' class=\"badge bg-green categories\"> <strong> {{key.name}} </strong></span>\n            </div>\n            <br><br>\n        </div>\n\n        <div class=\"col-md-12 no-gutter tag-line\">\n            <h3> Tags </h3>\n            <p-chips [(ngModel)]=\"keywords\"></p-chips>\n            <p>And any other relevant keyword you consider relevant for your post. To add a tag <u>type the keyword and hit\n          enter</u>.</p>\n        </div>\n\n        <div class=\"col-md-12 no-gutter\">\n            <br>\n            <a (click)=\"post_question(ftitle.value)\" class=\"btn btn-primary\">Publish</a>\n            <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n        </div>\n        <!-- </div> -->\n    </div>\n</div>"
 
 /***/ }),
 /* 417 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\n    <br><br>\n    <div class=\"col-md-12\">\n        <div class=\"panel ui-view-post\">\n\n            <div class=\"panel-body\">\n                <h2> <strong> {{post.title}} </strong> </h2>\n                <span class=\"small\"> {{post.date}}</span><br>\n                <span class=\"badge bg-yellow\" *ngFor='let tag of post.tags'>\n          <strong>\n            {{tag.name}}\n          </strong>\n        </span>\n                <hr>\n\n                <!-- <hr> -->\n                <!-- <quill-editor [style]=\"{'height':'auto'}\" [(ngModel)]=\"post.body\" [minLength]=\"3\" [required]=\"true\" [readOnly]=\"true\" [modules]=\"{toolbar: false}\"></quill-editor> -->\n                <div class=\"text-body-box\" [innerHTML]=\"post.body\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"col-md-12\">\n    <div *ngFor='let comment of post.comments' class=\"col-md-12\">\n        <div class=\"panel no-gutter\">\n            <div class=\"panel-body\">\n                <div class=\"box-body chat\" id=\"chat-box\" style=\"overflow: auto; width: auto; height: auto;\">\n                    <div class=\"item\">\n                        <img alt=\"user image\" class=\"online\" [src]=\"'https://api.adorable.io/avatars/'+comment.email\">\n                        <p class=\"message\">\n                            <strong class=\"\"> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>\n                            <small class=\"text-muted\"><i class=\"fa fa-clock-o\"></i> {{comment.date}}</small>\n                            <i *ngIf=\"session.get('user')['email'] === comment.email\" (click)='remove_comment(comment)' class=\"fa fa-trash icon-options\" aria-hidden=\"true\"></i> <br>\n\n                            <quill-editor [style]=\"{'height':'auto'}\" [(ngModel)]=\"comment.body\" [minLength]=\"3\" [required]=\"true\" [readOnly]=\"true\" [modules]=\"{toolbar: false, imageResize: true}\"></quill-editor>\n\n                        </p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"col-md-12\">\n    <div class=\"col-md-12\">\n        <div class=\"panel no-gutter\">\n\n            <div class=\"panel-body\">\n                <h4> <strong>Your Comment</strong> </h4>\n                <br>\n                <!-- <p-editor [(ngModel)]=\"comment_body\" [style]=\"{'height':'250px'}\"></p-editor> -->\n                <quill-editor [style]=\"{'height':'auto'}\" [modules]=\"editor_modules\" [(ngModel)]=\"comment_body\"></quill-editor>\n                <hr>\n                <a (click)='add_comment()' class=\"btn btn-primary\">Post your answer/comment</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "\n"
 
 /***/ }),
 /* 418 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid home-font\">\n\n    <div class=\"jumbotron\">\n        <div class=\"row\">\n\n\n            <div class=\"col-md-6\">\n                <h1 class=\"display-3\">ARGminer</h1>\n                <p class=\"lead\">\n                    <strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene <strong>miner</strong> database\n                </p>\n                <hr class=\"my-4\">\n                <p>An online resource for the inspection and curation of ARGs based on crowdsourcing as well as a platform to promote interaction and collaboration for the ARG scientific community.</p>\n                <a routerLink=\"/classify\" class=\"btn btn-primary btn-large\">Inspect ARGs</a>\n                <a routerLink=\"/database\" class=\"btn btn-primary btn-large\">Download</a>\n                <a routerLink=\"/forum\" class=\"btn btn-primary btn-large\">Have questions?</a>\n                <a routerLink=\"/login\" class=\"btn btn-primary btn-large\">Register</a>\n            </div>\n\n            <div class=\"col-md-6 btn-holder\">\n                <img src=\"assets/images/ARGminer_pipeline.svg\" alt=\"pipeline\">\n                <!-- <a href='https://www.freepik.com/free-vector/ten-workflow-slide-templates-set_1371515.htm'>Designed by\n              Katemangostar</a> -->\n            </div>\n\n        </div>\n    </div>\n\n\n    <hr class=\"my-4\">\n\n\n    <div class=\"row\">\n        <div *ngFor='let item of info' class=\"col-md-3 no-gutter\">\n            <div class=\"panel panel-primary no-gutter\">\n                <h3 class=\"panel-heading\">{{item.title}}</h3>\n                <div class=\"panel-body\">\n                    <h5 class=\"panel-title\">{{item.subtitle}}</h5>\n                    <h6 class=\"panel-subtitle text-muted\">{{item.subsubtitle}}</h6>\n                </div>\n                <img [src]=\"item.image\" alt=\"Card image\">\n                <!-- <a href='https://www.freepik.com/free-vector/hands-putting-puzzle-pieces-together_795183.htm'>Designed by Freepik</a> -->\n                <div class=\"panel-body\">\n                    <p class=\"panel-text\">\n                        {{item.description}}\n                    </p>\n                </div>\n\n                <div class=\"panel-body\">\n                    <a routerLink=\"/classify\" class=\"card-link\">Inspect ARGs</a>\n                </div>\n\n            </div>\n        </div>\n\n    </div>\n\n    <hr class=\"my-4\">\n\n    <div class=\"row\">\n        <!-- <a href='https://www.freepik.com/free-vector/modern-timeline-graphic-in-blue-and-green-tones_829202.htm'>Designed by Freepik</a> -->\n        <div class=\"col-md-9\">\n            <!-- <app-home-database></app-home-database> -->\n        </div>\n\n        <div class=\"col-md-3\">\n            <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n        </div>\n\n    </div>\n    <hr>\n\n\n\n</div>\n\n\n\n<div class=\"container-fluid\">\n    <footer class=\"footer\" style=\"background:white\">\n        <br><br>\n\n        <div class=\"col-md-2 col-md-offset-4 funding\" style=\"width:7%\">\n            <img src=\"assets/images/nsf.jpg\" alt=\"\">\n        </div>\n        <div class=\"col-md-2 funding\">\n            <img src=\"assets/images/vt.jpg\" alt=\"\">\n        </div>\n        <div class=\"col-md-2 funding\">\n            <img src=\"assets/images/heard.png\" alt=\"\" style=\"width:60%\">\n        </div>\n        <br><br><br><br>\n        <div class=\"col-md-12\"></div>\n\n    </footer>\n</div>"
+module.exports = "<div class=\"col-md-12\">\n    <br><br>\n    <div class=\"col-md-12\">\n        <div class=\"panel ui-view-post\">\n\n            <div class=\"panel-body\">\n                <h2> <strong> {{post.title}} </strong> </h2>\n                <span class=\"small\"> {{post.date}}</span><br>\n                <span class=\"badge bg-yellow\" *ngFor='let tag of post.tags'>\n          <strong>\n            {{tag.name}}\n          </strong>\n        </span>\n                <hr>\n\n                <!-- <hr> -->\n                <!-- <quill-editor [style]=\"{'height':'auto'}\" [(ngModel)]=\"post.body\" [minLength]=\"3\" [required]=\"true\" [readOnly]=\"true\" [modules]=\"{toolbar: false}\"></quill-editor> -->\n                <div class=\"text-body-box\" [innerHTML]=\"post.body\"></div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"col-md-12\">\n    <div *ngFor='let comment of post.comments' class=\"col-md-12\">\n        <div class=\"panel no-gutter\">\n            <div class=\"panel-body\">\n                <div class=\"box-body chat\" id=\"chat-box\" style=\"overflow: auto; width: auto; height: auto;\">\n                    <div class=\"item\">\n                        <img alt=\"user image\" class=\"online\" [src]=\"'https://api.adorable.io/avatars/'+comment.email\">\n                        <p class=\"message\">\n                            <strong class=\"\"> {{comment.user}} </strong> (<span>{{comment.institution}}</span>) <br>\n                            <small class=\"text-muted\"><i class=\"fa fa-clock-o\"></i> {{comment.date}}</small>\n                            <i *ngIf=\"session.get('user')['email'] === comment.email\" (click)='remove_comment(comment)' class=\"fa fa-trash icon-options\" aria-hidden=\"true\"></i> <br>\n\n                            <quill-editor [style]=\"{'height':'auto'}\" [(ngModel)]=\"comment.body\" [minLength]=\"3\" [required]=\"true\" [readOnly]=\"true\" [modules]=\"{toolbar: false, imageResize: true}\"></quill-editor>\n\n                        </p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"col-md-12\">\n    <div class=\"col-md-12\">\n        <div class=\"panel no-gutter\">\n\n            <div class=\"panel-body\">\n                <h4> <strong>Your Comment</strong> </h4>\n                <br>\n                <!-- <p-editor [(ngModel)]=\"comment_body\" [style]=\"{'height':'250px'}\"></p-editor> -->\n                <quill-editor [style]=\"{'height':'auto'}\" [modules]=\"editor_modules\" [(ngModel)]=\"comment_body\"></quill-editor>\n                <hr>\n                <a (click)='add_comment()' class=\"btn btn-primary\">Post your answer/comment</a>\n                <a routerLink=\"/forum\" class=\"btn btn-danger\">Cancel</a>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 419 */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  news works!\n</p>\n"
+module.exports = "<div class=\"container-fluid home-font\">\n\n    <div class=\"jumbotron\">\n        <div class=\"row\">\n\n\n            <div class=\"col-md-6\">\n                <h1 class=\"display-3\">ARGminer</h1>\n                <p class=\"lead\">\n                    <strong>A</strong>ntibiotic <strong>R</strong>esistance <strong>G</strong>ene <strong>miner</strong> database\n                </p>\n                <hr class=\"my-4\">\n                <p>An online resource for the inspection and curation of ARGs based on crowdsourcing as well as a platform to promote interaction and collaboration for the ARG scientific community.</p>\n                <a routerLink=\"/classify\" class=\"btn btn-primary btn-large\">Inspect ARGs</a>\n                <a routerLink=\"/database\" class=\"btn btn-primary btn-large\">Download</a>\n                <a routerLink=\"/forum\" class=\"btn btn-primary btn-large\">Have questions?</a>\n                <a routerLink=\"/login\" class=\"btn btn-primary btn-large\">Register</a>\n            </div>\n\n            <div class=\"col-md-6 btn-holder\">\n                <img src=\"assets/images/ARGminer_pipeline.svg\" alt=\"pipeline\">\n                <!-- <a href='https://www.freepik.com/free-vector/ten-workflow-slide-templates-set_1371515.htm'>Designed by\n              Katemangostar</a> -->\n            </div>\n\n        </div>\n    </div>\n\n\n    <hr class=\"my-4\">\n\n\n    <div class=\"row\">\n        <div *ngFor='let item of info' class=\"col-md-3 no-gutter\">\n            <div class=\"panel panel-primary no-gutter\">\n                <h3 class=\"panel-heading\">{{item.title}}</h3>\n                <div class=\"panel-body\">\n                    <h5 class=\"panel-title\">{{item.subtitle}}</h5>\n                    <h6 class=\"panel-subtitle text-muted\">{{item.subsubtitle}}</h6>\n                </div>\n                <img [src]=\"item.image\" alt=\"Card image\">\n                <!-- <a href='https://www.freepik.com/free-vector/hands-putting-puzzle-pieces-together_795183.htm'>Designed by Freepik</a> -->\n                <div class=\"panel-body\">\n                    <p class=\"panel-text\">\n                        {{item.description}}\n                    </p>\n                </div>\n\n                <div class=\"panel-body\">\n                    <a routerLink=\"/classify\" class=\"card-link\">Inspect ARGs</a>\n                </div>\n\n            </div>\n        </div>\n\n    </div>\n\n    <hr class=\"my-4\">\n\n    <div class=\"row\">\n        <!-- <a href='https://www.freepik.com/free-vector/modern-timeline-graphic-in-blue-and-green-tones_829202.htm'>Designed by Freepik</a> -->\n        <div class=\"col-md-9\">\n            <!-- <app-home-database></app-home-database> -->\n        </div>\n\n        <div class=\"col-md-3\">\n            <!-- <a class=\"twitter-timeline\" data-height=\"400\" href=\"https://twitter.com/MetagenomicsVT?ref_src=twsrc%5Etfw\"></a> -->\n        </div>\n\n    </div>\n    <hr>\n\n\n\n</div>\n\n\n\n<div class=\"container-fluid\">\n    <footer class=\"footer\" style=\"background:white\">\n        <br><br>\n\n        <div class=\"col-md-2 col-md-offset-4 funding\" style=\"width:7%\">\n            <img src=\"assets/images/nsf.jpg\" alt=\"\">\n        </div>\n        <div class=\"col-md-2 funding\">\n            <img src=\"assets/images/vt.jpg\" alt=\"\">\n        </div>\n        <div class=\"col-md-2 funding\">\n            <img src=\"assets/images/heard.png\" alt=\"\" style=\"width:60%\">\n        </div>\n        <br><br><br><br>\n        <div class=\"col-md-12\"></div>\n\n    </footer>\n</div>"
 
 /***/ }),
 /* 420 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-3 col-md-offset-4\">\n    <p-growl class=\"user_growl\" [(value)]=\"notification\"></p-growl>\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\">\n            <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button>\n            <button routerLink=\"/signup\" class=\"bg-green\" md-raised-button>Create Account</button>\n        </div>\n    </div>\n</div>"
+module.exports = "<p>\n  news works!\n</p>\n"
 
 /***/ }),
 /* 421 */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='session.get(\"online\") >=1'>\n\n\n    <div class=\"col-md-12 col-md-offset-0\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n\n                <md-card-header>\n                    <div md-card-avatar [style.backgroundSize]=\"'cover'\" [style.backgroundImage]=\" 'url('+ user_image + ')' \">\n                    </div>\n                    <md-card-subtitle>\n                        <span> <strong> {{ session.get('user')['user'] }} </strong></span> <br>\n                        <span> {{ session.get('user')['institution'] }}</span> <br>\n                        <span class=\"\"> {{ session.get('user')['email'] }} </span> <br>\n                        <strong *ngIf=\"session.get('online')===2\"> Administrator</strong> <br>\n                        <span>account created on: {{ session.get('user')['date'] }}</span> <br>\n                    </md-card-subtitle>\n                </md-card-header>\n\n\n                <md-card-content class=\"box-fixed-height\">\n                    <app-profile-stats></app-profile-stats>\n                </md-card-content>\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div class=\"col-md-12\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n                <h3>Settings</h3>\n                <md-card-content class=\"box-fixed-height\">\n                    <div class=\"ui-g ui-fluid\">\n\n                        <h4 class=\"first\">Change User Information</h4>\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.user\" [(ngModel)]=\"info.user\">\n                                <button (click)=\"change_info('user')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.institution\" [(ngModel)]=\"info.institution\">\n                                <button (click)=\"change_info('institution')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.email\" [(ngModel)]=\"info.email\">\n                                <button (click)=\"change_info('email')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n                    </div>\n                </md-card-content>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <h4>Change Password</h4>\n                    <div class=\"ui-g ui-fluid\">\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass1\" placeholder='current password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass2\" placeholder='new password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass3\" placeholder='re-enter password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <button (click)=\"change_password()\" pButton type=\"button\" label=\"Change Password\" class=\"ui-button-rounded\"></button>\n                            </div>\n                        </div>\n                    </div>\n                </md-card-content>\n\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div *ngIf=\"session.get('online')===2\" class=\"col-md-12\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n                <h3>Administration</h3>\n                <md-card-content class=\"box-fixed-height\">\n                    <div class=\"ui-g ui-fluid\">\n\n                        <h4 class=\"first\">Add or remove user from administration</h4>\n                        <div class=\"col-md-12 col-md-offset-0\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText placeholder=\"user email\" [(ngModel)]=\"add_admin_email\">\n                                <button (click)=\"search_user_by_email()\" pButton type=\"button\" label=\"Search User\"></button>\n                            </div>\n\n                            <div *ngIf=\"new_admin_user\">\n                                <br>\n                                <ul class=\"list-group list-group-unbordered\">\n                                    <li class=\"list-group-item\">\n                                        <b>User Name</b> <a class=\"pull-right\">{{ new_admin_user.user }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User Score</b> <a class=\"pull-right\">{{ new_admin_user.views }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User Institution</b> <a class=\"pull-right\">{{ new_admin_user.institution }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User email</b> <a class=\"pull-right\">{{ new_admin_user.email }}</a>\n                                    </li>\n                                </ul>\n\n                                <button class=\"text-center\" (click)=\"confirm_administrator(2)\" pButton type=\"button\" label=\"Confirm User as Administrator\"></button>\n                                <br><br>\n                                <button class=\"text-center\" (click)=\"confirm_administrator(1)\" pButton type=\"button\" label=\"Remove User from Administration\"></button>\n                            </div>\n\n                        </div>\n                    </div>\n\n\n                </md-card-content>\n\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div class=\"col-md-12\">\n        <br><br><br><br><br><br><br><br><br><br><br>\n        <br><br><br><br><br><br><br><br><br><br><br>\n    </div>\n\n\n</div>"
+module.exports = "<div class=\"col-md-3 col-md-offset-4\">\n    <p-growl class=\"user_growl\" [(value)]=\"notification\"></p-growl>\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <h3 class=\"box-title\">Login</h3>\n        </div>\n        <div class=\"box-body\">\n            <!-- <form class=\"example-form\"> -->\n            <md-input-container class=\"col-md-12\">\n                <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                    Email is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n            <br>\n            <md-input-container class=\"col-md-12\">\n                <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                    Please enter a valid email address\n                </md-error>\n                <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                    Password is <strong>required</strong>\n                </md-error>\n            </md-input-container>\n\n            <!-- </form> -->\n        </div>\n\n        <div class=\"box-footer text-center\">\n            <button (click)=\"login(uemail.value, upass.value)\" class=\"bg-blue\" md-raised-button>Login</button>\n            <button routerLink=\"/signup\" class=\"bg-green\" md-raised-button>Create Account</button>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 422 */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"list-group list-group-unbordered\">\n    <li class=\"list-group-item\">\n        <b>ARGminer User Score</b> <a class=\"pull-right\">{{ stats.score }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Published Posts</b> <a class=\"pull-right\">{{ stats.posts }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Inspected ARGs</b> <a class=\"pull-right\"> {{ stats.inspections }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Post views</b> <a class=\"pull-right\"> {{ stats.views }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Post Comments</b> <a class=\"pull-right\"> {{ stats.comments }}</a>\n    </li>\n</ul>"
+module.exports = "<div *ngIf='session.get(\"online\") >=1'>\n\n\n    <div class=\"col-md-12 col-md-offset-0\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n\n                <md-card-header>\n                    <div md-card-avatar [style.backgroundSize]=\"'cover'\" [style.backgroundImage]=\" 'url('+ user_image + ')' \">\n                    </div>\n                    <md-card-subtitle>\n                        <span> <strong> {{ session.get('user')['user'] }} </strong></span> <br>\n                        <span> {{ session.get('user')['institution'] }}</span> <br>\n                        <span class=\"\"> {{ session.get('user')['email'] }} </span> <br>\n                        <strong *ngIf=\"session.get('online')===2\"> Administrator</strong> <br>\n                        <span>account created on: {{ session.get('user')['date'] }}</span> <br>\n                    </md-card-subtitle>\n                </md-card-header>\n\n\n                <md-card-content class=\"box-fixed-height\">\n                    <app-profile-stats></app-profile-stats>\n                </md-card-content>\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div class=\"col-md-12\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n                <h3>Settings</h3>\n                <md-card-content class=\"box-fixed-height\">\n                    <div class=\"ui-g ui-fluid\">\n\n                        <h4 class=\"first\">Change User Information</h4>\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.user\" [(ngModel)]=\"info.user\">\n                                <button (click)=\"change_info('user')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.institution\" [(ngModel)]=\"info.institution\">\n                                <button (click)=\"change_info('institution')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText [placeholder]=\"info.email\" [(ngModel)]=\"info.email\">\n                                <button (click)=\"change_info('email')\" pButton type=\"button\" label=\"Change\"></button>\n                            </div>\n                        </div>\n                    </div>\n                </md-card-content>\n\n                <md-card-content class=\"box-fixed-height\">\n                    <h4>Change Password</h4>\n                    <div class=\"ui-g ui-fluid\">\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass1\" placeholder='current password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass2\" placeholder='new password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"password\" pPassword [(ngModel)]=\"pass.pass3\" placeholder='re-enter password' />\n                            </div>\n                        </div>\n\n                        <div class=\"ui-g-12 ui-md-12\">\n                            <div class=\"ui-inputgroup\">\n                                <button (click)=\"change_password()\" pButton type=\"button\" label=\"Change Password\" class=\"ui-button-rounded\"></button>\n                            </div>\n                        </div>\n                    </div>\n                </md-card-content>\n\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div *ngIf=\"session.get('online')===2\" class=\"col-md-12\">\n        <div class=\"box box-solid\">\n            <md-card class=\"example-card\">\n                <h3>Administration</h3>\n                <md-card-content class=\"box-fixed-height\">\n                    <div class=\"ui-g ui-fluid\">\n\n                        <h4 class=\"first\">Add or remove user from administration</h4>\n                        <div class=\"col-md-12 col-md-offset-0\">\n                            <div class=\"ui-inputgroup\">\n                                <input type=\"text\" pInputText placeholder=\"user email\" [(ngModel)]=\"add_admin_email\">\n                                <button (click)=\"search_user_by_email()\" pButton type=\"button\" label=\"Search User\"></button>\n                            </div>\n\n                            <div *ngIf=\"new_admin_user\">\n                                <br>\n                                <ul class=\"list-group list-group-unbordered\">\n                                    <li class=\"list-group-item\">\n                                        <b>User Name</b> <a class=\"pull-right\">{{ new_admin_user.user }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User Score</b> <a class=\"pull-right\">{{ new_admin_user.views }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User Institution</b> <a class=\"pull-right\">{{ new_admin_user.institution }}</a>\n                                    </li>\n                                    <li class=\"list-group-item\">\n                                        <b>User email</b> <a class=\"pull-right\">{{ new_admin_user.email }}</a>\n                                    </li>\n                                </ul>\n\n                                <button class=\"text-center\" (click)=\"confirm_administrator(2)\" pButton type=\"button\" label=\"Confirm User as Administrator\"></button>\n                                <br><br>\n                                <button class=\"text-center\" (click)=\"confirm_administrator(1)\" pButton type=\"button\" label=\"Remove User from Administration\"></button>\n                            </div>\n\n                        </div>\n                    </div>\n\n\n                </md-card-content>\n\n            </md-card>\n        </div>\n\n    </div>\n\n\n    <div class=\"col-md-12\">\n        <br><br><br><br><br><br><br><br><br><br><br>\n        <br><br><br><br><br><br><br><br><br><br><br>\n    </div>\n\n\n</div>"
 
 /***/ }),
 /* 423 */
 /***/ (function(module, exports) {
 
+module.exports = "<ul class=\"list-group list-group-unbordered\">\n    <li class=\"list-group-item\">\n        <b>ARGminer User Score</b> <a class=\"pull-right\">{{ stats.score }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Published Posts</b> <a class=\"pull-right\">{{ stats.posts }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Inspected ARGs</b> <a class=\"pull-right\"> {{ stats.inspections }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Post views</b> <a class=\"pull-right\"> {{ stats.views }}</a>\n    </li>\n    <li class=\"list-group-item\">\n        <b>Post Comments</b> <a class=\"pull-right\"> {{ stats.comments }}</a>\n    </li>\n</ul>"
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports) {
+
 module.exports = "<div class=\"col-md-3 col-md-offset-4\">\n    <div class=\"box box-solid\">\n        <div class=\"box-header text-center\">\n            <br>\n            <h3 class=\"box-title\">Create an Account</h3>\n        </div>\n        <div class=\"box-body\">\n            <form class=\"example-form\">\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Email\" [formControl]=\"emailFormControl\" #uemail>\n                    <md-error *ngIf=\"emailFormControl.hasError('pattern')\">\n                        Please enter a valid email address\n                    </md-error>\n                    <md-error *ngIf=\"emailFormControl.hasError('required')\">\n                        Email is <strong>required</strong>\n                    </md-error>\n                </md-input-container>\n\n                <!-- name -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Name\" [formControl]=\"nameFormControl\" #uname>\n                    <md-error *ngIf=\"nameFormControl.hasError('pattern')\">\n                        Please enter a valid name\n                    </md-error>\n                    <md-error *ngIf=\"nameFormControl.hasError('required')\">\n                        Name is <strong>required</strong>\n                    </md-error>\n                </md-input-container>\n\n                <!-- institution -->\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput placeholder=\"Institution\" [formControl]=\"institutionFormControl\" #uinstitution>\n                    <md-error *ngIf=\"institutionFormControl.hasError('pattern')\">\n                        Please enter a valid institution\n                    </md-error>\n                    <md-error *ngIf=\"institutionFormControl.hasError('required')\">\n                        Institution is <strong>required</strong>\n                    </md-error>\n                </md-input-container>\n\n                <!-- password -->\n                <br>\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput type=\"password\" placeholder=\"Password\" [formControl]=\"passwordFormControl\" #upass>\n                    <md-error *ngIf=\"passwordFormControl.hasError('pattern')\">\n                        Please enter a valid password\n                    </md-error>\n                    <md-error *ngIf=\"passwordFormControl.hasError('required')\">\n                        Password is <strong>required</strong>\n                    </md-error>\n                    <md-error *ngIf=\"passwordFormControl.hasError('minlength')\">\n                        Password is <strong>minimum length is 8 characters</strong>\n                    </md-error>\n                </md-input-container>\n\n                <md-input-container class=\"col-md-12\">\n                    <input mdInput type=\"password\" placeholder=\"Confirm password\" [formControl]=\"password2FormControl\" #upass2>\n                    <md-error *ngIf=\"password2FormControl.hasError('pattern')\">\n                        Please enter a valid password\n                    </md-error>\n                    <md-error *ngIf=\"password2FormControl.hasError('required')\">\n                        Password is <strong>required</strong>\n                    </md-error>\n                    <md-error *ngIf=\"password2FormControl.hasError('minlength')\">\n                        Password is <strong>minimum length is 8 characters</strong>\n                    </md-error>\n                </md-input-container>\n\n            </form>\n        </div>\n\n        <div class=\"box-footer text-center\"> <button (click)=\"signup(uemail.value, uname.value, uinstitution.value, upass.value, upass2.value)\" class=\"bg-blue\" md-raised-button>Sign Up</button></div>\n    </div>\n</div>"
 
 /***/ }),
-/* 424 */,
 /* 425 */,
 /* 426 */,
 /* 427 */,
@@ -5129,12 +5156,16 @@ module.exports = "<div class=\"col-md-3 col-md-offset-4\">\n    <div class=\"box
 /* 473 */,
 /* 474 */,
 /* 475 */,
-/* 476 */
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(164);
+module.exports = __webpack_require__(165);
 
 
 /***/ })
-],[476]);
+],[480]);
 //# sourceMappingURL=main.bundle.js.map

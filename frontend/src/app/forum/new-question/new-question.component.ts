@@ -11,9 +11,9 @@ import ImageResize from 'quill-image-resize-module';
 Quill.register('modules/imageResize', ImageResize);
 
 @Component({
-	selector: 'app-new-question',
-	templateUrl: './new-question.component.html',
-	styleUrls: [ './new-question.component.css' ]
+    selector: 'app-new-question',
+    templateUrl: './new-question.component.html',
+    styleUrls: ['./new-question.component.css']
 })
 export class NewQuestionComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class NewQuestionComponent implements OnInit {
         private discussionService: DiscussionService,
         private router: Router,
         private userService: UserService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.categories = [
@@ -46,20 +46,20 @@ export class NewQuestionComponent implements OnInit {
         this.tag_position = 0;
         this.editor_modules = {
             toolbar: {
-              container: [
-                  [{ 'font': [] }],
-                  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                  [{ 'align': [] }],
-                  [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                  ['bold', 'italic', 'underline', 'strike'],
-                  [{ 'script': 'sub'}, { 'script': 'super' }],
-                ['blockquote', 'code-block'],
-                [{ 'color': [] }, { 'background': [] }],
-                ['link', 'image', 'video']
-              ]
+                container: [
+                    [{ 'font': [] }],
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'align': [] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'script': 'sub' }, { 'script': 'super' }],
+                    ['blockquote', 'code-block'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image', 'video']
+                ]
             },
             imageResize: true
-          };
+        };
     }
 
     post_question(title: string) {
@@ -97,7 +97,10 @@ export class NewQuestionComponent implements OnInit {
                     .subscribe(e => {
                         this.router.navigate(['/forum'])
                     });
-        });
+
+                this.userService.score_user(this.session.get('user')['_id']).subscribe(e => { })
+            });
+
 
         this.tag_position = 0;
         this.tags = [];
@@ -108,7 +111,7 @@ export class NewQuestionComponent implements OnInit {
     add_category(key: any) {
         this.keywords.push(key.name)
         this.categories.splice(key.index, 1)
-        this.categories.map((i,ix) => {
+        this.categories.map((i, ix) => {
             i.index = ix;
         })
     }
