@@ -1,33 +1,35 @@
 #!/usr/bin/env python3
-
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-import json
-import base64
-# from rest.config import add_path
-# add_path
 import sys
 sys.path.insert(0, '/src/')
-from rest.ARGsClass import GENE
-from rest.AntibioticClass import Antibiotic
-from rest.AdminClass import Admin
-from NomenclatureClass import nomenclature_prediction
 
-import fastText
+try:
+    import logging
+    from rest.EmailClass import Email
+    from rest.UserClass import LoggedUser as User
+    from rest.ForumClass import Forum
+    from rest.AuthenticationClass import Authentication
+    from rest.DataBaseInterface import DataBaseClass as DB
+    import fastText
+    from NomenclatureClass import nomenclature_prediction
+    from rest.AdminClass import Admin
+    from rest.AntibioticClass import Antibiotic
+    from rest.ARGsClass import GENE
+    from flask import Flask, jsonify, request
+    from flask_cors import CORS
+    import json
+    import base64
+except:
+    pass
+
+
+# from rest.config import add_path
+# add_path
+
+
 ft_model = fastText.load_model('/src/nomenclature/model.ftz')
 
-from rest.DataBaseInterface import DataBaseClass as DB
 db = DB.DataBase()
 
-from rest.AuthenticationClass import Authentication
-
-from rest.ForumClass import Forum
-from rest.UserClass import LoggedUser as User
-
-from rest.EmailClass import Email
-
-import logging
-import sys
 
 logger = logging.getLogger(__name__)
 out_hdlr = logging.StreamHandler(sys.stdout)
@@ -311,6 +313,17 @@ def remove_one_post_comment():
 
 
 # USER
+@app.route('/user/score/<user_id>', methods=['GET'])
+def get_user_score(user_id):
+    return jsonify(user.score_user(user_id))
+
+
+@app.route('/user/top_scores/<top>', methods=['GET'])
+def get_top_score_users(top):
+    top = int(top)
+    return jsonify(user.get_top_score_users(top=top))
+
+
 @app.route('/user/stats/<user_id>', methods=['GET'])
 def get_user_stats(user_id):
     return jsonify(user.stats(user_id))

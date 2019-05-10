@@ -65,3 +65,13 @@ class User():
         )
 
         return update
+
+    def score_sort(self, top=5):
+        sorted_item = self.database.sort(
+            table=self.table,
+            query={},
+            key_to_sort="score",
+            top=top
+        )
+
+        return sorted_item

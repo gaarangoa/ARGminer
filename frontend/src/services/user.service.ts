@@ -16,19 +16,26 @@ import { Sha512 } from './encrypt'
 
 @Injectable()
 export class UserService {
-  private base_url: string;
-  private encript: any
+    private base_url: string;
+    private encript: any
 
-  constructor (private http:Http, private session:Session){
-    this.base_url = environment.api_url;
-    this.encript = new Sha512();
-  }
+    constructor(private http: Http, private session: Session) {
+        this.base_url = environment.api_url;
+        this.encript = new Sha512();
+    }
+
+    top_scores(top_items: number) {
+        return this.http.get(this.base_url + '/user/top_scores/' + top_items)
+            .map(res => {
+                return res.json()
+            })
+    }
 
     stats(user_id: string) {
-        return this.http.get(this.base_url+'/user/stats/'+user_id)
-        .map(res => {
-            return res.json();
-        })
+        return this.http.get(this.base_url + '/user/stats/' + user_id)
+            .map(res => {
+                return res.json();
+            })
     }
 
     count_post(post_id: number, user_id: string) {

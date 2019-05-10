@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 from rest.config import MongoHost as config
 import random
 
@@ -21,6 +21,19 @@ class Mongo():
             response["_id"] = str(response["_id"])
             response["status"] = True
         self.client.close()
+        return responses
+
+    def sort(self, table="", query={}, key_to_sort="", top=5):
+
+        responses = [i for i in self.db[table].find(
+            query).sort(key_to_sort, DESCENDING)][:top]
+        if not responses:
+            return [{"status": False}]
+        for response in responses:
+            response["_id"] = str(response["_id"])
+            response["status"] = True
+        self.client.close()
+
         return responses
 
     def insert(self, table, data):

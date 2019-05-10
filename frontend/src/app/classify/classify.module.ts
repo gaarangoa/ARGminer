@@ -51,6 +51,7 @@ import { ExploreComponent } from './explore/explore.component'
 // import { HintModule } from 'angular-custom-tour';
 import { ExploreModule } from './explore/explore.module';
 import { CommentsComponent } from './comments/comments.component';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { CommentsComponent } from './comments/comments.component';
     ExploreComponent,
     InstructionsComponent,
     CommentsComponent,
+    ActivityComponent,
   ],
   providers: [
     ConfirmationService

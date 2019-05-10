@@ -1,0 +1,9 @@
+<h5> <strong> User Rankings </strong></h5>
+<hr>
+
+<div *ngFor="let user of best_users">
+  <span class="badge bg-blue"> <strong> {{user.score}}</strong></span> {{user.name}} <br>
+  <span class="text-sm"> {{ user.institution}}</span>
+  <span class="text-sm"> {{ user.email }}</span>
+  <hr>
+</div>

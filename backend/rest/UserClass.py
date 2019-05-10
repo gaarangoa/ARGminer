@@ -13,6 +13,22 @@ class LoggedUser():
         except:
             return {'status': 'failed', 'role': 0, 'message': 'user does not exists'}
 
+    def score_user(self, user_id):
+        user = self.user.get_by_id(user_id)[0]
+        score = 0.2*user['views'] + 0.3*len(user['inspections']) + 0.2*len(
+            user['posts']) + 0.2*user['comments'] + 0.1*len(user['followers'])
+        user = self.user.update("score", score, user_id)
+        return user
+
+    def get_top_score_users(self, top=5):
+        return [{"user": i['_id'], "name": i['user'], "score": round(i['score'], 1), "email": i['email'], "institution": i['institution']} for i in self.user.score_sort(top=top)]
+
+    def score(self):
+        try:
+            pass
+        except:
+            return {'status': 'failed', 'role': 0, 'message': 'user does not exists'}
+
     def info(self, user_email):
         try:
             credentials = self.user.get_by_email(user_email)[0]

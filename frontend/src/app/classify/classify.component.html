@@ -21,64 +21,27 @@
 
 
                 </div>
-
-                <!-- /.box-header -->
-
-                <!-- <tour-step class="intro-tour-hint-wrapper" selector="step1" order="1" position="right">
-                        <div class="box box-step">
-                            <div class="box-header">
-                                <h3 class="box-title">
-                                    ARG you have to curate
-                                </h3>
-                            </div>
-                            <div class="box-body">
-                                This panel shows you the basic information about the antibiotic reistance gene you need to inspect. Note this information may contain errors. Therefore, by comparing this information with the known ARGs databases you will be able to correct or accept
-                                the current annotation.
-                            </div>
-                        </div>
-                    </tour-step> -->
-
                 <div class="box-body">
 
                     <dl id="step1" class="dl">
-                        <!-- <p> -->
-                        <!-- </p> -->
-                        <!-- <p> -->
 
-                        <!-- <strong>Gene Name:</strong> -->
-                        <!-- <span class="">{{ randomARG.entry.subtype }}</span> -->
-                        <!-- </p> -->
-                        <!-- <p> -->
-                        <!-- <br> -->
-                        <!-- <strong>Antibiotic Class:</strong> -->
-                        <!-- <span class="">{{ randomARG.entry.type }}</span> -->
-                        <!-- </p> -->
-                        <!-- <p> -->
-                        <!-- <br> -->
                         <strong>Database:</strong>
                         <span class="">{{ randomARG.entry.database }}</span>
-                        <!-- </p> -->
-                        <!-- <p> -->
-                        <!-- <br>
-                        <strong data-intro="step1">Inspected:</strong>
-                        <span class=""></span> -->
                         <br>
                         <strong data-intro="step1">Gene ID:</strong>
                         <span class="">{{ randomARG.entry.gene_id }} ({{ randomARG.inspected.length }})</span>
                         <br>
-                        <!-- </p> -->
-                        <!-- <dt>Score:</dt> -->
-                        <!-- <dd><span class="badge bg-blue">{{ randomARG.entry.score }}</span></dd> -->
                     </dl>
 
                     <div id="step3">
-                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Enable Training</strong></md-slide-toggle>
+                        <md-slide-toggle (change)="trainingARGEvent($event)" [checked]="trainingARGFlag"><strong>Enable
+                                Training</strong></md-slide-toggle>
                         <p class="small">Enable this option if this is the first time you enter the website.</p>
                     </div>
                     <!-- <hr> -->
                     <div id="step4">
-                        <md-slide-toggle (change)="selectConflictedArgEvent($event)" [checked]="conflictedArgSubtypeFlag"><strong>Priority
-                ARGs</strong></md-slide-toggle>
+                        <md-slide-toggle (change)="selectConflictedArgEvent($event)"
+                            [checked]="conflictedArgSubtypeFlag"><strong>Priority ARGs</strong></md-slide-toggle>
                         <p class="small">This option selects ARGs with high priority of curation.</p>
                     </div>
                     <hr>
@@ -88,7 +51,9 @@
                     <div *ngIf="loading==false && conflictedArgSubtypeFlag">
 
                         <h4> Conflicted ARGs </h4>
-                        <p class="small">This section contains the list of ARGs under the category {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class annotation.</p>
+                        <p class="small">This section contains the list of ARGs under the category
+                            {{ conflictingARGSubtype.subtype }} that present inconsistences respect its ARG class
+                            annotation.</p>
                         <!-- <div class="box-body"> -->
                         <!-- <p> <strong>Gene:</strong> <mark>{{ conflictingARGSubtype.subtype }}</mark></p> -->
                         <div *ngFor="let item of conflictingARGSubtype.conflict">
@@ -96,22 +61,20 @@
                         </div>
                         <hr>
                         <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
-                        <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next ARG</button>
+                        <button (click)="nextGeneConflictList()" class="" color="warn" md-raised-button>Next
+                            ARG</button>
                         <!-- </div> -->
                     </div>
 
-                    <div *ngIf="conflictedArgSubtypeFlag==false && trainingARGFlag==false" class="col-md-12 text-center">
+                    <div *ngIf="conflictedArgSubtypeFlag==false && trainingARGFlag==false"
+                        class="col-md-12 text-center">
                         <button (click)="nextGene()" class="" color="primary" md-raised-button>Random ARG</button>
                     </div>
 
                     <div *ngIf="trainingARGFlag && conflictedArgSubtypeFlag==false" class="col-md-12 text-center">
-                        <button (click)="trainingARGNextGene()" class="" color="primary" md-raised-button>Next ARG</button>
+                        <button (click)="trainingARGNextGene()" class="" color="primary" md-raised-button>Next
+                            ARG</button>
                     </div>
-
-                    <!-- <div class="col-md-12 text-right">
-                            <button (click)="nextGene()" class="" color="red" md-raised-button>Random</button>
-                        </div> -->
-
 
                 </div>
 
@@ -124,14 +87,12 @@
 
         </div>
 
-        <!-- <div class="col-md-12 box box-solid ">
 
-                <h4>Note about BitScores</h4>
-                <p class="small">A bitscore of 50 is considered significant if the alignment covers at least 90% of the reference sequence</p>
-                <p class="small">Bit-score does not depend on database size. The bit-score gives the same value for hits in databases of different sizes and hence can be used for searching in an constantly increasing database.</p>
-                <p class="small"> The higher the bitscore, the better the quality of the sequence alignment</p>
-
-            </div> -->
+        <div class="box box-solid">
+            <div class="box-body">
+                <app-activity> </app-activity>
+            </div>
+        </div>
 
     </div>
 
@@ -165,7 +126,8 @@
                         <h3 class="box-title"> <strong>Protein sequence</strong> ({{ randomARG.entry.gene_id }}) </h3>
                     </div>
                     <div class="box-body">
-                        <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br> {{ randomARG.entry.sequence }}
+                        <p class="sequence small"> ><strong>{{randomARG.entry.gene_id}}</strong> <br>
+                            {{ randomARG.entry.sequence }}
                         </p>
                     </div>
                 </div>
