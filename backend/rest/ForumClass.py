@@ -68,8 +68,8 @@ class Forum():
 
             del comment['owner_email']
             return {'status': True, 'comment': self.post.add_comment(comment, int(comment['post_id']))}
-        except:
-            return {'status': False}
+        except Exception as inst:
+            return {'status': False, 'message': str(inst)}
 
     def remove_comment(self, post_id, comment_id):
         return self.post.remove_comment(post_id, comment_id)
