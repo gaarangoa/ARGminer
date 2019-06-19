@@ -15,7 +15,18 @@ class LoggedUser():
 
     def score_user(self, user_id):
         user = self.user.get_by_id(user_id)[0]
-        score = 0.05*user['views'] + 0.45*len(user['inspections']) + 0.2*len(
+        
+        try:
+            views = user['views']
+        except:
+            views = 0
+        
+        try:
+            inspections = user['inspections']
+        except:
+            inspections = 0
+
+        score = 0.05*views + 0.45*len(inspections) + 0.2*len(
             user['posts']) + 0.2*user['comments'] + 0.1*len(user['followers'])
         user = self.user.update("score", score, user_id)
         return user
