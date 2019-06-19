@@ -57,7 +57,7 @@ class Forum():
                 self.email.send({
                     "receiver": _user,
                     "subject": "ARGminer | Post: "+str(comment['post_id']),
-                    "body": "<strong>"+comment['user']+"</strong> has commented in the post: " +
+                    "body": "<strong>"+comment['email']+"</strong> has commented in the post: " +
                     " <a href='https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=" + str(comment['post_id']) + "'> " + comments[0]['title'] + '</a>' +
                     # " by " +
                     # comments[0]['user'] +
