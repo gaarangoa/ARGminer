@@ -59,8 +59,8 @@ class Forum():
                     "subject": "ARGminer | Post: "+str(comment['post_id']),
                     "body": "<strong>"+comment['user']+"</strong> has commented in the post: " +
                     " <a href='https://bench.cs.vt.edu/argminer/#/forum/selected_question;id=" + str(comment['post_id']) + "'> " + comments[0]['title'] + '</a>' +
-                    " by " +
-                    comments[0]['user'] +
+                    # " by " +
+                    # comments[0]['user'] +
                     "<br>" +
                     "<u>" + comment['body'] + "</u>" +
                     "<br>Sincerely,<br><strong>ARGminer Team</strong>"
